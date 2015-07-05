@@ -1,83 +1,95 @@
-<div class="row">
+<div class="row" ng-controller="mainController as main">
 
   <div class="col-sm-8 col-sm-offset-2">
 
-    <div role="tabpanel">
+    <ul class="nav nav-tabs" >
+      <li ng-repeat="tab in main.tabs">
+        <a href="{{tab.link}}" ng-click="main.setSelectedTab(tab)"> <span class="{{tab.icon}}"></span> {{tab.label}}</a>
+      </li>
+    </ul>
+    <div ng-view></div>
 
-      <!-- Nav tabs start-->
-      <ul class="nav nav-tabs font-alt" role="tablist">
-        <li>
-          <a href="#about" data-toggle="tab"><span class="icon-pencil"></span> About</a>
-        </li>
-        <li>
-          <a href="#reel" data-toggle="tab"><span class="icon-video"></span> Reel</a>
-        </li>
-        <li class="active">
-          <a href="#resume" data-toggle="tab"><span class="icon-strategy"></span> Resume</a>
-        </li>
-        <li>
-          <a href="#awards" data-toggle="tab"><span class="icon-trophy"></span> Awards</a>
-        </li>
-        <li>
-          <a href="#actors" data-toggle="tab"><span class="icon-genius"></span> Actors</a>
-        </li>
-      </ul>
-      <!-- Nav tabs end -->
-
-      <!-- Tab panes start-->
-      <div class="tab-content">
-        <!-- Tab start -->
-        <div class="tab-pane active" id="about">
-          <h4 class="font-alt mb-0">Basic Forms</h4>
-          <hr class="divider-w mt-10 mb-20">
-
-          <div class="form-group">
-            <input class="form-control input-lg" type="text" placeholder="Large input">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Default input">
-          </div>
-          <div class="form-group">
-            <input class="form-control input-sm" type="text" placeholder="Small input">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Disabled input" disabled>
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Readonly input" readonly>
-          </div>
-          <textarea class="form-control" rows="7" placeholder="Textarea"></textarea>
-        </div>
-        <!-- Tab end -->
-
-        <!-- Tab start -->
-        <div class="tab-pane" id="reel">
-          To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words.
-        </div>
-        <!-- Tab end -->
-
-        <!-- Tab start -->
-        <div class="tab-pane" id="resume">
-          <h3>Resume</h3>
-        </div>
-        <!-- Tab end -->
-
-        <!-- Tab start -->
-        <div class="tab-pane" id="awards">
-          <h3>Awards</h3>
-        </div>
-        <!-- Tab end -->
-
-        <!-- Tab start -->
-        <div class="tab-pane" id="actors">
-          <h3>Actors Trained</h3>
-        </div>
-        <!-- Tab end -->
-
-      </div>
-      <!-- Tab panes end-->
-    </div>
+  </div>
 
   </div>
 
 </div><!-- .row -->
+
+<script type="text/ng-template" id="/templates/about.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>About Us</h3>
+          <p>Form goes here with some type of simple html editor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="/templates/reel.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Reel</h3>
+          <p>Form goes here with a simple text input which should save a YouTube ID.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="/templates/resume.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Resume</h3>
+          <p>Pull data from iStunt to populate this section.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="/templates/awards.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Awards</h3>
+          <p>Create, List, Edit, Delete awards. They should allow image uploads and will populate the awards slider.</p>
+          <p>Question for later: can we pull this data from imdb? for example: http://www.imdb.com/name/nm0243345/awards?ref_=nm_ql_2</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="/templates/actors.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Actors Trained</h3>
+          <p>Create, List, Edit, Delete actors trained.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="/templates/settings.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Settings</h3>
+          <p>Website settings form.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
