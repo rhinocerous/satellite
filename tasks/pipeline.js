@@ -13,25 +13,53 @@
 // CSS files to inject in order
 //
 // (if you're using LESS with the built-in default config, you'll want
-//  to change `assets/styles/importer.less` instead.)
+//  to change `styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  //'styles/**/*.css'
+  'bootstrap/css/bootstrap.css',
+  'css/simpletextrotator.css',
+  'css/font-awesome.css',
+  'css/et-line-font.css',
+  'css/magnific-popup.css',
+  'css/flexslider.css',
+  'css/owl.carousel.css',
+  'css/animate.css',
+  'css/style.css'
 ];
 
 
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-  
-  // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
 
-  // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
+  //// Load sails.io before everything else
+  //'js/dependencies/sails.io.js',
+  //
+  //// Dependencies like jQuery, or Angular are brought in here
+  //'js/dependencies/**/*.js',
+  //
+  //// All of the rest of your client-side js files
+  //// will be injected here in no particular order.
+  //'js/**/*.js'
+  'js/jquery-2.1.3.js',
+  'bootstrap/js/bootstrap.js',
+  'js/jquery.mb.YTPlayer.js',
+  'js/appear.js',
+  'js/jquery.simple-text-rotator.js',
+  'js/jqBootstrapValidation.js',
+  //'http://maps.google.com/maps/api/js?sensor=true',
+  //'js/gmaps.js',
+  'js/isotope.pkgd.js',
+  'js/imagesloaded.pkgd.js',
+  'js/jquery.flexslider.js',
+  'js/jquery.magnific-popup.js',
+  'js/jquery.fitvids.js',
+  'js/smoothscroll.js',
+  'js/wow.js',
+  'js/owl.carousel.js',
+  'js/contact.js',
+  'js/custom.js'
 
-  // All of the rest of your client-side js files
-  // will be injected here in no particular order.
-  'js/**/*.js'
 ];
 
 
@@ -60,5 +88,5 @@ module.exports.jsFilesToInject = jsFilesToInject.map(function(path) {
   return '.tmp/public/' + path;
 });
 module.exports.templateFilesToInject = templateFilesToInject.map(function(path) {
-  return 'assets/' + path;
+  return '' + path;
 });

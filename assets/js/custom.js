@@ -1,444 +1,504 @@
-/* -- Full Screen Viewport Container
-   ---------------------------- */
+(function($){
 
-$(window).load(function(){
-    $('.preloader').fadeOut(1000); // set duration in brackets
-    init();
-});
+	/* ---------------------------------------------- /*
+	 * Preloader
+	/* ---------------------------------------------- */
 
-$(document).ready(function() {
-  owlCarousel();
-  magnificPopup();
-});
-
-
-
-/* --- initialize functions on window load here -------------- */
-
-function init() {
-  tooltips();
-  onePageScroll();
-  scrollAnchor();
-  toggleContactForm();
-}
-
-
-
-/* --- owlCarousel ------------- */
-
-function owlCarousel() {
-    $("#owl-example").owlCarousel({
-      lazyLoad : true,
-      items: 3,
-      theme: "owl-theme-main"
-    }); 
-  
-    $("#intro").owlCarousel({
-      lazyLoad: true,
-      lazyEffect: "fade",
-      singleItem: true,
-      navigation: true,
-      navigationText : ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-      slideSpeed : 450,
-      pagination: false,
-      transitionStyle: "fade",
-      theme: "owl-theme-featured"
-      
-    }); 
-}
-
-
-
-/* --- Tooltips ------------------- */
-
-function tooltips() {
-  $('.tooltips').tooltip(); 
-}
-
-
-
-
-/* --- Show/Hide Contact Form ------------------- */
-
-function toggleContactForm() {
-  $('.contact-button').click(function() {
-    $(this).toggleClass('active');
-    $('.contact-form').slideToggle(300);
-  });
-}
-
-
-
-
-/* --- scrollReveal ------------------- */
-
-window.scrollReveal = new scrollReveal();
-  
-
-
-/* --- magnific popup ------------------- */
-
-function magnificPopup() {
-
-  // Gallery
-  $('.popup-gallery').magnificPopup({
-    type: 'image',
-    tLoading: 'Loading image #%curr%...',
-    mainClass: 'mfp-fade',
-    disableOn: 700,
-    removalDelay: 160,
-    gallery: {
-      enabled: true,
-      navigateByImgClick: true,
-      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-    },
-    image: {
-      tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-    },
-    callbacks: {
-      close: function() {
-        $('.portfolio-item figure figcaption').removeClass('active');
-        $('.portfolio-item figure .info').removeClass('active');
-      }
-    }
-  });
-
-  $('.portfolio-item figcaption a.preview').click(function(){
-    $(this).parent().addClass('active');
-    $(this).parent().siblings('.info').addClass('active');
-  });
-
-  // Zoom Gallery
-
-  $('.zoom-modal').magnificPopup({
-    type: 'image',
-    mainClass: 'mfp-with-zoom', // this class is for CSS animation below
-
-    zoom: {
-      enabled: true, // By default it's false, so don't forget to enable it
-
-      duration: 300, // duration of the effect, in milliseconds
-      easing: 'ease-in-out', // CSS transition easing function 
-
-      // The "opener" function should return the element from which popup will be zoomed in
-      // and to which popup will be scaled down
-      // By defailt it looks for an image tag:
-      opener: function(openerElement) {
-        // openerElement is the element on which popup was initialized, in this case its <a> tag
-        // you don't need to add "opener" option if this code matches your needs, it's defailt one.
-        return openerElement.is('i') ? openerElement : openerElement.find('i');
-      }
-    }
-
-  });
-
-  $('.popup-modal').magnificPopup({
-		type: 'inline',
-
-		fixedContentPos: false,
-		fixedBgPos: true,
-
-		overflowY: 'auto',
-
-		closeBtnInside: true,
-		preloader: false,
-		
-		midClick: true,
-		removalDelay: 300,
-		mainClass: 'my-mfp-slide-bottom'
+	$(window).load(function() {
+		$('.loader').fadeOut();
+		$('.page-loader').delay(350).fadeOut('slow');
 	});
-}
 
+	$(document).ready(function() {
 
+		/* ---------------------------------------------- /*
+		 * Initialization General Scripts for all pages
+		/* ---------------------------------------------- */
 
-/* --- Isotope ------------------- */
+		var homeSection = $('.home-section'),
+			navbar      = $('.navbar-custom'),
+			navHeight   = navbar.height(),
+			worksgrid   = $('#works-grid'),
+			width       = Math.max($(window).width(), window.innerWidth),
+			mobileTest;
 
-function isotope() {
+		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			mobileTest = true;
+		}
 
- var $container = $('#portfolio');
+		buildHomeSection(homeSection);
+		navbarAnimation(navbar, homeSection, navHeight);
+		navbarSubmenu(width);
+		hoverDropdown(width, mobileTest);
 
- // init
- $container.imagesLoaded( function(){
-   $container.isotope({
-     // options
-     itemSelector: '.portfolio-item',
-     layoutMode: 'fitRows'
-   });
- });
-
- // filter items on button click
- $('#filters').on( 'click', 'button', function( event ) {
-   var filterValue = $(this).attr('data-filter-value');
-   $container.isotope({ filter: filterValue });
-   $('#filters button').removeClass('active');
-   $(this).addClass('active');
- });
-
-}
-
-
-/* --- Scroll to Anchor ------------------- */
-
-function scrollAnchor() {
-
-  // scroll to specific anchor
-  $('.scroll').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top
-        }, 650);
-        return false;
-      }
-    }
-  });
-  
-}
-
-
-/* --- Modal overlay (used for signup form) ------------------- */
-
-function signupOverlay() {
-  var container = document.querySelector( 'div.container' ),
-    triggerBttn = document.getElementsByClassName( 'signup' ),
-    overlay = document.querySelector( 'div#signup' ),
-    closeBttn = overlay.querySelector( 'button.overlay-close' );
-    transEndEventNames = {
-      'WebkitTransition': 'webkitTransitionEnd',
-      'MozTransition': 'transitionend',
-      'OTransition': 'oTransitionEnd',
-      'msTransition': 'MSTransitionEnd',
-      'transition': 'transitionend'
-    },
-    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-    support = { transitions : Modernizr.csstransitions };
-
-  function toggleOverlay() {
-    if( classie.has( overlay, 'open' ) ) {
-      classie.remove( overlay, 'open' );
-      classie.remove( container, 'overlay-open' );
-      classie.add( overlay, 'close-me' );
-      var onEndTransitionFn = function( ev ) {
-        if( support.transitions ) {
-          if( ev.propertyName !== 'visibility' ) return;
-          this.removeEventListener( transEndEventName, onEndTransitionFn );
-        }
-        classie.remove( overlay, 'close-me' );
-      };
-      if( support.transitions ) {
-        overlay.addEventListener( transEndEventName, onEndTransitionFn );
-      }
-      else {
-        onEndTransitionFn();
-      }
-    }
-    else if( !classie.has( overlay, 'close-me' ) ) {
-      classie.add( overlay, 'open' );
-      classie.add( container, 'overlay-open' );
-    }
-  }
-
-  for (i = 0; i < triggerBttn.length; i++) {
-      triggerBttn[i].addEventListener( 'click', toggleOverlay );
-  }
-  closeBttn.addEventListener( 'click', toggleOverlay );
-
-  $('.signup').click(function(e) {
-      e.preventDefault();
-  });
-}
-
-/* --- Modal overlay (used for login form) ------------------- */
-
-function loginOverlay() {
-  var container = document.querySelector( 'div.container' ),
-    triggerBttn = document.querySelector( '.login' ),
-    overlay = document.querySelector( 'div#login' ),
-    closeBttn = overlay.querySelector( 'button.overlay-close' );
-    transEndEventNames = {
-      'WebkitTransition': 'webkitTransitionEnd',
-      'MozTransition': 'transitionend',
-      'OTransition': 'oTransitionEnd',
-      'msTransition': 'MSTransitionEnd',
-      'transition': 'transitionend'
-    },
-    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-    support = { transitions : Modernizr.csstransitions };
-
-  function toggleOverlay() {
-    if( classie.has( overlay, 'open' ) ) {
-      classie.remove( overlay, 'open' );
-      classie.remove( container, 'overlay-open' );
-      classie.add( overlay, 'close-me' );
-      var onEndTransitionFn = function( ev ) {
-        if( support.transitions ) {
-          if( ev.propertyName !== 'visibility' ) return;
-          this.removeEventListener( transEndEventName, onEndTransitionFn );
-        }
-        classie.remove( overlay, 'close-me' );
-      };
-      if( support.transitions ) {
-        overlay.addEventListener( transEndEventName, onEndTransitionFn );
-      }
-      else {
-        onEndTransitionFn();
-      }
-    }
-    else if( !classie.has( overlay, 'close-me' ) ) {
-      classie.add( overlay, 'open' );
-      classie.add( container, 'overlay-open' );
-    }
-  }
-
-  triggerBttn.addEventListener( 'click', toggleOverlay );
-  closeBttn.addEventListener( 'click', toggleOverlay );
-
-  $('.login').click(function(e) {
-      e.preventDefault();
-  });
-}
-
-
-
-/* --- One Page Scroll ------------------- */
-
-function onePageScroll() {
-  $('.nav').onePageNav({
-      currentClass: 'current',
-      changeHash: false,
-      scrollSpeed: 650,
-      scrollOffset: 30,
-      scrollThreshold: 0.5,
-      filter: ':not(.login, .signup, .external)',
-      easing: 'swing',
-      begin: function() {
-          //I get fired when the animation is starting
-      },
-      end: function() {
-          //I get fired when the animation is ending
-      },
-      scrollChange: function($currentListItem) {
-          //I get fired when you enter a section and I pass the list item of the section
-      }
-  });
-}
-
-
-$(window).scroll(function() {
-  var windowpos = $(window).scrollTop() ;
-
-  if (windowpos <= 500) {
-      $('.nav li.current').removeClass('current');
-  }
-});
-
-
-
-
-//Placeholder fixed for Internet Explorer
-$(function() {
-	var input = document.createElement("input");
-	if(('placeholder' in input)==false) { 
-		$('[placeholder]').focus(function() {
-			var i = $(this);
-			if(i.val() == i.attr('placeholder')) {
-				i.val('').removeClass('placeholder');
-				if(i.hasClass('password')) {
-					i.removeClass('password');
-					this.type='password';
-				}			
-			}
-		}).blur(function() {
-			var i = $(this);	
-			if(i.val() == '' || i.val() == i.attr('placeholder')) {
-				if(this.type=='password') {
-					i.addClass('password');
-					this.type='text';
-				}
-				i.addClass('placeholder').val(i.attr('placeholder'));
-			}
-		}).blur().parents('form').submit(function() {
-			$(this).find('[placeholder]').each(function() {
-				var i = $(this);
-				if(i.val() == i.attr('placeholder'))
-					i.val('');
-			})
+		$(window).resize(function() {
+			var width = Math.max($(window).width(), window.innerWidth);
+			buildHomeSection(homeSection);
+			hoverDropdown(width, mobileTest);
 		});
-	}
+
+		$(window).scroll(function() {
+			effectsHomeSection(homeSection, this);
+			navbarAnimation(navbar, homeSection, navHeight);
+		});
+
+		/* ---------------------------------------------- /*
+		 * Home section height
+		/* ---------------------------------------------- */
+
+		function buildHomeSection(homeSection) {
+			if (homeSection.length > 0) {
+				if (homeSection.hasClass('home-full-height')) {
+					homeSection.height($(window).height());
+				} else {
+					homeSection.height($(window).height() * 0.85);
+				}
+			}
+		}
+
+		/* ---------------------------------------------- /*
+		 * Home section effects
+		/* ---------------------------------------------- */
+
+		function effectsHomeSection(homeSection, scrollTopp) {
+			if (homeSection.length > 0) {
+				var homeSHeight = homeSection.height();
+				var topScroll = $(document).scrollTop();
+				if ((homeSection.hasClass('home-parallax')) && ($(scrollTopp).scrollTop() <= homeSHeight)) {
+					homeSection.css('top', (topScroll * 0.55));
+				}
+				if (homeSection.hasClass('home-fade') && ($(scrollTopp).scrollTop() <= homeSHeight)) {
+					var caption = $('.caption-content');
+					caption.css('opacity', (1 - topScroll/homeSection.height() * 1));
+				}
+			}
+		}
+
+		/* ---------------------------------------------- /*
+		 * Intro slider setup
+		/* ---------------------------------------------- */
+
+		if( $('.hero-slider').length > 0 ) {
+			$('.hero-slider').flexslider( {
+				animation: "fade",
+				animationSpeed: 1000,
+				animationLoop: true,
+				prevText: '',
+				nextText: '',
+				before: function(slider) {
+					$('.hs-caption').fadeOut().animate({top:'-80px'},{queue:false, easing: 'swing', duration: 700});
+					slider.slides.eq(slider.currentSlide).delay(500);
+					slider.slides.eq(slider.animatingTo).delay(500);
+				},
+				after: function(slider) {
+					$('.hs-caption').fadeIn().animate({top:'0'},{queue:false, easing: 'swing', duration: 700});
+				},
+				useCSS: true
+			});
+		}
+
+		/* ---------------------------------------------- /*
+		 * Youtube video background
+		/* ---------------------------------------------- */
+
+		$(function(){
+			$(".video-player").mb_YTPlayer();
+		});
+
+		$('#video-play').click(function(event) {
+			event.preventDefault();
+			if ($(this).hasClass('fa-play')) {
+				$('.video-player').playYTP();
+			} else {
+				$('.video-player').pauseYTP();
+			}
+			$(this).toggleClass('fa-play fa-pause');
+			return false;
+		});
+
+		$('#video-volume').click(function(event) {
+			event.preventDefault();
+			$('.video-player').toggleVolume();
+			$(this).toggleClass('fa-volume-off fa-volume-up');
+			return false;
+		});
+
+		/* ---------------------------------------------- /*
+		 * Transparent navbar animation
+		/* ---------------------------------------------- */
+
+		function navbarAnimation(navbar, homeSection, navHeight) {
+			var topScroll = $(window).scrollTop();
+			if (navbar.length > 0 && homeSection.length > 0) {
+				if(topScroll >= navHeight) {
+					navbar.removeClass('navbar-transparent');
+				} else {
+					navbar.addClass('navbar-transparent');
+				}
+			}
+		}
+
+		/* ---------------------------------------------- /*
+		 * Navbar submenu
+		/* ---------------------------------------------- */
+
+		function navbarSubmenu(width) {
+			if (width > 767) {
+				$('.navbar-custom .navbar-nav > li.dropdown').hover(function() {
+					var MenuLeftOffset  = $('.dropdown-menu', $(this)).offset().left;
+					var Menu1LevelWidth = $('.dropdown-menu', $(this)).width();
+					if (width - MenuLeftOffset < Menu1LevelWidth * 2) {
+						$(this).children('.dropdown-menu').addClass('leftauto');
+					} else {
+						$(this).children('.dropdown-menu').removeClass('leftauto');
+					}
+					if ($('.dropdown', $(this)).length > 0) {
+						var Menu2LevelWidth = $('.dropdown-menu', $(this)).width();
+						if (width - MenuLeftOffset - Menu1LevelWidth < Menu2LevelWidth) {
+							$(this).children('.dropdown-menu').addClass('left-side');
+						} else {
+							$(this).children('.dropdown-menu').removeClass('left-side');
+						}
+					}
+				});
+			}
+		}
+
+		/* ---------------------------------------------- /*
+		 * Navbar hover dropdown on desctop
+		/* ---------------------------------------------- */
+
+		function hoverDropdown(width, mobileTest) {
+			if ((width > 767) && (mobileTest !== true)) {
+				$('.navbar-custom .navbar-nav > li.dropdown, .navbar-custom li.dropdown > ul > li.dropdown').removeClass('open');
+				var delay = 0;
+				var setTimeoutConst;
+				$('.navbar-custom .navbar-nav > li.dropdown, .navbar-custom li.dropdown > ul > li.dropdown').hover(function() {
+					var $this = $(this);
+					setTimeoutConst = setTimeout(function() {
+						$this.addClass('open');
+						$this.find('.dropdown-toggle').addClass('disabled');
+					}, delay);
+				},
+				function() {
+					clearTimeout(setTimeoutConst);
+					$(this).removeClass('open');
+					$(this).find('.dropdown-toggle').removeClass('disabled');
+				});
+			} else {
+				$('.navbar-custom .navbar-nav > li.dropdown, .navbar-custom li.dropdown > ul > li.dropdown').unbind('mouseenter mouseleave');
+				$('.navbar-custom [data-toggle=dropdown]').not('.binded').addClass('binded').on('click', function(event) {
+					event.preventDefault();
+					event.stopPropagation();
+					$(this).parent().siblings().removeClass('open');
+					$(this).parent().siblings().find('[data-toggle=dropdown]').parent().removeClass('open');
+					$(this).parent().toggleClass('open');
+				});
+			}
+		}
+
+		/* ---------------------------------------------- /*
+		 * Navbar collapse on click
+		/* ---------------------------------------------- */
+
+		$(document).on('click','.navbar-collapse.in',function(e) {
+			if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+				$(this).collapse('hide');
+			}
+		});
+
+		/* ---------------------------------------------- /*
+		 * Set sections backgrounds
+		/* ---------------------------------------------- */
+
+		var module = $('.home-section, .module, .module-small, .side-image');
+		module.each(function(i) {
+			if ($(this).attr('data-background')) {
+				$(this).css('background-image', 'url(' + $(this).attr('data-background') + ')');
+			}
+		});
+
+		/* ---------------------------------------------- /*
+		 * Portfolio
+		/* ---------------------------------------------- */
+
+		var worksgrid_mode;
+		if (worksgrid.hasClass('works-grid-masonry')) {
+			worksgrid_mode = 'masonry';
+		} else {
+			worksgrid_mode = 'fitRows';
+		}
+
+		worksgrid.imagesLoaded(function() {
+			worksgrid.isotope({
+				layoutMode: worksgrid_mode,
+				itemSelector: '.work-item',
+			});
+		});
+
+		$('#filters a').click(function() {
+			$('#filters .current').removeClass('current');
+			$(this).addClass('current');
+			var selector = $(this).attr('data-filter');
+
+			worksgrid.isotope({
+				filter: selector,
+				animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false
+				}
+			});
+
+			return false;
+		});
+
+		/* ---------------------------------------------- /*
+		 * Blog masonry
+		/* ---------------------------------------------- */
+
+		$('.post-masonry').imagesLoaded(function() {
+			$('.post-masonry').masonry();
+		});
+
+		/* ---------------------------------------------- /*
+		 * Progress bar animations
+		/* ---------------------------------------------- */
+
+		$('.progress-bar').each(function(i) {
+			$(this).appear(function() {
+				var percent = $(this).attr('aria-valuenow');
+				$(this).animate({'width' : percent + '%'});
+				$(this).find('span').animate({'opacity' : 1}, 900);
+				$(this).find('span').countTo({from: 0, to: percent, speed: 900, refreshInterval: 30});
+			});
+		});
+
+		$('.count-item').each(function(i) {
+			$(this).appear(function() {
+				var number = $(this).find('.count-to').data('countto');
+				$(this).find('.count-to').countTo({from: 0, to: number, speed: 1200, refreshInterval: 30});
+			});
+		});
+
+		/* ---------------------------------------------- /*
+		 * Testimonials, Post sliders
+		/* ---------------------------------------------- */
+
+		if ($('.testimonials-slider').length > 0 ) {
+			$('.testimonials-slider').flexslider( {
+				animation: "slide",
+				smoothHeight: true,
+			});
+		}
+
+		$('.post-images-slider').flexslider( {
+			animation: "slide",
+			smoothHeight: true,
+		});
+
+		/* ---------------------------------------------- /*
+		 * Owl slider
+		/* ---------------------------------------------- */
+
+		$('.owl-carousel').each(function(i) {
+
+			// Check items number
+			if ($(this).data('items') > 0) {
+				items = $(this).data('items');
+			} else {
+				items = 4;
+			}
+
+			// Check pagination true/false
+			if (($(this).data('pagination') > 0) && ($(this).data('pagination') === true)) {
+				pagination = true;
+			} else {
+				pagination = false;
+			}
+
+			// Check navigation true/false
+			if (($(this).data('navigation') > 0) && ($(this).data('navigation') === true)) {
+				navigation = true;
+			} else {
+				navigation = false;
+			}
+
+			// Build carousel
+			$(this).owlCarousel( {
+				navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+				navigation: navigation,
+				pagination: pagination,
+				paginationSpeed: 400,
+				singleItem: false,
+				items: items,
+				slideSpeed: 300,
+				autoPlay: 5000
+			});
+
+		});
+
+		/* ---------------------------------------------- /*
+		 * Video popup, Gallery
+		/* ---------------------------------------------- */
+
+		$('.video-pop-up').magnificPopup({
+			type: 'iframe',
+		});
+
+		$('a.gallery').magnificPopup({
+			type: 'image',
+			gallery: {
+				enabled: true,
+				navigateByImgClick: true,
+				preload: [0,1]
+			},
+			image: {
+				titleSrc: 'title',
+				tError: 'The image could not be loaded.',
+			}
+		});
+
+		/* ---------------------------------------------- /*
+		 * WOW Animation When You Scroll
+		/* ---------------------------------------------- */
+
+		wow = new WOW({
+			mobile: false
+		});
+		wow.init();
+
+		/* ---------------------------------------------- /*
+		 * Rotate
+		/* ---------------------------------------------- */
+
+		$(".rotate").textrotator({
+			animation: "dissolve",
+			separator: "|",
+			speed: 3000
+		});
+
+		/* ---------------------------------------------- /*
+		 * A jQuery plugin for fluid width video embeds
+		/* ---------------------------------------------- */
+
+		$('body').fitVids();
+
+		/* ---------------------------------------------- /*
+		 * Open tabs by external link
+		/* ---------------------------------------------- */
+
+		$('.open-tab').click(function (e) {
+			var pattern = /#.+/gi;
+			var contentID = e.target.toString().match(pattern)[0];
+			$('.nav-tabs a[href="' + contentID + '"]').tab('show');
+		});
+
+		/* ---------------------------------------------- /*
+		 * Scroll Animation
+		/* ---------------------------------------------- */
+
+		$('.section-scroll').bind('click', function(e) {
+			var anchor = $(this);
+			$('html, body').stop().animate({
+				scrollTop: $(anchor.attr('href')).offset().top - 50
+			}, 1000);
+			e.preventDefault();
+		});
+
+		/* ---------------------------------------------- /*
+		 * Scroll top
+		/* ---------------------------------------------- */
+
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 100) {
+				$('.scroll-up').fadeIn();
+			} else {
+				$('.scroll-up').fadeOut();
+			}
+		});
+
+		$('a[href="#totop"]').click(function() {
+			$('html, body').animate({ scrollTop: 0 }, 'slow');
+			return false;
+		});
+
+		/* ---------------------------------------------- /*
+		 * Subscribe form ajax
+		/* ---------------------------------------------- */
+
+		$('#subscription-form').submit(function(e) {
+
+			e.preventDefault();
+			var $form           = $('#subscription-form');
+			var submit          = $('#subscription-form submit');
+			var ajaxResponse    = $('#subscription-response');
+			var email           = $('input#semail').val();
+
+			$.ajax({
+				type: 'POST',
+				url: 'assets/php/subscribe.php',
+				dataType: 'json',
+				data: {
+					email: email
+				},
+				cache: false,
+				beforeSend: function(result) {
+					submit.empty();
+					submit.append('<i class="fa fa-cog fa-spin"></i> Wait...');
+				},
+				success: function(result) {
+					if(result.sendstatus == 1) {
+						ajaxResponse.html(result.message);
+						$form.fadeOut(500);
+					} else {
+						ajaxResponse.html(result.message);
+					}
+				}
+			});
+
+		});
+
+		/* ---------------------------------------------- /*
+		 * Google Map
+		/* ---------------------------------------------- */
+
+		//var mapLocation = new google.maps.LatLng(34.031428,-118.2071542,17);
+        //
+		//var $mapis = $('#map');
+        //
+		//if ($mapis.length > 0) {
+        //
+		//	map = new GMaps({
+		//		streetViewControl : true,
+		//		overviewMapControl: true,
+		//		mapTypeControl: true,
+		//		zoomControl : true,
+		//		panControl : true,
+		//		scrollwheel: false,
+		//		center: mapLocation,
+		//		el: '#map',
+		//		zoom: 16,
+		//		styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+		//	});
+        //
+		//	var image = new google.maps.MarkerImage('assets/images/map-icon.png',
+		//		new google.maps.Size(59, 65),
+		//		new google.maps.Point(0, 0),
+		//		new google.maps.Point(24, 42)
+		//	);
+        //
+		//	map.addMarker({
+		//		position: mapLocation,
+		//		icon: image,
+		//		title: 'Rival',
+		//		infoWindow: {
+		//			content: '<p><strong>Rival</strong><br/>121 Somewhere Ave, Suite 123<br/>P: (123) 456-7890<br/>Australia</p>'
+		//		}
+		//	});
+        //
+		//}
+
 	});
 
-
-
-/*
-  Jquery Validation using jqBootstrapValidation
-   example is taken from jqBootstrapValidation docs 
-  */
-$(function() {
-
- $("input,textarea").jqBootstrapValidation(
-    {
-     preventSubmit: true,
-     submitError: function($form, event, errors) {
-      // something to have when submit produces an error ?
-      // Not decided if I need it yet
-     },
-     submitSuccess: function($form, event) {
-      event.preventDefault(); // prevent default submit behaviour
-       // get values from FORM
-       var first_name = $("input#first_name").val();  
-       var last_name = $("input#last_name").val();  
-       var email = $("input#email").val(); 
-       var message = $("textarea#message").val();
-    //     var firstName = name; // For Success/Failure Message
-    //        // Check for white space in name for Success/Fail message
-    //     if (firstName.indexOf(' ') >= 0) {
-	   // firstName = name.split(' ').slice(0, -1).join(' ');
-    //      }        
-	 $.ajax({
-                url: "contact_me.php",
-            	type: "POST",
-            	data: {first_name: first_name, last_name: last_name, email: email, message: message},
-            	cache: false,
-            	success: function() {  
-            	// Success message
-            	   $('#success').html("<div class='alert alert-success'>");
-            	   $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            		.append( "</button>");
-            	  $('#success > .alert-success')
-            		.append("<strong>Your message has been sent. </strong>");
- 		  $('#success > .alert-success')
- 			.append('</div>');
- 						    
- 		  //clear all fields
- 		  $('#contactForm').trigger("reset");
- 	      },
- 	   error: function() {		
- 		// Fail message
- 		 $('#success').html("<div class='alert alert-danger'>");
-            	$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            	 .append( "</button>");
-            	$('#success > .alert-danger').append("<strong>Sorry "+firstName+" it seems that my mail server is not responding...</strong> Could you please email me directly to <a href='mailto:me@example.com?Subject=Message_Me;>me@example.com</a> ? Sorry for the inconvenience!");
- 	        $('#success > .alert-danger').append('</div>');
- 		//clear all fields
- 		$('#contactForm').trigger("reset");
- 	    },
-           })
-         },
-         filter: function() {
-                   return $(this).is(":visible");
-         },
-       });
-
-      $("a[data-toggle=\"tab\"]").click(function(e) {
-                    e.preventDefault();
-                    $(this).tab("show");
-        });
-  });
- 
-
-/*When clicking on Full hide fail/success boxes */ 
-$('#name').focus(function() {
-     $('#success').html('');
-  });
+})(jQuery);
