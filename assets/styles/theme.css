@@ -1173,7 +1173,7 @@ section .login-overlay {
   border-bottom: 0;
 }
 #intro-video {
-  background: url('../images/bg-videofallback.jpg');
+  background: url('../images/topbg.fw.png');
   background-size: cover;
 }
 #intro .item,
