@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    controller: 'SiteController',
+    controller: 'html/SiteController',
     action: 'index',
     skipAssets: true
   },
@@ -48,8 +48,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'get /admin': {
-    controller: 'AdminController',
+    controller: 'html/AdminController',
     action: 'index',
     skipAssets: true
-  }
+  },
+
+  'GET /setting/name/:name': 'SettingController.findByName',
+  'GET /setting/group/:name': 'SettingController.findByGroup'
 };

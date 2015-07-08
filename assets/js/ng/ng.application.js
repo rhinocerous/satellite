@@ -2,8 +2,8 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 
   $routeProvider.when('/', {
     templateUrl: '/templates/settings.html',
-    controller: 'mainController',
-    controllerAs: 'settingsController'
+    controller: 'settingsController',
+    controllerAs: 'settings'
   }).when('/about', {
     templateUrl: '/templates/about.html',
     controller: 'mainController',
@@ -35,13 +35,13 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 
 satellite.ng.page.mainControllerFactory = function (
   $scope
-  , $baseController, $route, $routeParams) {
+  , $baseController
+  , $route
+  , $routeParams) {
 
   var vm = this;
 
   $.extend(vm, $baseController);
-
-//  $baseController.merge(vm, $baseController);
 
   vm.$scope = $scope;
   vm.$route = $route;
@@ -99,7 +99,6 @@ satellite.ng.page.mainControllerFactory = function (
   }
 
   function _setSelectedTab (tab) {
-    console.log("set selected tab", tab);
     vm.selectedTab = tab;
   }
 };
