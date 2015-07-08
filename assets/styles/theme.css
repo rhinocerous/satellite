@@ -447,8 +447,8 @@ blockquote {
 }
 .cbp-af-header.cbp-af-header-shrink {
   height: 70px;
-  background-color: white;
-  border-bottom: 1px solid #eee;
+  background-color: #000000;
+  border-bottom: 1px solid #000000;
 }
 .cbp-af-header.cbp-af-header-shrink .dropdown-menu {
   position: absolute;
@@ -457,7 +457,7 @@ blockquote {
 .cbp-af-header.cbp-af-header-shrink h1,
 .cbp-af-header.cbp-af-header-shrink .nav a {
   line-height: 40px;
-  color: black;
+  color: #ffffff;
 }
 .cbp-af-header.cbp-af-header-shrink .nav a.btn {
   line-height: 1.7;
@@ -472,7 +472,7 @@ blockquote {
   margin: 0.6em 0;
 }
 .cbp-af-header.cbp-af-header-shrink h1 a {
-  color: black;
+  color: white;
 }
 /* Example Media Queries */
 @media screen and (max-width: 55em) {
@@ -677,7 +677,7 @@ section .login-overlay {
   cursor: pointer;
 }
 .grabbing {
-  cursor: url(../img/grabbing.png) 8 8, move;
+  cursor: url(../images/grabbing.png) 8 8, move;
 }
 /*
 *   Owl Carousel Owl Demo Theme

@@ -25,7 +25,7 @@ function init() {
 /* --- owlCarousel ------------- */
 
 function owlCarousel() {
-  $("#owl-example").owlCarousel({
+  $(".owl-example").owlCarousel({
     lazyLoad: true,
     items: 3,
     theme: "owl-theme-main"
