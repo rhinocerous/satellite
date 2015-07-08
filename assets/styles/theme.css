@@ -1505,7 +1505,7 @@ section h3 {
   letter-spacing: 1px;
 }
 section p {
-  font-size: 1.1em;
+  font-size: 1.0em;
   font-weight: 100;
   margin: 0 auto 2em;
 }
@@ -1531,7 +1531,7 @@ section.dark h2,
 section.dark h4,
 section.dark h5,
 section.dark h6 {
-  color: white;
+  color: #88b7b3;
   margin-bottom: 0.5em;
 }
 section.dark .text-muted {
