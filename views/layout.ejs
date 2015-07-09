@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/styles/bootstrap.css">
   <link rel="stylesheet" href="/styles/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/carousel.css">
+  <link rel="stylesheet" href="/styles/colorbox.css">
   <link rel="stylesheet" href="/styles/et-line-font.css">
   <link rel="stylesheet" href="/styles/font-awesome.min.css">
   <link rel="stylesheet" href="/styles/importer.css">
@@ -44,6 +45,16 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.1/jquery.colorbox.js"></script>
+
+
+<script>
+  $(document).ready(function(){
+    $(".vimeo").colorbox({iframe:true, innerWidth:900, innerHeight:675});
+    $(".youtube").colorbox({iframe:true, innerWidth:900, innerHeight:675});
+  });
+</script>
 
   </head>
 
@@ -58,8 +69,11 @@
     </div>
 
 
-    <!-- NAVBAR
-    ================================================== -->
+    <!--
+        ==================================================
+                        NAVIGATION BAR
+        ================================================== -->
+
     <div class="navbar-wrapper cbp-af-header">
       <div class="container">
 
@@ -73,21 +87,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <h1><a class="navbar-brand scroll" href="#intro">Thomas Dupont</a></h1>
+              <h1><a class="navbar-brand scroll" href="#">Thomas Dupont</a></h1>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav pull-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Home <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="index-video.html" class="external">Home - Video</a></li>
-                    <li><a href="index-app.html" class="external">Home - App</a></li>
-                    <li><a href="index-agency.html" class="external">Home - Agency</a></li>
-                  </ul>
                 </li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#reel">Reel</a></li>
+                <li><a href="#team">Accolades</a></li>
+                <!--<li><a href="#reel">Reel</a></li>-->
                 <li><a href="#projects">Resume</a></li>
+                <li><a href="#testimonials">Recognitions</a></li>
+                <!--<li><a href="#gallery">Act</a></li>-->
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -98,28 +110,32 @@
     </div>
 
 
-    <!-- Hero Banner
-    ================================================== -->
-    <div id="intro-video" style="background-image: url( 'img/bg-videofallback.jpg' ); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-      <a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=vU6tV-wnK0M',containment:'#intro-video',autoPlay:true, mute:true, startAt:0, printUrl:false,showControls:false, opacity:1, quality: 'highres'}"></a>
-        <div class="item">
-          <div class="container">
-            <div class="row">
-              <div class="carousel-caption-center colour-white">
-                <h2>Fight Choreographer.</h2>
-                <h1>Stunt Coordinator.</h1>
-                <p><a class="btn btn-lg btn-primary scroll" href="#about" role="button">Learn more</a></p>
-              </div>
-            </div>
+    <!--
+         ==================================================
+                                REEL
+         ================================================== -->
+
+    <div id="intro-video">
+      <a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=lY6EEvInX3M',containment:'#intro-video',autoPlay:true, mute:true, startAt:0, printUrl:false,showControls:false, opacity:1, quality: 'highres'}"></a>
+      <div class="item">
+        <div class="container">
+          <div class="row">
+            <!--<div class="carousel-caption-center colour-white">
+              <h2>Fight Choreographer.</h2>
+              <h1>Stunt Coordinator.</h1>
+              <p><a class="btn btn-lg btn-primary scroll" href="#about" role="button">Learn more</a></p>
+            </div>-->
           </div>
-          <div class="overlay-bg"></div>
         </div>
+        <div class="overlay-bg "></div>
+      </div>
     </div>
 
 
-
-    <!-- About Section
-    ================================================== -->
+    <!--
+        ==================================================
+                              ABOUT
+        ================================================== -->
 
     <section id="about" class="featured">
 
@@ -139,6 +155,10 @@
                 each character all while staying true to the script. With this foundation in mind, Thomas builds a scene with creativity,
                 diversity, responsability and originality -ultimately creating a scene with realistic, interesting movements and a distinct
                 personality- often discovering and incorporating elements that have never before been seen on film.</p>
+              <p>
+                Thomas' passion for his craft fuels his enthusiasm for training, research, experimentation and artistry. Armed with a solid work ethic and fierce determination,
+                this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the industry's fight coordinating standards.
+              </p>
             </div>
           </div>
         </div>
@@ -147,30 +167,107 @@
     </section>
 
 
-    <!-- Reel
-    ================================================== -->
 
-    <section id="reel" class="module bg-dark-60" data-background="/images/bg-content1.jpg">
+    <!--
+        ==================================================
+                          ACCOLADES
+        ================================================== -->
+
+    <section id="team" class="dark">
+
+      <div class="page-header text-center">
+        <h2>Accolades</h2>
+      </div>
+
       <div class="container">
         <div class="row">
-          <div class="col-sm-12">
-            <div class="video-box">
-              <div class="video-box-icon">
-                <a class="video-pop-up" href="http://vimeo.com/15486292">
-                  <span class="icon-video"/>
-                </a>
+          <div class="col-md-12">
+            <div class="owl-example owl-carousel">
+              <div class="item">
+                <img class="display-pic" src="/images/user-avatar4.jpg" alt="Team Member">
+                <h3>2007 Winner</h3>
+                <h4>Best Fight</h4>
+                </br><p><b>Pirates of the Caribbean: Dead Man's Chest (2006)</b></p><p> The two lead male characters use swords to fight enemies and each other in a bell tower, on top of a run-down castle, on a large moving wheel and on a beach. During this fight, a woman also uses swords to fight men on a beach.</p>
               </div>
-              <div class="video-title font-alt">Presentation</div>
-              <div class="video-subtitle font-alt">Watch the video about my last work</div>
+              <div class="item">
+                <img class="display-pic" src="/images/user-avatar4.jpg" alt="Team Member">
+                <h3>2002 Winner</h3>
+                <h4>Hardest Hit</h4>
+                </br><p><b>A Knight's Tale (2001)</b></p></br><p>Final jousting sequence where black knight is hit by the lance does back flip onto ground.</p>
+              </div>
+              <div class="item">
+                <img class="display-pic" src="/images/user-avatar4.jpg" alt="Team Member">
+                <h3>2002 Nominated</h3>
+                <h4>Best Work With an Animal</h4>
+                </br><p><b>A Knight's Tale (2001)</b></p></br><p>Final jousting sequence where black knight is hit by the lance does back flip onto ground.</p>
+              </div>
+              <div class="item">
+                <img class="display-pic" src="/images/user-avatar5.jpg" alt="Team Member">
+                <h3>2013 Nominated</h3>
+                <h4>Outstanding Action Performance by a Stunt Ensemble in a Motion Picture</h4>
+                <p>The Amazing Spider-Man (2012)</p>
+              </div>
+              <div class="item">
+                <img class="display-pic" src="/images/user-avatar5.jpg" alt="Team Member">
+                <h3>2008 Nominated</h3>
+                <h4>Outstanding Performance by a Stunt Ensemble in a Motion Picture</h4>
+                <p>Pirates of the Caribbean: At World's End (2007)</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </section>
 
 
-    <!-- Portfolio
-    ================================================== -->
+    <!--
+        ==================================================
+                               REEL
+        ================================================== -->
+
+    <section id="reel" class="featured">
+
+      <div class="page-header text-center">
+        <h2>Thomas Dupont Reel</h2>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <!--<div class="col-sm-5 text-center">-->
+            <!--<a class='vimeo' href="http://player.vimeo.com/video/53068895"><img src="images/imac.png" alt="Generic placeholder image" data-sr="enter left, hustle 20px" width="429"></a>-->
+          <!--</div>-->
+          <div class="col-sm-5 col-sm-offset-1">
+            <div class="vertical-align">
+          <a class='vimeo' href="http://player.vimeo.com/video/53068895"><img src="images/imac.png" alt="Generic placeholder image" data-sr="enter left, hustle 20px" width="429"></a>
+
+          <!--<h2>StuntFights Reel</h2>-->
+              <!--<p>By working with stunt performers, as well as training many actors, Thomas developed a level of experience, patience and adaptability needed to train performers of all skill levels. Thomas' ability to quickly assess natural strengths and teach in accordance with each individual learning process ultimately speeds up the rehearsal process and allows performers maximum potential to be achieved.</p>-->
+
+            </div>
+          </div>
+
+          <div class="col-sm-5 col-sm-offset-1">
+            <div class="vertical-align">
+              <a class='youtube' href="https://www.youtube.com/embed/vU6tV-wnK0M"><img src="images/imac2.png" alt="Generic placeholder image" data-sr="enter left, hustle 20px" width="429"></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+
+
+    <!--
+        ==================================================
+                               RESUME
+        ================================================== -->
+
     <section class="section-content section-isotope separator" id="projects">
 
       <div class="page-header text-center">
@@ -179,13 +276,6 @@
       </div>
 
       <div class="container">
-        <!--<div id="filters" class="button-group text-center">-->
-          <!--<button data-filter-value="*" class="active">show all</button>-->
-          <!--<button data-filter-value=".websites">websites</button>-->
-          <!--<button data-filter-value=".icons">icons</button>-->
-          <!--<button data-filter-value=".print">print</button>-->
-          <!--<button data-filter-value=".mobile">mobile</button>-->
-        <!--</div>-->
         <div class="row demo-3">
           <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".portfolio-item" }'>
             <div class="col-sm-6 col-md-4 portfolio-item design">
@@ -341,45 +431,190 @@
 
 
 
-    <!-- Call to Action
-    ================================================== -->
-    <section class="cta text-center">
+    <!--
+         ==================================================
+                           RECOGNITIONS
+         ================================================== -->
+
+    <section id="testimonials" class="dark">
+
+      <div class="page-header text-center">
+        <h2>ACTORS RECOGNITIONS</h2>
+      </div>
 
       <div class="container">
 
+        <div class='row'>
+          <div class='col-md-offset-2 col-md-8'>
+            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+              <!-- Bottom Carousel Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#quote-carousel" data-slide-to="1"></li>
+                <li data-target="#quote-carousel" data-slide-to="2"></li>
+              </ol>
+
+              <!-- Carousel Slides / Quotes -->
+              <div class="carousel-inner">
+
+                <!-- Quote 1 -->
+                <div class="item active">
+                  <blockquote>
+                    <div class="row">
+                      <div class="col-sm-3 text-center">
+                        <img class="img-circle" src="/images/user-avatar1.jpg">
+                      </div>
+                      <div class="col-sm-9">
+                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!"</p>
+                        <small>Geoffrey Rush - "Pirates of the Caribbean"</small>
+                      </div>
+                    </div>
+                  </blockquote>
+                </div>
+                <!-- Quote 2 -->
+                <div class="item">
+                  <blockquote>
+                    <div class="row">
+                      <div class="col-sm-3 text-center">
+                        <img class="img-circle" src="/images/user-avatar2.jpg">
+                      </div>
+                      <div class="col-sm-9">
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris."</p>
+                        <small>Nicolas Cage - "The Sorcerer's Apprentice"</small>
+                      </div>
+                    </div>
+                  </blockquote>
+                </div>
+                <!-- Quote 3 -->
+                <div class="item">
+                  <blockquote>
+                    <div class="row">
+                      <div class="col-sm-3 text-center">
+                        <img class="img-circle" src="/images/user-avatar3.jpg">
+                      </div>
+                      <div class="col-sm-9">
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium."</p>
+                        <small>Gerard Butler - "Gamer"</small>
+                      </div>
+                    </div>
+                  </blockquote>
+                </div>
+                <!-- Quote 4 -->
+                <div class="item">
+                  <blockquote>
+                    <div class="row">
+                      <div class="col-sm-3 text-center">
+                        <img class="img-circle" src="/images/user-avatar6.jpg">
+                      </div>
+                      <div class="col-sm-9">
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium."</p>
+                        <small>YO YO - "Gamer"</small>
+                      </div>
+                    </div>
+                  </blockquote>
+                </div>
+              </div>
+
+              <!-- Carousel Buttons Next/Prev -->
+              <a data-slide="prev" href="#quote-carousel" class="left carousel-control visible-md visible-lg"><i class="fa fa-chevron-left"></i></a>
+              <a data-slide="next" href="#quote-carousel" class="right carousel-control  visible-md visible-lg"><i class="fa fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!--
+        ==================================================
+                                ACTORS TRAINED
+        ================================================== -->
+
+    <section id="gallery">
+
+      <div class="page-header text-center">
+        <h3>Actors Trained</h3>
+        <h2>Here's a sneak peek</h2>
+      </div>
+
+      <div class="container">
         <div class="row">
-          <div class="col-lg-12">
-            <h2>Have a great idea? <span class="highlight">Let us help!</span></h2>
-            <p><button class="btn contact-button" type="button" role="button">Contact us</button></p>
-            <div class='contact-form'>
-              <form name="sentMessage" id="contactForm">
-                <div class='name'>
-                  <input class='form-control first' placeholder='First Name' type='text' id="first_name" autofocus required data-validation-required-message="Please enter your first name">
-                  <input class='last' placeholder='Last Name' type='text' id="last_name" required data-validation-required-message="Please enter your last name">
-                </div>
-                <div class='contact'>
-                  <input class='form-control email' placeholder='E-mail Address' type='text' id="email" required data-validation-required-message="Please enter your email">
-                </div>
-                <div class='message'>
-                  <textarea class="form-control" placeholder='Your message' id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-                </div>
-                <div id="success"> </div> <!-- For success/fail messages -->
-                <footer class="submit-button">
-                  <button type="submit">Send your message</button>
-                </footer>
-              </form>
+          <div class="col-md-12">
+            <div class="owl-example owl-carousel">
+              <div class="item">
+                <a href="images/thumbs/thumb1.jpg" class="popup-gallery">
+                  <img src="images/thumbs/thumb1.jpg" alt="Prestige Portfolio Thumbnail Image">
+                </a>
+              </div>
+              <div class="item">
+                <a href="images/thumbs/thumb2.jpg" class="popup-gallery">
+                  <img src="images/thumbs/thumb2.jpg" alt="Prestige Portfolio Thumbnail Image">
+                </a>
+              </div>
+              <div class="item">
+                <a href="images/thumbs/thumb3.jpg" class="popup-gallery">
+                  <img src="images/thumbs/thumb3.jpg" alt="Prestige Portfolio Thumbnail Image">
+                </a>
+              </div>
+              <div class="item">
+                <a href="images/thumbs/thumb4.jpg" class="popup-gallery">
+                  <img src="images/thumbs/thumb4.jpg" alt="Prestige Portfolio Thumbnail Image">
+                </a>
+              </div>
+              <div class="item">
+                <a href="images/thumbs/thumb5.jpg" class="popup-gallery">
+                  <img src="images/thumbs/thumb5.jpg" alt="Prestige Portfolio Thumbnail Image">
+                </a>
+              </div>
+              <div class="item">
+                <a href="images/thumbs/thumb6.jpg" class="popup-gallery">
+                  <img src="images/thumbs/thumb6.jpg" alt="Prestige Portfolio Thumbnail Image">
+                </a>
+              </div>
 
             </div>
           </div>
         </div>
-
       </div>
 
     </section>
 
 
-    <!-- Footer
-    ================================================== -->
+
+
+    <!--
+            ==================================================
+                                 CONTACT
+            ================================================== -->
+
+
+    <section id="featured2" class="featured dark">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5 text-center">
+            <img class="margin-top img-responsive" src="images/icm.png" alt="Generic placeholder image" data-sr="enter left, hustle 20px" width="429">
+          </div>
+          <div class="col-sm-5 col-sm-offset-1">
+            <div class="vertical-align">
+              <h2>Contact Me</h2>
+              <p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Tad Lumpkin</p>
+              <p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp; TLumpkin@icmpartners.com</p>
+              <p><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp; (310) 550-4404</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <!--
+        ==================================================
+                              FOOTER
+        ================================================== -->
+
     <footer id="contact" class="footer">
 
       <div class="container">
@@ -430,25 +665,22 @@
 
     <!-- script tags are going to be injected here -->
     <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/bootstrap.min.js"></script>
+    <script src="/js/dependencies/bootstrap.js"></script>
     <script src="/js/dependencies/jqBootstrapValidation.js"></script>
-    <script src="/js/dependencies/jquery-2.1.3.js"></script>
-    <script src="/js/dependencies/jquery-2.1.3.min.js"></script>
-    <script src="/js/dependencies/jquery.flexslider-min.js"></script>
+    <script src="/js/dependencies/jquery.flexslider.js"></script>
     <script src="/js/dependencies/jquery.magnific-popup.js"></script>
-    <script src="/js/dependencies/jquery.magnific-popup.min.js"></script>
     <script src="/js/dependencies/jquery.mb.YTPlayer.js"></script>
     <script src="/js/dependencies/jquery.nav.js"></script>
     <script src="/js/dependencies/jquery.scrollTo.js"></script>
+    <script src="/js/dependencies/sails.io.js"></script>
     <script src="/js/cbpAnimatedHeader.min.js"></script>
     <script src="/js/classie.js"></script>
     <script src="/js/custom.js"></script>
-    <script src="/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/isotope.min.js"></script>
-    <script src="/js/less-1.6.1.min.js"></script>
+    <script src="/js/imagesloaded.pkgd.js"></script>
+    <script src="/js/isotope.js"></script>
+    <script src="/js/less.js"></script>
     <script src="/js/modernizr.custom.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/owl.carousel.js"></script>
     <script src="/js/scrollReveal.js"></script>
     <!--SCRIPTS END-->
 
@@ -459,6 +691,11 @@
         $(".player").mb_YTPlayer();
         isotope();
       });
+
+
+
+
+
 
     </script>
 
