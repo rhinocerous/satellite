@@ -34,7 +34,8 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +46,9 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+  '/other': {
+    controller: 'other'
+    ,action: 'layout_alternate'
+  }
 
 };
