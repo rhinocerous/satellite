@@ -447,8 +447,8 @@ blockquote {
 }
 .cbp-af-header.cbp-af-header-shrink {
   height: 70px;
-  background-color: #000000;
-  border-bottom: 1px solid #000000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
 }
 .cbp-af-header.cbp-af-header-shrink .dropdown-menu {
   position: absolute;
@@ -457,7 +457,7 @@ blockquote {
 .cbp-af-header.cbp-af-header-shrink h1,
 .cbp-af-header.cbp-af-header-shrink .nav a {
   line-height: 40px;
-  color: #ffffff;
+  color: #000000;
 }
 .cbp-af-header.cbp-af-header-shrink .nav a.btn {
   line-height: 1.7;
@@ -472,7 +472,7 @@ blockquote {
   margin: 0.6em 0;
 }
 .cbp-af-header.cbp-af-header-shrink h1 a {
-  color: white;
+  color: #010101;
 }
 /* Example Media Queries */
 @media screen and (max-width: 55em) {
@@ -1526,6 +1526,10 @@ section.dark.with-bg {
   background: url('../images/bg-content1.jpg') center center no-repeat;
   background-size: cover;
 }
+section.dark.with-bg2 {
+  background: url('../images/Thomas_Dupont-102.jpg') center center no-repeat;
+  background-size: cover;
+}
 section.dark h1,
 section.dark h2,
 section.dark h4,
@@ -2039,7 +2043,7 @@ section .overlay-text {
 footer.footer {
   background: #ffffff;
   padding: 5em 0;
-  color: white;
+  color: #000000;
 }
 footer.footer .footer-logo {
   padding: 0 1em;
@@ -2683,4 +2687,93 @@ footer.footer .icon {
     padding: 1.5em 1em;
   }
 
-}
+
+  /*NAV BAR FOR ALTERNATE LAYOUT*/
+
+  /* this one changes the color from nav bar at the top*/
+
+
+
+  /* */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
