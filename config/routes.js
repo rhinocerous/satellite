@@ -30,6 +30,10 @@ module.exports.routes = {
     controller: 'IndexController',
     action: 'alternate',
     skipAssets: true
+  },
+  'get /admin': {
+    controller: 'IndexController',
+    action: 'admin',
+    skipAssets: true
   }
-
 };
