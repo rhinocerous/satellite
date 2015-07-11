@@ -25,13 +25,9 @@
   <link rel="stylesheet" href="/styles/importer.css">
   <link rel="stylesheet" href="/styles/less/variables.css">
   <link rel="stylesheet" href="/styles/magnific-popup.css">
-  <link rel="stylesheet" href="/styles/theme-blue.css">
   <link rel="stylesheet" href="/styles/theme-orange.css">
-  <link rel="stylesheet" href="/styles/theme-salmonpink.css">
-  <link rel="stylesheet" href="/styles/theme-updates.css">
-  <link rel="stylesheet" href="/styles/theme.css">
   <!--STYLES END-->
-
+  <link rel="stylesheet" href="/styles/admin.css">
 
   <!-- Font Awesome -->
 
@@ -58,7 +54,7 @@
 
 </head>
 
-<body>
+<body data-ng-app="satelliteApp">
 
 <div class="preloader">
   <div class="spinner">
@@ -76,7 +72,7 @@
                     NAVIGATION BAR
     ================================================== -->
 
-<div class="navbar-wrapper cbp-af-header">
+<div class="navbar-wrapper admin-navbar">
   <div class="container">
 
     <!-- Fixed navbar -->
@@ -89,495 +85,111 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <h1><a class="navbar-brand scroll" href="#">Thomas Dupont</a></h1>
+          <h1><a class="navbar-brand scroll" href="#">Stuntfights Admin</a></h1>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav pull-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Home <span class="caret"></span></a>
-            </li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#team">Accolades</a></li>
-            <li><a href="#projects">Resume</a></li>
-            <li><a href="#testimonials">Recognitions</a></li>
-            <!--<li><a href="#gallery">Actors</a></li>-->
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+
         </div>
       </div>
+    </div>
+
+  </div>
+
+<div class="container">
+
+  <div class="row" ng-controller="mainController as main">
+
+    <div class="col-md-12">
+
+      <ul class="nav nav-tabs" >
+        <li ng-repeat="tab in main.tabs">
+          <a href="{{tab.link}}" ng-click="main.setSelectedTab(tab)"> <span class="{{tab.icon}}"></span> {{tab.label}}</a>
+        </li>
+      </ul>
+      <div ng-view></div>
+
     </div>
 
   </div>
 </div>
 
-
-
-
-<!--
-     ==================================================
-                           HOME
-     ================================================== -->
-
-<section id="featured1" class="dark with-bg2">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-5 overlay-text">
-        <div class="vertical-align">
-          <h2>StuntFights</h2>
-          <p>Thomas' passion for his craft fuels his enthusiasm for training, research, experimentation and artistry. Armed with a solid work ethic and fierce determination,
-            this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the industry's fight coordinating standards.</p>
-        </div>
-      </div>
-      <div class="col-sm-5 col-sm-offset-1">
-        <div class="vertical-align">
-          <iframe src="https://player.vimeo.com/video/53068895?title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
+<script type="text/ng-template" id="/templates/about.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>About Us</h3>
+          <p>Form goes here with some type of simple html editor.</p>
         </div>
       </div>
     </div>
   </div>
+</script>
 
-</section>
-
-
-
-
-<!--
-    ==================================================
-                          ABOUT
-    ================================================== -->
-
-<section id="about" class="featured">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-5 text-center">
-        <img class="margin-top img-responsive" src="images/tdupont.jpg" alt="Generic placeholder image" data-sr="enter left, hustle 20px" width="429">
-      </div>
-      <div class="col-sm-6 col-sm-offset-1">
-        <div class="vertical-align">
-          <h2>Thomas Dupont</h2>
-          <p>For more than two decades, Thomas has been successfully choreographing, training and performing fights for commercials, film and television. By using an arsenal of blades and weapons -true or improvised, tapping into
-            martial arts training, and being inspired by "the art of human movement", Thomas creates a variety of fight designs
-            for the camera that are exciting, safe, and surprisingly easy to learn. Thomas' style is frequently highlighted, and had
-            been described as "a combination of focus and precision, power and grace".</p>
-          <p>Thomas' fight scene preparation encompasses instruction from the director, abilities of the performer, and integrity of
-            each character all while staying true to the script. With this foundation in mind, Thomas builds a scene with creativity,
-            diversity, responsibility and originality -ultimately creating a scene with realistic, interesting movements and a distinct
-            personality- often discovering and incorporating elements that have never before been seen on film.</p>
-          <p>
-            By working with stunt performers, as well as training many actors, Thomas developed a level of experience, patience
-            and adaptability needed to train performers of all skill levels. Thomas' ability to quickly assess natural strengths and teach in accordance with each individuals learning process
-            ultimately speeds up the rehearsal process and allows performers maximum potential to be achieved.
-          </p>
+<script type="text/ng-template" id="/templates/reel.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Reel</h3>
+          <p>Form goes here with a simple text input which should save a YouTube ID.</p>
         </div>
       </div>
     </div>
   </div>
+</script>
 
-</section>
-
-
-
-<!--
-    ==================================================
-                      ACCOLADES
-    ================================================== -->
-
-<section id="team" class="dark">
-
-  <div class="page-header text-center">
-    <h2>Accolades</h2>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="owl-example owl-carousel">
-          <div class="item">
-            <img class="display-pic" src="/images/user-avatar4.jpg" alt="Team Member">
-            <h3>2007 Winner</h3>
-            <h4>Best Fight</h4>
-            </br><p><b>Pirates of the Caribbean: Dead Man's Chest (2006)</b></p><p> The two lead male characters use swords to fight enemies and each other in a bell tower, on top of a run-down castle, on a large moving wheel and on a beach. During this fight, a woman also uses swords to fight men on a beach.</p>
-          </div>
-          <div class="item">
-            <img class="display-pic" src="/images/user-avatar4.jpg" alt="Team Member">
-            <h3>2002 Winner</h3>
-            <h4>Hardest Hit</h4>
-            </br><p><b>A Knight's Tale (2001)</b></p></br><p>Final jousting sequence where black knight is hit by the lance does back flip onto ground.</p>
-          </div>
-          <div class="item">
-            <img class="display-pic" src="/images/user-avatar4.jpg" alt="Team Member">
-            <h3>2002 Nominated</h3>
-            <h4>Best Work With an Animal</h4>
-            </br><p><b>A Knight's Tale (2001)</b></p></br><p>Final jousting sequence where black knight is hit by the lance does back flip onto ground.</p>
-          </div>
-          <div class="item">
-            <img class="display-pic" src="/images/user-avatar5.jpg" alt="Team Member">
-            <h3>2013 Nominated</h3>
-            <h4>Outstanding Action Performance by a Stunt Ensemble in a Motion Picture</h4>
-            <p>The Amazing Spider-Man (2012)</p>
-          </div>
-          <div class="item">
-            <img class="display-pic" src="/images/user-avatar5.jpg" alt="Team Member">
-            <h3>2008 Nominated</h3>
-            <h4>Outstanding Performance by a Stunt Ensemble in a Motion Picture</h4>
-            <p>Pirates of the Caribbean: At World's End (2007)</p>
-          </div>
+<script type="text/ng-template" id="/templates/resume.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Resume</h3>
+          <p>Pull data from iStunt to populate this section.</p>
         </div>
       </div>
     </div>
   </div>
+</script>
 
-</section>
-
-
-<!--
-    ==================================================
-                           RESUME
-    ================================================== -->
-
-<section class="section-content section-isotope separator" id="projects">
-
-  <div class="page-header text-center">
-    <h3>Projects</h3>
-    <h2>My latest work</h2>
-  </div>
-
-  <div class="container">
-    <div class="row demo-3">
-      <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".portfolio-item" }'>
-        <div class="col-sm-6 col-md-4 portfolio-item design">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Fight Coordinator</h3>
-              <span>Stunt Double: Jeff Bridges</span>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/7son.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/7son.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="left" title="Preview">
-                <i class="fa fa-plus"></i>
-              </a>
-              <a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website">
-                <i class="fa fa-external-link"></i>
-              </a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item design">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Stunt Coordinator</h3>
-              <span>Second Unit</span>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/robocop.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/robocop.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview">
-                <i class="fa fa-plus"></i>
-              </a>
-              <a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website">
-                <i class="fa fa-external-link"></i>
-              </a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item websites">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Fight Coordinator</h3>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/gijoe.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/gijoe.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview"><i class="fa fa-plus"></i></a><a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website"><i class="fa fa-external-link"></i></a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item websites">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Fight Cd & Sword Master</h3>
-              <span>Stunt Double: Geoffrey Rush</span>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/potcstranger.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/potcstranger.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview"><i class="fa fa-plus"></i></a><a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website"><i class="fa fa-external-link"></i></a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item websites">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Fight Choreographer</h3>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/Thor.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/Thor.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview"><i class="fa fa-plus"></i></a><a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website"><i class="fa fa-external-link"></i></a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item icons">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Sword Master / Trainer</h3>
-              <span>Stunt Double: Harrison Ford (uncredited)</span>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/indiana.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/indiana.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview"><i class="fa fa-plus"></i></a><a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website"><i class="fa fa-external-link"></i></a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item icons">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Sword Master</h3>
-              <span>Stunt Double: Geoffrey Rush/Bill Nighy</span>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/potcworlds.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/potcworlds.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview"><i class="fa fa-plus"></i></a><a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website"><i class="fa fa-external-link"></i></a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item print">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Sword Master</h3>
-              <span>Stunt Double: Jack Davenport</span>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/potcchest.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/potcchest.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview"><i class="fa fa-plus"></i></a><a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website"><i class="fa fa-external-link"></i></a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 portfolio-item mobile">
-          <figure>
-            <!-- Thumb Info -->
-            <div class="info">
-              <h3>Utility Stunts</h3>
-              <span>Stunt Double: Geoffrey Rush</span>
-            </div>
-            <!-- Thumbnail -->
-            <img src="images/thumbs/potcpearl.jpg" alt="Prestige Portfolio Thumbnail Image">
-            <!-- Thumb links -->
-            <figcaption>
-              <a href="images/thumbs/potcpearl.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview"><i class="fa fa-plus"></i></a><a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website"><i class="fa fa-external-link"></i></a>
-            </figcaption>
-          </figure>
+<script type="text/ng-template" id="/templates/awards.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Awards</h3>
+          <p>Create, List, Edit, Delete awards. They should allow image uploads and will populate the awards slider.</p>
+          <p>Question for later: can we pull this data from imdb? for example: http://www.imdb.com/name/nm0243345/awards?ref_=nm_ql_2</p>
         </div>
       </div>
     </div>
   </div>
+</script>
 
-</section>
-
-
-
-<!--
-     ==================================================
-                       RECOGNITIONS
-     ================================================== -->
-
-<section id="testimonials" class="dark">
-
-  <div class="page-header text-center">
-    <h2>ACTORS RECOGNITIONS</h2>
-  </div>
-
-  <div class="container">
-
-    <div class='row'>
-      <div class='col-md-offset-2 col-md-8'>
-        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-          <!-- Bottom Carousel Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#quote-carousel" data-slide-to="1"></li>
-            <li data-target="#quote-carousel" data-slide-to="2"></li>
-          </ol>
-
-          <!-- Carousel Slides / Quotes -->
-          <div class="carousel-inner">
-
-            <!-- Quote 1 -->
-            <div class="item active">
-              <blockquote>
-                <div class="row">
-                  <div class="col-sm-3 text-center">
-                    <img class="img-circle" src="/images/user-avatar1.jpg">
-                  </div>
-                  <div class="col-sm-9">
-                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!"</p>
-                    <small>Geoffrey Rush - "Pirates of the Caribbean"</small>
-                  </div>
-                </div>
-              </blockquote>
-            </div>
-            <!-- Quote 2 -->
-            <div class="item">
-              <blockquote>
-                <div class="row">
-                  <div class="col-sm-3 text-center">
-                    <img class="img-circle" src="/images/user-avatar2.jpg">
-                  </div>
-                  <div class="col-sm-9">
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris."</p>
-                    <small>Nicolas Cage - "The Sorcerer's Apprentice"</small>
-                  </div>
-                </div>
-              </blockquote>
-            </div>
-            <!-- Quote 3 -->
-            <div class="item">
-              <blockquote>
-                <div class="row">
-                  <div class="col-sm-3 text-center">
-                    <img class="img-circle" src="/images/user-avatar3.jpg">
-                  </div>
-                  <div class="col-sm-9">
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium."</p>
-                    <small>Gerard Butler - "Gamer"</small>
-                  </div>
-                </div>
-              </blockquote>
-            </div>
-            <!-- Quote 4 -->
-            <div class="item">
-              <blockquote>
-                <div class="row">
-                  <div class="col-sm-3 text-center">
-                    <img class="img-circle" src="/images/user-avatar6.jpg">
-                  </div>
-                  <div class="col-sm-9">
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium."</p>
-                    <small>YO YO - "Gamer"</small>
-                  </div>
-                </div>
-              </blockquote>
-            </div>
-          </div>
-
-          <!-- Carousel Buttons Next/Prev -->
-          <a data-slide="prev" href="#quote-carousel" class="left carousel-control visible-md visible-lg"><i class="fa fa-chevron-left"></i></a>
-          <a data-slide="next" href="#quote-carousel" class="right carousel-control  visible-md visible-lg"><i class="fa fa-chevron-right"></i></a>
+<script type="text/ng-template" id="/templates/actors.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Actors Trained</h3>
+          <p>Create, List, Edit, Delete actors trained.</p>
         </div>
       </div>
     </div>
   </div>
+</script>
 
-</section>
-
-
-
-
-<!--
-    ==================================================
-                            ACTORS TRAINED
-    ================================================== -->
-
-<section id="gallery">
-
-  <div class="page-header text-center">
-    <h3>Actors Trained</h3>
-    <h2>Here's a sneak peek</h2>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="owl-example owl-carousel">
-          <div class="item">
-            <a href="images/thumbs/thumb1.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb1.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb2.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb2.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb3.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb3.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb4.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb4.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb5.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb5.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb6.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb6.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-
+<script type="text/ng-template" id="/templates/settings.html">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Settings</h3>
+          <p>Website settings form.</p>
         </div>
       </div>
     </div>
   </div>
-
-</section>
-
-
-
-
-<!--
-        ==================================================
-                             CONTACT
-        ================================================== -->
-
-
-<section id="featured2" class="featured dark">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-5 text-center">
-        <img class="margin-top img-responsive" src="images/icm.png" alt="Generic placeholder image" data-sr="enter left, hustle 20px" width="429">
-      </div>
-      <div class="col-sm-5 col-sm-offset-1">
-        <div class="vertical-align">
-          <h2>Contact Me</h2>
-          <p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Tad Lumpkin</p>
-          <p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp; TLumpkin@icmpartners.com</p>
-          <p><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp; (310) 550-4404</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
+</script>
 
 
 
@@ -629,17 +241,22 @@
 <script src="/js/dependencies/jquery.mb.YTPlayer.js"></script>
 <script src="/js/dependencies/jquery.nav.js"></script>
 <script src="/js/dependencies/jquery.scrollTo.js"></script>
-<script src="/js/dependencies/sails.io.js"></script>
+<script src="/js/scrollReveal.js"></script>
+<script src="/js/isotope.js"></script>
 <script src="/js/cbpAnimatedHeader.min.js"></script>
 <script src="/js/classie.js"></script>
-<script src="/js/custom.js"></script>
 <script src="/js/imagesloaded.pkgd.js"></script>
-<script src="/js/isotope.js"></script>
 <script src="/js/less.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 <script src="/js/owl.carousel.js"></script>
-<script src="/js/scrollReveal.js"></script>
+<script src="/js/custom.js"></script>
 <!--SCRIPTS END-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-route.min.js"></script>
+<script src="/js/ng/ui-bootstrap-tpls-0.13.0.min.js"></script>
+<script src="/js/ng/ng.satellite.js"></script>
+<script src="/js/ng/ng.application.js"></script>
 
 
 <script>

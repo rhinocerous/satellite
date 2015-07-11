@@ -15,7 +15,25 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+
+//  'styles/admin.css',
+  'styles/bootstrap-theme.css',
+  'styles/bootstrap.css',
+  'styles/bootstrap.min.css',
+  'styles/carousel.css',
+  'styles/colorbox.css',
+  'styles/et-line-font.css',
+  'styles/font-awesome.min.css',
+  'styles/importer.css',
+  'styles/less/variables.css',
+  'styles/magnific-popup.css',
+  //'styles/theme-blue.css',
+  'styles/theme-orange.css',
+  //'styles/theme-salmonpink.css',
+  //'styles/theme-updates.css',
+  //'styles/theme.css'
+
+//  'styles/**/*.css'
 ];
 
 
@@ -35,19 +53,23 @@ var jsFilesToInject = [
   'js/dependencies/jquery.mb.YTPlayer.js',
   'js/dependencies/jquery.nav.js',
   'js/dependencies/jquery.scrollTo.js',
-  'js/dependencies/sails.io.js',
 
-  // All of the rest of your client-side js files
-  // will be injected here in no particular order.
+  'js/scrollReveal.js',
+  'js/isotope.js',
   'js/cbpAnimatedHeader.min.js',
   'js/classie.js',
-  'js/custom.js',
   'js/imagesloaded.pkgd.js',
-  'js/isotope.js',
   'js/less.js',
   'js/modernizr.custom.js',
   'js/owl.carousel.js',
-  'js/scrollReveal.js',
+  'js/custom.js'
+
+  //'js/ng/angular-1.4.1.js',
+  //'js/ng/angular-1.4.1.route.js',
+  //'js/ng/ui-bootstrap-tpls-0.13.0.min.js',
+  //'js/ng/ng.satellite.js',
+  //'js/ng/ng.application.js'
+
 ];
 
 
