@@ -2,38 +2,38 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 
   $routeProvider.when('/', {
     templateUrl: '/templates/settings.html',
-    controller: 'settingsController',
+    controller: 'navController',
     controllerAs: 'settings'
   }).when('/about', {
     templateUrl: '/templates/about.html',
-    controller: 'mainController',
+    controller: 'navController',
     controllerAs: 'aboutController'
   })
   .when('/reel', {
     templateUrl: '/templates/reel.html',
-    controller: 'mainController',
+    controller: 'navController',
     controllerAs: 'reelController'
   })
   .when('/resume', {
     templateUrl: '/templates/resume.html',
-    controller: 'mainController',
+    controller: 'navController',
     controllerAs: 'resumeController'
   })
   .when('/awards', {
     templateUrl: '/templates/awards.html',
-    controller: 'mainController',
+    controller: 'navController',
     controllerAs: 'awardsController'
   })
   .when('/actors', {
     templateUrl: '/templates/actors.html',
-    controller: 'mainController',
+    controller: 'navController',
     controllerAs: 'actorsController'
   });
 
   $locationProvider.html5Mode(false);
 });
 
-satellite.ng.page.mainControllerFactory = function (
+satellite.ng.page.navigationControllerFactory = function (
   $scope
   , $baseController
   , $route
@@ -104,6 +104,6 @@ satellite.ng.page.mainControllerFactory = function (
 };
 
 satellite.ng.addController(satellite.ng.app.module
-  , "mainController"
+  , "navController"
   , ['$scope', '$baseController', '$route', '$routeParams']
-  , satellite.ng.page.mainControllerFactory);
+  , satellite.ng.page.navigationControllerFactory);
