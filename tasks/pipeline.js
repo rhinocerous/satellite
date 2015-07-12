@@ -17,21 +17,21 @@
 var cssFilesToInject = [
 
 //  'styles/admin.css',
-  'styles/bootstrap-theme.css',
-  'styles/bootstrap.css',
-  'styles/bootstrap.min.css',
-  'styles/carousel.css',
-  'styles/colorbox.css',
-  'styles/et-line-font.css',
-  'styles/font-awesome.min.css',
-  'styles/importer.css',
-  'styles/less/variables.css',
-  'styles/magnific-popup.css',
-  //'styles/theme-blue.css',
-  'styles/theme-orange.css',
-  //'styles/theme-salmonpink.css',
-  //'styles/theme-updates.css',
-  //'styles/theme.css'
+  'styles/prestige/bootstrap-theme.css',
+  'styles/prestige/bootstrap.css',
+  'styles/prestige/bootstrap.min.css',
+  'styles/prestige/carousel.css',
+  'styles/prestige/colorbox.css',
+  'styles/prestige/et-line-font.css',
+  'styles/prestige/font-awesome.min.css',
+  'styles/prestige/importer.css',
+  'styles/prestige/less/variables.css',
+  'styles/prestige/magnific-popup.css',
+  //'styles/prestige/theme-blue.css',
+  'styles/prestige/theme-orange.css',
+  //'styles/prestige/theme-salmonpink.css',
+  //'styles/prestige/theme-updates.css',
+  //'styles/prestige/theme.css'
 
 //  'styles/**/*.css'
 ];
@@ -41,11 +41,6 @@ var cssFilesToInject = [
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
 
-  // Load sails.io before everything else
-  //'js/dependencies/sails.io.js',
-
-  // Dependencies like jQuery, or Angular are brought in here
-
   'js/dependencies/bootstrap.js',
   'js/dependencies/jqBootstrapValidation.js',
   'js/dependencies/jquery.flexslider.js',
@@ -54,15 +49,15 @@ var jsFilesToInject = [
   'js/dependencies/jquery.nav.js',
   'js/dependencies/jquery.scrollTo.js',
 
-  'js/scrollReveal.js',
-  'js/isotope.js',
-  'js/cbpAnimatedHeader.min.js',
-  'js/classie.js',
-  'js/imagesloaded.pkgd.js',
-  'js/less.js',
-  'js/modernizr.custom.js',
-  'js/owl.carousel.js',
-  'js/custom.js'
+  'js/prestige/scrollReveal.js',
+  'js/prestige/isotope.js',
+  'js/prestige/cbpAnimatedHeader.min.js',
+  'js/prestige/classie.js',
+  'js/prestige/imagesloaded.pkgd.js',
+  'js/prestige/less.js',
+  'js/prestige/modernizr.custom.js',
+  'js/prestige/owl.carousel.js',
+  'js/prestige/custom.js'
 
   //'js/ng/angular-1.4.1.js',
   //'js/ng/angular-1.4.1.route.js',
