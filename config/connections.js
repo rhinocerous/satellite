@@ -47,7 +47,13 @@ module.exports.connections = {
     password: 'root',
     database: 'istunt_stuntfights'
   },
-
+  localMysqlIstunt: {
+    adapter: 'sails-mysql',
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'istunt28_01'
+  },
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *

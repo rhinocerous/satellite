@@ -51,7 +51,7 @@ satellite.ng.page.navigationControllerFactory = function (
 
   vm.tabs = [
     { link: '#/', label: 'Settings', icon: 'fa-cogs' },
-    { link: '#/about', label: 'About', icon: 'fa-edit' },
+    { link: '#/about', label: 'Biography', icon: 'fa-edit' },
     { link: '#/reel', label: 'Reel', icon: 'fa-film' },
     { link: '#/resume', label: 'Resume', icon: 'fa-book' },
     { link: '#/awards', label: 'Awards', icon: 'fa-fire' },

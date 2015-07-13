@@ -35,5 +35,10 @@ module.exports.routes = {
     controller: 'IndexController',
     action: 'admin',
     skipAssets: true
+  },
+  'get /export': {
+    controller: 'IstuntRelationController',
+    action: 'export',
+    skipAssets: true
   }
 };
