@@ -14,7 +14,7 @@ satellite = {
     }
     , exceptions: {}
     , examples: {}
-    , defaultDependencies: ['ui.bootstrap','ngRoute']
+    , defaultDependencies: ['ui.bootstrap','ngRoute','textAngular']
     , getModuleDependencies: function(){
       if (satellite.extraNgDependencies) {
         var newItems = satellite.ng.defaultDependencies.concat(satellite.extraNgDependencies);
@@ -74,6 +74,69 @@ satellite.ng.app.services.baseService = function ($win, $loc, $util) {
   };
 
   return baseService;
+};
+
+satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
+
+  var svc = this;
+
+  $.extend( svc, $baseService);
+
+  svc.$http = $http;
+  svc._executeUpsert = __executeUpsert;
+  svc._executeCreate = __executeCreate;
+  svc._executeUpdate = __executeUpdate;
+  svc._executeRetrieve = __executeRetrieve;
+
+  function __executeUpsert(name, data, success, error ) {
+
+    if(data.id)
+    {
+      var endpoint = "/" + name + "/update/" + data.id;
+
+      __executeUpdate(endpoint, data, success, error)
+    }
+    else
+    {
+      var endpoint = "/" + name + "/create";
+
+      __executeCreate(endpoint, data, success, error)
+    }
+  }
+
+  function __executeCreate(url, data, success, error ) {
+
+    var request = svc.$http({
+      method: "post",
+      url: url,
+      data: data
+    });
+
+    return( request.then( success, error ) );
+  }
+
+  function __executeUpdate(url, data, success, error ) {
+
+    var request = svc.$http({
+      method: "put",
+      url: url,
+      data: data
+    });
+
+    return( request.then( success, error ) );
+  }
+
+  function __executeRetrieve(url, success, error ) {
+
+    var request = svc.$http({
+      method: "get",
+      url: url
+    });
+
+    return( request.then( success, error ) );
+  }
+
+  return svc;
 };
 
 satellite.ng.app.controllers.baseController = function ($doc, $logger, $satellite) {
@@ -154,6 +217,11 @@ satellite.ng.addService(satellite.ng.app.module
   , "$baseService"
   , ['$window', '$location']
   , satellite.ng.app.services.baseService);
+
+satellite.ng.addService(satellite.ng.app.module
+  , "$baseHttpService"
+  , ['$baseService', '$http']
+  , satellite.ng.app.services.baseHttpService);
 
 satellite.ng.addService(satellite.ng.app.module
   , "$baseController"
