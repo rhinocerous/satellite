@@ -677,7 +677,7 @@ section .login-overlay {
   cursor: pointer;
 }
 .grabbing {
-  cursor: url(../images/grabbing.png) 8 8, move;
+  cursor: url(../../images/grabbing.png) 8 8, move;
 }
 /*
 *   Owl Carousel Owl Demo Theme
@@ -1173,7 +1173,7 @@ section .login-overlay {
   border-bottom: 0;
 }
 #intro-video {
-  background: url('../images/topbg.fw.png');
+  background: url('../../images/topbg.fw.png');
   background-size: cover;
 }
 #intro .item,
@@ -1471,10 +1471,10 @@ section .login-overlay {
   -webkit-box-shadow: #666666 1px 1px 3px;
 }
 .YTPOverlay.raster {
-  background: url("../images/raster.png");
+  background: url("../../images/raster.png");
 }
 .YTPOverlay.raster.retina {
-  background: url("../images/raster@2x.png");
+  background: url("../../images/raster@2x.png");
 }
 section {
   padding: 4em 0;
@@ -1516,18 +1516,18 @@ section.light {
   background: #ededed;
 }
 section.light.with-bg {
-  background: url('../images/bg-content1.jpg') center center no-repeat;
+  background: url('../../images/bg-content1.jpg') center center no-repeat;
   background-size: cover;
 }
 section.dark {
   background: #2b2d35;
 }
 section.dark.with-bg {
-  background: url('../images/bg-content1.jpg') center center no-repeat;
+  background: url('../../images/bg-content1.jpg') center center no-repeat;
   background-size: cover;
 }
 section.dark.with-bg2 {
-  background: url('../images/Thomas_Dupont-102.jpg') center center no-repeat;
+  background: url('../../images/Thomas_Dupont-102.jpg') center center no-repeat;
   background-size: cover;
 }
 section.dark h1,
@@ -2686,94 +2686,5 @@ footer.footer .icon {
   .overlay #contactForm input {
     padding: 1.5em 1em;
   }
-
-
-  /*NAV BAR FOR ALTERNATE LAYOUT*/
-
-  /* this one changes the color from nav bar at the top*/
-
-
-
-  /* */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   }

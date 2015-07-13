@@ -1512,11 +1512,7 @@ if (typeof Object.create !== "function") {
         afterLazyLoad: false
     };
 
-  $(document).ready(function () {
 
-    $(".owl-example").owlCarousel();
-
-  });
 
 
 }(jQuery, window, document));
