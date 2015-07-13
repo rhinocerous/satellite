@@ -50,12 +50,12 @@ satellite.ng.page.navigationControllerFactory = function (
   vm.currentRequestLabel = "Current Request:";
 
   vm.tabs = [
-    { link: '#/', label: 'Settings', icon: 'icon-tools-2' },
-    { link: '#/about', label: 'About', icon: 'icon-pencil' },
-    { link: '#/reel', label: 'Reel', icon: 'icon-video' },
-    { link: '#/resume', label: 'Resume', icon: 'icon-strategy' },
-    { link: '#/awards', label: 'Awards', icon: 'icon-trophy' },
-    { link: '#/actors', label: 'Actors', icon: 'icon-genius' },
+    { link: '#/', label: 'Settings', icon: 'fa-cogs' },
+    { link: '#/about', label: 'About', icon: 'fa-edit' },
+    { link: '#/reel', label: 'Reel', icon: 'fa-film' },
+    { link: '#/resume', label: 'Resume', icon: 'fa-book' },
+    { link: '#/awards', label: 'Awards', icon: 'fa-fire' },
+    { link: '#/actors', label: 'Actors', icon: 'fa-bullseye' },
 
   ];
 

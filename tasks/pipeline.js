@@ -28,10 +28,10 @@ var cssFilesToInject = [
   'styles/prestige/less/variables.css',
   'styles/prestige/magnific-popup.css',
   //'styles/prestige/theme-blue.css',
-  'styles/prestige/theme-orange.css',
+  //'styles/prestige/theme-orange.css',
   //'styles/prestige/theme-salmonpink.css',
-  //'styles/prestige/theme-updates.css',
-  //'styles/prestige/theme.css'
+  'styles/prestige/theme-updates.css',
+  'styles/prestige/theme.css'
 
 //  'styles/**/*.css'
 ];
