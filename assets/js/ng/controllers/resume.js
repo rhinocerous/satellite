@@ -2,6 +2,7 @@ satellite.ng.page.resumeControllerFactory = function (
   $scope
   , $baseController
   , $istuntService
+  , $entityService
 ) {
 
   var vm = this;
@@ -10,8 +11,11 @@ satellite.ng.page.resumeControllerFactory = function (
 
   vm.$scope = $scope;
 
+  vm.userId = 467;  //  TODO: manage this id and support multiple
   vm.title = "Manage Resume";
   vm.resume = null;
+  vm.resumeString = null;
+  vm.resumeEntities = null;
 
   vm.import = _import;
 
@@ -24,12 +28,21 @@ satellite.ng.page.resumeControllerFactory = function (
 
   function _import()
   {
-    $istuntService.getResume(null, _onImportSuccess, _onImportError)
+    $istuntService.getResume(vm.userId, _onImportSuccess, _onImportError)
+  }
+
+  function _onIngestSuccess(response)
+  {
+
   }
 
   function _onImportSuccess(response)
   {
-    vm.resume = JSON.stringify(response.data,null,"    ");
+    vm.resume = response.data;
+    vm.resumeString =  JSON.stringify(vm.resume, null,"    ");
+    vm.resumeEntities = $istuntService.parseResumeEntities(vm.resume);
+
+    $entityService.ingest(vm.userId, vm.resumeEntities, _onIngestSuccess,_onImportError);
   }
 
   function _onImportError(data)
@@ -41,5 +54,5 @@ satellite.ng.page.resumeControllerFactory = function (
 
 satellite.ng.addController(satellite.ng.app.module
   , "resumeController"
-  , ['$scope', '$baseController', '$istuntService']
+  , ['$scope', '$baseController', '$istuntService','$entityService']
   , satellite.ng.page.resumeControllerFactory);

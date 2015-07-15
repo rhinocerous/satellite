@@ -13,6 +13,11 @@ module.exports = {
       required:true,
       minLength: 2
     },
+    slug:{
+      type:"string",
+      required:true,
+      minLength: 2
+    },
     description:{
       type:"text",
       required:false

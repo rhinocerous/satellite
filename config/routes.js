@@ -26,6 +26,11 @@ module.exports.routes = {
     action: 'index',
     skipAssets: true
   },
+  'get /entity/slug/:slug': {
+    controller: 'EntityController',
+    action: 'findBySlug',
+    skipAssets: true
+  },
   'get /alternate': {
     controller: 'IndexController',
     action: 'alternate',
@@ -34,11 +39,6 @@ module.exports.routes = {
   'get /admin': {
     controller: 'IndexController',
     action: 'admin',
-    skipAssets: true
-  },
-  'get /export': {
-    controller: 'IstuntRelationController',
-    action: 'export',
     skipAssets: true
   }
 };
