@@ -18,7 +18,7 @@
 <!-- Main container-->
 <div class="app-container">
   <!-- top navbar-->
-  <header class="bg-success">
+  <header class="bg-info">
     <!-- START Top Navbar-->
     <nav role="navigation" class="navbar topnavbar">
       <!-- START button offset-->
@@ -97,7 +97,7 @@
 
 <script type="text/ng-template" id="/templates/about.html">
   <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-success">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <span class="panel-title">
           {{bio.title}}
@@ -141,19 +141,25 @@
 </script>
 
 <script type="text/ng-template" id="/templates/resume.html">
-
   <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-default">
+    <div class="panel panel-info">
       <div class="panel-heading">
-        <div class="panel-title"> <em class="icon-signal fa-lg text-muted pull-right"></em>Resume</div>
+        <span class="panel-title">
+          {{resume.title}}
+          <em class="fa fa-lg fa-book pull-right"></em>
+        </span>
       </div>
+
       <div class="panel-body">
-        <div class="row">
-          <p>The user will have the option to create from scratch or pull data from iStunt to populate this section.</p>
-        </div>
+          <a class="btn btn-amber" data-ng-click="resume.import()">Import iStunt Resume</a>
+
+          <pre>
+            {{resume.resume}}
+          </pre>
       </div>
     </div>
   </div>
+
 </script>
 
 <script type="text/ng-template" id="/templates/awards.html">
@@ -190,7 +196,7 @@
 
 <script type="text/ng-template" id="/templates/settings.html">
   <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-success">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <span class="panel-title">
           {{settings.title}}
@@ -235,7 +241,12 @@
 <script src='/js/ng/textAngular-sanitize.min.js'></script>
 <script src='/js/ng/textAngular.min.js'></script>
 <script src="/js/ng/ng.satellite.js"></script>
-<script src="/js/ng/ng.satellite.services.js"></script>
-<script src="/js/ng/ng.application.js"></script>
+<script src="/js/ng/services/settingService.js"></script>
+<script src="/js/ng/services/istuntService.js"></script>
+<script src="/js/ng/controllers/navigation.js"></script>
+<script src="/js/ng/controllers/bio.js"></script>
+<script src="/js/ng/controllers/settings.js"></script>
+<script src="/js/ng/controllers/resume.js"></script>
+<script src="/js/ng/ng.routes.js"></script>
 </body>
 </html>

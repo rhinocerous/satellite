@@ -19,9 +19,7 @@ module.exports = {
         var row = results[i];
 
         results[i]['ur_data'] = PHPUnserialize.unserialize(row['ur_data']);
-        console.log(row);
       }
-
 
       return res.ok(results);
     });
