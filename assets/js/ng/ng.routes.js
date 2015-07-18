@@ -24,6 +24,11 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
     controller: 'navController',
     controllerAs: 'awardsController'
   })
+  .when('/schema', {
+      templateUrl: '/templates/schema.html',
+      controller: 'schemaController',
+      controllerAs: 'schema'
+    })
   .when('/actors', {
     templateUrl: '/templates/actors.html',
     controller: 'navController',

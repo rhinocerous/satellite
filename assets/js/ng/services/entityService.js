@@ -13,17 +13,13 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
   svc.map = null;
   svc.entities = {};
   svc.attributes = {};
-  svc.count = {
-    entity:0,
-    attr:0
-  };
 
   svc.ingest = _ingest;
   svc.get = _get;
   svc.getBySlug = _getBySlug;
+  svc.getByGroup = _getByGroup;
 
-
-  function _ingest(userId, data, onSuccess, onError)
+  function _ingest(userId, data)
   {
     svc.map = data;
 
@@ -43,8 +39,6 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
 
     $attributeService.saveAll(svc.outAttr, function(attribute){
       svc.attributes[attribute.slug] = attribute;
-
-      _checkProgress();
     });
   }
 
@@ -63,7 +57,8 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
         {
           var req = {
             name: entity.fromSlug(),
-            slug: entity
+            slug: entity,
+            group:"resume"
           };
           svc._executeCreate(endpoint, req, _onCreateSuccess, svc._handleError);
         }
@@ -84,16 +79,17 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
   {
     if(Object.keys(svc.entities).length == Object.keys(svc.outEntity).length
       && Object.keys(svc.attributes).length == Object.keys(svc.outAttr).length)
-          _mapAssociations()
+    {
+      _mapAssociations();
+      return true;
+    } else {return false; }
   }
 
   function _mapAssociations()
   {
-    console.log("MAP ALL ASSOCIATIONS");
-
     angular.forEach(svc.map, function(attributes, entitySlug) {
 
-      console.log("map %s: %s", entitySlug, attributes.join(", "));
+      //console.log("map %s: %s", entitySlug, attributes.join(", "));
 
       var entity = svc.entities[entitySlug];
 
@@ -104,11 +100,18 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
       //  http://localhost:1337/entity/1/attributes/add?id=2
          var url = "/" + svc.name + "/" + entity.id + "/attributes/add?id=" + attribute.id;
 
-        svc._executeRetrieve(url, {}, _onAssociateSuccess, svc._handleError);
+        svc._executeRetrieve(url, _onAssociateSuccess, svc._handleError);
 
       });
 
     });
+  }
+
+  function _getByGroup(name, onSuccess, onError)
+  {
+    var url = "/" + svc.name + "/group/" + name;
+
+    svc._executeRetrieve(url, onSuccess, onError)
   }
 
   function _getBySlug(name, onSuccess, onError)
@@ -127,7 +130,7 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
 
   function _onAssociateSuccess(response)
   {
-    console.log("association created", response);
+    //console.log("association created", response);
   }
 };
 

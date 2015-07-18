@@ -31,6 +31,11 @@ module.exports.routes = {
     action: 'findBySlug',
     skipAssets: true
   },
+  'get /entity/group/:group': {
+    controller: 'EntityController',
+    action: 'findByGroup',
+    skipAssets: true
+  },
   'post /entity/ingest': {
     controller: 'EntityController',
     action: 'ingest',

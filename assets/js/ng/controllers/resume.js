@@ -10,45 +10,55 @@ satellite.ng.page.resumeControllerFactory = function (
   $.extend(vm, $baseController);
 
   vm.$scope = $scope;
+  vm.$istuntService = $istuntService;
+  vm.$entityService = $entityService;
 
   vm.userId = 467;  //  TODO: manage this id and support multiple
   vm.title = "Manage Resume";
-  vm.resume = null;
-  vm.resumeString = null;
-  vm.resumeEntities = null;
+  vm.schema = null;
+  vm.schemaString = null;
+  vm.schemaEntities = null;
 
-  vm.import = _import;
+  //vm.import = _import;
 
-  _init();
-
-  function _init()
-  {
-    console.log("resume controller init");
-  }
-
-  function _import()
-  {
-    $istuntService.getResume(vm.userId, _onImportSuccess, _onImportError)
-  }
-
-  function _onIngestSuccess(response)
-  {
-
-  }
-
-  function _onImportSuccess(response)
-  {
-    vm.resume = response.data;
-    vm.resumeString =  JSON.stringify(vm.resume, null,"    ");
-    vm.resumeEntities = $istuntService.parseResumeEntities(vm.resume);
-
-    $entityService.ingest(vm.userId, vm.resumeEntities, _onIngestSuccess,_onImportError);
-  }
-
-  function _onImportError(data)
-  {
-    console.error("error getting istunt resume", data);
-  }
+  //_init();
+  //
+  //function _init()
+  //{
+  //  console.log("resume controller init");
+  //  vm.$entityService.getByGroup("resume", _onGetEntitiesSuccess, _onImportError);
+  //}
+  //
+  //function _import()
+  //{
+  //  vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onImportError)
+  //}
+  //
+  //function _onGetEntitiesSuccess(response)
+  //{
+  //  vm.schema = response.data;
+  //
+  //  console.log("got resume data", vm.schema);
+  //}
+  //
+  //function _onIngestSuccess(response)
+  //{
+  //
+  //}
+  //
+  //function _onImportSuccess(response)
+  //{
+  //  vm.schema = response.data;
+  //  vm.schemaString =  JSON.stringify(vm.schema, null,"    ");
+  //  vm.schemaEntities = vm.$istuntService.parseResumeEntities(vm.schema);
+  //
+  //  vm.$entityService.ingest(vm.userId, vm.schemaEntities, _onIngestSuccess,_onImportError);
+  //}
+  //
+  //function _onImportError(data)
+  //{
+  //  console.error("error getting istunt resume", data);
+  //}
 
 };
 

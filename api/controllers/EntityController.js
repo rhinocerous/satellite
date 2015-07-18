@@ -43,6 +43,18 @@ module.exports = {
 
       return res.json(entity)
     });
+  },
+  findByGroup: function (req, res) {
+
+    Entity.findByGroup(req.params.group).exec(function (err, entities) {
+      if (err)
+        return res.json(500, err);
+
+      if (!entities)
+        return res.json(404, "entities not found");
+
+      return res.json(entities)
+    });
   }
 };
 

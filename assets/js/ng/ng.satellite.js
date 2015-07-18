@@ -27,7 +27,7 @@ satellite = {
     }
     , exceptions: {}
     , examples: {}
-    , defaultDependencies: ['ui.bootstrap','ngRoute','textAngular']
+    , defaultDependencies: ['ui.bootstrap','ngRoute','textAngular','dndLists']
     , getModuleDependencies: function(){
       if (satellite.extraNgDependencies) {
         var newItems = satellite.ng.defaultDependencies.concat(satellite.extraNgDependencies);

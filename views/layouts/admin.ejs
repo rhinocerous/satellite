@@ -140,6 +140,38 @@
   </div>
 </script>
 
+<script type="text/ng-template" id="/templates/schema.html">
+  <div class="col-lg-9 fw-boxed">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <span class="panel-title">
+          {{schema.title}}
+          <em class="fa fa-lg fa-anchor pull-right"></em>
+        </span>
+      </div>
+
+      <div class="panel-body">
+        <p>Click on a category below to manage fields.</p>
+        <accordion close-others="true">
+          <accordion-group class="panel panel-info bg-light" ng-repeat="entity in schema.schema track by entity.id">
+
+            <accordion-heading>{{entity.name}}</accordion-heading>
+            <pre>
+              {{entity}}
+            </pre>
+          </accordion-group>
+        </accordion>
+
+
+        <a class="btn btn-amber" data-ng-click="schema.import()">Import iStunt Schema</a>
+
+
+      </div>
+    </div>
+  </div>
+
+</script>
+
 <script type="text/ng-template" id="/templates/resume.html">
   <div class="col-lg-9 fw-boxed">
     <div class="panel panel-info">
@@ -151,11 +183,7 @@
       </div>
 
       <div class="panel-body">
-          <a class="btn btn-amber" data-ng-click="resume.import()">Import iStunt Resume</a>
-
-          <pre>
-            {{resume.resumeString}}
-          </pre>
+          <h1>RESUME WTF</h1>
       </div>
     </div>
   </div>
@@ -240,6 +268,7 @@
 <script src='/js/ng/textAngular-rangy.min.js'></script>
 <script src='/js/ng/textAngular-sanitize.min.js'></script>
 <script src='/js/ng/textAngular.min.js'></script>
+<script src='/js/ng/angular-drag-n-drop.js'></script>
 <script src="/js/ng/ng.satellite.js"></script>
 <script src="/js/ng/services/settingService.js"></script>
 <script src="/js/ng/services/istuntService.js"></script>
@@ -249,6 +278,7 @@
 <script src="/js/ng/controllers/bio.js"></script>
 <script src="/js/ng/controllers/settings.js"></script>
 <script src="/js/ng/controllers/resume.js"></script>
+<script src="/js/ng/controllers/schema.js"></script>
 <script src="/js/ng/ng.routes.js"></script>
 </body>
 </html>

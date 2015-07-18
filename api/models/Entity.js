@@ -19,6 +19,11 @@ module.exports = {
       required:true,
       minLength: 2
     },
+    group:{
+      type:"string",
+      required:true,
+      minLength: 2
+    },
     description:{
       type:"text",
       required:false
