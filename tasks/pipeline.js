@@ -49,6 +49,7 @@ var jsFilesToInject = [
   'js/dependencies/jquery.nav.js',
   'js/dependencies/jquery.scrollTo.js',
 
+  'js/prestige/docs.min.js',
   'js/prestige/scrollReveal.js',
   'js/prestige/isotope.pkgd.min.js',
   'js/prestige/isotope.js',
@@ -58,6 +59,7 @@ var jsFilesToInject = [
   'js/prestige/less.js',
   'js/prestige/modernizr.custom.js',
   'js/prestige/owl.carousel.js',
+  'js/prestige/jssor.slider.mini.js',
   'js/prestige/custom.js'
 
   //'js/ng/angular-1.4.1.js',

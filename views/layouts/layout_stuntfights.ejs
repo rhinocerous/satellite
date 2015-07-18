@@ -37,8 +37,8 @@
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -114,27 +114,112 @@
                            HOME
      ================================================== -->
 
-<section id="featured1" class="dark with-bg2">
+<!--class="dark with-bg2"-->
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-5 overlay-text">
-        <div class="vertical-align">
-          <h2>StuntFights</h2>
-          <p>Thomas' passion for his craft fuels his enthusiasm for training, research, experimentation and artistry. Armed with a solid work ethic and fierce determination,
-            this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the industry's fight coordinating standards.</p>
+<section id="featured1">
+
+  <div id="slider1_container" style="display: none; position: relative; margin: 0 auto;
+  top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
+
+    <!-- Loading Screen -->
+    <!--<div u="loading" style="position: absolute; top: 0px; left: 0px;">-->
+    <!--<div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;-->
+    <!--top: 0px; left: 0px; width: 100%; height: 100%;">-->
+    <!--</div>-->
+    <!--<div style="position: absolute; display: block; background: url(../images/loading.gif) no-repeat center center;-->
+    <!--top: 0px; left: 0px; width: 100%; height: 100%;">-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!-- Slides Container -->
+    <div u="slides"
+         style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px; height: 500px; overflow: hidden;">
+      <div>
+        <img u="image" src2="images/1.jpg"/>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-5 overlay-text">
+              <div class="vertical-align">
+                <h2>StuntFights</h2>
+
+                <p>Thomas' passion for his craft fuels his enthusiasm for training, research, experimentation and
+                  artistry. Armed with a solid work ethic and fierce determination,
+                  this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the
+                  industry's fight coordinating standards.</p>
+              </div>
+            </div>
+            <div class="col-sm-5 col-sm-offset-1">
+              <div class="vertical-align">
+                <iframe src="https://player.vimeo.com/video/53068895?title=0&byline=0&portrait=0" width="550"
+                        height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-sm-5 col-sm-offset-1">
-        <div class="vertical-align">
-          <iframe src="https://player.vimeo.com/video/53068895?title=0&byline=0&portrait=0" width="550" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-        </div>
+      <div>
+        <img u="image" src2="images/2.jpg"/>
+      </div>
+      <div>
+        <img u="image" src2="images/3.jpg"/>
       </div>
     </div>
   </div>
 
+  <!-- bullet navigator container -->
+  <div u="navigator" class="jssorb21" style="bottom: 26px; right: 6px;">
+    <!-- bullet navigator item prototype -->
+    <div u="prototype"></div>
+  </div>
+
+  <!-- Arrow Left -->
+  <span u="arrowleft" class="jssora21l" style="top: 333px; left: 8px;">
+  </span>
+  <!-- Arrow Right -->
+  <span u="arrowright" class="jssora21r" style="top: 333px; right: 8px;">
+  </span>
+
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------- OLD CODE DO NOT DELETE -------------->
+
+
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-sm-5 overlay-text">-->
+        <!--<div class="vertical-align">-->
+          <!--<h2>StuntFights</h2>-->
+          <!--<p>Thomas' passion for his craft fuels his enthusiasm for training, research, experimentation and artistry. Armed with a solid work ethic and fierce determination,-->
+            <!--this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the industry's fight coordinating standards.</p>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-sm-5 col-sm-offset-1">-->
+        <!--<div class="vertical-align">-->
+          <!--<iframe src="https://player.vimeo.com/video/53068895?title=0&byline=0&portrait=0" width="550" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
 
 
 
@@ -626,6 +711,7 @@
 <script src="/js/dependencies/jquery.mb.YTPlayer.js"></script>
 <script src="/js/dependencies/jquery.nav.js"></script>
 <script src="/js/dependencies/jquery.scrollTo.js"></script>
+<script src="/js/prestige/docs.min.js"></script>
 <script src="/js/prestige/scrollReveal.js"></script>
 <script src="/js/prestige/isotope.pkgd.min.js"></script>
 <script src="/js/prestige/isotope.js"></script>
@@ -635,6 +721,7 @@
 <script src="/js/prestige/less.js"></script>
 <script src="/js/prestige/modernizr.custom.js"></script>
 <script src="/js/prestige/owl.carousel.js"></script>
+<script src="/js/prestige/jssor.slider.mini.js"></script>
 <script src="/js/prestige/custom.js"></script>
 <!--SCRIPTS END-->
 
