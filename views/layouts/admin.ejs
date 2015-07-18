@@ -153,12 +153,20 @@
       <div class="panel-body">
         <p>Click on a category below to manage fields.</p>
         <accordion close-others="true">
-          <accordion-group class="panel panel-info bg-light" ng-repeat="entity in schema.schema track by entity.id">
+          <accordion-group class="panel panel-info bg-light" data-ng-repeat="entity in schema.schema track by entity.id">
 
-            <accordion-heading>{{entity.name}}</accordion-heading>
-            <pre>
-              {{entity}}
-            </pre>
+            <accordion-heading>
+              <span data-ng-click="schema.loadTab(entity);">{{entity.name}}</span>
+            </accordion-heading>
+            <p><strong>Fields</strong></p>
+            <div class="col-lg-4 col-sm-4 col-xs-6" data-ng-repeat="attr in schema.currentEntityData.attributes track by attr.id">
+              <div class="panel panel-default" data-ripple="">
+                <div class="panel-body">
+                  <h4 class="text-thin mt">{{attr.name}}</h4>
+                  <div class="text-right text-sm text-muted"># {{attr.id}}</div>
+                </div>
+              </div>
+            </div>
           </accordion-group>
         </accordion>
 

@@ -18,8 +18,11 @@ satellite.ng.page.schemaControllerFactory = function (
   vm.schema = null;
   vm.schemaString = null;
   vm.schemaEntities = null;
+  vm.currentEntity = null;
+  vm.currentEntityData = null;
 
   vm.import = _import;
+  vm.loadTab = _loadTab;
 
   _init();
 
@@ -33,6 +36,18 @@ satellite.ng.page.schemaControllerFactory = function (
   function _import()
   {
     vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onError)
+  }
+
+  function _loadTab(entity)
+  {
+    vm.currentEntity = entity;
+
+    vm.$entityService.get(vm.currentEntity.id, _onGetCurrentEntitySuccess, _onError);
+  }
+
+  function _onGetCurrentEntitySuccess(response)
+  {
+    vm.currentEntityData = response.data;
   }
 
   function _onGetEntitiesSuccess(response)
