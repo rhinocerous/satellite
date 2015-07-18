@@ -6,6 +6,18 @@ String.prototype.fromSlug = function()
     .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
 
+Array.prototype.unique = function() {
+  var a = this.concat();
+  for(var i=0; i<a.length; ++i) {
+    for(var j=i+1; j<a.length; ++j) {
+      if(a[i] === a[j])
+        a.splice(j--, 1);
+    }
+  }
+
+  return a;
+};
+
 satellite = {
   ng : {
     page:{},

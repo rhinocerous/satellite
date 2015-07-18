@@ -1,11 +1,18 @@
-satellite.ng.app.services.entityServiceFactory = function ($baseHttpService)
+satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $attributeService)
 {
   var svc = this;
 
   $.extend( svc, $baseHttpService);
 
+  svc.$attributeService = $attributeService;
+
   svc.name = "entity";
   svc.buffer = null;
+  svc.outEntity = [];
+  svc.outAttr = [];
+  svc.map = null;
+  svc.entities = {};
+  svc.attributes = {};
 
   svc.ingest = _ingest;
   svc.get = _get;
@@ -14,33 +21,61 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService)
 
   function _ingest(userId, data, onSuccess, onError)
   {
-    console.log("ingest resume entities for user #" + userId, data);
+    svc.map = data;
 
-    var output = [];
+    angular.forEach(svc.map, function(attributes, slug) {
 
-    var endpoint = "/" + svc.name + "/ingest";
+      svc.outEntity.push(slug);
 
-    angular.forEach(data, function(attributes, slug) {
-
-      var attrs = [];
-
-      angular.forEach(attributes, function(av, ak) {
-        attrs.push({
-          name: av.fromSlug(),
-          slug: av
-        })
+      angular.forEach(attributes, function(attr, idx) {
+        svc.outAttr.push(attr);
       });
-
-      var req = {
-        name: slug.fromSlug(),
-        slug: slug,
-        attributes: attrs
-      };
-
-      output.push(req);
     });
 
-    svc._executeCreate(endpoint, output, _createSuccess, svc._handleError);
+    _saveAll(svc.outEntity.unique());
+
+    $attributeService.saveAll(svc.outAttr.unique(), function(attribute){
+      svc.attributes[attribute.slug] = attribute;
+    });
+    //_saveAllAttr();
+  }
+
+  function _saveAll(entities)
+  {
+    var endpoint = "/" + svc.name + "/create";
+
+    angular.forEach(entities, function(entity, idx) {
+
+      _getBySlug(entity, function(response){
+          console.log("slug exists", response.data);
+      },
+      function(error){
+
+        if(404 == error.status)
+        {
+          var req = {
+            name: entity.fromSlug(),
+            slug: entity
+          };
+
+          svc._executeCreate(endpoint, req, _onCreateSuccess, svc._handleError);
+        }
+      })
+    });
+  }
+
+  function _onCreateSuccess(response)
+  {
+    var entity = response.data;
+
+    svc.entities[entity.slug] = entity;
+
+    console.log("create success", svc.entities);
+  }
+
+  function _saveAllAttr(attrs)
+  {
+    console.log("save all attr", attrs);
   }
 
   function _getBySlug(name, onSuccess, onError)
@@ -65,5 +100,5 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService)
 
 satellite.ng.addService(satellite.ng.app.module
   , "$entityService"
-  , ["$baseHttpService"]
+  , ["$baseHttpService","$attributeService"]
   , satellite.ng.app.services.entityServiceFactory);
