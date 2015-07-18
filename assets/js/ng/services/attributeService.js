@@ -17,7 +17,7 @@ satellite.ng.app.services.attributeServiceFactory = function ($baseHttpService)
     angular.forEach(attrs, function(attr, idx) {
 
       _getBySlug(attr, function(response){
-          console.log("attr slug exists", response.data);
+          //  console.log("attr slug exists", response.data);
           cb(response.data);
         },
         function(error){

@@ -13,6 +13,10 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
   svc.map = null;
   svc.entities = {};
   svc.attributes = {};
+  svc.count = {
+    entity:0,
+    attr:0
+  };
 
   svc.ingest = _ingest;
   svc.get = _get;
@@ -32,12 +36,16 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
       });
     });
 
-    _saveAll(svc.outEntity.unique());
+    svc.outAttr = svc.outAttr.unique();
+    svc.outEntity = svc.outEntity.unique();
 
-    $attributeService.saveAll(svc.outAttr.unique(), function(attribute){
+    _saveAll(svc.outEntity);
+
+    $attributeService.saveAll(svc.outAttr, function(attribute){
       svc.attributes[attribute.slug] = attribute;
+
+      _checkProgress();
     });
-    //_saveAllAttr();
   }
 
   function _saveAll(entities)
@@ -47,7 +55,7 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
     angular.forEach(entities, function(entity, idx) {
 
       _getBySlug(entity, function(response){
-          console.log("slug exists", response.data);
+          svc.entities[response.data.slug] = response.data;
       },
       function(error){
 
@@ -57,7 +65,6 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
             name: entity.fromSlug(),
             slug: entity
           };
-
           svc._executeCreate(endpoint, req, _onCreateSuccess, svc._handleError);
         }
       })
@@ -70,12 +77,38 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
 
     svc.entities[entity.slug] = entity;
 
-    console.log("create success", svc.entities);
+    _checkProgress();
   }
 
-  function _saveAllAttr(attrs)
+  function _checkProgress()
   {
-    console.log("save all attr", attrs);
+    if(Object.keys(svc.entities).length == Object.keys(svc.outEntity).length
+      && Object.keys(svc.attributes).length == Object.keys(svc.outAttr).length)
+          _mapAssociations()
+  }
+
+  function _mapAssociations()
+  {
+    console.log("MAP ALL ASSOCIATIONS");
+
+    angular.forEach(svc.map, function(attributes, entitySlug) {
+
+      console.log("map %s: %s", entitySlug, attributes.join(", "));
+
+      var entity = svc.entities[entitySlug];
+
+      angular.forEach(attributes, function(attrSlug, idx) {
+        var attribute = svc.attributes[attrSlug];
+
+      //  have to use a different GET route here to work around windows bug: https://github.com/balderdashy/sails/issues/2787
+      //  http://localhost:1337/entity/1/attributes/add?id=2
+         var url = "/" + svc.name + "/" + entity.id + "/attributes/add?id=" + attribute.id;
+
+        svc._executeRetrieve(url, {}, _onAssociateSuccess, svc._handleError);
+
+      });
+
+    });
   }
 
   function _getBySlug(name, onSuccess, onError)
@@ -92,9 +125,9 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
     svc._executeRetrieve(url, onSuccess, onError)
   }
 
-  function _createSuccess(response)
+  function _onAssociateSuccess(response)
   {
-    console.log("entity created", response);
+    console.log("association created", response);
   }
 };
 
