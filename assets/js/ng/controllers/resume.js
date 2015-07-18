@@ -2,7 +2,7 @@ satellite.ng.page.resumeControllerFactory = function (
   $scope
   , $baseController
   , $istuntService
-  , $entityService
+  , $recordService
 ) {
 
   var vm = this;
@@ -11,58 +11,51 @@ satellite.ng.page.resumeControllerFactory = function (
 
   vm.$scope = $scope;
   vm.$istuntService = $istuntService;
-  vm.$entityService = $entityService;
+  vm.$recordService = $recordService;
 
   vm.userId = 467;  //  TODO: manage this id and support multiple
   vm.title = "Manage Resume";
-  vm.schema = null;
   vm.schemaString = null;
-  vm.schemaEntities = null;
+  vm.schemaRecords = null;
 
-  //vm.import = _import;
+  vm.import = _import;
 
-  //_init();
-  //
-  //function _init()
-  //{
-  //  console.log("resume controller init");
-  //  vm.$entityService.getByGroup("resume", _onGetEntitiesSuccess, _onImportError);
-  //}
-  //
-  //function _import()
-  //{
-  //  vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onImportError)
-  //}
-  //
-  //function _onGetEntitiesSuccess(response)
-  //{
-  //  vm.schema = response.data;
-  //
-  //  console.log("got resume data", vm.schema);
-  //}
-  //
-  //function _onIngestSuccess(response)
-  //{
-  //
-  //}
-  //
-  //function _onImportSuccess(response)
-  //{
-  //  vm.schema = response.data;
-  //  vm.schemaString =  JSON.stringify(vm.schema, null,"    ");
-  //  vm.schemaEntities = vm.$istuntService.parseResumeEntities(vm.schema);
-  //
-  //  vm.$entityService.ingest(vm.userId, vm.schemaEntities, _onIngestSuccess,_onImportError);
-  //}
-  //
-  //function _onImportError(data)
-  //{
-  //  console.error("error getting istunt resume", data);
-  //}
+  _init();
+
+  function _init()
+  {
+    console.log("resume controller init");
+    //vm.$entityService.getByGroup("resume", _onGetEntitiesSuccess, _onImportError);
+  }
+
+  function _import()
+  {
+    vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onImportError)
+  }
+
+  function _onImportSuccess(response)
+  {
+    vm.schemaString =  JSON.stringify(response.data, null,"    ");
+    vm.schemaRecords = vm.$istuntService.parseResumeRecords(response.data);
+
+    console.log("parsed records", vm.schemaRecords);
+
+    vm.$recordService.ingest(vm.userId, vm.schemaRecords, _onIngestSuccess,_onImportError);
+  }
+
+  function _onIngestSuccess()
+  {
+    _init();
+  }
+
+  function _onImportError(err)
+  {
+    console.error("error importing records", err);
+  }
 
 };
 
 satellite.ng.addController(satellite.ng.app.module
   , "resumeController"
-  , ['$scope', '$baseController', '$istuntService','$entityService']
+  , ['$scope', '$baseController', '$istuntService', '$recordService']
   , satellite.ng.page.resumeControllerFactory);

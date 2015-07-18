@@ -29,6 +29,10 @@ module.exports = {
       type:"text",
       required:false
     },
+    active:{
+      type:"boolean",
+      required:false
+    },
     attributes:{
       collection: "attribute", // match model name here
       via: "parent", // match attribute name on other model

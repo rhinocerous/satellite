@@ -146,7 +146,7 @@
       <div class="panel-heading">
         <span class="panel-title">
           {{schema.title}}
-          <em class="fa fa-lg fa-anchor pull-right"></em>
+          <em class="fa fa-lg fa-wrench pull-right"></em>
         </span>
       </div>
 
@@ -191,7 +191,7 @@
       </div>
 
       <div class="panel-body">
-          <h1>RESUME WTF</h1>
+        <a class="btn btn-amber" data-ng-click="resume.import()">Import iStunt Resume</a>
       </div>
     </div>
   </div>
@@ -282,6 +282,8 @@
 <script src="/js/ng/services/istuntService.js"></script>
 <script src="/js/ng/services/entityService.js"></script>
 <script src="/js/ng/services/attributeService.js"></script>
+<script src="/js/ng/services/recordService.js"></script>
+<script src="/js/ng/services/valueService.js"></script>
 <script src="/js/ng/controllers/navigation.js"></script>
 <script src="/js/ng/controllers/bio.js"></script>
 <script src="/js/ng/controllers/settings.js"></script>

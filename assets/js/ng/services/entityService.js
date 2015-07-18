@@ -63,7 +63,8 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
           var req = {
             name: entity.capitalize(),
             slug: entity,
-            group:"resume"
+            group:"resume",
+            active:true
           };
           svc._executeCreate(endpoint, req, _onCreateSuccess, svc._handleError);
         }

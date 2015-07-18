@@ -21,7 +21,7 @@ satellite.ng.page.navigationControllerFactory = function (
     { link: '#/resume', label: 'Resume', icon: 'fa-book' },
     { link: '#/awards', label: 'Awards', icon: 'fa-fire' },
     { link: '#/actors', label: 'Actors', icon: 'fa-bullseye' },
-    { link: '#/schema', label: 'Schema', icon: 'fa-anchor' }
+    { link: '#/schema', label: 'Schema', icon: 'fa-wrench' }
 
   ];
 

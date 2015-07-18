@@ -22,7 +22,7 @@ module.exports = {
     type:{
       type:"string",
       required:true,
-      enum: ['string', 'text', 'int','decimal', 'bool']
+      enum: ['string', 'text', 'int','decimal', 'bool','date','datetime','json']
     },
     description:{
       type:"text",
