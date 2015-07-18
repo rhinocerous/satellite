@@ -745,8 +745,8 @@ section .login-overlay {
   text-align: center;
 }
 .owl-theme-main .owl-item .item img {
-  width: 120px;
-  height: 120px;
+  width: 240px;
+  height: 240px;
   margin: 0 auto;
   display: block;
   border-radius: 10px;
@@ -1743,8 +1743,8 @@ section .overlay-text {
   min-height: 250px;
 }
 #testimonials .carousel blockquote img {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
 }
 #testimonials .carousel blockquote p {
   font-size: 1.3em;
