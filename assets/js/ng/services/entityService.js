@@ -5,10 +5,12 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService)
   $.extend( svc, $baseHttpService);
 
   svc.name = "entity";
+  svc.buffer = null;
 
   svc.ingest = _ingest;
   svc.get = _get;
-  svc.getByName = _getByName;
+  svc.getBySlug = _getBySlug;
+
 
   function _ingest(userId, data, onSuccess, onError)
   {
@@ -16,28 +18,34 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService)
 
     var output = [];
 
-    angular.forEach(data, function(value, key) {
+    var endpoint = "/" + svc.name + "/ingest";
 
-      var type = value['ur_type'];
+    angular.forEach(data, function(attributes, slug) {
 
-      //if(!output[type])
-      //{
-      //  output[type] = [];
-      //
-      //  if(value['ur_data'])
-      //  {
-      //    angular.forEach(value['ur_data'], function(dval, dkey) {
-      //      output[type].push(dkey);
-      //    });
-      //  }
-      //}
+      var attrs = [];
+
+      angular.forEach(attributes, function(av, ak) {
+        attrs.push({
+          name: av.fromSlug(),
+          slug: av
+        })
+      });
+
+      var req = {
+        name: slug.fromSlug(),
+        slug: slug,
+        attributes: attrs
+      };
+
+      output.push(req);
     });
-    //svc._executeCreate(url, data, onSuccess, onError);
+
+    svc._executeCreate(endpoint, output, _createSuccess, svc._handleError);
   }
 
-  function _getByName(name, onSuccess, onError)
+  function _getBySlug(name, onSuccess, onError)
   {
-    var url = "/" + svc.name + "/" + name;
+    var url = "/" + svc.name + "/slug/" + name;
 
     svc._executeRetrieve(url, onSuccess, onError)
   }
@@ -47,6 +55,11 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService)
     var url = "/" + svc.name + "/" + id;
 
     svc._executeRetrieve(url, onSuccess, onError)
+  }
+
+  function _createSuccess(response)
+  {
+    console.log("entity created", response);
   }
 };
 

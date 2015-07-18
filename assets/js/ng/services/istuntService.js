@@ -16,7 +16,7 @@ satellite.ng.app.services.istuntServiceFactory = function ($baseHttpService)
 
   function _parseResumeEntities(data)
   {
-    var output = [];
+    var output = {};
 
     angular.forEach(data, function(value, key) {
 

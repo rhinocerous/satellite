@@ -24,7 +24,7 @@ module.exports = {
     },
     parent:{
       collection: "entity", // match model name
-      via: "attribute_list" // match attribute name
+      via: "attributes" // match attribute name
     }
   }
 };

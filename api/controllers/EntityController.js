@@ -6,9 +6,33 @@
  */
 
 module.exports = {
-  findBySlug: function (req, res) {
+  ingest: function (req, res) {
 
-    console.log(req.params);
+    async.map(req.body, function iterator (entity, cb){
+
+            Entity.findOneBySlug(entity.slug).exec(function (err, dbEntity) {
+
+              if (!dbEntity) {
+                Entity.create({name: entity.name, slug: entity.slug}).exec(function (ce, cr) {
+
+                  AttributeService.attach(cr, entity.attributes);
+                });
+              }
+              else {
+                AttributeService.attach(dbEntity, entity.attributes);
+              }
+
+              cb(null, {});
+            });
+    },
+    function () {
+
+      return res.json(req.body);
+
+
+    });
+  },
+  findBySlug: function (req, res) {
 
     Entity.findOneBySlug(req.params.slug).exec(function (err, entity) {
       if (err)

@@ -7,6 +7,7 @@
 
 module.exports = {
 
+  exist:[],
   attributes: {
     name:{
       type:"string",
@@ -22,7 +23,7 @@ module.exports = {
       type:"text",
       required:false
     },
-    attribute_list:{
+    attributes:{
       collection: "attribute", // match model name here
       via: "parent", // match attribute name on other model
       dominant: true // dominant side

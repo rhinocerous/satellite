@@ -2,6 +2,7 @@ String.prototype.fromSlug = function()
 {
   return this
     .replace('-',' ')
+    .replace('_',' ')
     .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
 
@@ -87,6 +88,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
   svc._executeCreate = __executeCreate;
   svc._executeUpdate = __executeUpdate;
   svc._executeRetrieve = __executeRetrieve;
+  svc._handleError = __handleError;
 
   function __executeUpsert(name, data, success, error ) {
 
@@ -134,6 +136,11 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
     });
 
     return( request.then( success, error ) );
+  }
+
+  function __handleError()
+  {
+    console.error("error handled by base service", arguments);
   }
 
   return svc;

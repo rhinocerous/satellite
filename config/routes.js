@@ -31,6 +31,16 @@ module.exports.routes = {
     action: 'findBySlug',
     skipAssets: true
   },
+  'post /entity/ingest': {
+    controller: 'EntityController',
+    action: 'ingest',
+    skipAssets: true
+  },
+  'get /attribute/slug/:slug': {
+    controller: 'AttributeController',
+    action: 'findBySlug',
+    skipAssets: true
+  },
   'get /alternate': {
     controller: 'IndexController',
     action: 'alternate',
@@ -39,6 +49,11 @@ module.exports.routes = {
   'get /admin': {
     controller: 'IndexController',
     action: 'admin',
+    skipAssets: true
+  },
+  'get /export': {
+    controller: 'IstuntRelationController',
+    action: 'export',
     skipAssets: true
   }
 };
