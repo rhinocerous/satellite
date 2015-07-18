@@ -59,11 +59,16 @@ satellite.ng.page.schemaControllerFactory = function (
 
   function _onImportSuccess(response)
   {
-    vm.schema = response.data;
-    vm.schemaString =  JSON.stringify(vm.schema, null,"    ");
-    vm.schemaEntities = vm.$istuntService.parseResumeEntities(vm.schema);
+    var raw = response.data;
+    vm.schemaString =  JSON.stringify(raw, null,"    ");
+    vm.schemaEntities = vm.$istuntService.parseResumeEntities(raw);
 
-    vm.$entityService.ingest(vm.userId, vm.schemaEntities);
+    vm.$entityService.ingest(vm.userId, vm.schemaEntities, _onIngestSuccess);
+  }
+
+  function _onIngestSuccess()
+  {
+    _init();
   }
 
   function _onError(data)

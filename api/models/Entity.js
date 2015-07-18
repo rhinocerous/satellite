@@ -17,7 +17,8 @@ module.exports = {
     slug:{
       type:"string",
       required:true,
-      minLength: 2
+      minLength: 2,
+      unique: true
     },
     group:{
       type:"string",

@@ -13,15 +13,18 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
   svc.map = null;
   svc.entities = {};
   svc.attributes = {};
+  svc.cb = null;
 
   svc.ingest = _ingest;
   svc.get = _get;
   svc.getBySlug = _getBySlug;
   svc.getByGroup = _getByGroup;
 
-  function _ingest(userId, data)
+
+  function _ingest(userId, data, cb)
   {
     svc.map = data;
+    svc.cb = cb;
 
     angular.forEach(svc.map, function(attributes, slug) {
 
@@ -39,6 +42,8 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
 
     $attributeService.saveAll(svc.outAttr, function(attribute){
       svc.attributes[attribute.slug] = attribute;
+
+      _checkProgress();
     });
   }
 
@@ -56,7 +61,7 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
         if(404 == error.status)
         {
           var req = {
-            name: entity.fromSlug(),
+            name: entity.capitalize(),
             slug: entity,
             group:"resume"
           };
@@ -103,6 +108,8 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
         svc._executeRetrieve(url, _onAssociateSuccess, svc._handleError);
 
       });
+
+      svc.cb();
 
     });
   }

@@ -25,8 +25,9 @@ satellite.ng.app.services.attributeServiceFactory = function ($baseHttpService)
           if(404 == error.status)
           {
             var req = {
-              name: attr.fromSlug(),
-              slug: attr
+              name: attr.capitalize(),
+              slug: attr,
+              type:"string"
             };
 
             svc._executeCreate(endpoint, req, function (createResponse) {

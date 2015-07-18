@@ -16,7 +16,13 @@ module.exports = {
     slug:{
       type:"string",
       required:true,
-      minLength: 2
+      minLength: 2,
+      unique: true
+    },
+    type:{
+      type:"string",
+      required:true,
+      enum: ['string', 'text', 'int','decimal', 'bool']
     },
     description:{
       type:"text",
