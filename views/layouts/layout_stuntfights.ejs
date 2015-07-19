@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="/styles/prestige/magnific-popup.css">
   <link rel="stylesheet" href="/styles/prestige/theme-updates.css">
   <link rel="stylesheet" href="/styles/prestige/theme.css">
+  <link rel="stylesheet" href="/styles/prestige/stuntfights.css">
   <!--STYLES END-->
 
 
@@ -371,15 +372,67 @@
                            RESUME
     ================================================== -->
 
+<section class="section-content section-isotope" id="resume">
+  <div class="page-header text-center">
+    <h3>Professional</h3>
+    <h2>Resume</h2>
+  </div>
+
+
+  <div class="container">
+    <div id="filters" class="button-group text-center">
+      <button data-filter-value="*" class="active">show all</button>
+      <button data-filter-value=".film_credits">film credits</button>
+      <button data-filter-value=".television">television</button>
+    </div>
+    <div class="row demo-3">
+      <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 100, "layoutMode": "masonry", "itemSelector": ".resume-item" }'>
+
+        <% _.each(records.resume, function(entity)  {
+
+          switch (entity.slug){
+
+          case 'film_credits':
+          case 'television':
+        %>
+        <%- partial ('../partials/resume/default.ejs', {entity: entity}) %>
+        <%
+
+          break;
+
+        default:
+        %>
+
+        <%
+          break;
+        }
+        });
+        %>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+</section>
+
 <section class="section-content section-isotope separator" id="projects">
 
   <div class="page-header text-center">
-    <h3>Projects</h3>
-    <h2>My latest work</h2>
+    <h3>Professional</h3>
+    <h2>Resume</h2>
   </div>
 
   <div class="container">
-    <div class="row demo-3">
+    <div class="row">
+
+      <div class="col-lg-12">
+
+
+      </div>
+
       <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".portfolio-item" }'>
         <div class="col-sm-6 col-md-4 portfolio-item design">
           <figure>

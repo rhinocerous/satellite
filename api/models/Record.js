@@ -25,7 +25,6 @@ module.exports = {
       dominant: true // dominant side
     }
   },
-
   getByEntityGroup:function(group, cb) {
 
     Entity.findByGroup(group).exec(function (err, entities) {

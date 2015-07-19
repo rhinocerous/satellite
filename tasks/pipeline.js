@@ -31,7 +31,8 @@ var cssFilesToInject = [
   //'styles/prestige/theme-orange.css',
   //'styles/prestige/theme-salmonpink.css',
   'styles/prestige/theme-updates.css',
-  'styles/prestige/theme.css'
+  'styles/prestige/theme.css',
+  'styles/prestige/stuntfights.css'
 
 //  'styles/**/*.css'
 ];

@@ -1,0 +1,17 @@
+
+
+  <% _.each(entity.values, function(value)  { %>
+
+  <div class="col-sm-6 col-md-4 resume-item <%= entity.slug%>">
+    <figure>
+
+        <p><%=entity.name %></p>
+
+      <h3><%=value.project_title%></h3>
+        <span><%=value.role_position %></span>
+
+
+    </figure>
+  </div>
+    <% }); %>
+

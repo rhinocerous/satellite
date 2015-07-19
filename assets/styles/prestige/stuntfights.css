@@ -1,0 +1,92 @@
+.grid {
+  list-style: none;
+  margin: 0 auto;
+  text-align: center;
+}
+.grid .resume-item {
+  display: inline-block;
+  margin: 0;
+  padding: 20px;
+  position: relative;
+  text-align: left;
+}
+
+.grid .resume-item .wide {
+  width:200%;
+}
+
+.grid figure {
+  margin: 0;
+  padding:20px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(43, 45, 53, 0.7);
+  border-radius: 4px;
+}
+.grid figure .info {
+  padding: 0;
+  position: absolute;
+  bottom: -60px;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+}
+.grid figure h3 {
+  font-size: 1.5em;
+  margin-bottom: 4px;
+}
+.grid figure span {
+  color: white;
+}
+.grid figure img {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  position: relative;
+}
+.grid figcaption {
+  background-color: rgba(43, 45, 53, 0.97);
+  min-height: 35px;
+  left: 0;
+  padding: 16px 3px 0 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  border-radius: 0 0 4px 4px;
+}
+.grid figcaption a {
+  position: absolute;
+  bottom: 20%;
+}
+.grid figcaption a.link,
+.grid figcaption a.preview {
+  display: inline-block;
+  background: white;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #88b7b3;
+  text-decoration: none;
+}
+.grid figcaption a.preview {
+  left: 38%;
+}
+.grid figcaption a.link {
+  right: 38%;
+}
+.grid figcaption a.link:hover,
+.grid figcaption a.preview:hover {
+  background: #fff;
+  color: #68a49f;
+  transition: background 0.1s linear 0.1s;
+}
+.grid figcaption span {
+  color: #fff;
+  font-style: italic;
+  padding: 0 10px 0 10px;
+}
+.grid figcaption h3 {
+  color: #fff;
+}
