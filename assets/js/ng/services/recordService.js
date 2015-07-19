@@ -81,23 +81,13 @@ satellite.ng.app.services.recordServiceFactory = function (
               valString:val
             });
 
-            console.log("count: %s total %s",Object.keys(req.values).length, Object.keys(record).length);
-
             if(Object.keys(req.values).length ==  Object.keys(record).length - 1)
             {
-              console.log("execute create", req);
-              
               svc._executeCreate(url, req,  _onCreateRecord, svc._handleError)
             }
-
           }
         });
-
       });
-
-
-
-
     });
   }
 

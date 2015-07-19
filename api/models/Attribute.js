@@ -32,6 +32,23 @@ module.exports = {
       collection: "entity", // match model name
       via: "attributes" // match attribute name
     }
+  },
+  getAllSorted:function(cb)
+  {
+    Attribute.find()
+      .exec(function (err, attrs) {
+
+        if(err)
+          return cb(err);
+
+        var out = {};
+
+        attrs.forEach(function(attr) {
+          out[attr.id] = attr;
+        });
+
+        cb(null, out);
+      });
   }
 };
 

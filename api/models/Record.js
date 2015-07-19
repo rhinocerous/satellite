@@ -24,6 +24,43 @@ module.exports = {
       via: "record", // match attribute name on other model
       dominant: true // dominant side
     }
+  },
+
+  getByEntityGroup:function(group, cb) {
+
+    Entity.findByGroup(group).exec(function (err, entities) {
+
+      if (err || !entities)
+        return cb(null, []);
+
+
+      Attribute.getAllSorted(function(errAttr, attrs)
+      {
+        var entityIds = [];
+
+        entities.forEach(function (entity) {
+          entityIds.push(entity.id);
+        });
+
+        Record.find({
+          entity: entityIds
+          //active:true
+          })
+          .populate('values')
+          .populate('entity')
+          .exec(function (errRec, records) {
+
+            records.forEach(function(record){
+              record.values.forEach(function(value){
+                value.attribute = attrs[value.attribute];
+              });
+            });
+
+              RecordService.organize(records, cb);
+          });
+
+      });
+    });
   }
 };
 

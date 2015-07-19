@@ -36,6 +36,11 @@ module.exports.routes = {
     action: 'findByGroup',
     skipAssets: true
   },
+  'get /entity/group/:group/records': {
+    controller: 'RecordController',
+    action: 'findByEntityGroup',
+    skipAssets: true
+  },
   'post /entity/ingest': {
     controller: 'EntityController',
     action: 'ingest',
