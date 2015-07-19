@@ -49,11 +49,11 @@ var jsFilesToInject = [
   'js/dependencies/jquery.nav.js',
   'js/dependencies/jquery.scrollTo.js',
 
-  'js/prestige/docs.min.js',
+  //'js/prestige/docs.min.js',
   'js/prestige/scrollReveal.js',
   'js/prestige/isotope.pkgd.min.js',
   'js/prestige/isotope.js',
-  'js/prestige/cbpAnimatedHeader.min.js',
+  //'js/prestige/cbpAnimatedHeader.min.js',
   'js/prestige/classie.js',
   'js/prestige/imagesloaded.pkgd.js',
   'js/prestige/less.js',
