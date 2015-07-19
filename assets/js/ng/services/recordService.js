@@ -24,6 +24,7 @@ satellite.ng.app.services.recordServiceFactory = function (
 //----------- public API ------------
   svc.get = _get;
   svc.ingest = _ingest;
+  svc.getByEntityGroup = _getByEntityGroup;
 
 //----------- functions ------------
   function _ingest(userId, data, cb)
@@ -109,6 +110,13 @@ satellite.ng.app.services.recordServiceFactory = function (
   function _onIngestValues()
   {
     console.log("done ingesting");
+  }
+
+  function _getByEntityGroup(group, onSuccess, onError)
+  {
+    var url = "/entity/group/" + group + "/records";
+
+    svc._executeRetrieve(url, onSuccess, onError)
   }
 
   function _get(id, onSuccess, onError)

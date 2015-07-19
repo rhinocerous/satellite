@@ -191,6 +191,32 @@
       </div>
 
       <div class="panel-body">
+
+        <accordion close-others="true">
+          <accordion-group class="panel panel-info bg-light" data-ng-repeat="entity in resume.records track by entity.id">
+
+            <accordion-heading>
+              {{entity.name}}
+            </accordion-heading>
+            <!-- START table-responsive-->
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th ng-repeat="header in entity.headers track by header.id">{{header.name}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="value in entity.values">
+                  <td ng-repeat="(key, prop) in value">{{prop}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- END table-responsive-->
+          </accordion-group>
+        </accordion>
+
         <a class="btn btn-amber" data-ng-click="resume.import()">Import iStunt Resume</a>
       </div>
     </div>

@@ -66,6 +66,8 @@ satellite.ng.app.module = angular.module('satelliteApp', satellite.ng.getModuleD
     }
   });
 
+
+
 satellite.ng.app.module.value('$satellite', satellite  );
 
 satellite.ng.exceptions.argumentException = function (msg) {

@@ -56,7 +56,9 @@ module.exports = {
               });
             });
 
-              RecordService.organize(records, cb);
+             // RecordService.organize(records, cb);
+
+            cb(null, records);
           });
 
       });

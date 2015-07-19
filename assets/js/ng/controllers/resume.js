@@ -17,6 +17,7 @@ satellite.ng.page.resumeControllerFactory = function (
   vm.title = "Manage Resume";
   vm.schemaString = null;
   vm.schemaRecords = null;
+  vm.records = null;
 
   vm.import = _import;
 
@@ -24,13 +25,17 @@ satellite.ng.page.resumeControllerFactory = function (
 
   function _init()
   {
-    console.log("resume controller init");
-    //vm.$entityService.getByGroup("resume", _onGetEntitiesSuccess, _onImportError);
+    vm.$recordService.getByEntityGroup("resume", _onGetRecordsSuccess, _onImportError);
   }
 
   function _import()
   {
     vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onImportError)
+  }
+
+  function _onGetRecordsSuccess(response)
+  {
+    vm.records = response.data;
   }
 
   function _onImportSuccess(response)
