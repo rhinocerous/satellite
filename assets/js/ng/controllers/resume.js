@@ -59,12 +59,14 @@ satellite.ng.page.resumeControllerFactory = function (
     });
 
     modalInstance.result.then(function (selectedRecord) {
-      vm.selectedRecord = selectedRecord;
 
-      console.log("save data", vm.selectedRecord);
+      console.log("save data", selectedRecord);
+
+      vm.selectedRecord = null;
 
     }, function () {
 
+      vm.selectedRecord = null;
       console.log('Modal canceled at: ' + new Date());
     });
   }
