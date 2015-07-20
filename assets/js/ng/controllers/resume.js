@@ -3,6 +3,7 @@ satellite.ng.page.resumeControllerFactory = function (
   , $baseController
   , $istuntService
   , $recordService
+  , $modal
 ) {
 
   var vm = this;
@@ -12,14 +13,18 @@ satellite.ng.page.resumeControllerFactory = function (
   vm.$scope = $scope;
   vm.$istuntService = $istuntService;
   vm.$recordService = $recordService;
+  vm.$modal = $modal;
 
   vm.userId = 467;  //  TODO: manage this id and support multiple
   vm.title = "Manage Resume";
   vm.schemaString = null;
   vm.schemaRecords = null;
   vm.records = null;
+  vm.selectedRecord = null;
+  vm.selectedEntity = null;
 
   vm.import = _import;
+  vm.selectRecord = _selectRecord;
 
   _init();
 
@@ -31,6 +36,37 @@ satellite.ng.page.resumeControllerFactory = function (
   function _import()
   {
     vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onImportError)
+  }
+
+  function _selectRecord(record, entity) {
+
+    vm.selectedEntity = entity;
+    vm.selectedRecord = record;
+
+    var modalInstance = vm.$modal.open({
+      animation: true,
+      templateUrl: '/templates/modalContent.html',
+      controller: 'modalRecordController as mc',
+      size: 'lg',
+      resolve: {
+        record: function () {
+          return vm.selectedRecord;
+        },
+        entity: function () {
+          return vm.selectedEntity;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedRecord) {
+      vm.selectedRecord = selectedRecord;
+
+      console.log("save data", vm.selectedRecord);
+
+    }, function () {
+
+      console.log('Modal canceled at: ' + new Date());
+    });
   }
 
   function _onGetRecordsSuccess(response)
@@ -62,5 +98,5 @@ satellite.ng.page.resumeControllerFactory = function (
 
 satellite.ng.addController(satellite.ng.app.module
   , "resumeController"
-  , ['$scope', '$baseController', '$istuntService', '$recordService']
+  , ['$scope', '$baseController', '$istuntService', '$recordService', '$modal']
   , satellite.ng.page.resumeControllerFactory);
