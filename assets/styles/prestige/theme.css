@@ -1748,6 +1748,7 @@ section .overlay-text {
 #testimonials .carousel blockquote img {
   width: 140px;
   height: 140px;
+  border-radius: 13px;
 }
 #testimonials .carousel blockquote p {
   font-size: 1.3em;
