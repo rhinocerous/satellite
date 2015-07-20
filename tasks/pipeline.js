@@ -60,7 +60,7 @@ var jsFilesToInject = [
   'js/prestige/less.js',
   'js/prestige/modernizr.custom.js',
   'js/prestige/owl.carousel.js',
-  'js/prestige/jssor.slider.mini.js',
+  //'js/prestige/jssor.slider.mini.js',
   'js/prestige/custom.js'
 
   //'js/ng/angular-1.4.1.js',
