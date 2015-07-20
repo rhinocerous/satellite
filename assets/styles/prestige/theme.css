@@ -23,6 +23,9 @@ body {
 .margin-top {
   margin-top: 3em;
 }
+.margin-top2 {
+  margin-top: 0;
+}
 .margin-bottom {
   margin-bottom: 3em;
 }
