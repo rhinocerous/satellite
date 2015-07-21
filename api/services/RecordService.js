@@ -3,7 +3,7 @@ module.exports = {
   updateValues:function(record, cb)
   {
 
-    console.log("update record \n%s", JSON.stringify(record, null, " "));
+    //console.log("update record \n%s", JSON.stringify(record, null, " "));
 
     Record.find({id:record.id})
       .populate('values')
@@ -22,7 +22,7 @@ module.exports = {
 
               _.each(record, function (recVal, recKey) {
 
-                console.log("match from request ----> %s -> %s", recVal, recKey);
+                //console.log("match from request ----> %s -> %s", recVal, recKey);
 
                 if (value.attribute.slug == recKey) {
 
@@ -31,7 +31,7 @@ module.exports = {
                     valString:recVal
                   };
 
-                  console.log("update values \n%s", JSON.stringify(req, null, " "));
+                  //console.log("update values \n%s", JSON.stringify(req, null, " "));
 
                   Value.update(value.id, req).exec(function (updateErr, updatedVal) {
                     console.log("value updated");
@@ -50,7 +50,7 @@ module.exports = {
 
                   AttributeService.decorateRecords(foundUp, function(err, recordsUp
                   ){
-                    console.log("found UPDATED values \n%s", JSON.stringify(recordsUp, null, " "));
+                    //console.log("found UPDATED values \n%s", JSON.stringify(recordsUp, null, " "));
                     return cb(err, recordsUp);
                   });
 
