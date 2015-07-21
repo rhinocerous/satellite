@@ -54,7 +54,7 @@ var jsFilesToInject = [
   'js/prestige/scrollReveal.js',
   'js/prestige/isotope.pkgd.min.js',
   'js/prestige/isotope.js',
-  //'js/prestige/cbpAnimatedHeader.min.js',
+  'js/prestige/cbpAnimatedHeader.min.js',
   'js/prestige/classie.js',
   'js/prestige/imagesloaded.pkgd.js',
   'js/prestige/less.js',
