@@ -25,8 +25,16 @@ satellite.ng.app.services.recordServiceFactory = function (
   svc.get = _get;
   svc.ingest = _ingest;
   svc.getByEntityGroup = _getByEntityGroup;
+  svc.updateValues = _updateValues;
 
 //----------- functions ------------
+  function _updateValues(record, onSuccess, onError)
+  {
+    var url = "/" + svc.name + "/" + record.id + "/values";
+
+    svc._executeUpdate(url, record, onSuccess, onError)
+  }
+
   function _ingest(userId, data, cb)
   {
     svc.map = data;

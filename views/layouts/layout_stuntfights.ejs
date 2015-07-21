@@ -371,25 +371,29 @@
     <div class="row demo-3">
       <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 100, "layoutMode": "masonry", "itemSelector": ".resume-item" }'>
 
-        <% _.each(records.resume, function(entity)  {
-
-          switch (entity.slug){
-
-          case 'film_credits':
-          case 'television':
-        %>
-        <%- partial ('../partials/resume/default.ejs', {entity: entity}) %>
         <%
+        if(records && records.resume)
+        {
+          _.each(records.resume, function(entity)  {
 
-          break;
+            switch (entity.slug){
 
-        default:
-        %>
+            case 'film_credits':
+            case 'television':
+          %>
+          <%- partial ('../partials/resume/default.ejs', {entity: entity}) %>
+          <%
 
-        <%
-          break;
+            break;
+
+          default:
+          %>
+
+          <%
+            break;
+          }
+          });
         }
-        });
         %>
 
       </div>

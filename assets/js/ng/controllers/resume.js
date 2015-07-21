@@ -62,13 +62,22 @@ satellite.ng.page.resumeControllerFactory = function (
 
       console.log("save data", selectedRecord);
 
+      vm.$recordService.updateValues(selectedRecord, _onUpdateRecordsSuccess, _onImportError);
+
       vm.selectedRecord = null;
+
+      _init();
 
     }, function () {
 
       vm.selectedRecord = null;
       console.log('Modal canceled at: ' + new Date());
     });
+  }
+
+  function _onUpdateRecordsSuccess(response)
+  {
+    console.log("update success", response);
   }
 
   function _onGetRecordsSuccess(response)

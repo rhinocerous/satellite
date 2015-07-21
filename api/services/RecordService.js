@@ -1,4 +1,48 @@
 module.exports = {
+
+  updateValues:function(record, cb)
+  {
+
+    console.log("update record \n%s", JSON.stringify(record, null, " "));
+
+
+
+
+    Record.find({id:record.id})
+      .populate('values')
+      .exec(function findCB(err, found) {
+
+      console.log("found values \n%s", JSON.stringify(found, null, " "));
+      console.log("err values \n%s", JSON.stringify(err, null, " "));
+
+      if(found)
+      {
+        //async.map(found, function iterator (value, updateCb){
+        //
+        //    _.each(record, function (recVal, recKey) {
+        //      if(value.slug == recKey)
+        //      {
+        //        value.valString = recVal;
+        //
+        //        Value.update(value.id, value).exec(function(err, updatedVal)
+        //        {
+        //          updateCb()
+        //        });
+        //
+        //        return false;
+        //      }
+        //    });
+        //  },
+        //  function () {
+        //    Value.find({record:record.id}).exec(function findCB(err, found) {
+        //      return cb(err, found);
+        //    })
+        //
+        //  });
+      }
+
+    });
+  },
   organize:function(records, cb)
   {
     var out = {};

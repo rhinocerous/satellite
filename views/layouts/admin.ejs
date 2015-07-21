@@ -238,10 +238,10 @@
     <h3 class="modal-title">Edit {{mc.entity.name}} Record</h3>
   </div>
   <div class="modal-body">
-    <form name="recordForm"
+    <form name="mc.recordForm"
           sf-model="mc.record"
-          sf-form="mc.form"
-          sf-schema="mc.schema"
+          sf-form="mc.formDefinition"
+          sf-schema="mc.schemaDefinition"
           ng-submit="mc.submit(recordForm, mc.record)">
     </form>
   </div>
@@ -331,16 +331,10 @@
 <script src='/js/ng/textAngular-sanitize.min.js'></script>
 <script src='/js/ng/textAngular.min.js'></script>
 <script src='/js/ng/angular-drag-n-drop.js'></script>
-
-
 <script src='/js/ng/tv4.js'></script>
 <script src='/js/ng/ObjectPath.js'></script>
 <script src='/js/ng/ng.schema-form.js'></script>
 <script src='/js/ng/bootstrap-decorator.js'></script>
-
-
-
-
 <script src="/js/ng/ng.satellite.js"></script>
 <script src="/js/ng/services/settingService.js"></script>
 <script src="/js/ng/services/istuntService.js"></script>
@@ -348,6 +342,7 @@
 <script src="/js/ng/services/attributeService.js"></script>
 <script src="/js/ng/services/recordService.js"></script>
 <script src="/js/ng/services/valueService.js"></script>
+<script src="/js/ng/services/formService.js"></script>
 <script src="/js/ng/controllers/navigation.js"></script>
 <script src="/js/ng/controllers/bio.js"></script>
 <script src="/js/ng/controllers/settings.js"></script>
