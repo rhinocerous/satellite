@@ -5,43 +5,69 @@ module.exports = {
 
     console.log("update record \n%s", JSON.stringify(record, null, " "));
 
-
-
-
     Record.find({id:record.id})
       .populate('values')
       .exec(function findCB(err, found) {
 
-      console.log("found values \n%s", JSON.stringify(found, null, " "));
-      console.log("err values \n%s", JSON.stringify(err, null, " "));
+        //console.log("found values \n%s", JSON.stringify(found, null, " "));
+        //console.log("err values \n%s", JSON.stringify(err, null, " "));
 
-      if(found)
-      {
-        //async.map(found, function iterator (value, updateCb){
-        //
-        //    _.each(record, function (recVal, recKey) {
-        //      if(value.slug == recKey)
-        //      {
-        //        value.valString = recVal;
-        //
-        //        Value.update(value.id, value).exec(function(err, updatedVal)
-        //        {
-        //          updateCb()
-        //        });
-        //
-        //        return false;
-        //      }
-        //    });
-        //  },
-        //  function () {
-        //    Value.find({record:record.id}).exec(function findCB(err, found) {
-        //      return cb(err, found);
-        //    })
-        //
-        //  });
-      }
+        if (found && found.length > 0) {
 
-    });
+        AttributeService.decorateRecords(found, function(err, records){
+
+          var dbRecord = records[0];
+
+          async.map(dbRecord.values, function iterator(value, updateCb){
+
+              _.each(record, function (recVal, recKey) {
+
+                console.log("match from request ----> %s -> %s", recVal, recKey);
+
+                if (value.attribute.slug == recKey) {
+
+
+                  var req = {
+                    valString:recVal
+                  };
+
+                  console.log("update values \n%s", JSON.stringify(req, null, " "));
+
+                  Value.update(value.id, req).exec(function (updateErr, updatedVal) {
+                    console.log("value updated");
+                    return updateCb()
+                  });
+                }
+              });
+
+            },
+            function () {
+
+              console.log("----> async callback has fired");
+              Record.find({id:record.id})
+                .populate('values')
+                .exec(function findCB(err, foundUp) {
+
+                  AttributeService.decorateRecords(foundUp, function(err, recordsUp
+                  ){
+                    console.log("found UPDATED values \n%s", JSON.stringify(recordsUp, null, " "));
+                    return cb(err, recordsUp);
+                  });
+
+                });
+
+            });
+        });
+        }
+        else
+        {
+          cb(null, {});
+        }
+      },
+      function () {
+
+
+      });
   },
   organize:function(records, cb)
   {

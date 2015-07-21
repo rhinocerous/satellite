@@ -1,4 +1,18 @@
 module.exports = {
+  decorateRecords:function(records, cb) {
+    Attribute.getAllSorted(function(errAttr, attrs)
+    {
+      records.forEach(function(record){
+
+        var x = 0;
+        record.values.forEach(function(value){
+          value.attribute = attrs[value.attribute];
+        });
+      });
+
+      cb(null, records);
+    });
+  },
   attach:function(entity, attrs)
   {
     console.log("attach attrs for entity %s\n%s", entity.id, JSON.stringify(attrs, null, "  "));

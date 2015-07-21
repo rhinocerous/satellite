@@ -66,8 +66,6 @@ satellite.ng.page.resumeControllerFactory = function (
 
       vm.selectedRecord = null;
 
-      _init();
-
     }, function () {
 
       vm.selectedRecord = null;
@@ -78,6 +76,8 @@ satellite.ng.page.resumeControllerFactory = function (
   function _onUpdateRecordsSuccess(response)
   {
     console.log("update success", response);
+
+    _init();
   }
 
   function _onGetRecordsSuccess(response)
