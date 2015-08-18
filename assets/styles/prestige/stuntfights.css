@@ -1,3 +1,63 @@
+.awards-carousel.owl-theme-main .owl-item .item h3
+{
+  margin:0.5em 0;
+}
+
+.awards-carousel.owl-theme-main .owl-item .item h4
+{
+  margin:0.5em 0;
+}
+
+.awards-carousel.owl-theme-main .owl-item .item img
+{
+  height:160px;
+  width:160px;
+}
+
+section.dark.with-bg2 {
+  background: rgba(0, 0, 0, 0) url("../../images/3.jpg") no-repeat scroll center top / cover ;
+}
+
+.video-container
+{
+  background-color: #b5b5b5;
+  border: 3px solid rgba(165, 165, 165, 1);
+  box-shadow: 5px 5px 5px rgba(43, 45, 53, 0.65);
+  height: 100%;
+}
+
+.video-container-inner
+{
+  margin: 10px;
+}
+
+
+.flex-video {
+  position: relative;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.flex-video.widescreen { padding-bottom: 57.25%; }
+.flex-video.vimeo { padding-top: 0; }
+
+.flex-video iframe,
+.flex-video object,
+.flex-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video { padding-top: 0; }
+}
+
+
 .grid {
   list-style: none;
   margin: 0 auto;
