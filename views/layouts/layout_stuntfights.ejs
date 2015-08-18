@@ -232,30 +232,34 @@
                           ABOUT
     ================================================== -->
 
-<section id="about" class="featured">
+<section id="about">
 
   <div class="container">
     <div class="row">
-      <div class="col-xs-5 text-center">
-        <img class="margin-top2 img-responsive" src="images/tdupont2.jpg" alt="Generic placeholder image" data-sr="enter left, hustle 20px">
+      <div class="col-md-12">
+
+          <div class="col-xs-6 text-center">
+            <img class="img-responsive main-headshot" src="images/tdupont2.jpg" alt="Thomas DuPont: Fight Choreographer and Stunt Coordinator" data-sr="enter left, hustle 20px">
+          </div>
+
+          <div class="col-xs-6">
+              <h2>Thomas Dupont</h2>
+              <p>For more than two decades, Thomas has been successfully choreographing, training and performing fights for commercials, film and television. By using an arsenal of blades and weapons -true or improvised, tapping into
+                martial arts training, and being inspired by "the art of human movement", Thomas creates a variety of fight designs
+                for the camera that are exciting, safe, and surprisingly easy to learn. Thomas' style is frequently highlighted, and had
+                been described as "a combination of focus and precision, power and grace".</p>
+              <p>Thomas' fight scene preparation encompasses instruction from the director, abilities of the performer, and integrity of
+                each character all while staying true to the script. With this foundation in mind, Thomas builds a scene with creativity,
+                diversity, responsibility and originality -ultimately creating a scene with realistic, interesting movements and a distinct
+                personality- often discovering and incorporating elements that have never before been seen on film.</p>
+              <p>
+                By working with stunt performers, as well as training many actors, Thomas developed a level of experience, patience
+                and adaptability needed to train performers of all skill levels. Thomas' ability to quickly assess natural strengths and teach in accordance with each individuals learning process
+                ultimately speeds up the rehearsal process and allows performers maximum potential to be achieved.
+              </p>
+            </div>
+
       </div>
-      </br>
-      <div class="col-xs-6 col-sm-offset-1">
-          <h2>Thomas Dupont</h2>
-          <p>For more than two decades, Thomas has been successfully choreographing, training and performing fights for commercials, film and television. By using an arsenal of blades and weapons -true or improvised, tapping into
-            martial arts training, and being inspired by "the art of human movement", Thomas creates a variety of fight designs
-            for the camera that are exciting, safe, and surprisingly easy to learn. Thomas' style is frequently highlighted, and had
-            been described as "a combination of focus and precision, power and grace".</p>
-          <p>Thomas' fight scene preparation encompasses instruction from the director, abilities of the performer, and integrity of
-            each character all while staying true to the script. With this foundation in mind, Thomas builds a scene with creativity,
-            diversity, responsibility and originality -ultimately creating a scene with realistic, interesting movements and a distinct
-            personality- often discovering and incorporating elements that have never before been seen on film.</p>
-          <p>
-            By working with stunt performers, as well as training many actors, Thomas developed a level of experience, patience
-            and adaptability needed to train performers of all skill levels. Thomas' ability to quickly assess natural strengths and teach in accordance with each individuals learning process
-            ultimately speeds up the rehearsal process and allows performers maximum potential to be achieved.
-          </p>
-        </div>
       </div>
     </div>
 
@@ -317,76 +321,17 @@
 </section>
 
 
-<!--
-    ==================================================
-                           RESUME
-    ================================================== -->
-
-<section class="section-content section-isotope" id="resume">
-  <div class="page-header text-center">
-    <h3>Professional</h3>
-    <h2>Resume</h2>
-  </div>
-
-
-  <div class="container">
-    <div id="filters" class="button-group text-center">
-      <button data-filter-value="*" class="active">show all</button>
-      <button data-filter-value=".film_credits">film credits</button>
-      <button data-filter-value=".television">television</button>
-    </div>
-    <div class="row demo-3">
-      <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 100, "layoutMode": "masonry", "itemSelector": ".resume-item" }'>
-
-        <%
-        if(records && records.resume)
-        {
-          _.each(records.resume, function(entity)  {
-
-            switch (entity.slug){
-
-            case 'film_credits':
-            case 'television':
-          %>
-          <%- partial ('../partials/resume/default.ejs', {entity: entity}) %>
-          <%
-
-            break;
-
-          default:
-          %>
-
-          <%
-            break;
-          }
-          });
-        }
-        %>
-
-      </div>
-    </div>
-  </div>
-
-
-
-
-</section>
-
 <section class="section-content section-isotope separator" id="projects">
 
   <div class="page-header text-center">
-    <h3>Professional</h3>
-    <h2>Resume</h2>
+    <h2>Projects</h2>
   </div>
 
   <div class="container">
     <div class="row">
 
       <div class="col-lg-12">
-
-
       </div>
-
       <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".portfolio-item", "layoutMode: "masonry" }'>
         <div class="col-sm-6 col-md-4 portfolio-item design">
           <figure>
@@ -537,17 +482,97 @@
 
 </section>
 
+<!--
+    ==================================================
+                           RESUME
+    ================================================== -->
+
+<section class="section-content dark" id="resume">
+        <%
+        if(records && records.resume)
+        {
+          _.each(records.resume, function(entity)  {
+
+            switch (entity.slug){
+
+            case 'film_credits':
+            case 'television':
+          %>
+          <%- partial ('../partials/resume/entity.ejs', {entity: entity}) %>
+          <% //partial ('../partials/resume/default.ejs', {entity: entity}) %>
+          <%
+
+            break;
+
+          default:
+          %>
+
+          <%
+            break;
+          }
+          });
+        }
+        %>
+</section>
+
 
 
 <!--
-     ==================================================
-                       RECOGNITIONS
-     ================================================== -->
+    ==================================================
+                            ACTORS TRAINED
+    ================================================== -->
+
+<section id="actors-trained">
+
+  <div class="page-header text-center">
+    <h2>Actors Trained</h2>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="owl-example owl-carousel">
+          <div class="item">
+            <a href="images/thumbs/thumb1.jpg" class="popup-gallery">
+              <img src="images/thumbs/thumb1.jpg" alt="Prestige Portfolio Thumbnail Image">
+            </a>
+          </div>
+          <div class="item">
+            <a href="images/thumbs/thumb2.jpg" class="popup-gallery">
+              <img src="images/thumbs/thumb2.jpg" alt="Prestige Portfolio Thumbnail Image">
+            </a>
+          </div>
+          <div class="item">
+            <a href="images/thumbs/thumb3.jpg" class="popup-gallery">
+              <img src="images/thumbs/thumb3.jpg" alt="Prestige Portfolio Thumbnail Image">
+            </a>
+          </div>
+          <div class="item">
+            <a href="images/thumbs/thumb4.jpg" class="popup-gallery">
+              <img src="images/thumbs/thumb4.jpg" alt="Prestige Portfolio Thumbnail Image">
+            </a>
+          </div>
+          <div class="item">
+            <a href="images/thumbs/thumb5.jpg" class="popup-gallery">
+              <img src="images/thumbs/thumb5.jpg" alt="Prestige Portfolio Thumbnail Image">
+            </a>
+          </div>
+          <div class="item">
+            <a href="images/thumbs/thumb6.jpg" class="popup-gallery">
+              <img src="images/thumbs/thumb6.jpg" alt="Prestige Portfolio Thumbnail Image">
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="testimonials" class="dark">
 
   <div class="page-header text-center">
-    <h2>TESTIMONIALS</h2>
+    <h2>Testimonials</h2>
   </div>
 
   <div class="container">
@@ -623,61 +648,6 @@
 
 
 
-<!--
-    ==================================================
-                            ACTORS TRAINED
-    ================================================== -->
-
-<section id="actors-trained">
-
-  <div class="page-header text-center">
-    <h3>Actors</h3>
-    <h2>Trained</h2>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="owl-example owl-carousel">
-          <div class="item">
-            <a href="images/thumbs/thumb1.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb1.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb2.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb2.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb3.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb3.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb4.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb4.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb5.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb5.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-          <div class="item">
-            <a href="images/thumbs/thumb6.jpg" class="popup-gallery">
-              <img src="images/thumbs/thumb6.jpg" alt="Prestige Portfolio Thumbnail Image">
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-
 
 
 <!--
@@ -686,7 +656,11 @@
         ================================================== -->
 
 
-<section id="featured2" class="featured dark">
+<section id="contact" class="featured">
+
+  <div class="page-header text-center">
+    <h2>Contact Thomas</h2>
+  </div>
 
   <div class="container">
     <div class="row">
@@ -696,7 +670,6 @@
       </div>
       <div class="col-sm-5 col-sm-offset-1">
         <div class="vertical-align">
-          <h2>Contact Me</h2>
 
           <p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Tad Lumpkin</p>
 
@@ -705,7 +678,7 @@
           <p><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp; (310) 550-4404</p>
 
           <p>
-            <button class="btn contact-button" type="button" role="button">Contact us</button>
+            <button class="btn contact-button" type="button" role="button">Send Message</button>
           </p>
           <div class='contact-form'>
             <form name="sentMessage" id="contactForm">
@@ -747,27 +720,29 @@
                           FOOTER
     ================================================== -->
 
-<footer id="contact" class="footer">
+<footer id="contact" class="footer dark">
 
   <div class="container">
 
     <div class="row">
 
-      <div class="col-sm-6">
-        <p class="copyright font-alt">© 2015 <a href="#">Thomas DuPont</a>, All Rights Reserved.</p>
+      <div class="col-sm-4">
+        <p class="copyright font-alt">© 2015 <a href="/">Thomas DuPont</a>, All Rights Reserved.</p>
       </div>
 
-      <div class="col-sm-6">
+      <div class="col-sm-4 text-center">
         <div class="footer-social-links">
           <!--<a class="icon" href="#" target="_blank"><i class="fa fa-twitter"></i></a>-->
           <!--<a class="icon" href="#" target="_blank"><i class="fa fa-facebook"></i></a>-->
-          <div class="col-sm-1">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-            </div>
-          <div class="col-sm-1">
-          <a href="#"><i class="fa fa-twitter"></i></a>
-            </div>
+            <a href="https://www.facebook.com/pages/StuntFightscom/150948914972723" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
         </div>
+
+      </div>
+
+      <div class="col-sm-4 text-right">
+        <p class="copyright font-alt">Powered by <a href="http://istunt.com">iStunt</a>.</p>
+
       </div>
 
     </div>

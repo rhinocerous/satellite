@@ -1,0 +1,28 @@
+<div class="page-header text-center" id="<%=entity.slug %>">
+  <h2><%=entity.name %></h2>
+</div>
+<div class="container">
+  <div class="row">
+    <% _.each(entity.values, function(value)  { %>
+
+    <div class="col-md-12">
+
+      <div class="left col-md-4 col-xs-6">
+        <p><%=value.project_title%></p>
+      </div>
+
+      <div class="left col-md-4 col-xs-6">
+        <p><%=value.role_position %></p>
+      </div>
+
+      <div class="left col-md-4 visible-md-block visible-lg-block">
+        <p><%=value.company_director %></p>
+      </div>
+
+    </div>
+
+    <% }); %>
+
+
+  </div>
+</div>

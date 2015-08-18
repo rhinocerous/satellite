@@ -1,3 +1,37 @@
+section#about
+{
+  margin:0;
+  padding:0;
+}
+
+footer.footer {
+  background: #2b2d35 none repeat scroll 0 0;
+  color: #000000;
+  padding: 1em 0;
+}
+.footer-social-links a{
+  margin:10px;
+}
+footer.footer .copyright {
+  color: rgba(255, 255, 255, 1);
+  font-weight: 200;
+  letter-spacing: 0.7px;
+  line-height: 2;
+}
+
+section#resume p {
+  font-size: 1em;
+  font-weight: 100;
+  margin: 0 auto 1em;
+  color:#FFF;
+}
+
+img.main-headshot
+{
+  position:relative;
+  bottom:0;
+}
+
 .awards-carousel.owl-theme-main .owl-item .item h3
 {
   margin:0.5em 0;
