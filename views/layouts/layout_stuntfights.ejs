@@ -92,25 +92,25 @@
             <span class="icon-bar"></span>
           </button>
           <!--scroll-->
-          <h1><a class="navbar-brand" href="#">Thomas Dupont</a></h1>
+          <h1><a class="navbar-brand" href="/">Thomas Dupont</a></h1>
         </div>
         <div class="navbar cbp-af-inner navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
-            <!--<li class="dropdown">-->
-              <!--<a href="#topsection" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Home <span class="caret"></span></a>-->
-            <!--</li>-->
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a class="scroll" href="#home">Home</a></li>
+            <li><a class="scroll" href="#about">About</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resume <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#resume" class="external">Projects</a></li>
-                <li><a href="#awards" class="external">awards</a></li>
-                <li><a href="#testimonials" class="external">Testimonials</a></li>
-                <li><a href="#actors-trained" class="external">Actors Trained</a></li>
+                <li><a class="scroll" href="#awards" class="external">awards</a></li>
+                <li><a class="scroll" href="#projects" class="external">Projects</a></li>
+                <li><a class="scroll" href="#film_credits" class="external">Film Credits</a></li>
+                <li><a class="scroll" href="#television" class="external">Television</a></li>
+                <li><a class="scroll" href="#actors-trained" class="external">Actors Trained</a></li>
+                <li><a class="scroll" href="#testimonials" class="external">Testimonials</a></li>
+
               </ul>
             </li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a class="scroll" href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -127,7 +127,7 @@
 
 
 
-<section id="myCarousel" class="dark with-bg2 carousel slide">
+<section id="home" class="dark with-bg2 carousel slide">
 
 
   <div class="page-header text-center">
@@ -138,9 +138,9 @@
   <!-- Indicators -->
 
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#home" data-slide-to="0" class="active"></li>
+    <li data-target="#home" data-slide-to="1"></li>
+    <li data-target="#home" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -215,10 +215,10 @@
   </div>
 
   <!-- Controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <a class="left carousel-control" href="#home" data-slide="prev">
     <span class="icon-prev"></span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <a class="right carousel-control" href="#home" data-slide="next">
     <span class="icon-next"></span>
   </a>
 </section>
@@ -487,7 +487,7 @@
                            RESUME
     ================================================== -->
 
-<section class="section-content dark" id="resume">
+
         <%
         if(records && records.resume)
         {
@@ -513,7 +513,6 @@
           });
         }
         %>
-</section>
 
 
 
@@ -678,7 +677,7 @@
           <p><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp; (310) 550-4404</p>
 
           <p>
-            <button class="btn contact-button" type="button" role="button">Send Message</button>
+            <button class="btn contact-button btn-outline" type="button" role="button">Send Message</button>
           </p>
           <div class='contact-form'>
             <form name="sentMessage" id="contactForm">
