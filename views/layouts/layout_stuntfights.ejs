@@ -71,14 +71,16 @@
 </div>
 
 
-
+<span id="top-link-block" class="hidden">
+    <a href="#top" class="well well-sm" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+      <i class="glyphicon glyphicon-chevron-up"></i> Back to Top
+    </a>
+</span>
 
 <!--
     ==================================================
                     NAVIGATION BAR
     ================================================== -->
-
-
 <div class="navbar-wrapper cbp-af-header cbp-af-header-shrink">
   <div class="container">
     <!-- Fixed navbar -->
@@ -101,13 +103,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resume <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a class="scroll" href="#awards" class="external">awards</a></li>
-                <li><a class="scroll" href="#projects" class="external">Projects</a></li>
-                <li><a class="scroll" href="#film_credits" class="external">Film Credits</a></li>
-                <li><a class="scroll" href="#television" class="external">Television</a></li>
-                <li><a class="scroll" href="#actors-trained" class="external">Actors Trained</a></li>
-                <li><a class="scroll" href="#testimonials" class="external">Testimonials</a></li>
-
+                <li><a href="#awards" class="external scroll">awards</a></li>
+                <!--<li><a href="#projects" class="external scroll">Projects</a></li>-->
+                <li><a href="#film_credits" class="external scroll">Film Credits</a></li>
+                <li><a href="#television" class="external scroll">Television</a></li>
+                <li><a href="#actors-trained" class="external scroll">Actors Trained</a></li>
+                <li><a href="#testimonials" class="external scroll">Testimonials</a></li>
               </ul>
             </li>
             <li><a class="scroll" href="#contact">Contact</a></li>
@@ -117,9 +118,6 @@
     </div>
   </div>
 </div>
-
-
-
 <!--
      ==================================================
                            HOME
@@ -321,6 +319,8 @@
 </section>
 
 
+<%
+/*
 <section class="section-content section-isotope separator" id="projects">
 
   <div class="page-header text-center">
@@ -481,7 +481,8 @@
   </div>
 
 </section>
-
+*/
+%>
 <!--
     ==================================================
                            RESUME
