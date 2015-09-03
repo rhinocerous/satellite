@@ -31,6 +31,7 @@ satellite = {
   ng : {
     page:{},
     app: {
+      prefix:'/api',
       services: {}
       , controllers: {}
     }
@@ -151,7 +152,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
 
     var request = svc.$http({
       method: "post",
-      url: url,
+      url: satellite.ng.app.prefix + url,
       data: data
     });
 
@@ -162,7 +163,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
 
     var request = svc.$http({
       method: "put",
-      url: url,
+      url: satellite.ng.app.prefix + url,
       data: data
     });
 
@@ -173,7 +174,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
 
     var request = svc.$http({
       method: "get",
-      url: url
+      url: satellite.ng.app.prefix + url
     });
 
     return( request.then( success, error ) );

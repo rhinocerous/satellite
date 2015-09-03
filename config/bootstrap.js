@@ -11,7 +11,10 @@
 
 module.exports.bootstrap = function(cb) {
 
-  // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();
+
+//  see: https://irman6.wordpress.com/2015/01/12/sailsjs-authentication-with-sails-generate-auth-passportjs-wso2-identity-server/
+  sails.services.passport.loadStrategies();
+
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';// a workaround to prevent from Error: UNABLE_TO_VERIFY_LEAF_SIGNATURE]
 };

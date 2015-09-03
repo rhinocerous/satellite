@@ -21,39 +21,20 @@
  */
 
 module.exports.routes = {
+
+  'get /login': 'AuthController.login',
+  'get /logout': 'AuthController.logout',
+  'get /register': 'AuthController.register',
+
+  'post /auth/local': 'AuthController.callback',
+  'post /auth/local/:action': 'AuthController.callback',
+
+  'get /auth/:provider': 'AuthController.provider',
+  'get /auth/:provider/callback': 'AuthController.callback',
+
   '/': {
     controller: 'IndexController',
     action: 'index',
-    skipAssets: true
-  },
-  'get /entity/slug/:slug': {
-    controller: 'EntityController',
-    action: 'findBySlug',
-    skipAssets: true
-  },
-  'get /entity/group/:group': {
-    controller: 'EntityController',
-    action: 'findByGroup',
-    skipAssets: true
-  },
-  'get /entity/group/:group/records': {
-    controller: 'RecordController',
-    action: 'findByEntityGroup',
-    skipAssets: true
-  },
-  'put /record/:id/values': {
-    controller: 'RecordController',
-    action: 'updateRecordValues',
-    skipAssets: true
-  },
-  'post /entity/ingest': {
-    controller: 'EntityController',
-    action: 'ingest',
-    skipAssets: true
-  },
-  'get /attribute/slug/:slug': {
-    controller: 'AttributeController',
-    action: 'findBySlug',
     skipAssets: true
   },
   'get /alternate': {
@@ -66,7 +47,37 @@ module.exports.routes = {
     action: 'admin',
     skipAssets: true
   },
-  'get /export': {
+  'get /api/entity/slug/:slug': {
+    controller: 'EntityController',
+    action: 'findBySlug',
+    skipAssets: true
+  },
+  'get /api/entity/group/:group': {
+    controller: 'EntityController',
+    action: 'findByGroup',
+    skipAssets: true
+  },
+  'get /api/entity/group/:group/records': {
+    controller: 'RecordController',
+    action: 'findByEntityGroup',
+    skipAssets: true
+  },
+  'put /api/record/:id/values': {
+    controller: 'RecordController',
+    action: 'updateRecordValues',
+    skipAssets: true
+  },
+  'post /api/entity/ingest': {
+    controller: 'EntityController',
+    action: 'ingest',
+    skipAssets: true
+  },
+  'get /api/attribute/slug/:slug': {
+    controller: 'AttributeController',
+    action: 'findBySlug',
+    skipAssets: true
+  },
+  'get /api/export': {
     controller: 'IstuntRelationController',
     action: 'export',
     skipAssets: true

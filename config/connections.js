@@ -44,15 +44,17 @@ module.exports.connections = {
     adapter: 'sails-mysql',
     host: 'localhost',
     user: 'root',
-    password: 'root',
-    database: 'istunt_stuntfights'
+    password: '',
+    database: 'istunt_stuntfights',
+    port:3307
   },
   localMysqlIstunt: {
     adapter: 'sails-mysql',
     host: 'localhost',
     user: 'root',
-    password: 'root',
-    database: 'istunt28_01'
+    password: '',
+    database: 'istunt28_01',
+    port:3307
   },
   /***************************************************************************
   *                                                                          *
