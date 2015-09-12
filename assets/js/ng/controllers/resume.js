@@ -45,7 +45,7 @@ satellite.ng.page.resumeControllerFactory = function (
 
     var modalInstance = vm.$modal.open({
       animation: true,
-      templateUrl: '/templates/modalContent.html',
+      templateUrl: '/templates/content/modalEdit.html',
       controller: 'modalRecordController as mc',
       size: 'lg',
       resolve: {

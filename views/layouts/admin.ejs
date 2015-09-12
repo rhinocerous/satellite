@@ -86,241 +86,16 @@
       <div class="app-view-header">Stunt Fights Dashboard<small> Powered by iStunt</small></div>
       <div class="row">
         <div class="container">
-          <%- body %>
+
+          <div ng-view></div>
+
         </div>
-
-        <div ng-view></div>
-
       </div>
     </div>
   </section>
   <!-- Page footer-->
   <footer><span>&copy; 2015 - StuntFights.com, Powered by <a href="https://istunt.com" target="_blank">iStunt.com</a> </span></footer>
 </div>
-
-<script type="text/ng-template" id="/templates/about.html">
-  <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <span class="panel-title">
-          {{bio.title}}
-          <em class="fa fa-lg fa-edit pull-right"></em>
-        </span>
-      </div>
-
-      <div class="panel-body">
-
-        <form data-ng-submit="bio.submit()">
-          <fieldset>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Biography Text</label>
-              <span class="help-block m-b-none">This text will be shown under the "About" section of your website. Try to cover the main points in about three paragraphs.</span>
-              <div class="col-sm-10">
-                <text-angular ng-model="bio.settings.bio.value" class="btn-group-small"></text-angular>
-              </div>
-            </div>
-          </fieldset>
-          <button type="submit" class="btn btn-default">Save Text</button>
-        </form>
-
-      </div>
-    </div>
-  </div>
-</script>
-
-<script type="text/ng-template" id="/templates/reel.html">
-  <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="panel-title"> <em class="icon-signal fa-lg text-muted pull-right"></em>Manage Reels</div>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <p>Form goes here with a simple text input which should save a YouTube ID.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</script>
-
-<script type="text/ng-template" id="/templates/schema.html">
-  <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <span class="panel-title">
-          {{schema.title}}
-          <em class="fa fa-lg fa-wrench pull-right"></em>
-        </span>
-      </div>
-
-      <div class="panel-body">
-        <p>Click on a category below to manage fields.</p>
-        <accordion close-others="true">
-          <accordion-group class="panel panel-info bg-light" data-ng-repeat="entity in schema.schema track by entity.id">
-
-            <accordion-heading>
-              <span data-ng-click="schema.loadTab(entity);">{{entity.name}}</span>
-            </accordion-heading>
-            <p><strong>Fields</strong></p>
-            <div class="col-lg-4 col-sm-4 col-xs-6" data-ng-repeat="attr in schema.currentEntityData.attributes track by attr.id">
-              <div class="panel panel-default" data-ripple="">
-                <div class="panel-body">
-                  <h4 class="text-thin mt">{{attr.name}}</h4>
-                  <div class="text-right text-sm text-muted">#{{attr.id}}: {{attr.type}}</div>
-                </div>
-              </div>
-            </div>
-          </accordion-group>
-        </accordion>
-
-
-        <a class="btn btn-amber" data-ng-click="schema.import()">Import iStunt Schema</a>
-
-
-      </div>
-    </div>
-  </div>
-
-</script>
-
-<script type="text/ng-template" id="/templates/resume.html">
-  <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <span class="panel-title">
-          {{resume.title}}
-          <em class="fa fa-lg fa-book pull-right"></em>
-        </span>
-      </div>
-
-      <div class="panel-body">
-
-        <accordion close-others="true">
-          <accordion-group class="panel panel-info bg-light" data-ng-repeat="entity in resume.records track by entity.id">
-
-            <accordion-heading>
-              {{entity.name}}
-            </accordion-heading>
-            <!-- START table-responsive-->
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                <tr>
-                  <th></th>
-                  <th ng-repeat="header in entity.headers track by header.id">{{header.name}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="value in entity.values">
-                  <td>
-                    <div class="btn-switch mb mr btn-switch-info">
-                      <input type="checkbox" id="value-{{value.id}}" ng-checked="resume.selectedRecord.id == value.id" ng-click="resume.selectRecord(value, entity)">
-                      <label class="btn btn-info" for="value-{{value.id}}">
-                        <em class="fa fa-check"></em>Edit
-                      </label>
-                    </div>
-                  </td>
-                  <td ng-if="entity.headers[key]" ng-repeat="(key, prop) in value">{{prop}}</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- END table-responsive-->
-          </accordion-group>
-        </accordion>
-
-        <a class="btn btn-amber" data-ng-click="resume.import()">Import iStunt Resume</a>
-      </div>
-    </div>
-  </div>
-
-</script>
-
-<script type="text/ng-template" id="/templates/modalContent.html">
-  <div class="modal-header">
-    <h3 class="modal-title">Edit {{mc.entity.name}} Record</h3>
-  </div>
-  <div class="modal-body">
-    <form name="mc.recordForm"
-          sf-model="mc.record"
-          sf-form="mc.formDefinition"
-          sf-schema="mc.schemaDefinition"
-          ng-submit="mc.submit(recordForm, mc.record)">
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-info" ng-click="mc.submit()">Save</button>
-    <button class="btn btn-warning" ng-click="mc.cancel()">Cancel</button>
-  </div>
-</script>
-
-<script type="text/ng-template" id="/templates/awards.html">
-  <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="panel-title"> <em class="icon-signal fa-lg text-muted pull-right"></em>Awards</div>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <p>Create, List, Edit, Delete awards. They should allow image uploads and will populate the awards slider.</p>
-          <p>Question for later: can we pull this data from imdb? for example: http://www.imdb.com/name/nm0243345/awards?ref_=nm_ql_2</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</script>
-
-<script type="text/ng-template" id="/templates/actors.html">
-
-  <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="panel-title"> <em class="icon-signal fa-lg text-muted pull-right"></em>Actors Trained</div>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <p>Create, List, Edit, Delete actors trained.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</script>
-
-<script type="text/ng-template" id="/templates/settings.html">
-  <div class="col-lg-9 fw-boxed">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <span class="panel-title">
-          {{settings.title}}
-          <em class="fa fa-lg fa-cogs pull-right"></em>
-        </span>
-      </div>
-
-      <div class="panel-body">
-
-        <form>
-          <div class="form-group">
-            <label for="istuntId">iStunt User ID</label>
-            <input type="number" class="form-control" id="istuntId" placeholder="Required if you would like to import data from iStunt">
-          </div>
-
-          <div class="form-group">
-            <label for="title">Website Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Title is required">
-          </div>
-
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Check me out
-            </label>
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-
-      </div>
-    </div>
-  </div>
-</script>
 
 <script src="/js/naut/vendor.js"></script>
 <script src="/js/naut/plugins.js"></script>
@@ -355,6 +130,8 @@
 <script src="/js/ng/controllers/resume.js"></script>
 <script src="/js/ng/controllers/schema.js"></script>
 <script src="/js/ng/controllers/modalRecord.js"></script>
+<script src="/js/ng/controllers/register.js"></script>
+<script src="/js/ng/controllers/login.js"></script>
 <script src="/js/ng/ng.routes.js"></script>
 </body>
 </html>

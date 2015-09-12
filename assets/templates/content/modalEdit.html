@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit {{mc.entity.name}} Record</h3>
+</div>
+<div class="modal-body">
+  <form name="mc.recordForm"
+        sf-model="mc.record"
+        sf-form="mc.formDefinition"
+        sf-schema="mc.schemaDefinition"
+        ng-submit="mc.submit(recordForm, mc.record)">
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-info" ng-click="mc.submit()">Save</button>
+  <button class="btn btn-warning" ng-click="mc.cancel()">Cancel</button>
+</div>

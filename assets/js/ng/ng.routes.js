@@ -1,39 +1,48 @@
 satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 
   $routeProvider.when('/', {
-    templateUrl: '/templates/settings.html',
+    templateUrl: '/templates/admin/settings.html',
     controller: 'settingsController',
     controllerAs: 'settings'
-  }).when('/about', {
-    templateUrl: '/templates/about.html',
-    controller: 'bioController',
-    controllerAs: 'bio'
+  }).when('/login', {
+    templateUrl: '/templates/auth/login.html',
+    controller: 'loginController',
+    controllerAs: 'auth'
+  }).when('/register', {
+    templateUrl: '/templates/auth/register.html',
+    controller: 'registerController',
+    controllerAs: 'auth'
   })
-  .when('/reel', {
-    templateUrl: '/templates/reel.html',
-    controller: 'navController',
-    controllerAs: 'reelController'
-  })
-  .when('/resume', {
-    templateUrl: '/templates/resume.html',
-    controller: 'resumeController',
-    controllerAs: 'resume'
-  })
-  .when('/awards', {
-    templateUrl: '/templates/awards.html',
-    controller: 'navController',
-    controllerAs: 'awardsController'
-  })
-  .when('/schema', {
-      templateUrl: '/templates/schema.html',
+    .when('/about', {
+      templateUrl: '/templates/content/bio.html',
+      controller: 'bioController',
+      controllerAs: 'bio'
+    })
+    .when('/reel', {
+      templateUrl: '/templates/content/reel.html',
+      controller: 'navController',
+      controllerAs: 'reelController'
+    })
+    .when('/resume', {
+      templateUrl: '/templates/content/resume.html',
+      controller: 'resumeController',
+      controllerAs: 'resume'
+    })
+    .when('/awards', {
+      templateUrl: '/templates/content/awards.html',
+      controller: 'navController',
+      controllerAs: 'awardsController'
+    })
+    .when('/schema', {
+      templateUrl: '/templates/admin/schema.html',
       controller: 'schemaController',
       controllerAs: 'schema'
     })
-  .when('/actors', {
-    templateUrl: '/templates/actors.html',
-    controller: 'navController',
-    controllerAs: 'actorsController'
-  });
+    .when('/actors', {
+      templateUrl: '/templates/content/actors.html',
+      controller: 'navController',
+      controllerAs: 'actorsController'
+    });
 
   $locationProvider.html5Mode(false);
 });
