@@ -1,4 +1,5 @@
-<!DOCTYPE html><!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
+<!DOCTYPE html><!--[if IE 9 ]>
+<html class="ie9" lang="en"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 <html lang="en" class="no-js"><!--<![endif]-->
 <head>
@@ -14,84 +15,98 @@
   <!-- GMaps api-->
   <!--<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>-->
 </head>
+
 <body data-ng-app="satelliteApp">
-<!-- Main container-->
-<div class="app-container">
-  <!-- top navbar-->
-  <header class="bg-info">
-    <!-- START Top Navbar-->
-    <nav role="navigation" class="navbar topnavbar">
 
-      <!-- START navbar header-->
-      <div class="navbar-header">
+<div id="root" data-ng-controller="appController as app" ng-class="{'aside-offscreen layout-dock': !app.sidebarActive}" ng-cloak="">
+  <!-- Main container-->
+  <div class="app-container">
+    <!-- top navbar-->
+    <header class="bg-info">
+      <!-- START Top Navbar-->
+      <nav role="navigation" class="navbar topnavbar">
 
-        <a href="/admin#/" class="navbar-brand">
-          Stunt Fights Admin
-        </a>
+        <!-- START navbar header-->
+        <div class="navbar-header">
 
-        <!-- Mobile buttons-->
-        <div class="mobile-toggles">
-          <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.--><a href="" class="sidebar-toggle"><em class="fa fa-navicon"></em></a>
-          <!-- Button to show/hide the header menu on mobile. Visible on mobile only.--><a href="#nav-collapse" data-toggle="collapse" class="menu-toggle hidden-material"><em class="fa fa-ellipsis-v fa-fw"></em></a>
+          <a href="/admin#/" class="navbar-brand">
+            Stunt Fights Admin
+          </a>
+
+          <!-- Mobile buttons-->
+          <div class="mobile-toggles">
+            <a href="" class="sidebar-toggle" data-ng-click="app.toggleSidebar()">
+              <em class="fa fa-navicon"></em>
+            </a>
+            <!--<a href="#nav-collapse" data-toggle="collapse" class="menu-toggle hidden-material">-->
+              <!--<em class="fa fa-ellipsis-v fa-fw"></em>-->
+            <!--</a>-->
+          </div>
         </div>
-      </div>
-      <!-- END navbar header-->
-      <!-- START Nav wrapper-->
-      <div id="nav-collapse" class="nav-wrapper collapse navbar-collapse">
-        <!-- START Left navbar-->
-        <ul class="nav navbar-nav hidden-material">
-          <li>
-            <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops--><a href="" class="hidden-xs sidebar-toggle-off"><em class="fa fa-navicon"></em></a>
-          </li>
+        <!-- END navbar header-->
+        <!-- START Nav wrapper-->
+        <div id="nav-collapse" class="nav-wrapper collapse navbar-collapse">
+          <!-- START Left navbar-->
+          <ul class="nav navbar-nav hidden-material">
+            <li>
+              <a href="" class="hidden-xs sidebar-toggle-off" data-ng-click="app.toggleSidebar()">
+                <em class="fa fa-navicon"></em>
+              </a>
+            </li>
 
-        </ul>
-        <!-- END Left navbar-->
+          </ul>
+          <!-- END Left navbar-->
 
-      </div>
-      <!-- END Nav wrapper-->
+        </div>
+        <!-- END Nav wrapper-->
 
 
-    </nav>
-    <!-- END Top Navbar-->
-  </header>
-  <!-- Sidebar-->
-  <aside class="bg-white" data-ng-controller="navController as nav">
-    <!-- START Sidebar-->
-    <div class="sidebar-wrapper">
-      <div data-ui-sidebar="" class="sidebar" ng-if="!satellite.ng.app.sidebar.isOffscreen">
-        <div class="sidebar-nav">
-          <ul class="nav">
-            <!-- Iterates over all sidebar items-->
-            <li class="nav-heading"><span class="text-muted">Main Navigation</span></li>
-            <li ng-repeat="tab in nav.tabs">
+      </nav>
+      <!-- END Top Navbar-->
+    </header>
+    <!-- Sidebar-->
+    <aside class="bg-white">
+      <!-- START Sidebar-->
+      <div class="sidebar-wrapper">
+        <div data-ui-sidebar="" class="sidebar">
+          <div class="sidebar-nav">
+            <ul class="nav">
+              <!-- Iterates over all sidebar items-->
+              <li class="nav-heading"><span class="text-muted">Main Navigation</span></li>
+              <li ng-repeat="tab in app.tabs">
                 <a href="{{tab.link}}" title="{{tab.label}}" data-ripple="">
                   <em class="sidebar-item-icon fa {{tab.icon}}"></em>
                   <span>{{tab.label}}</span>
                 </a>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- END Sidebar-->
+      <!-- END Sidebar-->
 
-  </aside>
-  <!-- Main-->
-  <section>
-    <!-- Content-->
-    <div class="app">
-      <div class="app-view-header">Stunt Fights Dashboard<small> Powered by iStunt</small></div>
-      <div class="row">
-        <div class="container">
+    </aside>
+    <!-- Main-->
+    <section>
+      <!-- Content-->
+      <div class="app">
+        <div class="app-view-header">Stunt Fights Dashboard
+          <small> Powered by iStunt</small>
+        </div>
+        <div class="row">
+          <div class="container">
 
-          <div ng-view></div>
+            <div ng-view></div>
 
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- Page footer-->
-  <footer><span>&copy; 2015 - StuntFights.com, Powered by <a href="https://istunt.com" target="_blank">iStunt.com</a> </span></footer>
+    </section>
+    <!-- Page footer-->
+    <footer><span>&copy; 2015 - StuntFights.com, Powered by <a href="https://istunt.com" target="_blank">iStunt.com</a> </span>
+    </footer>
+  </div>
+
 </div>
 
 <!--<script src="/js/naut/vendor.js"></script>-->
@@ -123,7 +138,7 @@
 <script src="/js/ng/services/valueService.js"></script>
 <script src="/js/ng/services/formService.js"></script>
 <script src="/js/ng/services/authService.js"></script>
-<script src="/js/ng/controllers/navigation.js"></script>
+<script src="/js/ng/controllers/application.js"></script>
 <script src="/js/ng/controllers/bio.js"></script>
 <script src="/js/ng/controllers/settings.js"></script>
 <script src="/js/ng/controllers/resume.js"></script>

@@ -1,4 +1,4 @@
-satellite.ng.page.navigationControllerFactory = function (
+satellite.ng.page.appControllerFactory = function (
   $scope
   , $baseController
   , $route
@@ -13,6 +13,7 @@ satellite.ng.page.navigationControllerFactory = function (
   vm.$routeParams = $routeParams;
 
   vm.currentRequestLabel = "Current Request:";
+  vm.sidebarActive = false;
 
   vm.tabs = [
     { link: '#/', label: 'Settings', icon: 'fa-cogs' },
@@ -29,6 +30,9 @@ satellite.ng.page.navigationControllerFactory = function (
 
   vm.tabClass = _tabClass;
   vm.setSelectedTab = _setSelectedTab;
+  vm.toggleSidebar = _toggleSidebar;
+  vm.showSidebar = _showSidebar;
+  vm.hideSidebar = _hideSidebar;
 
   render();
 
@@ -42,6 +46,21 @@ satellite.ng.page.navigationControllerFactory = function (
         vm.message = "hello! welcome to the routes demo. I am the main controller and this is the main page.";
         break;
     }
+  }
+
+  function _toggleSidebar()
+  {
+    vm.sidebarActive = !vm.sidebarActive;
+  }
+
+  function _showSidebar()
+  {
+    vm.sidebarActive = true;
+  }
+
+  function _hideSidebar()
+  {
+    vm.sidebarActive = false;
   }
 
   function _tabClass (tab) {
@@ -59,6 +78,6 @@ satellite.ng.page.navigationControllerFactory = function (
 };
 
 satellite.ng.addController(satellite.ng.app.module
-  , "navController"
+  , "appController"
   , ['$scope', '$baseController', '$route', '$routeParams']
-  , satellite.ng.page.navigationControllerFactory);
+  , satellite.ng.page.appControllerFactory);
