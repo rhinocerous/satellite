@@ -58,37 +58,37 @@ module.exports.routes = {
   //  action: 'login',
   //  skipAssets: true
   //},
-  'get /api/entity/slug/:slug': {
+  'get /entity/slug/:slug': {
     controller: 'EntityController',
     action: 'findBySlug',
     skipAssets: true
   },
-  'get /api/entity/group/:group': {
+  'get /entity/group/:group': {
     controller: 'EntityController',
     action: 'findByGroup',
     skipAssets: true
   },
-  'get /api/entity/group/:group/records': {
+  'get /entity/group/:group/records': {
     controller: 'RecordController',
     action: 'findByEntityGroup',
     skipAssets: true
   },
-  'put /api/record/:id/values': {
+  'put /record/:id/values': {
     controller: 'RecordController',
     action: 'updateRecordValues',
     skipAssets: true
   },
-  'post /api/entity/ingest': {
+  'post /entity/ingest': {
     controller: 'EntityController',
     action: 'ingest',
     skipAssets: true
   },
-  'get /api/attribute/slug/:slug': {
+  'get /attribute/slug/:slug': {
     controller: 'AttributeController',
     action: 'findBySlug',
     skipAssets: true
   },
-  'get /api/export': {
+  'get /export': {
     controller: 'IstuntRelationController',
     action: 'export',
     skipAssets: true

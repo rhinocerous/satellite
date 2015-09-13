@@ -38,7 +38,7 @@ satellite = {
     }
     , exceptions: {}
     , examples: {}
-    , defaultDependencies: ['ui.bootstrap','ngRoute','textAngular','schemaForm']
+    , defaultDependencies: ['ui.bootstrap','ngRoute','ngAnimate','textAngular','schemaForm']
     , getModuleDependencies: function(){
       if (satellite.extraNgDependencies) {
         var newItems = satellite.ng.defaultDependencies.concat(satellite.extraNgDependencies);
@@ -159,7 +159,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
 
     var request = svc.$http({
       method: "post",
-      url: satellite.ng.app.prefix + url,
+      url: url,
       data: data
     });
 
@@ -170,7 +170,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
 
     var request = svc.$http({
       method: "put",
-      url: satellite.ng.app.prefix + url,
+      url:  url,
       data: data
     });
 
@@ -181,7 +181,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
 
     var request = svc.$http({
       method: "get",
-      url: satellite.ng.app.prefix + url
+      url: url
     });
 
     return( request.then( success, error ) );
