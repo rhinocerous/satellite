@@ -12,7 +12,7 @@
   <link rel='stylesheet' href='/styles/naut/textAngular.css'>
   <script src="/js/naut/vendor/modernizr.js"></script>
   <!-- GMaps api-->
-  <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
+  <!--<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>-->
 </head>
 <body data-ng-app="satelliteApp">
 <!-- Main container-->
@@ -21,11 +21,7 @@
   <header class="bg-info">
     <!-- START Top Navbar-->
     <nav role="navigation" class="navbar topnavbar">
-      <!-- START button offset-->
-      <!--<div class="btn-offset">-->
-        <!--<button type="button" data-btn-layer-morph="" data-target="#layer-search" data-ripple="" class="btn btn-info btn-circle btn-lg shadow-z1"><em class="fa fa-search"></em></button>-->
-      <!--</div>-->
-      <!-- START button offset-->
+
       <!-- START navbar header-->
       <div class="navbar-header">
 
@@ -61,7 +57,7 @@
   <aside class="bg-white" data-ng-controller="navController as nav">
     <!-- START Sidebar-->
     <div class="sidebar-wrapper">
-      <div data-ui-sidebar="" class="sidebar">
+      <div data-ui-sidebar="" class="sidebar" ng-if="!satellite.ng.app.sidebar.isOffscreen">
         <div class="sidebar-nav">
           <ul class="nav">
             <!-- Iterates over all sidebar items-->
@@ -97,11 +93,11 @@
   <footer><span>&copy; 2015 - StuntFights.com, Powered by <a href="https://istunt.com" target="_blank">iStunt.com</a> </span></footer>
 </div>
 
-<script src="/js/naut/vendor.js"></script>
-<script src="/js/naut/plugins.js"></script>
-<script src="/js/naut/main.js"></script>
+<!--<script src="/js/naut/vendor.js"></script>-->
+<!--<script src="/js/naut/plugins.js"></script>-->
+<!--<script src="/js/naut/main.js"></script>-->
 
-
+<script src="/js/dependencies/jquery-2.1.3.js"></script>
 <script src="/js/dependencies/dropzone.js"></script>
 <script src="/js/ng/angular-1.4.1.js"></script>
 <script src="/js/ng/angular-1.4.1.route.js"></script>
@@ -117,6 +113,7 @@
 <script src='/js/ng/ng.schema-form.js'></script>
 <script src='/js/ng/bootstrap-decorator.js'></script>
 <script src="/js/ng/ng.satellite.js"></script>
+<script src="/js/ng/directives/uiSidebar.js"></script>
 <script src="/js/ng/services/settingService.js"></script>
 <script src="/js/ng/services/istuntService.js"></script>
 <script src="/js/ng/services/entityService.js"></script>
@@ -124,6 +121,7 @@
 <script src="/js/ng/services/recordService.js"></script>
 <script src="/js/ng/services/valueService.js"></script>
 <script src="/js/ng/services/formService.js"></script>
+<script src="/js/ng/services/authService.js"></script>
 <script src="/js/ng/controllers/navigation.js"></script>
 <script src="/js/ng/controllers/bio.js"></script>
 <script src="/js/ng/controllers/settings.js"></script>

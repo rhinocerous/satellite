@@ -31,9 +31,10 @@ satellite = {
   ng : {
     page:{},
     app: {
-      prefix:'/api',
-      services: {}
+      prefix:'/api'
+      , services: {}
       , controllers: {}
+      , sidebar:{}
     }
     , exceptions: {}
     , examples: {}
@@ -65,6 +66,12 @@ satellite.ng.app.module = angular.module('satelliteApp', satellite.ng.getModuleD
         return Math.round(((p *.0199) + p) / 72)
       }
     }
+  })
+  .constant('MEDIA_QUERY', {
+    'desktopLG': 1200,
+    'desktop':   992,
+    'tablet':    768,
+    'mobile':    480
   });
 
 
