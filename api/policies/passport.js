@@ -31,7 +31,7 @@ module.exports = function (req, res, next) {
 
         if(req.user)
         {
-          console.log("user is logged in\n%s", JSON.stringify(req.user, null, 2));
+          //console.log("user is logged in\n%s", JSON.stringify(req.user, null, 2));
         }
 
         next();

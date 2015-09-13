@@ -23,11 +23,12 @@
 module.exports.routes = {
 
   //'get /login': 'AuthController.login',
-  'get /logout': 'AuthController.logout',
+  'get /api/auth/logout': 'AuthController.logout',
+  'get /api/auth/current': 'AuthController.current',
   //'get /register': 'AuthController.register',
 
-  'post /auth/local': 'AuthController.callback',
-  'post /auth/local/:action': 'AuthController.callback',
+  'post /api/auth/local': 'AuthController.callback',
+  'post /api/auth/local/:action': 'AuthController.callback',
 
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
@@ -47,11 +48,16 @@ module.exports.routes = {
     action: 'admin',
     skipAssets: true
   },
-  'post /api/login': {
-    controller: 'AuthController',
-    action: 'login',
-    skipAssets: true
-  },
+  //'post /api/login': {
+  //  controller: 'AuthController',
+  //  action: 'login',
+  //  skipAssets: true
+  //},
+  //'post /api/register': {
+  //  controller: 'AuthController',
+  //  action: 'login',
+  //  skipAssets: true
+  //},
   'get /api/entity/slug/:slug': {
     controller: 'EntityController',
     action: 'findBySlug',

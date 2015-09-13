@@ -1,9 +1,11 @@
 satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 
   var authAction = ["$q", "$authService", function ($q, $authService) {
+
     var userInfo = $authService.getCurrent();
 
-    if (userInfo) {
+    if (userInfo && userInfo !== {}) {
+      console.log("user is logged in", userInfo);
       return $q.when(userInfo);
     } else {
       return $q.reject({authenticated: false});
@@ -17,15 +19,17 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
     resolve: {
       auth: authAction
     }
-  }).when('/login', {
-    templateUrl: '/templates/auth/login.html',
-    controller: 'loginController',
-    controllerAs: 'auth'
-  }).when('/register', {
-    templateUrl: '/templates/auth/register.html',
-    controller: 'registerController',
-    controllerAs: 'auth'
   })
+    .when('/login', {
+      templateUrl: '/templates/auth/login.html',
+      controller: 'loginController',
+      controllerAs: 'auth'
+    })
+    .when('/register', {
+      templateUrl: '/templates/auth/register.html',
+      controller: 'registerController',
+      controllerAs: 'auth'
+    })
     .when('/about', {
       templateUrl: '/templates/content/bio.html',
       controller: 'bioController',
@@ -79,13 +83,13 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 });
 
 
-satellite.ng.app.module.run(["$rootScope", "$location", function($rootScope, $location) {
+satellite.ng.app.module.run(["$rootScope", "$location", function ($rootScope, $location) {
 
-  $rootScope.$on("$routeChangeSuccess", function(userInfo) {
-    console.log("user is logged in", userInfo);
+  $rootScope.$on("$routeChangeSuccess", function (event, data, userInfo) {
+    console.log("on route success", userInfo);
   });
 
-  $rootScope.$on("$routeChangeError", function(event, current, previous, eventObj) {
+  $rootScope.$on("$routeChangeError", function (event, current, previous, eventObj) {
     if (eventObj.authenticated === false) {
       $location.path("/login");
     }
