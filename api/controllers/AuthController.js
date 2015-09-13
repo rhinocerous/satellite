@@ -76,7 +76,13 @@ var AuthController = {
   },
 
   current: function (req, res) {
-    res.json({success:true, user:req.user});
+
+    if(req.user)
+    {
+      return res.json({success:true, user:req.user});
+    }
+
+    return res.json(401, {success:false, message:"there is no current authorized user"});// res.redirect('/login');
   },
 
   /**
