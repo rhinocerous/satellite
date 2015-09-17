@@ -38,7 +38,7 @@ satellite = {
     }
     , exceptions: {}
     , examples: {}
-    , defaultDependencies: ['ui.bootstrap','ngRoute','ngAnimate','textAngular','schemaForm']
+    , defaultDependencies: ['ui.bootstrap','ngRoute','ngAnimate','textAngular','schemaForm','toastr']
     , getModuleDependencies: function(){
       if (satellite.extraNgDependencies) {
         var newItems = satellite.ng.defaultDependencies.concat(satellite.extraNgDependencies);
@@ -195,7 +195,7 @@ satellite.ng.app.services.baseHttpService = function ($baseService, $http) {
   return svc;
 };
 
-satellite.ng.app.controllers.baseController = function ($doc, $logger, $satellite) {
+satellite.ng.app.controllers.baseController = function ($doc, $logger, $satellite, $alertService) {
 
   var baseController = {
     $document: $doc
@@ -211,11 +211,10 @@ satellite.ng.app.controllers.baseController = function ($doc, $logger, $satellit
         viewModel.currentRequest.isTop = false;
       }
 
-      viewModel.$log.log("setUpCurrentRequest firing:");
-      viewModel.$log.debug(viewModel.currentRequest);
-
     }
   };
+
+  baseController.$alertService = $alertService;
 
   return baseController;
 };
@@ -281,7 +280,7 @@ satellite.ng.addService(satellite.ng.app.module
 
 satellite.ng.addService(satellite.ng.app.module
   , "$baseController"
-  , ['$document', '$log', '$satellite']
+  , ['$document', '$log', '$satellite','$alertService']
   , satellite.ng.app.controllers.baseController);
 
 
