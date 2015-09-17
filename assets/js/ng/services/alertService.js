@@ -21,7 +21,9 @@ satellite.ng.app.services.alertServiceFactory = function ($baseService, toastr)
     if(!title)
       title = "Success";
 
-    svc.toastr.success(msg, title);
+    svc.toastr.success(msg, title, {
+      closeButton: true
+    });
   }
 
   function _info(msg, title)
@@ -29,7 +31,9 @@ satellite.ng.app.services.alertServiceFactory = function ($baseService, toastr)
     if(!title)
       title = "Info";
 
-    svc.toastr.info(msg, title);
+    svc.toastr.info(msg, title, {
+      closeButton: true
+    });
   }
 
   function _error(msg, title)
@@ -37,7 +41,9 @@ satellite.ng.app.services.alertServiceFactory = function ($baseService, toastr)
     if(!title)
       title = "Error";
 
-    svc.toastr.error(msg, title);
+    svc.toastr.error(msg, title, {
+      closeButton: true
+    });
   }
 
   function _warning(msg, title)
@@ -45,7 +51,9 @@ satellite.ng.app.services.alertServiceFactory = function ($baseService, toastr)
     if(!title)
       title = "Warning";
 
-    svc.toastr.warning(msg, title);
+    svc.toastr.warning(msg, title, {
+      closeButton: true
+    });
   }
 
 

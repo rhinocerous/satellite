@@ -1,8 +1,15 @@
+(function() {
+  'use strict';
+
 satellite.ng.page.appControllerFactory = function (
   $scope
   , $baseController
   , $route
-  , $routeParams) {
+  , $routeParams
+  , MEDIA_QUERY
+  , $rootScope
+  , $window
+  , $timeout) {
 
   var vm = this;
 
@@ -11,9 +18,13 @@ satellite.ng.page.appControllerFactory = function (
   vm.$scope = $scope;
   vm.$route = $route;
   vm.$routeParams = $routeParams;
+  vm.MEDIA_QUERY = MEDIA_QUERY;
+  vm.$rootScope = $rootScope;
+  vm.$window = $window;
+  vm.$timeout = $timeout;
 
   vm.currentRequestLabel = "Current Request:";
-  vm.sidebarActive = false;
+  vm.sidebarActive = true;
 
   vm.tabs = [
     { link: '#/', label: 'Settings', icon: 'fa-cogs' },
@@ -34,18 +45,35 @@ satellite.ng.page.appControllerFactory = function (
   vm.showSidebar = _showSidebar;
   vm.hideSidebar = _hideSidebar;
 
-  render();
+  _init();
 
-  function render()
+  function _init()
   {
-    vm.setUpCurrentRequest(vm);
-
-    switch (vm.currentRequest.originalPath) {
-      case "/":
-        vm.title = "Main Controller";
-        vm.message = "hello! welcome to the routes demo. I am the main controller and this is the main page.";
-        break;
+    if ( _onMobile() ){
+      vm.$timeout(function(){
+        console.log("on mobile true for page startup");
+        _hideSidebar();
+      });
     }
+    // hide sidebar on route change
+    vm.$rootScope.$on('$stateChangeStart', function() {
+      if ( _onMobile() )
+      {
+        console.log("on mobile true on route change");
+        _hideSidebar();
+      }
+    });
+
+    vm.$window.addEventListener('resize', function(){
+      if ( _onMobile() ) {
+
+        console.log("on mobile true on resize");
+
+        vm.$timeout(function(){
+          _hideSidebar();
+        });
+      }
+    });
   }
 
   function _toggleSidebar()
@@ -75,9 +103,16 @@ satellite.ng.page.appControllerFactory = function (
   function _setSelectedTab (tab) {
     vm.selectedTab = tab;
   }
+
+  function _onMobile() {
+    return vm.$window.innerWidth < MEDIA_QUERY.tablet;
+  }
 };
 
 satellite.ng.addController(satellite.ng.app.module
   , "appController"
-  , ['$scope', '$baseController', '$route', '$routeParams']
+  , ['$scope', '$baseController', '$route', '$routeParams','MEDIA_QUERY','$rootScope', '$window', '$timeout']
   , satellite.ng.page.appControllerFactory);
+
+})();
+

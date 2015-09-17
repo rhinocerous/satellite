@@ -8,7 +8,9 @@
     </div>
 
     <div class="panel-body">
-      <p>Click on a category below to manage fields.</p>
+
+      <button class="mr mb-sm btn btn-default" ripple="" ng-click="schema.addEntity()" type="button">Add Entity</button>
+      <h3>Entities</h3>
       <accordion close-others="true">
         <accordion-group class="panel panel-info bg-light" data-ng-repeat="entity in schema.schema track by entity.id">
 

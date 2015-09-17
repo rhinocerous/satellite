@@ -3,6 +3,7 @@ satellite.ng.page.schemaControllerFactory = function (
   , $baseController
   , $istuntService
   , $entityService
+  , $modal
 ) {
 
   var vm = this;
@@ -12,6 +13,7 @@ satellite.ng.page.schemaControllerFactory = function (
   vm.$scope = $scope;
   vm.$istuntService = $istuntService;
   vm.$entityService = $entityService;
+  vm.$modal = $modal;
 
   vm.userId = 467;  //  TODO: manage this id and support multiple
   vm.title = "Manage Schema";
@@ -23,6 +25,7 @@ satellite.ng.page.schemaControllerFactory = function (
 
   vm.import = _import;
   vm.loadTab = _loadTab;
+  vm.addEntity = _addEntity;
 
   _init();
 
@@ -36,6 +39,24 @@ satellite.ng.page.schemaControllerFactory = function (
   function _import()
   {
     vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onError)
+  }
+
+  function _addEntity()
+  {
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: '/templates/admin/modal/schemaAddEntity.html',
+      controller: 'addEntityModalController',
+      controllerAs: 'modal',
+      size: "small",
+      resolve: null
+    });
+
+    modalInstance.result.then(function (form) {
+      console.log("form data", form);
+    }, function () {
+      console.log('Modal dismissed at: ' + new Date());
+    });
   }
 
   function _loadTab(entity)
@@ -54,7 +75,7 @@ satellite.ng.page.schemaControllerFactory = function (
   {
     vm.schema = response.data;
 
-    console.log("got schema data", vm.schema);
+    vm.$alertService.success("Schema loaded");
   }
 
   function _onImportSuccess(response)
@@ -68,11 +89,15 @@ satellite.ng.page.schemaControllerFactory = function (
 
   function _onIngestSuccess()
   {
+    vm.$alertService.success("We were able to pull your resume from iStunt.");
+
     _init();
   }
 
   function _onError(data)
   {
+    vm.$alertService.error("Please try again later.", "Unable to load iStunt resume");
+
     console.error("error getting istunt resume", data);
   }
 
@@ -80,5 +105,5 @@ satellite.ng.page.schemaControllerFactory = function (
 
 satellite.ng.addController(satellite.ng.app.module
   , "schemaController"
-  , ['$scope', '$baseController', '$istuntService','$entityService']
+  , ['$scope', '$baseController', '$istuntService','$entityService', '$modal']
   , satellite.ng.page.schemaControllerFactory);
