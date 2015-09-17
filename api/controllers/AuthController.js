@@ -70,7 +70,8 @@ var AuthController = {
 
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
-        res.json(user);
+        res.json({success:true, user:req.user});
+
       });
     });
   },

@@ -13,27 +13,54 @@ satellite.ng.app.services.authServiceFactory = function ($baseHttpService, $q, $
 
   svc.user = null;
 
-  _init();
+  _getCurrent();
 
-  function _init()
+  function _getCurrent()
   {
-    if ($window.sessionStorage["userInfo"]) {
-      svc.user = JSON.parse($window.sessionStorage["userInfo"]);
+    if(null == svc.user)
+    {
+      var q = _loadCurrent();
+
+      q.then(function(response){
+
+        svc.user = response.data.user;
+
+        return svc.user;
+
+      }, function(error){
+
+        return false;
+      });
+    }
+    else
+    {
+      return svc.user;
     }
   }
 
-  function _getCurrent(data, onSuccess, onError)
+  function _loadCurrent()
   {
-    if(svc.user === {})
-      return false;
+    var deferred = $q.defer();
 
-    return svc.user;
+    svc.$http({
+
+      method: "GET",
+      url: "/api/auth/current"
+
+    }).then(function(result) {
+
+      deferred.resolve(result);
+    }, function(error) {
+      deferred.reject(error);
+    });
+
+    return deferred.promise;
   }
 
   function _logout() {
     var deferred = $q.defer();
 
-    $http({
+    svc.$http({
       method: "POST",
       url: "/api/auth/logout"
 
@@ -60,15 +87,6 @@ satellite.ng.app.services.authServiceFactory = function ($baseHttpService, $q, $
       password: password
     }).then(function(result) {
 
-      console.log("response from server", result);
-
-      svc.user = {
-        accessToken: result.data.access_token,
-        userName: result.data.userName
-      };
-
-      $window.sessionStorage["userInfo"] = JSON.stringify(svc.user);
-
       deferred.resolve(svc.user);
 
     }, function(error) {
@@ -87,16 +105,7 @@ satellite.ng.app.services.authServiceFactory = function ($baseHttpService, $q, $
       password: password
     }).then(function(result) {
 
-      console.log("response from server", result);
-
-      svc.user = {
-        accessToken: result.data.access_token,
-        userName: result.data.userName
-      };
-
-      $window.sessionStorage["userInfo"] = JSON.stringify(svc.user);
-
-      deferred.resolve(svc.user);
+      deferred.resolve(result.data.user);
 
     }, function(error) {
       deferred.reject(error);

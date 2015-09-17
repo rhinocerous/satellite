@@ -40,7 +40,7 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
     })
     .when('/reel', {
       templateUrl: '/templates/content/reel.html',
-      controller: 'navController',
+      controller: 'appController',
       controllerAs: 'reelController',
       resolve: {
         auth: authAction
@@ -56,7 +56,7 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
     })
     .when('/awards', {
       templateUrl: '/templates/content/awards.html',
-      controller: 'navController',
+      controller: 'appController',
       controllerAs: 'awardsController',
       resolve: {
         auth: authAction
@@ -72,7 +72,7 @@ satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
     })
     .when('/actors', {
       templateUrl: '/templates/content/actors.html',
-      controller: 'navController',
+      controller: 'appController',
       controllerAs: 'actorsController',
       resolve: {
         auth: authAction

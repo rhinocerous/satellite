@@ -19,7 +19,6 @@ satellite.ng.page.loginControllerFactory = function (
   {
     $authService.login(vm.form.username, vm.form.password)
       .then(_loginSuccess, _loginError);
-
   }
 
   function _loginSuccess(user)
