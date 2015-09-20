@@ -91,15 +91,11 @@ satellite.ng.app.module.directive('dropzone', function () {
   };
 });
 
-
 satellite.ng.app.module.value('$satellite', satellite  );
-
-
 
 satellite.ng.exceptions.argumentException = function (msg) {
   this.message = msg;
   var err = new Error();
-
   console.error(msg + "\n" + err.stack);
 };
 

@@ -1,6 +1,5 @@
-module.exports.models = {
+module.exports.satellite = {
   defaults:{
-
     scopes: [
       {
         name: "site",
@@ -18,8 +17,8 @@ module.exports.models = {
         name: "user",
         weight: 25
       }
-    ],
-    groups: [
+    ]
+    , groups: [
 
       {
         name: "Roles",
@@ -47,5 +46,13 @@ module.exports.models = {
         scope:"template"
       }
     ]
+    , settings:{
+      headerMain:"Satellite Admin"
+      , headerSecond: "Satellite Website Administrator"
+      , headerTagline: "powered by Rhinocero.us"
+      , footerName: "Rhinocero.us"
+      , footerCopyrightYear: "2015"
+      , footerUrl: "http://rhinocero.us"
+    }
   }
 };

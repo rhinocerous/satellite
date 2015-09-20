@@ -16,6 +16,11 @@ module.exports = function(grunt) {
 			src: ['.tmp/public/concat/production.js'],
 			dest: '.tmp/public/min/production.min.js'
 		}
+    /*  SATELLITE */
+    ,distSatelliteDependency: {
+      src: ['.tmp/public/concat/dependencies.js'],
+      dest: '.tmp/public/min/satellite.dependencies.min.js'
+    }
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');

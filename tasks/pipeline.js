@@ -70,6 +70,32 @@ var jsFilesToInject = [
   //'js/ng/ng.application.js'
 
 ];
+/*  SATELLITE */
+
+var jsSatelliteDependencies = [
+  '/js/ng/satellite/dependencies/jquery-2.1.3.js',
+  '/js/ng/satellite/dependencies/dropzone.js',
+  '/js/ng/satellite/dependencies/angular-1.4.1.js',
+  '/js/ng/satellite/dependencies/angular-1.4.1.route.js',
+  '/js/ng/satellite/dependencies/angular-1.4.1.animate.js',
+  '/js/ng/satellite/dependencies/angular-1.4.1.sanitize.js',
+  '/js/ng/satellite/dependencies/angular-dropzone.js',
+  '/js/ng/satellite/dependencies/ui-bootstrap-tpls-0.13.4.min.js',
+  '/js/ng/satellite/dependencies/textAngular-rangy.min.js',
+  '/js/ng/satellite/dependencies/textAngular-sanitize.min.js',
+  '/js/ng/satellite/dependencies/textAngular.min.js',
+  '/js/ng/satellite/dependencies/angular-drag-n-drop.js',
+  '/js/ng/satellite/dependencies/tv4.js',
+  '/js/ng/satellite/dependencies/ObjectPath.js',
+  '/js/ng/satellite/dependencies/ng.schema-form.js',
+  '/js/ng/satellite/dependencies/bootstrap-decorator.js',
+  '/js/ng/satellite/dependencies/angular-toastr.tpls.js'
+];
+
+var jsSatelliteCore= [
+
+
+];
 
 
 // Client-side HTML templates are injected using the sources below
@@ -90,6 +116,12 @@ var templateFilesToInject = [
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
 // they reside in the first place)
+/*  SATELLITE */
+module.exports.jsSatelliteDependencies = jsSatelliteDependencies.map(function(path) {
+  return '.tmp/public/' + path;
+});
+
+
 module.exports.cssFilesToInject = cssFilesToInject.map(function(path) {
   return '.tmp/public/' + path;
 });

@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   satellite.ng.app.module.run(["$rootScope", "$location", "$alertService", function ($rootScope, $location, $alertService) {
@@ -31,7 +31,14 @@
 
     vm.$scope = $scope;
 
+    vm.initialize = _initialize;
+
     vm.title = "Install Satellite";
+
+    function _initialize()
+    {
+
+    }
   };
 
   satellite.ng.addController(satellite.ng.app.module

@@ -26,6 +26,7 @@ module.exports =
         layout: 'layouts/admin',
         satellite:{
           scopes:scopes
+          , config: sails.config.satellite
         }
       });
     });

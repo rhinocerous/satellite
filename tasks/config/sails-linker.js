@@ -14,6 +14,36 @@
 module.exports = function(grunt) {
 
 	grunt.config.set('sails-linker', {
+    /*  SATELLITE */
+    devSatelliteDependency: {
+      options: {
+        startTag: '<!--SATELLITE DEPENDENCIES-->',
+        endTag: '<!--SATELLITE DEPENDENCIES END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsSatelliteDependencies,
+        'views/**/*.html': require('../pipeline').jsSatelliteDependencies,
+        'views/**/*.ejs': require('../pipeline').jsSatelliteDependencies
+      }
+    },
+
+    prodSatelliteDependency: {
+      options: {
+        startTag: '<!--SATELLITE DEPENDENCIES-->',
+        endTag: '<!--SATELLITE DEPENDENCIES END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': ['.tmp/public/min/satellite.dependencies.min.js'],
+        'views/**/*.html': ['.tmp/public/min/satellite.dependencies.min.js'],
+        'views/**/*.ejs': ['.tmp/public/min/satellite.dependencies.min.js']
+      }
+    },
+
+
 		devJs: {
 			options: {
 				startTag: '<!--SCRIPTS-->',

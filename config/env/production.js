@@ -34,5 +34,7 @@ module.exports = {
   // log: {
   //   level: "silent"
   // }
-
+  grunt: {
+    _hookTimeout:60000
+    }
 };
