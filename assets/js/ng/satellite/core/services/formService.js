@@ -3,53 +3,54 @@
 
 //  encapsulate logic of turning a parsed EAV entity into schema-form compatible json
 //  see https://github.com/Textalk/angular-schema-form
-satellite.ng.app.services.formServiceFactory = function ($baseService)
-{
-  var svc = this;
-
-  $.extend( svc, $baseService);
-
-  svc.parseEntityForm = _parseEntityForm;
-  svc.parseEntitySchema = _parseEntitySchema;
-
-  function _parseEntityForm(entity)
+  var svcObject = function ($baseService)
   {
-    var form = [];
+    var svc = this;
 
-    angular.forEach(entity.headers, function(attr, idx) {
-      form.push({
-        key:attr.slug,
-        type:attr.type,
-        placeholder:attr.name
-      })
-    });
+    $.extend( svc, $baseService);
 
-    return form;
-  }
+    svc.parseEntityForm = _parseEntityForm;
+    svc.parseEntitySchema = _parseEntitySchema;
 
-  function _parseEntitySchema(entity)
-  {
-    var schema = {
-      type: "object",
-      title: entity.name,
-      properties:{}
-    };
+    function _parseEntityForm(entity)
+    {
+      var form = [];
 
-    angular.forEach(entity.headers, function(attr, idx) {
-      schema.properties[attr.slug] = {
-        "title": attr.name,
-        "type": attr.type
-      }
-    });
+      angular.forEach(entity.headers, function(attr, idx) {
+        form.push({
+          key:attr.slug,
+          type:attr.type,
+          placeholder:attr.name
+        })
+      });
 
-    return schema;
-  }
-};
+      return form;
+    }
 
-satellite.ng.addService(satellite.ng.app.module
-  , "$formService"
-  , ["$baseService"]
-  , satellite.ng.app.services.formServiceFactory);
+    function _parseEntitySchema(entity)
+    {
+      var schema = {
+        type: "object",
+        title: entity.name,
+        properties:{}
+      };
+
+      angular.forEach(entity.headers, function(attr, idx) {
+        schema.properties[attr.slug] = {
+          "title": attr.name,
+          "type": attr.type
+        }
+      });
+
+      return schema;
+    }
+  };
+
+  angular.module(SATELLITE)
+    .service('$formService'
+    , ["$baseService"]
+    , svcObject
+  );
 
 
 //vm.form = [

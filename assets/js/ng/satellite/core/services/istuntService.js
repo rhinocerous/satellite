@@ -1,76 +1,76 @@
 (function() {
   'use strict';
 
-
-satellite.ng.app.services.istuntServiceFactory = function ($baseHttpService)
-{
-  var svc = this;
-
-  $.extend( svc, $baseHttpService);
-
-  svc.getResume = _getResume;
-  svc.parseResumeEntities = _parseResumeEntities;
-  svc.parseResumeRecords = _parseResumeRecords;
-
-  function _getResume(id, onSuccess, onError)
+  var svcObject = function ($baseHttpService)
   {
-    var url = "/export";
+    var svc = this;
 
-    svc._executeRetrieve(url, onSuccess, onError)
-  }
+    $.extend( svc, $baseHttpService);
 
-  function _parseResumeRecords(data)
-  {
-    var output = {};
+    svc.getResume = _getResume;
+    svc.parseResumeEntities = _parseResumeEntities;
+    svc.parseResumeRecords = _parseResumeRecords;
 
-    angular.forEach(data, function(value, key) {
+    function _getResume(id, onSuccess, onError)
+    {
+      var url = "/export";
 
-      var type = value['ur_type'];
+      svc._executeRetrieve(url, onSuccess, onError)
+    }
 
-      if(!output[type])
-      {
-        output[type] = [];
-      }
+    function _parseResumeRecords(data)
+    {
+      var output = {};
 
-      var row = value['ur_data'];
+      angular.forEach(data, function(value, key) {
 
-      row.order = value['ur_order'];
+        var type = value['ur_type'];
 
-      output[type].push(row);
-    });
+        if(!output[type])
+        {
+          output[type] = [];
+        }
 
-    return output;
-  }
+        var row = value['ur_data'];
 
-  function _parseResumeEntities(data)
-  {
-    var output = {};
+        row.order = value['ur_order'];
 
-    angular.forEach(data, function(value, key) {
+        output[type].push(row);
+      });
 
-      var type = value['ur_type'];
+      return output;
+    }
 
-      if(!output[type])
-      {
-        output[type] = [];
-      }
+    function _parseResumeEntities(data)
+    {
+      var output = {};
 
-      if(value['ur_data'])
-      {
-        angular.forEach(value['ur_data'], function(dval, dkey) {
-          output[type].push(dkey);
-        });
-      }
+      angular.forEach(data, function(value, key) {
 
-    });
+        var type = value['ur_type'];
 
-    return output;
-  }
-};
+        if(!output[type])
+        {
+          output[type] = [];
+        }
 
-satellite.ng.addService(satellite.ng.app.module
-  , "$istuntService"
-  , ["$baseHttpService"]
-  , satellite.ng.app.services.istuntServiceFactory);
+        if(value['ur_data'])
+        {
+          angular.forEach(value['ur_data'], function(dval, dkey) {
+            output[type].push(dkey);
+          });
+        }
+
+      });
+
+      return output;
+    }
+  };
+
+  angular.module(SATELLITE)
+    .service('$istuntService'
+    , ["$baseHttpService"]
+    , svcObject
+  );
 
 })();

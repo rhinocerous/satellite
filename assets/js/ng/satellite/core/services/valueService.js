@@ -1,40 +1,41 @@
 (function() {
   'use strict';
 
-satellite.ng.app.services.valueServiceFactory = function (
-  $baseHttpService
-, $attributeService)
-{
-  var svc = this;
-
-  $.extend( svc, $baseHttpService);
-
-  svc.$attributeService = $attributeService;
-
-  svc.name = "value";
-
-  svc.ingest = _ingest;
-  svc.get = _get;
-
-  function _ingest(entity, data, cb)
+  var svcObject = function (
+    $baseHttpService
+  , $attributeService)
   {
-    console.log("ingest values", data);
-    console.log("for entity", entity);
+    var svc = this;
 
-    cb();
-  }
+    $.extend( svc, $baseHttpService);
 
-  function _get(id, onSuccess, onError)
-  {
-    var url = "/" + svc.name + "/" + id;
+    svc.$attributeService = $attributeService;
 
-    svc._executeRetrieve(url, onSuccess, onError)
-  }
-};
+    svc.name = "value";
 
-satellite.ng.addService(satellite.ng.app.module
-  , "$valueService"
-  , ["$baseHttpService", "$attributeService"]
-  , satellite.ng.app.services.valueServiceFactory);
+    svc.ingest = _ingest;
+    svc.get = _get;
+
+    function _ingest(entity, data, cb)
+    {
+      console.log("ingest values", data);
+      console.log("for entity", entity);
+
+      cb();
+    }
+
+    function _get(id, onSuccess, onError)
+    {
+      var url = "/" + svc.name + "/" + id;
+
+      svc._executeRetrieve(url, onSuccess, onError)
+    }
+  };
+
+  angular.module(SATELLITE)
+    .service('$valueService'
+    , ["$baseHttpService", "$attributeService"]
+    , svcObject
+  );
 
 })();

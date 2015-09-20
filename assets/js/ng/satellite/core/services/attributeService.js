@@ -1,64 +1,65 @@
 (function() {
   'use strict';
 
-satellite.ng.app.services.attributeServiceFactory = function ($baseHttpService)
-{
-  var svc = this;
-
-  $.extend( svc, $baseHttpService);
-
-  svc.name = "attribute";
-
-  svc.get = _get;
-  svc.getBySlug = _getBySlug;
-  svc.saveAll = _saveAll;
-
-  function _saveAll(attrs, cb)
+  var svcObject = function ($baseHttpService)
   {
-    var endpoint = "/" + svc.name + "/create";
+    var svc = this;
 
-    angular.forEach(attrs, function(attr, idx) {
+    $.extend( svc, $baseHttpService);
 
-      _getBySlug(attr, function(response){
-          //  console.log("attr slug exists", response.data);
-          cb(response.data);
-        },
-        function(error){
+    svc.name = "attribute";
 
-          if(404 == error.status)
-          {
-            var req = {
-              name: attr.capitalize(),
-              slug: attr,
-              type:"string"
-            };
+    svc.get = _get;
+    svc.getBySlug = _getBySlug;
+    svc.saveAll = _saveAll;
 
-            svc._executeCreate(endpoint, req, function (createResponse) {
-              cb(createResponse.data);
-            }, svc._handleError);
-          }
-        })
-    });
-  }
+    function _saveAll(attrs, cb)
+    {
+      var endpoint = "/" + svc.name + "/create";
 
-  function _getBySlug(name, onSuccess, onError)
-  {
-    var url = "/" + svc.name + "/slug/" + name;
+      angular.forEach(attrs, function(attr, idx) {
 
-    svc._executeRetrieve(url, onSuccess, onError)
-  }
+        _getBySlug(attr, function(response){
+            //  console.log("attr slug exists", response.data);
+            cb(response.data);
+          },
+          function(error){
 
-  function _get(id, onSuccess, onError)
-  {
-    var url = "/" + svc.name + "/" + id;
+            if(404 == error.status)
+            {
+              var req = {
+                name: attr.capitalize(),
+                slug: attr,
+                type:"string"
+              };
 
-    svc._executeRetrieve(url, onSuccess, onError)
-  }
-};
+              svc._executeCreate(endpoint, req, function (createResponse) {
+                cb(createResponse.data);
+              }, svc._handleError);
+            }
+          })
+      });
+    }
 
-satellite.ng.addService(satellite.ng.app.module
-  , "$attributeService"
-  , ["$baseHttpService"]
-  , satellite.ng.app.services.attributeServiceFactory);
+    function _getBySlug(name, onSuccess, onError)
+    {
+      var url = "/" + svc.name + "/slug/" + name;
+
+      svc._executeRetrieve(url, onSuccess, onError)
+    }
+
+    function _get(id, onSuccess, onError)
+    {
+      var url = "/" + svc.name + "/" + id;
+
+      svc._executeRetrieve(url, onSuccess, onError)
+    }
+  };
+
+  angular.module(SATELLITE)
+    .service('$attributeService'
+    , ["$baseHttpService"]
+    , svcObject
+  );
 
 })();

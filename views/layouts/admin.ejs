@@ -135,6 +135,7 @@
 
 
 <script type="application/json" id="satellite"><%-JSON.stringify(satellite) %></script>
+<script type="text/javascript"> var SATELLITE="satelliteApp";</script>
 
 
 <!--SATELLITE DEPENDENCIES-->
@@ -158,9 +159,13 @@
 <!--SATELLITE DEPENDENCIES END-->
 
 
-<script src="/js/ng/satellite/core/satellite.core.js"></script>
+<!--<script src="/js/ng/satellite/core/satellite.core.js"></script>-->
 
 <!--SATELLITE CORE-->
+<script src="/js/ng/satellite/core/satellite.core.js"></script>
+<script src="/js/ng/satellite/core/base/baseController.js"></script>
+<script src="/js/ng/satellite/core/base/baseHttpService.js"></script>
+<script src="/js/ng/satellite/core/base/baseService.js"></script>
 <script src="/js/ng/satellite/core/services/alertService.js"></script>
 <script src="/js/ng/satellite/core/services/attributeService.js"></script>
 <script src="/js/ng/satellite/core/services/authService.js"></script>

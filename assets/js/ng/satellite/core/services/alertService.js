@@ -3,7 +3,7 @@
 
 //  abstract away the logic of doing alerts to user.
 //  this implementation uses toastr:
-satellite.ng.app.services.alertServiceFactory = function ($baseService, toastr)
+var svcObject = function ($baseService, toastr)
 {
   var svc = this;
 
@@ -55,13 +55,12 @@ satellite.ng.app.services.alertServiceFactory = function ($baseService, toastr)
       closeButton: true
     });
   }
-
-
 };
 
-satellite.ng.addService(satellite.ng.app.module
-  , "$alertService"
-  , ["$baseService", "toastr"]
-  , satellite.ng.app.services.alertServiceFactory);
+  angular.module(SATELLITE)
+    .service('$alertService'
+    , ["$baseService", "toastr"]
+    , svcObject
+  );
 
 }());
