@@ -4,7 +4,7 @@
   satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 
     $routeProvider.when('/install', {
-      templateUrl: '/js/ng/core/install/index.html',
+      templateUrl: '/js/ng/satellite/core/install/index.html',
       controller: 'installController',
       controllerAs: 'install',
       resolve: {

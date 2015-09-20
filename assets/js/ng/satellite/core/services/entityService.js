@@ -1,3 +1,6 @@
+(function() {
+  'use strict';
+
 satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $attributeService)
 {
   var svc = this;
@@ -154,3 +157,5 @@ satellite.ng.addService(satellite.ng.app.module
   , "$entityService"
   , ["$baseHttpService","$attributeService"]
   , satellite.ng.app.services.entityServiceFactory);
+
+})();

@@ -15,6 +15,39 @@ module.exports = function(grunt) {
 
 	grunt.config.set('sails-linker', {
     /*  SATELLITE */
+
+    devSatelliteCore: {
+      options: {
+        startTag: '<!--SATELLITE CORE-->',
+        endTag: '<!--SATELLITE CORE END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsSatelliteCore,
+        'views/**/*.html': require('../pipeline').jsSatelliteCore,
+        'views/**/*.ejs': require('../pipeline').jsSatelliteCore
+      }
+    },
+
+    prodSatelliteCore: {
+      options: {
+        startTag: '<!--SATELLITE CORE-->',
+        endTag: '<!--SATELLITE CORE END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': ['.tmp/public/min/satellite.core.min.js'],
+        'views/**/*.html': ['.tmp/public/min/satellite.core.min.js'],
+        'views/**/*.ejs': ['.tmp/public/min/satellite.core.min.js']
+
+        //'.tmp/public/**/*.html': require('../pipeline').jsSatelliteCore,
+        //'views/**/*.html': require('../pipeline').jsSatelliteCore,
+        //'views/**/*.ejs': require('../pipeline').jsSatelliteCore
+      }
+    },
+
     devSatelliteDependency: {
       options: {
         startTag: '<!--SATELLITE DEPENDENCIES-->',

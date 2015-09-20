@@ -1,3 +1,5 @@
+
+
 String.prototype.fromSlug = function()
 {
   return this
@@ -278,5 +280,3 @@ satellite.ng.addService(satellite.ng.app.module
   , "$baseController"
   , ['$document', '$log', '$satellite','$alertService']
   , satellite.ng.app.controllers.baseController);
-
-

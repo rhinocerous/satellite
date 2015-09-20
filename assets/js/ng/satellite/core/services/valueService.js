@@ -1,3 +1,6 @@
+(function() {
+  'use strict';
+
 satellite.ng.app.services.valueServiceFactory = function (
   $baseHttpService
 , $attributeService)
@@ -33,3 +36,5 @@ satellite.ng.addService(satellite.ng.app.module
   , "$valueService"
   , ["$baseHttpService", "$attributeService"]
   , satellite.ng.app.services.valueServiceFactory);
+
+})();

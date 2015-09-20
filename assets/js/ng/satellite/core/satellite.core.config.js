@@ -1,3 +1,7 @@
+(function() {
+  'use strict';
+
+
 satellite.ng.app.module.config(function ($routeProvider, $locationProvider) {
 
   var authAction = ["$q", "$authService", function ($q, $authService) {
@@ -96,3 +100,6 @@ satellite.ng.app.module.run(["$rootScope", "$location", function ($rootScope, $l
   });
 
 }]);
+
+
+})();

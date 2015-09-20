@@ -12,5 +12,6 @@ module.exports = function (grunt) {
 		'sails-linker:devTplJade'
 /*  SATELLITE */
     , 'sails-linker:prodSatelliteDependency'
+    , 'sails-linker:prodSatelliteCore'
 	]);
 };

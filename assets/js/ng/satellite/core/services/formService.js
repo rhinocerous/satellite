@@ -1,3 +1,6 @@
+(function() {
+  'use strict';
+
 //  encapsulate logic of turning a parsed EAV entity into schema-form compatible json
 //  see https://github.com/Textalk/angular-schema-form
 satellite.ng.app.services.formServiceFactory = function ($baseService)
@@ -162,3 +165,5 @@ satellite.ng.addService(satellite.ng.app.module
 //  }
 //
 //},
+
+})();

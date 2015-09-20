@@ -1,3 +1,6 @@
+(function() {
+  'use strict';
+
 satellite.ng.app.services.settingServiceFactory = function ($baseHttpService)
 {
   var svc = this;
@@ -26,3 +29,5 @@ satellite.ng.addService(satellite.ng.app.module
   , "$settingService"
   , ["$baseHttpService"]
   , satellite.ng.app.services.settingServiceFactory);
+
+})();

@@ -93,8 +93,9 @@ var jsSatelliteDependencies = [
 ];
 
 var jsSatelliteCore= [
-
-
+ // '/js/ng/satellite/core/satellite.core.js',
+  '/js/ng/satellite/core/services/*.js',
+  '/js/ng/satellite/core/satellite.core.config.js'
 ];
 
 
@@ -116,8 +117,14 @@ var templateFilesToInject = [
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
 // they reside in the first place)
+
+
 /*  SATELLITE */
 module.exports.jsSatelliteDependencies = jsSatelliteDependencies.map(function(path) {
+  return '.tmp/public/' + path;
+});
+
+module.exports.jsSatelliteCore = jsSatelliteCore.map(function(path) {
   return '.tmp/public/' + path;
 });
 

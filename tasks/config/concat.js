@@ -17,12 +17,15 @@ module.exports = function(grunt) {
 			src: require('../pipeline').jsFilesToInject,
 			dest: '.tmp/public/concat/production.js'
 		},
-
+    /*  SATELLITE */
     jsSatelliteDependency: {
       src: require('../pipeline').jsSatelliteDependencies,
       dest: '.tmp/public/concat/dependencies.js'
     },
-
+    jsSatelliteCore: {
+      src: require('../pipeline').jsSatelliteCore,
+      dest: '.tmp/public/concat/core.js'
+    },
 
 		css: {
 			src: require('../pipeline').cssFilesToInject,

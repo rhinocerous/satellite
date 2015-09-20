@@ -1,3 +1,6 @@
+(function() {
+  'use strict';
+
 satellite.ng.app.services.authServiceFactory = function ($baseHttpService, $q, $window)
 {
   var svc = this;
@@ -120,3 +123,5 @@ satellite.ng.addService(satellite.ng.app.module
   , "$authService"
   , ["$baseHttpService", "$q", "$window"]
   , satellite.ng.app.services.authServiceFactory);
+
+})();
