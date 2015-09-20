@@ -48,16 +48,6 @@ module.exports.routes = {
     action: 'admin',
     skipAssets: true
   },
-  //'post /api/login': {
-  //  controller: 'AuthController',
-  //  action: 'login',
-  //  skipAssets: true
-  //},
-  //'post /api/register': {
-  //  controller: 'AuthController',
-  //  action: 'login',
-  //  skipAssets: true
-  //},
   'get /entity/slug/:slug': {
     controller: 'EntityController',
     action: 'findBySlug',

@@ -1,3 +1,14 @@
+<%
+
+  if(typeof satellite == 'undefined')
+  {
+    console.log("no satellite located");
+    satellite = {
+      scopes:[]
+    };
+  }
+%>
+
 <!DOCTYPE html><!--[if IE 9 ]>
 <html class="ie9" lang="en"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
@@ -113,6 +124,7 @@
 <!--<script src="/js/naut/vendor.js"></script>-->
 <!--<script src="/js/naut/plugins.js"></script>-->
 <!--<script src="/js/naut/main.js"></script>-->
+<script type="application/json" id="satellite"><%-JSON.stringify(satellite) %></script>
 
 <script src="/js/dependencies/jquery-2.1.3.js"></script>
 <script src="/js/dependencies/dropzone.js"></script>
@@ -143,6 +155,7 @@
 <script src="/js/ng/services/authService.js"></script>
 <script src="/js/ng/services/alertService.js"></script>
 <script src="/js/ng/controllers/application.js"></script>
+<script src="/js/ng/controllers/install.js"></script>
 <script src="/js/ng/controllers/bio.js"></script>
 <script src="/js/ng/controllers/settings.js"></script>
 <script src="/js/ng/controllers/resume.js"></script>
@@ -151,6 +164,6 @@
 <script src="/js/ng/controllers/register.js"></script>
 <script src="/js/ng/controllers/login.js"></script>
 <script src="/js/ng/controllers/schema/addEntityModal.js"></script>
-<script src="/js/ng/ng.routes.js"></script>
+<script src="/js/ng/ng.satellite.routes.js"></script>
 </body>
 </html>

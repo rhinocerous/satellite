@@ -31,14 +31,12 @@ satellite.ng.page.schemaControllerFactory = function (
 
   function _init()
   {
-    console.log("schema controller init");
-
     vm.$entityService.getByGroup("resume", _onGetEntitiesSuccess, _onError);
   }
 
   function _import()
   {
-    vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onError)
+    vm.$istuntService.getResume(vm.userId, _onImportSuccess, _onIstuntError)
   }
 
   function _addEntity()
@@ -53,7 +51,10 @@ satellite.ng.page.schemaControllerFactory = function (
     });
 
     modalInstance.result.then(function (form) {
+
       console.log("form data", form);
+
+      vm.$entityService.create(form, _onCreateEntitySuccess, _onError)
     }, function () {
       console.log('Modal dismissed at: ' + new Date());
     });
@@ -64,6 +65,11 @@ satellite.ng.page.schemaControllerFactory = function (
     vm.currentEntity = entity;
 
     vm.$entityService.get(vm.currentEntity.id, _onGetCurrentEntitySuccess, _onError);
+  }
+
+  function _onCreateEntitySuccess(response)
+  {
+
   }
 
   function _onGetCurrentEntitySuccess(response)
@@ -94,13 +100,19 @@ satellite.ng.page.schemaControllerFactory = function (
     _init();
   }
 
-  function _onError(data)
+  function _onError(error)
+  {
+    vm.$alertService.error("An error occurred", (error.message) ? error.message : error);
+
+    console.error("error occurred", error);
+  }
+
+  function _onIstuntError(data)
   {
     vm.$alertService.error("Please try again later.", "Unable to load iStunt resume");
 
     console.error("error getting istunt resume", data);
   }
-
 };
 
 satellite.ng.addController(satellite.ng.app.module

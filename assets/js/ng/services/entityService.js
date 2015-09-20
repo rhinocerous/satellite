@@ -16,6 +16,7 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
   svc.cb = null;
 
   svc.ingest = _ingest;
+  svc.create = _create;
   svc.get = _get;
   svc.getBySlug = _getBySlug;
   svc.getByGroup = _getByGroup;
@@ -49,8 +50,6 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
 
   function _saveAll(entities)
   {
-    var endpoint = "/" + svc.name + "/create";
-
     angular.forEach(entities, function(entity, idx) {
 
       _getBySlug(entity, function(response){
@@ -66,10 +65,19 @@ satellite.ng.app.services.entityServiceFactory = function ($baseHttpService, $at
             group:"resume",
             active:true
           };
-          svc._executeCreate(endpoint, req, _onCreateSuccess, svc._handleError);
+
+          _create(req, _onCreateSuccess, svc._handleError)
+          //svc._executeCreate(endpoint, req, _onCreateSuccess, svc._handleError);
         }
       })
     });
+  }
+
+  function _create(req, onSuccess, onError)
+  {
+    var endpoint = "/" + svc.name + "/create";
+
+    svc._executeCreate(endpoint, req, onSuccess, onError);
   }
 
   function _onCreateSuccess(response)

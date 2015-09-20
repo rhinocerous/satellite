@@ -24,16 +24,16 @@ satellite.ng.page.appControllerFactory = function (
   vm.$timeout = $timeout;
 
   vm.currentRequestLabel = "Current Request:";
-  vm.sidebarActive = true;
+  vm.sidebarActive = false;
 
   vm.tabs = [
-    { link: '#/', label: 'Settings', icon: 'fa-cogs' },
-    { link: '#/about', label: 'Biography', icon: 'fa-edit' },
-    { link: '#/reel', label: 'Reel', icon: 'fa-film' },
-    { link: '#/resume', label: 'Resume', icon: 'fa-book' },
-    { link: '#/awards', label: 'Awards', icon: 'fa-fire' },
-    { link: '#/actors', label: 'Actors', icon: 'fa-bullseye' },
-    { link: '#/schema', label: 'Schema', icon: 'fa-wrench' }
+    //{ link: '#/', label: 'Settings', icon: 'fa-cogs' },
+    //{ link: '#/about', label: 'Biography', icon: 'fa-edit' },
+    //{ link: '#/reel', label: 'Reel', icon: 'fa-film' },
+    //{ link: '#/resume', label: 'Resume', icon: 'fa-book' },
+    //{ link: '#/awards', label: 'Awards', icon: 'fa-fire' },
+    //{ link: '#/actors', label: 'Actors', icon: 'fa-bullseye' },
+    //{ link: '#/schema', label: 'Schema', icon: 'fa-wrench' }
 
   ];
 

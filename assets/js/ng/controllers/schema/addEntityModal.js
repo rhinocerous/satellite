@@ -1,8 +1,6 @@
-satellite.ng.page.addEntityModalFactory = function (
-  $scope
+satellite.ng.page.addEntityModalFactory = function ($scope
   , $baseController
-  , $modalInstance
-) {
+  , $modalInstance) {
 
   var vm = this;
 
@@ -12,10 +10,77 @@ satellite.ng.page.addEntityModalFactory = function (
   vm.$modalInstance = $modalInstance;
 
   vm.title = "Adding New Entity";
-  vm.form = {};
+  vm.addEntityForm = null;
+  vm.formData = {};
+
+  vm.form = [
+    "name",
+    {
+      "type": "text",
+      "placeholder": "Required"
+    },
+    "slug",
+    {
+      "type": "text",
+      "placeholder": "Required"
+    },
+    "group",
+    {
+      "type": "text",
+      "placeholder": "Required"
+    },
+    "description",
+    {
+      "type": "text",
+      "placeholder": "Required"
+    }
+  ];
+
+  vm.schema = {
+    "type": "object",
+    "title": "Entity",
+    "properties": {
+      "name": {
+        "key":"name",
+        "title": "Name",
+        "type": "string"
+      },
+      "slug": {
+        "key":"slug",
+        "title": "Slug",
+        "type": "string"
+      },
+      "group": {
+        "key":"group",
+        "title": "Group",
+        "type": "string"
+      }
+      ,"description": {
+        "key":"description",
+        "title": "Description",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "slug",
+      "group"
+    ]
+  };
+
 
   vm.ok = function () {
-    vm.$modalInstance.close(vm.form);
+
+    console.log("entity form", vm.addEntityForm);
+
+    angular.forEach(vm.addEntityForm.$error.required, function(field) {
+      field.$setDirty();
+    });
+
+    if(vm.addEntityForm.$valid)
+    {
+      vm.$modalInstance.close(vm.formData);
+    }
   };
 
   vm.cancel = function () {
