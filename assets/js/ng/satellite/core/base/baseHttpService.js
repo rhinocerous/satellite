@@ -1,13 +1,15 @@
 (function() {
   'use strict';
 
-  var svcObject = function ($baseService, $http) {
+  var svcObject = function ($baseService, $http, $q) {
 
     var svc = this;
 
     $.extend(svc, $baseService);
 
     svc.$http = $http;
+    svc.$q = $q;
+
     svc._executeUpsert = __executeUpsert;
     svc._executeCreate = __executeCreate;
     svc._executeUpdate = __executeUpdate;
@@ -69,7 +71,7 @@
 
   angular.module(SATELLITE)
     .service('$baseHttpService'
-    , ['$baseService', '$http', svcObject]
+    , ['$baseService', '$http', '$q', svcObject]
   );
 
 })();

@@ -48,6 +48,11 @@ module.exports.routes = {
     action: 'admin',
     skipAssets: true
   },
+  'post /install': {
+    controller: 'InstallController',
+    action: 'initialize',
+    skipAssets: true
+  },
   'get /entity/slug/:slug': {
     controller: 'EntityController',
     action: 'findBySlug',

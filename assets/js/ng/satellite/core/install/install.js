@@ -35,13 +35,15 @@
   }]);
 
   var vmObject = function ($scope
-    , $baseController) {
+    , $baseController
+    , $installService) {
 
     var vm = this;
 
     $.extend(vm, $baseController);
 
     vm.$scope = $scope;
+    vm.$installService = $installService;
 
     vm.initialize = _initialize;
 
@@ -49,7 +51,27 @@
 
     function _initialize()
     {
+      var q = vm.$installService.initialize();
 
+      q.then(function(response){
+
+        vm.$alertService.success("Satellite was successfully initialized.");
+        console.log("response from server", response);
+
+      }, function(error){
+
+        var msg = "Satellite failed to initialize";
+
+        if(error.data && error.data.message)
+        {
+          msg += ": " + error.data.message;
+        }
+        vm.$alertService.error(msg);
+
+        console.error("response from server", error);
+
+        return false;
+      });
     }
 
     return vm;
@@ -57,7 +79,7 @@
 
   module
     .controller('installController'
-    , ['$scope', '$baseController', vmObject]
+    , ['$scope', '$baseController', '$installService', vmObject]
   );
 
 

@@ -27,6 +27,7 @@ module.exports = function (req, res, next) {
       res.locals.user = req.user;
       if(req.options.controller.indexOf('auth')>-1
         ||req.options.controller.indexOf('index')>-1
+        ||req.options.controller.indexOf('install')>-1
         ||req.user){
 
         if(req.user)
