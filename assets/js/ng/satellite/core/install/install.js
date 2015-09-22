@@ -5,22 +5,33 @@
 
   module.run(["$rootScope", "$location", "$alertService", function ($rootScope, $location, $alertService) {
 
-    var raw = $("#satellite").html();
+    $rootScope.$on("$routeChangeSuccess", function (event, routeData) {
 
-    console.log("running install check");
-
-    if (raw && raw.length) {
-      var config = JSON.parse(raw);
-
-      console.log("got config from server", config);
-
-      if (config && config.scopes && config.scopes.length > 1)
+      if(routeData && routeData.controller == "installController")
         return true;
-    }
 
-    $alertService.warning("Satellite is currently not installed. Please install and set up a site to continue.");
+      //if("installController" != routeData.controller)
+      //{
+        console.log("route change event", routeData);
 
-    $location.url("/install");
+        var raw = $("#satellite").html();
+
+        console.log("running install check");
+
+        if (raw && raw.length) {
+          var config = JSON.parse(raw);
+
+          console.log("got config from server", config);
+
+          if (config && config.scopes && config.scopes.length > 1)
+            return true;
+        }
+
+        $alertService.warning("Satellite is currently not installed. Please install and set up a site to continue.");
+
+        $location.url("/install");
+      //}
+    });
   }]);
 
   var vmObject = function ($scope

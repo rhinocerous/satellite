@@ -91,9 +91,9 @@
 
   module.run(["$rootScope", "$location", function ($rootScope, $location) {
 
-    $rootScope.$on("$routeChangeSuccess", function (event, data, userInfo) {
-      console.log("on route success", userInfo);
-    });
+    //$rootScope.$on("$routeChangeSuccess", function (event, data, userInfo) {
+    //  console.log("on route success", userInfo);
+    //});
 
     $rootScope.$on("$routeChangeError", function (event, current, previous, eventObj) {
       if (eventObj.authenticated === false) {
