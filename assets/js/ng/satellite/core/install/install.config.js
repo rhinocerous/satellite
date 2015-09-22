@@ -1,9 +1,8 @@
 (function () {
   'use strict';
 
-  var module = angular.module(SATELLITE);
-
-  module.config(function ($routeProvider, $locationProvider) {
+  angular.module(SATELLITE)
+    .config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
 
     $routeProvider.when('/install', {
       templateUrl: '/js/ng/satellite/core/install/index.html',
@@ -15,7 +14,7 @@
     });
 
     $locationProvider.html5Mode(false);
-  });
+  }]);
 
 
 })();

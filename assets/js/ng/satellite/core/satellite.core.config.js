@@ -4,7 +4,7 @@
 
   var module = angular.module(SATELLITE);
 
-  module.config(function ($routeProvider, $locationProvider) {
+  module.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
 
     var authAction = ["$q", "$authService", function ($q, $authService) {
 
@@ -86,7 +86,7 @@
       });
 
     $locationProvider.html5Mode(false);
-  });
+  }]);
 
 
   module.run(["$rootScope", "$location", function ($rootScope, $location) {
