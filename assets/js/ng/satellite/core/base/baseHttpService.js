@@ -69,8 +69,7 @@
 
   angular.module(SATELLITE)
     .service('$baseHttpService'
-    , ['$baseService', '$http']
-    , svcObject
+    , ['$baseService', '$http', svcObject]
   );
 
 })();

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var svcObject = function ($win, $loc, $util) {
+  var svcObject = function ($window, $location) {
 
     var getChangeNotifier = function ($scope) {
 
@@ -15,10 +15,9 @@
     };
 
     var baseService = {
-      $window: $win
+      $window: $window
       , getNotifier: getChangeNotifier
-      , $location: $loc
-      , $utils: $util
+      , $location: $location
     };
 
     return baseService;
@@ -27,8 +26,7 @@
 
   angular.module(SATELLITE)
     .service('$baseService'
-    , ['$window', '$location']
-    , svcObject
+    , ['$window', '$location', svcObject]
     );
 
 })();

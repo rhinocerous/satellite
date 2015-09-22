@@ -94,9 +94,11 @@ var jsSatelliteDependencies = [
 
 var jsSatelliteCore= [
   '/js/ng/satellite/core/satellite.core.js',
+  '/js/ng/satellite/core/satellite.core.config.js',
   '/js/ng/satellite/core/base/*.js',
   '/js/ng/satellite/core/services/*.js',
-  '/js/ng/satellite/core/satellite.core.config.js'
+  '/js/ng/satellite/core/install/*.js',
+  '/js/ng/satellite/core/app/*.js'
 ];
 
 

@@ -117,12 +117,13 @@
       return deferred.promise;
     }
 
+
+    return svc;
   };
 
   angular.module(SATELLITE)
     .service('$authService'
-    , ["$baseHttpService", "$q", "$window"]
-    , svcObject
+    , ["$baseHttpService", "$q", "$window", svcObject]
   );
 
 })();

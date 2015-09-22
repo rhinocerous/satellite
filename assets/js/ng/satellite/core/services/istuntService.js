@@ -65,12 +65,13 @@
 
       return output;
     }
+
+    return svc;
   };
 
   angular.module(SATELLITE)
     .service('$istuntService'
-    , ["$baseHttpService"]
-    , svcObject
+    , ["$baseHttpService", svcObject]
   );
 
 })();

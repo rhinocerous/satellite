@@ -23,12 +23,13 @@
 
       svc._executeRetrieve(url, onSuccess, onError)
     }
+
+    return svc;
   };
 
   angular.module(SATELLITE)
     .service('$settingService'
-    , ["$baseHttpService"]
-    , svcObject
+    , ["$baseHttpService", svcObject]
   );
 
 })();

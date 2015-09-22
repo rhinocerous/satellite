@@ -151,12 +151,13 @@
     {
       //console.log("association created", response);
     }
+
+    return svc;
   };
 
   angular.module(SATELLITE)
     .service('$entityService'
-    , ["$baseHttpService","$attributeService"]
-    , svcObject
+    , ["$baseHttpService","$attributeService", svcObject]
   );
 
 

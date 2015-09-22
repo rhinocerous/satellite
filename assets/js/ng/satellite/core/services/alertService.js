@@ -55,12 +55,13 @@ var svcObject = function ($baseService, toastr)
       closeButton: true
     });
   }
+
+  return svc;
 };
 
   angular.module(SATELLITE)
     .service('$alertService'
-    , ["$baseService", "toastr"]
-    , svcObject
+    , ["$baseService", "toastr", svcObject]
   );
 
 }());

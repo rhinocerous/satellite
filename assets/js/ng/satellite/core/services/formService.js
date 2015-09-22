@@ -44,12 +44,13 @@
 
       return schema;
     }
+
+    return svc;
   };
 
   angular.module(SATELLITE)
     .service('$formService'
-    , ["$baseService"]
-    , svcObject
+    , ["$baseService", svcObject]
   );
 
 
