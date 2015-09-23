@@ -8,21 +8,12 @@
 module.exports = {
   initialize: function (req, res) {
 
-    InstallService.initialize(function(err){
+    InstallService.initialize(function(err, scopes){
 
       if (err)
-        return res.json(500, err);
+        return res.json(500, {success:false, message:err});
 
-      //return res.json({success:true, message:"installation successful"});
-
-      Scope.find(function (err2, scopes) {
-
-        if (err2)
-          return res.json(500, err2);
-
-        return res.json(err2)
-
-      });
+        return res.json({success:true, items:scopes});
 
     });
 

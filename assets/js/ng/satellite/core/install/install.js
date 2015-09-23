@@ -36,7 +36,8 @@
 
   var vmObject = function ($scope
     , $baseController
-    , $installService) {
+    , $installService
+    , $location) {
 
     var vm = this;
 
@@ -44,6 +45,7 @@
 
     vm.$scope = $scope;
     vm.$installService = $installService;
+    vm.$location = $location;
 
     vm.initialize = _initialize;
 
@@ -55,8 +57,14 @@
 
       q.then(function(response){
 
+        vm.$alertService.success("Please register a new account then log in to continue.");
         vm.$alertService.success("Satellite was successfully initialized.");
+
         console.log("response from server", response);
+
+        $("#satellite").html(JSON.stringify({scopes:response.data.items}));
+
+        vm.$location.url("/register");
 
       }, function(error){
 
@@ -79,7 +87,7 @@
 
   module
     .controller('installController'
-    , ['$scope', '$baseController', '$installService', vmObject]
+    , ['$scope', '$baseController', '$installService', '$location', vmObject]
   );
 
 

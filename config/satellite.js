@@ -2,6 +2,10 @@ module.exports.satellite = {
   defaults:{
     scopes: [
       {
+        name: "root",
+        weight: 1000
+      },
+      {
         name: "site",
         weight: 100
       },
@@ -44,6 +48,11 @@ module.exports.satellite = {
         name: "Template",
         slug:"template",
         scope:"template"
+      },
+      {
+        name: "Root",
+        slug:"root",
+        scope:"root"
       }
     ]
     , settings:{
