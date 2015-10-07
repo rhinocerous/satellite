@@ -1,12 +1,12 @@
 (function() {
   'use strict';
 
-  var svcObject = function ($document, $log, $alertService) {
+  var svcObject = function ($document, $log, $location, $alertService) {
 
     var baseController = {
       $document: $document
       , $log: $log
-      //, $satellite: $satellite
+      , $location:$location
       , setUpCurrentRequest: function (viewModel) {
 
         viewModel.currentRequest = {originalPath: "/", isTop: true};
@@ -27,7 +27,7 @@
 
   angular.module(SATELLITE)
     .service('$baseController'
-    , ['$document', '$log', '$alertService', svcObject]
+    , ['$document', '$log','$location', '$alertService', svcObject]
   );
 
 })();

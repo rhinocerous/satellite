@@ -90,7 +90,7 @@
         password: password
       }).then(function(result) {
 
-        deferred.resolve(svc.user);
+        deferred.resolve(result.data);
 
       }, function(error) {
         deferred.reject(error);
@@ -107,9 +107,7 @@
         identifier: userName,
         password: password
       }).then(function(result) {
-
-        deferred.resolve(result.data.user);
-
+        deferred.resolve(result.data);
       }, function(error) {
         deferred.reject(error);
       });
