@@ -36,6 +36,14 @@
         controller: 'registerController',
         controllerAs: 'auth'
       })
+      .when('/websites', {
+        templateUrl: '/templates/admin/websites.html',
+        controller: 'websitesController',
+        controllerAs: 'sites',
+        resolve: {
+          auth: authAction
+        }
+      })
       .when('/about', {
         templateUrl: '/templates/content/bio.html',
         controller: 'bioController',

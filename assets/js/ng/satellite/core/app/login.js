@@ -28,7 +28,7 @@
     function _loginSuccess(response)
     {
       vm.$alertService.success("You are now logged in.", response.user.email);
-      vm.$location.url("/dashboard");
+      vm.$location.url("/websites");
     }
 
     function _loginError(error)
