@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{modal.title}}</h3>
+</div>
+<div class="modal-body">
+  <form name="modal.websiteForm"
+        sf-model="modal.formData"
+        sf-form="modal.form"
+        sf-schema="modal.schema"
+        ng-submit="modal.submit()">
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="modal.submit()">OK</button>
+  <button class="btn btn-warning" type="button" ng-click="modal.cancel()">Cancel</button>
+</div>

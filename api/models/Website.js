@@ -7,8 +7,28 @@
 
 module.exports = {
 
+  exist:[],
   attributes: {
-
+    name:{
+      type:"string",
+      required:true,
+      minLength: 2
+    },
+    slug:{
+      type:"string",
+      required:true,
+      minLength: 2,
+      unique: true
+    },
+    url:{
+      type:"string",
+      required:true,
+      minLength: 2
+    },
+    active:{
+      type:"boolean",
+      required:false
+    }
   }
 };
 

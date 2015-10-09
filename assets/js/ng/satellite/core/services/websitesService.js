@@ -9,7 +9,16 @@
 
     svc.name = "website";
 
+    svc.create = _create;
     svc.get = _get;
+
+    function _create(req, onSuccess, onError)
+    {
+      var endpoint = "/" + svc.name + "/create";
+
+      svc._executeCreate(endpoint, req, onSuccess, onError);
+    }
+
 
     function _get(id)
     {
