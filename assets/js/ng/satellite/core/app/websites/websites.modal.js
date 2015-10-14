@@ -5,11 +5,12 @@
     $scope
     , $baseController
     , $modalInstance
+    , skeletons
   ) {
 
     var vm = this;
 
-    $.extend(vm, $baseController); 
+    $.extend(vm, $baseController);
 
     vm.$scope = $scope;
     vm.$modalInstance = $modalInstance;
@@ -21,6 +22,9 @@
 
     vm.formData = {};
     vm.websiteForm = null;
+    vm.skeletons = skeletons;
+
+    console.log("skeletons in modal", vm.skeletons);
 
     vm.form = [
       "name",
@@ -37,6 +41,12 @@
       {
         "type": "text",
         "placeholder": "Required: full domain name, no http://"
+      },
+      "skeleton",
+      {
+        "key": "skeleton",
+        "type": "select",
+        "titleMap": vm.skeletons.obj
       }
     ];
 
@@ -58,12 +68,18 @@
           "key":"url",
           "title": "Full Url",
           "type": "string"
+        },
+        "skeleton": {
+          "title": "Website Skeleton",
+          "type": "string",
+          "enum": vm.skeletons.enum
         }
       },
       "required": [
         "name",
         "slug",
-        "url"
+        "url",
+        "skeleton"
       ]
     };
 
@@ -90,6 +106,6 @@
 
   angular.module(SATELLITE)
     .controller('websitesModalController'
-    , ['$scope', '$baseController', '$modalInstance', vmObject]);
+    , ['$scope', '$baseController', '$modalInstance', 'skeletons', vmObject]);
 
 })();

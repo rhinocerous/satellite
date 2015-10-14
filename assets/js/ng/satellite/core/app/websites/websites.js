@@ -19,6 +19,7 @@
 
     vm.title = "Manage Websites";
     vm.sites = null;
+    vm.skeletons = null;
 
     _init();
 
@@ -26,6 +27,24 @@
     {
       vm.$websitesService.get()
         .then(_getSuccess, _getError);
+
+      _parseSkeletons(vm.$config.config.skeletons);
+    }
+
+    function _parseSkeletons(input)
+    {
+      vm.skeletons = {
+        enum:[]
+        , obj:{}
+      };
+
+      if(input)
+      {
+        angular.forEach(input, function(value, key) {
+          this.enum.push(key);
+          this.obj[key] = key;
+        }, vm.skeletons);
+      }
     }
 
     function _showCreate()
@@ -36,7 +55,11 @@
         controller: 'websitesModalController',
         controllerAs: 'modal',
         size: "medium",
-        resolve: null
+        resolve: {
+          skeletons:function(){
+            return vm.skeletons;
+          }
+        }
       });
 
       modalInstance.result.then(function (form) {
@@ -53,6 +76,12 @@
       vm.$alertService.success("Website created");
 
       console.log("create response", response);
+
+      var site = response.data;
+
+      var skeleton = vm.$config.config.skeletons[site.skeleton];
+
+      console.log("install skema", skeleton);
 
       _init();
     }

@@ -25,6 +25,10 @@ module.exports = {
       required:true,
       minLength: 2
     },
+    skeleton:{
+      type:"string",
+      required:true
+    },
     active:{
       type:"boolean",
       required:false

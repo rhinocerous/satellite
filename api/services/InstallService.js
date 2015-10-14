@@ -59,7 +59,7 @@ module.exports =
         });
       }
 
-      console.log("sorted scopes\n%s", JSON.stringify(out, null, "  "));
+      //console.log("sorted scopes\n%s", JSON.stringify(out, null, "  "));
     });
 
   }
