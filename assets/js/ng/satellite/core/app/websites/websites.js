@@ -6,6 +6,7 @@
     , $baseController
     , $modal
     , $websitesService
+    , $entityService
   ) {
 
     var vm = this;
@@ -14,6 +15,7 @@
 
     vm.$scope = $scope;
     vm.$websitesService = $websitesService;
+    vm.$entityService = $entityService;
 
     vm.showCreate = _showCreate;
 
@@ -83,7 +85,22 @@
 
       console.log("install skema", skeleton);
 
-      _init();
+
+      vm.$entityService.ingest(site.id, skeleton.schema, _onIngestComplete);
+    }
+
+    function _onIngestComplete(err, data)
+    {
+      if(err)
+      {
+        vm.$alertService.error(err, "Website schema installation failed.");
+      }
+      else
+      {
+        vm.$alertService.success("The website schema was installed.");
+
+        _init();
+      }
     }
 
     function _createError(error) {
@@ -107,7 +124,7 @@
 
   angular.module(SATELLITE)
     .controller('websitesController'
-    , ['$scope', '$baseController', '$modal', '$websitesService', vmObject]);
+    , ['$scope', '$baseController', '$modal', '$websitesService', '$entityService', vmObject]);
 
 })();
 

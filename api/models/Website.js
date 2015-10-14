@@ -32,6 +32,10 @@ module.exports = {
     active:{
       type:"boolean",
       required:false
+    },
+    entities:{
+      collection: 'entity',
+      via: 'websites'
     }
   }
 };

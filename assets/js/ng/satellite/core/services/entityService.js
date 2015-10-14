@@ -24,11 +24,14 @@
     svc.getBySlug = _getBySlug;
     svc.getByGroup = _getByGroup;
 
+    svc.websiteId = null;
 
-    function _ingest(userId, data, cb)
+
+    function _ingest(websiteId, data, cb)
     {
       svc.map = data;
       svc.cb = cb;
+      svc.websiteId = websiteId;
 
       angular.forEach(svc.map, function(attributes, slug) {
 

@@ -37,6 +37,10 @@ module.exports = {
       collection: "attribute", // match model name here
       via: "parent", // match attribute name on other model
       dominant: true // dominant side
+    },
+    websites: {
+      collection: 'website',
+      via: 'entities'
     }
   }
 };

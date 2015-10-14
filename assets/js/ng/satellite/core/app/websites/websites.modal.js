@@ -27,26 +27,10 @@
     console.log("skeletons in modal", vm.skeletons);
 
     vm.form = [
-      "name",
+      "*",
       {
-        "type": "text",
-        "placeholder": "Required"
-      },
-      "slug",
-      {
-        "type": "text",
-        "placeholder": "Required"
-      },
-      "url",
-      {
-        "type": "text",
-        "placeholder": "Required: full domain name, no http://"
-      },
-      "skeleton",
-      {
-        "key": "skeleton",
-        "type": "select",
-        "titleMap": vm.skeletons.obj
+        "type": "submit",
+        "title": "OK"
       }
     ];
 
