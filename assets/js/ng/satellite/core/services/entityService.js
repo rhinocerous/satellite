@@ -113,6 +113,10 @@
 
         var entity = svc.entities[entitySlug];
 
+        var url = "/website/" + svc.websiteId + "/entities/add?id=" + entity.id;
+
+        svc._executeRetrieve(url, _onAssociateSuccess, svc._handleError);
+
         angular.forEach(attributes, function(attrSlug, idx) {
           var attribute = svc.attributes[attrSlug];
 
