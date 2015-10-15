@@ -1,49 +1,34 @@
-//String.prototype.fromSlug = function () {
-//  return this
-//    .replace('-', ' ')
-//    .replace('_', ' ')
-//    .replace(/_/g, ' ')
-//    .replace(/\w\S*/g, function (txt) {
-//      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-//    });
-//};
-//
-//String.prototype.capitalize = function () {
-//  return this
-//    .replace('-', ' ')
-//    .replace('_', ' ')
-//    .replace(/_/g, ' ')
-//    .replace(/(?:^|\s)\S/g, function (a) {
-//      return a.toUpperCase();
-//    });
-//};
-//
-//Array.prototype.unique = function () {
-//  var a = this.concat();
-//  for (var i = 0; i < a.length; ++i) {
-//    for (var j = i + 1; j < a.length; ++j) {
-//      if (a[i] === a[j])
-//        a.splice(j--, 1);
-//    }
-//  }
-//
-//  return a;
-//};
+String.prototype.fromSlug = function () {
+  return this
+    .replace('-', ' ')
+    .replace('_', ' ')
+    .replace(/_/g, ' ')
+    .replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+};
 
-//satellite = {
-//  ng : {
-//    page:{},
-//    app: {
-//      prefix:'/api'
-//      , services: {}
-//      , controllers: {}
-//      , sidebar:{}
-//    }
-//    , exceptions: {}
-//    , examples: {}
-//  }
-//};
+String.prototype.capitalize = function () {
+  return this
+    .replace('-', ' ')
+    .replace('_', ' ')
+    .replace(/_/g, ' ')
+    .replace(/(?:^|\s)\S/g, function (a) {
+      return a.toUpperCase();
+    });
+};
 
+Array.prototype.unique = function () {
+  var a = this.concat();
+  for (var i = 0; i < a.length; ++i) {
+    for (var j = i + 1; j < a.length; ++j) {
+      if (a[i] === a[j])
+        a.splice(j--, 1);
+    }
+  }
+
+  return a;
+};
 //  module architecture now based on http://stackoverflow.com/a/19957452
 
 (function () {
