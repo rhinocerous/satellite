@@ -11,6 +11,7 @@
 
     svc.create = _create;
     svc.get = _get;
+    svc.getBySlug = _getBySlug;
 
     function _create(req, onSuccess, onError)
     {
@@ -19,6 +20,26 @@
       svc._executeCreate(endpoint, req, onSuccess, onError);
     }
 
+    function _getBySlug(slug)
+    {
+      var url = "/" + svc.name;
+
+      var deferred = svc.$q.defer();
+//  ?where={"slug":"test2"}
+      svc.$http({
+
+        method: "GET",
+        url: url,
+        params: {where: JSON.stringify({slug:slug})}
+
+      }).then(function(result) {
+        deferred.resolve(result);
+      }, function(error) {
+        deferred.reject(error);
+      });
+
+      return deferred.promise;
+    }
 
     function _get(id)
     {

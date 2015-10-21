@@ -21,6 +21,7 @@
 
     vm.title = "Manage Websites";
     vm.sites = null;
+    vm.currentSite = null;
     vm.skeletons = null;
 
     _init();
@@ -79,14 +80,14 @@
 
       console.log("create response", response);
 
-      var site = response.data;
+      vm.currentSite = response.data;
 
-      var skeleton = vm.$config.config.skeletons[site.skeleton];
+      var skeleton = vm.$config.config.skeletons[vm.currentSite.skeleton];
 
       console.log("install skema", skeleton);
 
 
-      vm.$entityService.ingest(site.id, skeleton.schema, _onIngestComplete);
+      vm.$entityService.ingest(vm.currentSite.id, skeleton.schema, _onIngestComplete);
     }
 
     function _onIngestComplete(err, data)
@@ -99,7 +100,7 @@
       {
         vm.$alertService.success("The website schema was installed.");
 
-        _init();
+        vm.$location.url("/websites/" + vm.currentSite.slug);
       }
     }
 

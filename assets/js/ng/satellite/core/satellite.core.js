@@ -35,7 +35,7 @@ Array.prototype.unique = function () {
   "use strict";
 
   angular.module(SATELLITE,
-    ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'textAngular', 'schemaForm', 'toastr']);
+    ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'textAngular', 'schemaForm', 'toastr', 'ui.select']);
 
 })();
 

@@ -44,54 +44,62 @@
           auth: authAction
         }
       })
-      .when('/about', {
-        templateUrl: '/templates/content/bio.html',
-        controller: 'bioController',
-        controllerAs: 'bio',
-        resolve: {
-          auth: authAction
-        }
-      })
-      .when('/reel', {
-        templateUrl: '/templates/content/reel.html',
-        controller: 'appController',
-        controllerAs: 'reelController',
-        resolve: {
-          auth: authAction
-        }
-      })
-      .when('/resume', {
-        templateUrl: '/templates/content/resume.html',
-        controller: 'resumeController',
-        controllerAs: 'resume',
-        resolve: {
-          auth: authAction
-        }
-      })
-      .when('/awards', {
-        templateUrl: '/templates/content/awards.html',
-        controller: 'appController',
-        controllerAs: 'awardsController',
-        resolve: {
-          auth: authAction
-        }
-      })
-      .when('/schema', {
-        templateUrl: '/templates/admin/schema.html',
-        controller: 'schemaController',
-        controllerAs: 'schema',
-        resolve: {
-          auth: authAction
-        }
-      })
-      .when('/actors', {
-        templateUrl: '/templates/content/actors.html',
-        controller: 'appController',
-        controllerAs: 'actorsController',
+      .when('/websites/:websiteSlug', {
+        templateUrl: '/templates/admin/website/dashboard.html',
+        controller: 'websiteDashController',
+        controllerAs: 'dash',
         resolve: {
           auth: authAction
         }
       });
+      //.when('/about', {
+      //  templateUrl: '/templates/content/bio.html',
+      //  controller: 'bioController',
+      //  controllerAs: 'bio',
+      //  resolve: {
+      //    auth: authAction
+      //  }
+      //})
+      //.when('/reel', {
+      //  templateUrl: '/templates/content/reel.html',
+      //  controller: 'appController',
+      //  controllerAs: 'reelController',
+      //  resolve: {
+      //    auth: authAction
+      //  }
+      //})
+      //.when('/resume', {
+      //  templateUrl: '/templates/content/resume.html',
+      //  controller: 'resumeController',
+      //  controllerAs: 'resume',
+      //  resolve: {
+      //    auth: authAction
+      //  }
+      //})
+      //.when('/awards', {
+      //  templateUrl: '/templates/content/awards.html',
+      //  controller: 'appController',
+      //  controllerAs: 'awardsController',
+      //  resolve: {
+      //    auth: authAction
+      //  }
+      //})
+      //.when('/schema', {
+      //  templateUrl: '/templates/admin/schema.html',
+      //  controller: 'schemaController',
+      //  controllerAs: 'schema',
+      //  resolve: {
+      //    auth: authAction
+      //  }
+      //})
+      //.when('/actors', {
+      //  templateUrl: '/templates/content/actors.html',
+      //  controller: 'appController',
+      //  controllerAs: 'actorsController',
+      //  resolve: {
+      //    auth: authAction
+      //  }
+      //});
 
     $locationProvider.html5Mode(false);
   }]);
