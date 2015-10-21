@@ -16,9 +16,7 @@
 
     svc.user = null;
 
-    _getCurrent();
-
-    function _getCurrent()
+    function _getCurrent(callback)
     {
       if(null == svc.user)
       {
@@ -28,16 +26,18 @@
 
           svc.user = response.data.user;
 
-          return svc.user;
+          callback(null, svc.user);
 
         }, function(error){
 
-          return false;
+          console.error("error getting current user", error);
+
+          callback("error getting current user");
         });
       }
       else
       {
-        return svc.user;
+        callback(null, svc.user);
       }
     }
 

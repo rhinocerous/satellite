@@ -8,14 +8,23 @@
 
     var authAction = ["$q", "$authService", function ($q, $authService) {
 
-      var userInfo = $authService.getCurrent();
+      $authService.getCurrent(function(err, userInfo)
+      {
+        if(err)
+        {
+          console.error("error in auth check", err);
 
-      if (userInfo && userInfo !== {}) {
-        console.log("user is logged in", userInfo);
-        return $q.when(userInfo);
-      } else {
-        return $q.reject({authenticated: false});
-      }
+          return $q.reject({authenticated: false});
+        }
+
+        if (userInfo && userInfo !== {}) {
+          console.log("user is logged in", userInfo);
+          return $q.when(userInfo);
+        } else {
+          return $q.reject({authenticated: false});
+        }
+
+      });
     }];
 
     $routeProvider.when('/', {
@@ -112,6 +121,9 @@
     //});
 
     $rootScope.$on("$routeChangeError", function (event, current, previous, eventObj) {
+
+      console.log("route change error", eventObj);
+
       if (eventObj.authenticated === false) {
         $location.path("/login");
       }
