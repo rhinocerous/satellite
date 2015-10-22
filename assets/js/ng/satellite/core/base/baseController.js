@@ -29,6 +29,37 @@
 
     baseController.$alertService = $alertService;
 
+    baseController._handleError = function(err, msg)
+    {
+      var out = "error handled in base controller";
+
+      if(msg)
+        out += " with message [" + msg + "]";
+
+      console.error(out, err);
+
+      if(typeof err.status != 'undefined')
+      {
+        switch (err.status)
+        {
+          case 401:
+            $alertService.error("Please log in first.");
+            $location.url("login");
+                break;
+
+          default:
+            $alertService.error("That didn't work...");
+                break;
+        }
+      }
+      else
+      {
+
+      }
+    };
+
+
+
     return baseController;
   };
 

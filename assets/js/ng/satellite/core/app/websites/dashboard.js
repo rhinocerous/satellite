@@ -26,19 +26,12 @@
     function _init()
     {
       vm.$websitesService.getBySlug(vm.$routeParams.websiteSlug)
-        .then(_getSuccess, _getError);
+        .then(_getSuccess, vm._handleError);
 
     }
 
     function _getSuccess(response) {
       vm.site = response.data;
-    }
-
-    function _getError(error) {
-
-      vm.$alertService.error("Unable to retrieve website");
-
-      console.error("website error", error);
     }
   };
 
