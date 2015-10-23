@@ -16,11 +16,11 @@
     {
       var form = [];
 
-      angular.forEach(entity.headers, function(attr, idx) {
+      angular.forEach(entity.attributes, function(attr, idx) {
         form.push({
           key:attr.slug,
           type:attr.type,
-          placeholder:attr.name
+          placeholder:attr.type
         })
       });
 
@@ -35,7 +35,7 @@
         properties:{}
       };
 
-      angular.forEach(entity.headers, function(attr, idx) {
+      angular.forEach(entity.attributes, function(attr, idx) {
         schema.properties[attr.slug] = {
           "title": attr.name,
           "type": attr.type

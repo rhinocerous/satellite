@@ -1,0 +1,52 @@
+<div class="col-lg-9 fw-boxed">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+        <span class="panel-title">
+          {{values.title}}
+          <em class="fa fa-lg fa-book pull-right"></em>
+        </span>
+    </div>
+
+    <div class="panel-body">
+
+      <accordion close-others="true">
+        <accordion-group class="panel panel-default bg-light" data-ng-repeat="entity in values.website.entities track by entity.id">
+
+          <accordion-heading>
+            {{entity.name}}
+          </accordion-heading>
+
+          <button class="mr btn btn-info btn-sm" type="button" ng-click="values.createRecord(entity)">Add New {{entity.name}}</button>
+
+          <!-- START table-responsive-->
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th></th>
+                <th ng-repeat="header in entity.headers track by header.id">{{header.name}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="value in entity.values">
+                <td>
+                  <div class="btn-switch mb mr btn-switch-info">
+                    <input type="checkbox" id="value-{{value.id}}" ng-checked="values.selectedRecord.id == value.id" ng-click="values.selectRecord(value, entity)">
+                    <label class="btn btn-info" for="value-{{value.id}}">
+                      <em class="fa fa-check"></em>Edit
+                    </label>
+                  </div>
+                </td>
+                <td ng-if="entity.headers[key]" ng-repeat="(key, prop) in value">{{prop}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- END table-responsive-->
+        </accordion-group>
+      </accordion>
+
+      <!--<a class="btn btn-amber" data-ng-click="values.import()">Import iStunt Resume</a>-->
+    </div>
+  </div>
+</div>

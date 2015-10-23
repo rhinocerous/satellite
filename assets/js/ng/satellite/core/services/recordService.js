@@ -27,6 +27,7 @@
   //----------- public API ------------
     svc.get = _get;
     svc.ingest = _ingest;
+    svc.create = _create;
     svc.getByEntityGroup = _getByEntityGroup;
     svc.updateValues = _updateValues;
 
@@ -67,7 +68,7 @@
       });
     }
 
-    function _create(entity, records)
+    function _create(entity, records, website, onSuccess, onError)
     {
       angular.forEach(records, function(record, idx) {
 
@@ -95,7 +96,7 @@
 
               if(Object.keys(req.values).length ==  Object.keys(record).length - 1)
               {
-                svc._executeCreate(url, req,  _onCreateRecord, svc._handleError)
+                svc._executeCreate(url, req, onSuccess, onError)
               }
             }
           });
