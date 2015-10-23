@@ -23,6 +23,7 @@
     svc.get = _get;
     svc.getBySlug = _getBySlug;
     svc.getByGroup = _getByGroup;
+    svc.getByWebsite = _getByWebsite;
 
     svc.websiteId = null;
 
@@ -150,6 +151,13 @@
     function _get(id, onSuccess, onError)
     {
       var url = "/" + svc.name + "/" + id;
+
+      svc._executeRetrieve(url, onSuccess, onError)
+    }
+
+    function _getByWebsite(slug, onSuccess, onError)
+    {
+      var url = "/" + svc.name;
 
       svc._executeRetrieve(url, onSuccess, onError)
     }

@@ -27,11 +27,7 @@
     console.log("skeletons in modal", vm.skeletons);
 
     vm.form = [
-      "*",
-      {
-        "type": "submit",
-        "title": "OK"
-      }
+      "*"
     ];
 
     vm.schema = {

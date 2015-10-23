@@ -60,6 +60,30 @@
         resolve: {
           auth: authAction
         }
+      })
+      .when('/websites/:websiteSlug/schema', {
+        templateUrl: '/templates/admin/website/schema.html',
+        controller: 'websiteSchemaController',
+        controllerAs: 'schema',
+        resolve: {
+          auth: authAction
+        }
+      })
+      .when('/websites/:websiteSlug/values', {
+        templateUrl: '/templates/admin/website/values.html',
+        controller: 'websiteValuesController',
+        controllerAs: 'values',
+        resolve: {
+          auth: authAction
+        }
+      })
+      .when('/websites/:websiteSlug/template', {
+        templateUrl: '/templates/admin/website/template.html',
+        controller: 'websiteTemplateController',
+        controllerAs: 'template',
+        resolve: {
+          auth: authAction
+        }
       });
       //.when('/about', {
       //  templateUrl: '/templates/content/bio.html',
