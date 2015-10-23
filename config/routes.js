@@ -68,6 +68,11 @@ module.exports.routes = {
     action: 'findByEntityGroup',
     skipAssets: true
   },
+  'get /website/:websiteId/entity/:entityId/records': {
+    controller: 'RecordController',
+    action: 'findByWebsiteEntity',
+    skipAssets: true
+  },
   'put /record/:id/values': {
     controller: 'RecordController',
     action: 'updateRecordValues',

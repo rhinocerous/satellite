@@ -30,6 +30,7 @@
     svc.create = _create;
     svc.getByEntityGroup = _getByEntityGroup;
     svc.updateValues = _updateValues;
+    svc.getByWebsiteEntity = _getByWebsiteEntity;
 
   //----------- functions ------------
     function _updateValues(record, onSuccess, onError)
@@ -122,6 +123,13 @@
     function _onIngestValues()
     {
       console.log("done ingesting");
+    }
+
+    function _getByWebsiteEntity(websiteId, entityId, onSuccess, onError)
+    {
+      var url = "/website/" + websiteId + "/entity/" + entityId + "/records";
+
+      svc._executeRetrieve(url, onSuccess, onError)
     }
 
     function _getByEntityGroup(group, onSuccess, onError)

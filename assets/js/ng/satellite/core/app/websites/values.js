@@ -38,13 +38,21 @@
     vm.import = _import;
     vm.selectRecord = _selectRecord;
     vm.createRecord = _createRecord;
+    vm.loadRecords = _loadRecords;
 
+    //
     _init();
 
     function _init()
     {
       vm.$websitesService.getBySlug(vm.$routeParams.websiteSlug)
         .then(_getWebsiteSuccess, vm._handleError);
+    }
+
+
+    function _loadRecords(entity)
+    {
+      vm.$recordService.getByWebsiteEntity(vm.website.id, entity.id, _onGetRecordsSuccess, vm._handleError);
     }
 
     function _getWebsiteSuccess(response)
