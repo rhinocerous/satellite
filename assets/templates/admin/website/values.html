@@ -31,13 +31,17 @@
               <tr ng-repeat="value in values.records.values">
                 <td>
                   <div class="btn-switch mb mr btn-switch-info">
-                    <input type="checkbox" id="value-{{value.id}}" ng-checked="values.selectedRecord.id == value.id" ng-click="values.selectRecord(value, entity)">
+
+                    <input type="checkbox" id="value-{{value.id}}"
+                           ng-checked="values.selectedRecord.id == value.id"
+                           ng-click="values.selectRecord(value)" />
+
                     <label class="btn btn-info" for="value-{{value.id}}">
                       <em class="fa fa-check"></em>Edit
                     </label>
                   </div>
                 </td>
-                <td ng-if="entity.headers[key]" ng-repeat="(key, prop) in value">{{prop}}</td>
+                <td ng-if="values.records.headers[key]" ng-repeat="(key, prop) in value">{{prop}}</td>
               </tr>
               </tbody>
             </table>

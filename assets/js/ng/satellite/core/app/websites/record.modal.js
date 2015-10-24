@@ -29,7 +29,7 @@
     vm.submit = _submit;
     vm.cancel = _cancel;
 
-    //console.log("record to edit", vm.record);
+    console.log("record to edit", vm.record);
     console.log("entity", vm.entity);
 
     function _submit() {
@@ -45,6 +45,6 @@
   };
 
   angular.module(SATELLITE)
-    .controller('addRecordModalController'
+    .controller('recordModalController'
     , ['$scope', '$baseController', '$modalInstance', '$formService', 'record', 'entity', 'website', vmObject]);
 })();

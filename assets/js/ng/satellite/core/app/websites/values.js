@@ -52,6 +52,8 @@
 
     function _loadRecords(entity)
     {
+      vm.selectedEntity = entity;
+
       vm.$recordService.getByWebsiteEntity(vm.website.id, entity.id, _onGetRecordsSuccess, vm._handleError);
     }
 
@@ -82,7 +84,7 @@
       var modalInstance = vm.$modal.open({
         animation: true,
         templateUrl: '/templates/admin/modal/valuesAddRecord.html',
-        controller: 'addRecordModalController as mc',
+        controller: 'recordModalController as mc',
         size: 'lg',
         resolve: {
           record: function () {
@@ -116,15 +118,14 @@
       vm.$entityService.get(entity.id, _onGetEntityForCreate, vm._handleError);
     }
 
-    function _selectRecord(record, entity) {
+    function _onGetEntityForUpdate(response){
 
-      vm.selectedEntity = entity;
-      vm.selectedRecord = record;
+      vm.selectedEntity = response.data;
 
       var modalInstance = vm.$modal.open({
         animation: true,
-        templateUrl: '/templates/content/modalEdit.html',
-        controller: 'modalRecordController as mc',
+        templateUrl: '/templates/admin/modal/valuesAddRecord.html',
+        controller: 'recordModalController as mc',
         size: 'lg',
         resolve: {
           record: function () {
@@ -132,6 +133,9 @@
           },
           entity: function () {
             return vm.selectedEntity;
+          },
+          website: function () {
+            return vm.website;
           }
         }
       });
@@ -147,6 +151,16 @@
       }, function () {
         vm.selectedRecord = null;
       });
+
+    }
+
+    function _selectRecord(record) {
+
+      console.log("entity for update >>>", vm.selectedEntity.id);
+
+      vm.selectedRecord = record;
+
+      vm.$entityService.get(vm.selectedEntity.id, _onGetEntityForUpdate, vm._handleError);
     }
 
     function _onCreateRecordsSuccess(response)
