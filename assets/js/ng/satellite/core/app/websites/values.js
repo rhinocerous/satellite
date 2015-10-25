@@ -52,9 +52,10 @@
 
     function _loadRecords(entity)
     {
-      vm.selectedEntity = entity;
+      if(typeof entity != 'undefined')
+        vm.selectedEntity = entity;
 
-      vm.$recordService.getByWebsiteEntity(vm.website.id, entity.id, _onGetRecordsSuccess, vm._handleError);
+      vm.$recordService.getByWebsiteEntity(vm.website.id, vm.selectedEntity.id, _onGetRecordsSuccess, vm._handleError);
     }
 
     function _getWebsiteSuccess(response)
@@ -167,14 +168,14 @@
     {
       vm.$alertService.success("The record was created");
 
-      _init();
+      _loadRecords();
     }
 
     function _onUpdateRecordsSuccess(response)
     {
-      console.log("update success", response);
+      vm.$alertService.success("The record was updated");
 
-      _init();
+      _loadRecords();
     }
 
     function _onGetEntitiesSuccess(response)

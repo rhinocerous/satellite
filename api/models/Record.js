@@ -35,6 +35,7 @@ module.exports = {
         entity: entityIds
         //active:true
       })
+        .sort('id DESC')
         .populate('values')
         .populate('entity')
         .exec(function (errRec, records) {

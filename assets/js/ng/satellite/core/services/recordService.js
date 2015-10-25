@@ -97,7 +97,7 @@
 
               if(Object.keys(req.values).length ==  Object.keys(record).length)
               {
-                console.log("fire create", req);
+                //console.log("fire create", req);
 
                 svc._executeCreate(url, req, onSuccess, onError)
               }
