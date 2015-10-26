@@ -31,6 +31,7 @@
     svc.getByEntityGroup = _getByEntityGroup;
     svc.updateValues = _updateValues;
     svc.getByWebsiteEntity = _getByWebsiteEntity;
+    svc.addMedia = _addMedia;
 
   //----------- functions ------------
     function _updateValues(record, onSuccess, onError)
@@ -67,6 +68,15 @@
           svc._handleError)
         }
       });
+    }
+
+    function _addMedia(recordId, mediaId, onSuccess, onError)
+    {
+      //  have to use a different GET route here to work around windows bug: https://github.com/balderdashy/sails/issues/2787
+      //  http://localhost:1337/entity/1/attributes/add?id=2
+      var url = "/" + svc.name + "/" + recordId + "/medias/add?id=" + mediaId;
+
+      svc._executeRetrieve(url, onSuccess, onError);
     }
 
     function _create(entity, records, website, onSuccess, onError)

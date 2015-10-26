@@ -33,6 +33,7 @@
     vm.records = null;
     vm.selectedRecord = null;
     vm.selectedEntity = null;
+    vm.selectedMedia = null;
     vm.entities = null;
 
     vm.import = _import;
@@ -106,9 +107,8 @@
 
         vm.$recordService.create(vm.selectedEntity, [data.record], vm.website, _onCreateRecordsSuccess, vm._handleError);
 
-        console.log("TODO: attach media to the record", data.media);
-
         vm.selectedRecord = null;
+        vm.selectedMedia = data.media;
 
       }, function () {
 
@@ -159,7 +159,7 @@
 
     function _selectRecord(record) {
 
-      console.log("entity for update >>>", vm.selectedEntity.id);
+      //console.log("entity for update >>>", vm.selectedEntity.id);
 
       vm.selectedRecord = record;
 
@@ -169,6 +169,16 @@
     function _onCreateRecordsSuccess(response)
     {
       vm.$alertService.success("The record was created");
+
+      vm.selectedRecord = response.data;
+
+      vm.$recordService.addMedia(vm.selectedRecord.id, vm.selectedMedia.id, _onAddMediaSuccess, vm._handleError);
+
+    }
+
+    function _onAddMediaSuccess(response)
+    {
+      vm.$alertService.success("The media was attached to the record");
 
       _loadRecords();
     }
