@@ -45,6 +45,10 @@ module.exports = {
               url:"/uploads/" + filename
             }).exec(function(err, media){
 
+              media.user.add(req.user.id);
+              media.website.add(req.params.websiteId);
+              media.save(function(){});
+
               if(err)
                 return res.negotiate(err);
 

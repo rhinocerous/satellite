@@ -30,10 +30,9 @@
     vm.dropzoneConfig = {
       uploadMultiple: false,
       maxFileSize: 10,
+      url:"/website/" + vm.website.id +"/media/upload",
       init: function() {
-
         this.on("addedfile", _onAddedFile);
-
         this.on("success", _onUploadSuccess);
       }
     };

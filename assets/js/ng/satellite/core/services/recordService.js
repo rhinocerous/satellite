@@ -32,6 +32,8 @@
     svc.updateValues = _updateValues;
     svc.getByWebsiteEntity = _getByWebsiteEntity;
     svc.addMedia = _addMedia;
+    svc.addWebsite = _addWebsite;
+    svc.addUser = _addUser;
 
   //----------- functions ------------
     function _updateValues(record, onSuccess, onError)
@@ -75,6 +77,20 @@
       //  have to use a different GET route here to work around windows bug: https://github.com/balderdashy/sails/issues/2787
       //  http://localhost:1337/entity/1/attributes/add?id=2
       var url = "/" + svc.name + "/" + recordId + "/medias/add?id=" + mediaId;
+
+      svc._executeRetrieve(url, onSuccess, onError);
+    }
+
+    function _addWebsite(recordId, websiteId, onSuccess, onError)
+    {
+      var url = "/" + svc.name + "/" + recordId + "/website/add?id=" + websiteId;
+
+      svc._executeRetrieve(url, onSuccess, onError);
+    }
+
+    function _addUser(recordId, userId, onSuccess, onError)
+    {
+      var url = "/" + svc.name + "/" + recordId + "/user/add?id=" + userId;
 
       svc._executeRetrieve(url, onSuccess, onError);
     }

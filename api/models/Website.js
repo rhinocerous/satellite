@@ -40,8 +40,11 @@ module.exports = {
     records:{
       collection: 'record',
       via: 'website'
+    },
+    medias:{
+      collection: 'media',
+      via: 'website'
     }
-
   }
 };
 

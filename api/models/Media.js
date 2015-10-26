@@ -38,6 +38,10 @@ module.exports = {
     user:{
       collection: "user", // match model name
       via: "medias" // match attribute name
+    },
+    website:{
+      collection: "website", // match model name
+      via: "medias" // match attribute name
     }
   }
 };

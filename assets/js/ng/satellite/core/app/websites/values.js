@@ -9,6 +9,7 @@
     , $recordService
     , $entityService
     , $websitesService
+    , $authService
     , $modal
     , $routeParams
   ) {
@@ -22,11 +23,13 @@
     vm.$recordService = $recordService;
     vm.$entityService = $entityService;
     vm.$websitesService = $websitesService;
+    vm.$authService = $authService;
     vm.$modal = $modal;
     vm.$routeParams = $routeParams;
 
-    vm.userId = 467;  //  TODO: manage this id and support multiple
+    //vm.userId = 467;  //  TODO: manage this id and support multiple
     vm.website = null;
+    vm.user = null;
     vm.title = "Manage Values";
     vm.schemaString = null;
     vm.schemaRecords = null;
@@ -48,8 +51,26 @@
     {
       vm.$websitesService.getBySlug(vm.$routeParams.websiteSlug)
         .then(_getWebsiteSuccess, vm._handleError);
+
+      vm.$authService.getCurrent(_onGetUserSuccess);
     }
 
+
+    function _onGetUserSuccess(err, user)
+    {
+      if(err)
+      {
+        console.error("error on get current user", err);
+
+        vm.$alertService.error("Unable to retrieve user info");
+      }
+      else
+      {
+        vm.$alertService.success("User identity loaded");
+
+        vm.user = user;
+      }
+    }
 
     function _loadRecords(entity)
     {
@@ -168,18 +189,39 @@
 
     function _onCreateRecordsSuccess(response)
     {
-      vm.$alertService.success("The record was created");
-
       vm.selectedRecord = response.data;
 
-      vm.$recordService.addMedia(vm.selectedRecord.id, vm.selectedMedia.id, _onAddMediaSuccess, vm._handleError);
+      vm.$alertService.success("Record #" + vm.selectedRecord.id + " was created");
+
+      vm.$recordService.addWebsite(vm.selectedRecord.id, vm.website.id, _onAddWebsiteSuccess, vm._handleError);
     }
 
     function _onAddMediaSuccess(response)
     {
-      vm.$alertService.success("The media was attached to the record");
+      vm.$alertService.success("Media #" + vm.selectedMedia.id +" -> Record #" + vm.selectedRecord.id);
 
       _loadRecords();
+    }
+
+    function _onAddWebsiteSuccess(response)
+    {
+      vm.$alertService.success("Record #" + vm.selectedRecord.id +" -> Website #" + vm.website.id);
+
+      vm.$recordService.addUser(vm.selectedRecord.id, vm.user.id, _onAddUserSuccess, vm._handleError);
+    }
+
+    function _onAddUserSuccess(response)
+    {
+      vm.$alertService.success("User #" + vm.user.id +" -> Record #" + vm.selectedRecord.id);
+
+      if(vm.selectedMedia)
+      {
+        vm.$recordService.addMedia(vm.selectedRecord.id, vm.selectedMedia.id, _onAddMediaSuccess, vm._handleError);
+      }
+      else
+      {
+        _loadRecords();
+      }
     }
 
     function _onUpdateRecordsSuccess(response)
@@ -225,6 +267,6 @@
 
   angular.module(SATELLITE)
     .controller('websiteValuesController'
-    , ['$scope', '$baseController', '$istuntService', '$recordService','$entityService', '$websitesService', '$modal', '$routeParams', vmObject]);
+    , ['$scope', '$baseController', '$istuntService', '$recordService','$entityService', '$websitesService', '$authService', '$modal', '$routeParams', vmObject]);
 
 })();
