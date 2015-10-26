@@ -18,9 +18,12 @@ var User = {
       collection: "role", // match model name here
       via: "users", // match attribute name on other model
       dominant: true // dominant side
+    },
+    websites:{
+      collection: "website", // match model name here
+      via: "users" // match attribute name on other model
     }
   }
-
 };
 
 module.exports = User;

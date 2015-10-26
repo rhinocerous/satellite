@@ -44,6 +44,10 @@ module.exports = {
     medias:{
       collection: 'media',
       via: 'website'
+    },
+    users:{
+      collection: 'user',
+      via: 'websites'
     }
   }
 };
