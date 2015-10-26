@@ -12,8 +12,8 @@ module.exports =
       });
     });
   },
-  alternate: function (req, res) {
-    res.view("homepage", {layout: 'layouts/layout'}); //  now we specify an alternate layout
+  actor: function (req, res) {
+    res.view("homepage", {layout: 'layouts/sean_douglas'}); //  now we specify an alternate layout
   },
   admin: function (req, res) {
 

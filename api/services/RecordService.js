@@ -90,7 +90,7 @@ module.exports = {
     //  TODO: we could support arrays of medias here, backend does already. not enough time right now
         var rec = {
           id:record.id,
-          media: (record.medias && record.medias.length > 0) ? record.medias[0] : null
+          medias: (record.medias && record.medias.length > 0) ? record.medias : null
         };
 
         async.map(record.values, function iterator (value, mapValueCb){

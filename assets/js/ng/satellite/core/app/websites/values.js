@@ -168,7 +168,7 @@
 
         console.log("save data", selectedRecord);
 
-        vm.$recordService.updateValues(selectedRecord, _onUpdateRecordsSuccess, _onImportError);
+        vm.$recordService.updateValues(selectedRecord.record, _onUpdateRecordsSuccess, _onImportError);
 
         vm.selectedRecord = null;
 

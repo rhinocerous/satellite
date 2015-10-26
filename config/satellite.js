@@ -67,31 +67,29 @@ module.exports.satellite = {
   , skeletons:{
     actor:{
       schema:{
-        video:[
-          'url',
-          'keyword',
-          'source',
-          'title',
-          'description'
-        ],
-        photo:[
-          'keyword',
-          'title',
-          'description',
-          'type'
-        ],
         project:[
-          'keyword',
+          'group',
           'title',
-          'description'
+          'intro',
+          'body',
+          'url',
+          'videoUrl',
+          'videoSource'
         ],
-        bio:[
+        about:[
           'title',
-          'content'
+          'intro',
+          'body'
         ],
-        contact:[
+        slide:[
+          'primary',
+          'secondary',
+          'link',
+          'background'
+        ],
+        navigation:[
           'title',
-          'content'
+          'link'
         ]
       }
       ,values:{}

@@ -16,7 +16,7 @@ module.exports = {
       model: 'attribute'
     },
     valString:{
-      type:"string",
+      type:"text",
       required:false
     },
     valText:{

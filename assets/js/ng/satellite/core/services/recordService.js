@@ -38,6 +38,8 @@
   //----------- functions ------------
     function _updateValues(record, onSuccess, onError)
     {
+      console.log("trying to update values", record);
+
       var url = "/" + svc.name + "/" + record.id + "/values";
 
       svc._executeUpdate(url, record, onSuccess, onError)

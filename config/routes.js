@@ -38,9 +38,9 @@ module.exports.routes = {
     action: 'index',
     skipAssets: true
   },
-  'get /alternate': {
+  'get /sean-douglas': {
     controller: 'IndexController',
-    action: 'alternate',
+    action: 'actor',
     skipAssets: true
   },
   'get /admin': {
