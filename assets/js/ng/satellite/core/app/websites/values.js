@@ -173,7 +173,6 @@
       vm.selectedRecord = response.data;
 
       vm.$recordService.addMedia(vm.selectedRecord.id, vm.selectedMedia.id, _onAddMediaSuccess, vm._handleError);
-
     }
 
     function _onAddMediaSuccess(response)

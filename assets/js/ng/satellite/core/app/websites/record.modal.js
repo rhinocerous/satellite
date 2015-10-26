@@ -35,8 +35,6 @@
         this.on("addedfile", _onAddedFile);
 
         this.on("success", _onUploadSuccess);
-
-
       }
     };
 

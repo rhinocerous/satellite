@@ -50,6 +50,7 @@ module.exports = {
         .sort('id DESC')
         .populate('values')
         .populate('entity')
+        .populate('medias')
         .exec(function (errRec, records) {
 
           records.forEach(function(record){
