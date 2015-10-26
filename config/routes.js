@@ -53,11 +53,6 @@ module.exports.routes = {
     action: 'initialize',
     skipAssets: true
   },
-  'post /media/upload': {
-    controller: 'MediaController',
-    action: 'upload',
-    skipAssets: true
-  },
   'get /entity/slug/:slug': {
     controller: 'EntityController',
     action: 'findBySlug',
@@ -71,6 +66,11 @@ module.exports.routes = {
   'get /entity/group/:group/records': {
     controller: 'RecordController',
     action: 'findByEntityGroup',
+    skipAssets: true
+  },
+  'post /website/:websiteId/media/upload': {
+    controller: 'MediaController',
+    action: 'upload',
     skipAssets: true
   },
   'get /website/:websiteId/entity/:entityId/records': {

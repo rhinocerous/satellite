@@ -100,11 +100,13 @@
         }
       });
 
-      modalInstance.result.then(function (selectedRecord) {
+      modalInstance.result.then(function (data) {
 
-        console.log("save data", selectedRecord);
+        console.log("save data", data);
 
-        vm.$recordService.create(vm.selectedEntity, [selectedRecord], vm.website, _onCreateRecordsSuccess, vm._handleError);
+        vm.$recordService.create(vm.selectedEntity, [data.record], vm.website, _onCreateRecordsSuccess, vm._handleError);
+
+        console.log("TODO: attach media to the record", data.media);
 
         vm.selectedRecord = null;
 

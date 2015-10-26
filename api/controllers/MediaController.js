@@ -5,6 +5,10 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var fs = require('fs');
+var path = require('path');
+var mkdirp = require('mkdirp');
+
 module.exports = {
   upload: function (req, res)
   {
@@ -20,7 +24,35 @@ module.exports = {
           return res.badRequest('No file was uploaded');
         }
 
-      return res.ok(files);
+        var baseDir = path.resolve(sails.config.appPath, '.tmp/public/uploads/');
+        var file = files[0];
+        var filename = path.basename(file.fd);
+
+        mkdirp(baseDir, function(err) {
+
+          if(err)
+            return res.negotiate(err);
+
+          fs.rename(file.fd, baseDir + filename, function(err)
+          {
+            if(err)
+              return res.negotiate(err);
+
+            Media.create({
+              title:file.filename,
+              size:file.size,
+              mime:file.type,
+              url:"/uploads/" + filename
+            }).exec(function(err, media){
+
+              if(err)
+                return res.negotiate(err);
+
+              return res.ok(media);
+            });
+          });
+
+        });
     });
     }
 };

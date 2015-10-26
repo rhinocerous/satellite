@@ -16,12 +16,20 @@ module.exports = {
     url: {
       type: "string",
       required: true,
-      minLength: 2,
+      minLength: 2
     },
-    type: {
+    mime: {
       type: "string",
       required: true,
-      minLength: 2,
+      minLength: 2
+    },
+    size: {
+      type: "integer",
+      required: false
+    },
+    order: {
+      type: "integer",
+      required: false
     },
     record:{
       collection: "record", // match model name
