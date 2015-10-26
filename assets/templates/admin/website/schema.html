@@ -12,7 +12,7 @@
       <button class="mr mb-sm btn btn-default" ripple="" ng-click="schema.addEntity()" type="button">Add Entity</button>
       <h3>Entities</h3>
       <accordion close-others="true">
-        <accordion-group class="panel panel-info bg-light" data-ng-repeat="entity in schema.schema track by entity.id">
+        <accordion-group class="panel panel-default bg-light" data-ng-repeat="entity in schema.schema track by entity.id">
 
           <accordion-heading>
             <span data-ng-click="schema.loadTab(entity);">{{entity.name}}</span>

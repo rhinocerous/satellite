@@ -23,6 +23,18 @@ module.exports = {
       collection: "value", // match model name here
       via: "record", // match attribute name on other model
       dominant: true // dominant side
+    },
+    medias:{
+      collection: "media", // match model name
+      via: "record" // match attribute name
+    },
+    user:{
+      collection: "user", // match model name
+      via: "records" // match attribute name
+    },
+    website:{
+      collection: 'website',
+      via: 'records'
     }
   },
   getByWebsiteEntity:function(websiteId, entityId, cb) {

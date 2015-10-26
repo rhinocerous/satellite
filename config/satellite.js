@@ -66,7 +66,34 @@ module.exports.satellite = {
   }
   , skeletons:{
     actor:{
-      schema:{}
+      schema:{
+        video:[
+          'url',
+          'keyword',
+          'source',
+          'title',
+          'description'
+        ],
+        photo:[
+          'keyword',
+          'title',
+          'description',
+          'type'
+        ],
+        project:[
+          'keyword',
+          'title',
+          'description'
+        ],
+        bio:[
+          'title',
+          'content'
+        ],
+        contact:[
+          'title',
+          'content'
+        ]
+      }
       ,values:{}
     }
     , smallBusiness:{}

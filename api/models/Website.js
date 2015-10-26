@@ -36,7 +36,12 @@ module.exports = {
     entities:{
       collection: 'entity',
       via: 'websites'
+    },
+    records:{
+      collection: 'record',
+      via: 'website'
     }
+
   }
 };
 

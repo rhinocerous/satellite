@@ -53,6 +53,11 @@ module.exports.routes = {
     action: 'initialize',
     skipAssets: true
   },
+  'post /media/upload': {
+    controller: 'MediaController',
+    action: 'upload',
+    skipAssets: true
+  },
   'get /entity/slug/:slug': {
     controller: 'EntityController',
     action: 'findBySlug',

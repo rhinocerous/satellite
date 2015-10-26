@@ -26,6 +26,11 @@
     vm.formDefinition = vm.$formService.parseEntityForm(vm.entity);
     vm.schemaDefinition = vm.$formService.parseEntitySchema(vm.entity);
 
+    vm.$scope.dropzoneConfig = {
+      uploadMultiple: false,
+      maxFileSize: 10
+    };
+
     vm.submit = _submit;
     vm.cancel = _cancel;
 

@@ -89,6 +89,8 @@ var jsSatelliteDependencies = [
   '/js/ng/satellite/dependencies/ObjectPath.js',
   '/js/ng/satellite/dependencies/ng.schema-form.js',
   '/js/ng/satellite/dependencies/bootstrap-decorator.js',
+  //'/js/ng/satellite/dependencies/ng-file-upload-all.js',
+  //'/js/ng/satellite/dependencies/schema-form-file.js',
   '/js/ng/satellite/dependencies/angular-toastr.tpls.js',
   '/js/ng/satellite/dependencies/select.js'
 ];

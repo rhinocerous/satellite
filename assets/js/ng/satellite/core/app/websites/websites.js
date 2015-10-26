@@ -29,7 +29,7 @@
     function _init()
     {
       vm.$websitesService.get()
-        .then(_getSuccess, _getError);
+        .then(_getSuccess, vm._handleError);
 
       _parseSkeletons(vm.$config.config.skeletons);
     }
@@ -105,7 +105,6 @@
     }
 
     function _createError(error) {
-
       vm.$alertService.error("Unable to create new website");
 
       console.error("websites error", error);
@@ -113,13 +112,6 @@
 
     function _getSuccess(response) {
       vm.sites = response.data;
-    }
-
-    function _getError(error) {
-
-      vm.$alertService.error("Unable to retrieve websites");
-
-      console.error("websites error", error);
     }
   };
 

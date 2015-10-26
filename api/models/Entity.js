@@ -25,6 +25,20 @@ module.exports = {
       required:true,
       minLength: 2
     },
+    showNavigation:{
+      type:"boolean",
+      required:false,
+      defaultsTo: function() {
+        return true;
+      }
+    },
+    allowMedias:{
+      type:"boolean",
+      required:false,
+      defaultsTo: function() {
+        return true;
+      }
+    },
     description:{
       type:"text",
       required:false

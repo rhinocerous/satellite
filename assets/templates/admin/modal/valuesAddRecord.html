@@ -8,6 +8,17 @@
         sf-schema="mc.schemaDefinition"
         ng-submit="mc.submit()">
   </form>
+
+  <form class="dropzone"
+        method="post"
+        action="/media/upload"
+        enctype="multipart/form-data"
+        ng-dropzone
+        dropzone="dropzone"
+        dropzone-config="mc.dropzoneConfig">
+    <input name="file" type="file" />
+  </form>
+
 </div>
 <div class="modal-footer">
   <button class="btn btn-info" ng-click="mc.submit()">Save</button>
