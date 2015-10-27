@@ -22,7 +22,7 @@
     vm.entity = entity;
     vm.website = website;
     vm.recordForm = null;
-    vm.media = null;
+    vm.medias = [];
 
     vm.formDefinition = vm.$formService.parseEntityForm(vm.entity);
     vm.schemaDefinition = vm.$formService.parseEntitySchema(vm.entity);
@@ -32,7 +32,7 @@
       maxFileSize: 10,
       url:"/website/" + vm.website.id +"/media/upload",
       init: function() {
-        this.on("addedfile", _onAddedFile);
+        //this.on("addedfile", _onAddedFile);
         this.on("success", _onUploadSuccess);
       }
     };
@@ -40,15 +40,15 @@
     vm.submit = _submit;
     vm.cancel = _cancel;
 
-    console.log("record to edit", vm.record);
-    console.log("entity", vm.entity);
+    //console.log("record to edit", vm.record);
+    //console.log("entity", vm.entity);
 
     function _submit() {
       if(vm.recordForm.$valid)
       {
         vm.$modalInstance.close({
           record:vm.record,
-          media: vm.media
+          medias: vm.medias
         });
       }
     }
@@ -57,11 +57,12 @@
     {
       var response = arguments[1];
 
-      vm.media = response;
+      vm.medias.push(response);
 
-      vm.$alertService.success(vm.media.title + " has been saved");
+      vm.$alertService.success(response.title + " has been saved");
     }
 
+    //  activate this if we only want one media per record, this will enforce in UI
     function _onAddedFile()
     {
       if (this.files[1]!=null){

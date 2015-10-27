@@ -36,7 +36,7 @@
     vm.records = null;
     vm.selectedRecord = null;
     vm.selectedEntity = null;
-    vm.selectedMedia = null;
+    vm.selectedMedias = null;
     vm.entities = null;
 
     vm.import = _import;
@@ -129,7 +129,7 @@
         vm.$recordService.create(vm.selectedEntity, [data.record], vm.website, _onCreateRecordsSuccess, vm._handleError);
 
         vm.selectedRecord = null;
-        vm.selectedMedia = data.media;
+        vm.selectedMedias = data.medias;
 
       }, function () {
 
@@ -164,13 +164,13 @@
         }
       });
 
-      modalInstance.result.then(function (selectedRecord) {
+      modalInstance.result.then(function (data) {
 
-        console.log("save data", selectedRecord);
+        console.log("save data", data);
 
-        vm.$recordService.updateValues(selectedRecord.record, _onUpdateRecordsSuccess, _onImportError);
+        vm.$recordService.updateValues(data.record, _onUpdateRecordsSuccess, _onImportError);
 
-        vm.selectedRecord = null;
+        vm.selectedMedias = data.medias;
 
       }, function () {
         vm.selectedRecord = null;
@@ -198,9 +198,7 @@
 
     function _onAddMediaSuccess(response)
     {
-      vm.$alertService.success("Media #" + vm.selectedMedia.id +" -> Record #" + vm.selectedRecord.id);
-
-      _loadRecords();
+      vm.$alertService.success("Media added -> Record #" + vm.selectedRecord.id);
     }
 
     function _onAddWebsiteSuccess(response)
@@ -214,19 +212,31 @@
     {
       vm.$alertService.success("User #" + vm.user.id +" -> Record #" + vm.selectedRecord.id);
 
-      if(vm.selectedMedia)
+      _linkImages();
+
+      _loadRecords();
+    }
+
+    function _linkImages()
+    {
+      console.log("link selected medias", vm.selectedMedias);
+
+      if(vm.selectedMedias && vm.selectedMedias.length > 0)
       {
-        vm.$recordService.addMedia(vm.selectedRecord.id, vm.selectedMedia.id, _onAddMediaSuccess, vm._handleError);
-      }
-      else
-      {
-        _loadRecords();
+        for(var x=0;x<vm.selectedMedias.length;x++)
+        {
+          vm.$recordService.addMedia(vm.selectedRecord.id, vm.selectedMedias[x].id, _onAddMediaSuccess, vm._handleError);
+        }
+
+        vm.selectedMedias = [];
       }
     }
 
     function _onUpdateRecordsSuccess(response)
     {
       vm.$alertService.success("The record was updated");
+
+      _linkImages();
 
       _loadRecords();
     }

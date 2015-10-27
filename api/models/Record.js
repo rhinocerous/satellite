@@ -37,6 +37,33 @@ module.exports = {
       via: "records" // match attribute name
     }
   },
+  getById:function(recordId, cb)
+  {
+    Attribute.getAllSorted(function(errAttr, attrs)
+    {
+      Record.findOne(recordId)
+        .populate('values')
+        .populate('entity')
+        .populate('medias')
+        .exec(function (errRec, record) {
+
+          if(record && record.values)
+          {
+            record.values.forEach(function(value){
+              value.attribute = attrs[value.attribute];
+            });
+
+            RecordService.organize([record], cb);
+          }
+          else
+          {
+            cb(null, []);
+          }
+
+
+        });
+    });
+  },
   getByWebsite:function(websiteId, cb) {
 
     var websiteIds = [websiteId];

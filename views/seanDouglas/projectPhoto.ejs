@@ -1,0 +1,27 @@
+<%
+ var row = record.values[0];
+ var primaryMedia = (row.medias) ? row.medias[row.medias.length - 1] : null;
+  %>
+<div class="cbp-l-inline">
+  <div class="cbp-l-inline-left">
+    <%
+    if(primaryMedia != null){ %>
+
+    <a href="<%=primaryMedia.url %>" class="cbp-lightbox">
+      <img src="<%=primaryMedia.url %>" alt="<%=row.title %>">
+    </a>
+
+      <%} %>
+
+  </div>
+
+  <div class="cbp-l-inline-right">
+
+    <div class="cbp-l-inline-title"><%=row.title %></div>
+    <div class="cbp-l-inline-subtitle"><%=row.intro %></div>
+
+    <div class="cbp-l-inline-desc"><%-row.body %></div>
+
+    <a href="<%=row.url %>" target="_blank" class="cbp-l-inline-view">VIEW PROJECT</a>
+  </div>
+</div>

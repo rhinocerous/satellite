@@ -39,8 +39,13 @@ module.exports.routes = {
     skipAssets: true
   },
   'get /sean-douglas': {
-    controller: 'IndexController',
-    action: 'actor',
+    controller: 'SeanDouglasController',
+    action: 'index',
+    skipAssets: true
+  },
+  'get /sean-douglas/project/:projectId': {
+    controller: 'SeanDouglasController',
+    action: 'project',
     skipAssets: true
   },
   'get /admin': {

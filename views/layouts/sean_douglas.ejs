@@ -36,63 +36,66 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-
+  <link href="/styles/skin/sean-douglas.css" rel="stylesheet" type="text/css">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="80">
 <div class="fullwidthbanner" id="home">
   <div class="tp-banner">
     <ul>
-      <% _.each(records.slide.values, function(value)  { %>
-      <!-- SLIDE  -->
-      <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="<%=value.medias[0].url %>" data-delay="10000"  data-saveperformance="off" data-title="next">
-        <!-- MAIN IMAGE -->
-        <img src="<%=value.medias[0].url %>"  alt="<%=value.medias[0].title %>"  data-bgposition="left center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
-        <!-- LAYERS -->
+      <%
+      if(records && records.slide){
 
-        <!-- LAYER NR. 1 -->
-        <div class="tp-caption srcaption-bigwhite lfl ltr slider-title"
-             data-x="center" data-hoffset="0"
-             data-y="center" data-voffset="0"
-             data-speed="1000"
-             data-start="100"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 2">
-            <%-value.primary %>
-        </div>
+        _.each(records.slide.values, function(value)  { %>
+        <!-- SLIDE  -->
+        <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="<%=value.medias[0].url %>" data-delay="10000"  data-saveperformance="off" data-title="next">
+          <!-- MAIN IMAGE -->
+          <img src="<%=value.medias[0].url %>"  alt="<%=value.medias[0].title %>"  data-bgposition="left center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+          <!-- LAYERS -->
 
-        <!-- LAYER NR. 2 -->
-        <div class="tp-caption srcaption-miniwhite sfb slider-caption"
-             data-x="center" data-hoffset="0"
-             data-y="bottom" data-voffset="-140"
-             data-speed="500"
-             data-start="1200"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 3">
-            <%-value.secondary %>
-        </div>
+          <!-- LAYER NR. 1 -->
+          <div class="tp-caption srcaption-bigwhite lfl ltr slider-title"
+               data-x="center" data-hoffset="0"
+               data-y="center" data-voffset="0"
+               data-speed="1000"
+               data-start="100"
+               data-easing="easeInOutQuad"
+               data-endspeed="1000"
+               data-endeasing="easeInOutQuad"
+               style="z-index: 2">
+              <%-value.primary %>
+          </div>
 
-        <!-- LAYER NR. 3 -->
-        <div class="tp-caption srcaption-miniwhite sfb text-light scroll-to slider-arrow-down"
-             data-x="center" data-hoffset="0"
-             data-y="bottom" data-voffset="-40"
-             data-speed="500"
-             data-start="1300"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 3">
-              <a href="<%=value.link%>" class="sr-button sr-buttonicon small-iconbutton scroll-to">
-                <i class="ion-ios-arrow-down"></i>
-              </a>
-        </div>
+          <!-- LAYER NR. 2 -->
+          <div class="tp-caption srcaption-miniwhite sfb slider-caption"
+               data-x="center" data-hoffset="0"
+               data-y="bottom" data-voffset="-140"
+               data-speed="500"
+               data-start="1200"
+               data-easing="easeInOutQuad"
+               data-endspeed="1000"
+               data-endeasing="easeInOutQuad"
+               style="z-index: 3">
+              <%-value.secondary %>
+          </div>
 
-      </li>
+          <!-- LAYER NR. 3 -->
+          <div class="tp-caption srcaption-miniwhite sfb text-light scroll-to slider-arrow-down"
+               data-x="center" data-hoffset="0"
+               data-y="bottom" data-voffset="-40"
+               data-speed="500"
+               data-start="1300"
+               data-easing="easeInOutQuad"
+               data-endspeed="1000"
+               data-endeasing="easeInOutQuad"
+               style="z-index: 3">
+                <a href="<%=value.link%>" class="sr-button sr-buttonicon small-iconbutton scroll-to">
+                  <i class="ion-ios-arrow-down"></i>
+                </a>
+          </div>
 
-      <% }); %>
+        </li>
+
+      <% }); } %>
     </ul>
   </div>
 </div><!--full width banner-->
@@ -107,17 +110,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html"><img src="/skins/bavely/images/logo-light.png" alt="LOGO"></a>
+      <a class="navbar-brand" href="#home">
+        <h1 class="website-title"><strong>Sean</strong> Douglas</h1>
+      </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right scroll-to">
         <%
+        if(records && records.navigation){
+
           var x = 0;
-        _.each(records.navigation.values, function(value)  { %>
+          _.each(records.navigation.values, function(value)  { %>
 
-        <li><a href="<%=value.link %>"><%=value.title %></a></li>
+          <li><a href="<%=value.link %>"><%=value.title %></a></li>
 
-        <% x++; }) %>
+        <% x++; }) } %>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -687,13 +694,6 @@
 
 */ %>
 
-<div class="gray-cta">
-  <div class="container text-center scroll-to">
-    <h2>Awesome one page parallax</h2>
-    <a href="#contact" class="btn btn-lg btn-dark-bg">Get it now</a>
-  </div>
-</div><!--gray cta-->
-
 <section id="projects" class="section-padding wow animated fadeIn" data-wow-delay=".1s">
   <div class="container">
     <div class="row">
@@ -716,164 +716,45 @@
           <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
             All (<div class="cbp-filter-counter"></div> items)
           </div>
-          <div data-filter=".print" class="cbp-filter-item">
-            Print (<div class="cbp-filter-counter"></div> items)
+          <div data-filter=".video" class="cbp-filter-item">
+            Video (<div class="cbp-filter-counter"></div> items)
           </div>
-          <div data-filter=".web-design" class="cbp-filter-item">
-            Web Design (<div class="cbp-filter-counter"></div> items)
+          <div data-filter=".gallery" class="cbp-filter-item">
+            Gallery (<div class="cbp-filter-counter"></div> items)
           </div>
-          <div data-filter=".motion" class="cbp-filter-item">
-            Motion (<div class="cbp-filter-counter"></div> items)
+          <div data-filter=".photo" class="cbp-filter-item">
+            Photo (<div class="cbp-filter-counter"></div> items)
           </div>
         </div>
       </div>
     </div>
 
     <div id="grid-container" class="cbp">
-      <div class="cbp-item print motion">
-        <a href="/skins/bavely/ajax/project1.html" class="cbp-caption cbp-singlePageInline"
-           data-title="World Clock Widget<br>by Paul Flavius Nechita">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-1.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">World Clock Widget</div>
-                <div class="cbp-l-caption-desc">by Paul Flavius Nechita</div>
+
+      <%
+      if(records && records.project){
+
+        _.each(records.project.values, function(value)  { %>
+
+          <div class="cbp-item <%=value.group %>">
+            <a href="/sean-douglas/project/<%=value.id %>" class="cbp-caption cbp-singlePageInline"
+               data-title="<%=value.title %>">
+              <div class="cbp-caption-defaultWrap">
+                <img src="<%=value.medias[value.medias.length - 1].url %>" alt="">
               </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="cbp-item web-design">
-        <a href="/skins/bavely/ajax/project2.html" class="cbp-caption cbp-singlePageInline"
-           data-title="Bolt UI<br>by Tiberiu Neamu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-8.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">Bolt UI</div>
-                <div class="cbp-l-caption-desc">by Tiberiu Neamu</div>
+              <div class="cbp-caption-activeWrap">
+                <div class="cbp-l-caption-alignLeft">
+                  <div class="cbp-l-caption-body">
+                    <div class="cbp-l-caption-title"><%=value.title %></div>
+                    <div class="cbp-l-caption-desc"><%=value.intro %></div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
-        </a>
-      </div>
-      <div class="cbp-item print motion">
-        <a href="/skins/bavely/ajax/project3.html" class="cbp-caption cbp-singlePageInline"
-           data-title="WhereTO App<br>by Tiberiu Neamu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-7.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">WhereTO App</div>
-                <div class="cbp-l-caption-desc">by Tiberiu Neamu</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="cbp-item web-design print">
-        <a href="/skins/bavely/ajax/project4.html" class="cbp-caption cbp-singlePageInline"
-           data-title="iDevices<br>by Tiberiu Neamu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-6.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">iDevices</div>
-                <div class="cbp-l-caption-desc">by Tiberiu Neamu</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="cbp-item motion">
-        <a href="/skins/bavely/ajax/project5.html" class="cbp-caption cbp-singlePageInline"
-           data-title="Seemple* Music for iPad<br>by Tiberiu Neamu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-5.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">Seemple* Music for iPad</div>
-                <div class="cbp-l-caption-desc">by Tiberiu Neamu</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="cbp-item print motion">
-        <a href="/skins/bavely/ajax/project6.html" class="cbp-caption cbp-singlePageInline"
-           data-title="Remind~Me Widget<br>by Tiberiu Neamu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-4.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">Remind~Me Widget</div>
-                <div class="cbp-l-caption-desc">by Tiberiu Neamu</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="cbp-item web-design print">
-        <a href="/skins/bavely/ajax/project7.html" class="cbp-caption cbp-singlePageInline"
-           data-title="Workout Buddy<br>by Tiberiu Neamu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-3.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">Workout Buddy</div>
-                <div class="cbp-l-caption-desc">by Tiberiu Neamu</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="cbp-item print">
-        <a href="/skins/bavely/ajax/project8.html" class="cbp-caption cbp-singlePageInline"
-           data-title="Digital Menu<br>by Cosmin Capitanu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-2.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">Digital Menu</div>
-                <div class="cbp-l-caption-desc">by Cosmin Capitanu</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="cbp-item motion">
-        <a href="/skins/bavely/ajax/project9.html" class="cbp-caption cbp-singlePageInline"
-           data-title="Holiday Selector<br>by Cosmin Capitanu">
-          <div class="cbp-caption-defaultWrap">
-            <img src="/skins/bavely/images/work-1.jpg" alt="">
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignLeft">
-              <div class="cbp-l-caption-body">
-                <div class="cbp-l-caption-title">Holiday Selector</div>
-                <div class="cbp-l-caption-desc">by Cosmin Capitanu</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
+
+      <% x++; }) } %>
+
     </div>
 
     <div id="loadMore-container" class="cbp-l-loadMore-button">
