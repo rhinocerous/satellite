@@ -1,4 +1,13 @@
 module.exports = {
+
+  getWebsiteRecords:function(websiteId, cb)
+  {
+
+    Record.getByWebsite(websiteId, function (err, records) {
+
+      return cb(err, records);
+    });
+  },
   getRecords:function(userId, cb)
   {
     //  TODO: add more groups as they come online in admin

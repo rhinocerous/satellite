@@ -33,9 +33,51 @@ module.exports = {
       via: "records" // match attribute name
     },
     website:{
-      collection: 'website',
-      via: 'records'
+      collection: "website", // match model name
+      via: "records" // match attribute name
     }
+  },
+  getByWebsite:function(websiteId, cb) {
+
+    var websiteIds = [websiteId];
+
+    Attribute.getAllSorted(function(errAttr, attrs)
+    {
+      Website.findOne(websiteId)
+        .populate("records")
+        .exec(function(err, found){
+
+          if(found.records && found.records.length)
+          {
+            var recordIds = [];
+
+            found.records.forEach(function(record){
+              recordIds.push(record.id);
+            });
+
+            Record.find()
+              .where({id: recordIds})
+              .populate('values')
+              .populate('entity')
+              .populate('medias')
+              .exec(function (errRec, records) {
+
+                records.forEach(function(record){
+                  record.values.forEach(function(value){
+                    value.attribute = attrs[value.attribute];
+                  });
+                });
+
+                RecordService.organize(records, cb);
+              });
+          }
+          else
+          {
+            return cb(null, []);
+          }
+        });
+    });
+
   },
   getByWebsiteEntity:function(websiteId, entityId, cb) {
 
