@@ -1,5 +1,5 @@
 
-/* 
+/*
     Project    : Bavely v1.4
     Author     : Design_mylife
 */
@@ -54,14 +54,14 @@ body{
 		font-size: 22pt;
 		margin:0px;
 	}
-	
+
 	.ms-staff-carousel .ms-staff-info h4{
 		font-weight: 300;
 		color:#787878;
 		font-size: 15pt;
 		margin:3px;
 	}
-	
+
 	.ms-staff-carousel .ms-staff-info .email a{text-decoration: none; color:#a8e12a;}
 	.ms-staff-carousel .ms-staff-info.email,.ms-staff-info p {
 	    margin: 4px;
@@ -80,7 +80,7 @@ body{
     box-shadow : none;
     left:-45px;
  }
- 
+
 .ms-staff-carousel.ms-round .ms-nav-next {
     left:auto;
     right:-45px
@@ -92,7 +92,7 @@ body{
     width: 32px;
   height: 32px;
   line-height: 32px;
-  background-color: #cab630;
+  background-color: #F06918;
   color: #fff;
   display: block;
 }

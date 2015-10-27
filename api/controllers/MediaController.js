@@ -24,7 +24,7 @@ module.exports = {
           return res.badRequest('No file was uploaded');
         }
 
-        var baseDir = path.resolve(sails.config.appPath, '.tmp/public/uploads/');
+        var baseDir = path.resolve(sails.config.appPath, '.tmp/public/images/uploads/');
         var file = files[0];
         var filename = path.basename(file.fd);
 
@@ -33,7 +33,7 @@ module.exports = {
           if(err)
             return res.negotiate(err);
 
-          fs.rename(file.fd, baseDir + filename, function(err)
+          fs.rename(file.fd, baseDir + "/" + filename, function(err)
           {
             if(err)
               return res.negotiate(err);
@@ -42,7 +42,7 @@ module.exports = {
               title:file.filename,
               size:file.size,
               mime:file.type,
-              url:"/uploads/" + filename
+              url:"/images/uploads/" + filename
             }).exec(function(err, media){
 
               media.user.add(req.user.id);

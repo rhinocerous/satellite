@@ -1,4 +1,4 @@
-/* 
+/*
     Created on : 10 Apr, 2015, 1:08:57 PM
     Author     : Design_mylife
     Project    : Bavely - Classy One page Theme
@@ -26,7 +26,7 @@ a {
   transition: all 0.3s ease;
 }
 a:hover {
-  color: #cab630;
+  color: #F06918;
   text-decoration: none;
 }
 a:focus {
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .colored-text {
-  color: #cab630;
+  color: #F06918;
 }
 
 .subtitle-center {
@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 15px;
   margin-bottom: 0px;
   display: block;
-  background-color: #cab630;
+  background-color: #F06918;
 }
 
 .parallax-1, .parallax-2, .parallax-3, .parallax-4 {
@@ -191,14 +191,14 @@ iframe {
   font-weight: 700;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #cab630;
+  color: #F06918;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #cab630;
+  color: #F06918;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #cab630;
+  color: #F06918;
   background-color: transparent;
 }
 .navbar-default .navbar-collapse,
@@ -209,7 +209,7 @@ iframe {
   color: #474747;
 }
 .navbar-default .navbar-link:hover {
-  color: #cab630;
+  color: #F06918;
 }
 
 @media (min-width: 768px) {
@@ -218,11 +218,11 @@ iframe {
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #cab630;
+    color: #F06918;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #474747;
-    background-color: #cab630;
+    background-color: #F06918;
   }
 }
 .dropdown-menu {
@@ -287,7 +287,7 @@ iframe {
   display: inline-block;
 }
 .btn-white span:hover, .btn-white span:focus {
-  background-color: #cab630;
+  background-color: #F06918;
   color: #fff;
 }
 
@@ -307,7 +307,7 @@ iframe {
   display: inline-block;
 }
 .btn-dark span:hover, .btn-dark span:focus {
-  background-color: #cab630;
+  background-color: #F06918;
 }
 .btn-dark:hover, .btn-dark:focus {
   border-color: transparent;
@@ -322,10 +322,10 @@ button {
 .btn-theme {
   color: #fff;
   padding: 1px;
-  border: 1px solid #cab630;
+  border: 1px solid #F06918;
 }
 .btn-theme span {
-  background-color: #cab630;
+  background-color: #F06918;
   color: #fff;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -334,19 +334,19 @@ button {
   display: inline-block;
 }
 .btn-theme span:hover, .btn-theme span:focus {
-  background-color: #cab630;
+  background-color: #F06918;
 }
 .btn-theme:hover, .btn-theme:focus {
   border-color: transparent;
 }
 
 .btn-theme-border {
-  color: #cab630;
-  border: 1px solid #cab630;
+  color: #F06918;
+  border: 1px solid #F06918;
 }
 .btn-theme-border:hover, .btn-theme-border:focus {
-  border-color: #cab630;
-  background-color: #cab630;
+  border-color: #F06918;
+  background-color: #F06918;
   color: #fff;
 }
 
@@ -368,18 +368,18 @@ button {
 .btn-light-border:hover, .btn-light-border:focus {
   border-color: #fff;
   background-color: #fff;
-  color: #cab630;
+  color: #F06918;
 }
 
 .btn-theme-bg {
   color: #fff;
-  background-color: #cab630;
+  background-color: #F06918;
   border: 1px solid transparent;
 }
 .btn-theme-bg:hover, .btn-theme-bg:focus {
-  background-color: #cab630;
+  background-color: #F06918;
   color: #fff;
-  border-color: #cab630;
+  border-color: #F06918;
 }
 
 .btn-dark-bg {
@@ -387,7 +387,7 @@ button {
   background-color: #000;
 }
 .btn-dark-bg:hover, .btn-dark-bg:focus {
-  background-color: #cab630;
+  background-color: #F06918;
   color: #fff;
 }
 
@@ -396,13 +396,13 @@ button {
   background-color: #fff;
 }
 .btn-white-bg:hover, .btn-white-bg:focus {
-  background-color: #cab630;
+  background-color: #F06918;
   color: #fff;
 }
 
 /***********
 
-SLIDER REVOLUTION 
+SLIDER REVOLUTION
 
 **************/
 .slider-title {
@@ -414,7 +414,7 @@ SLIDER REVOLUTION
 }
 .slider-title strong {
   font-weight: 600;
-  color: #cab630;
+  color: #F06918;
 }
 
 .slider-caption {
@@ -439,7 +439,7 @@ SLIDER REVOLUTION
 }
 .slider-arrow-down a:hover {
   background-color: #fff;
-  color: #cab630 !important;
+  color: #F06918 !important;
 }
 .slider-arrow-down a i {
   display: block;
@@ -457,7 +457,7 @@ SLIDER REVOLUTION
 }
 /********
 
-services icons 
+services icons
 
 ********/
 .service-features {
@@ -503,7 +503,7 @@ FUN FACTS
   text-align: center;
 }
 .fun-facts .fun-facts-inner h2 {
-  color: #cab630;
+  color: #F06918;
   font-weight: 900;
   font-size: 60px;
 }
@@ -532,7 +532,7 @@ FUN FACTS
   line-height: 64px;
 }
 .quote h5 {
-  color: #cab630;
+  color: #F06918;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 0;
@@ -541,7 +541,7 @@ FUN FACTS
 
 /************
 
-TEAM 
+TEAM
 
 *************/
 .team {
@@ -587,7 +587,7 @@ TEAM
   color: #fff;
 }
 .team .social li a:hover {
-  background-color: #cab630;
+  background-color: #F06918;
   color: #fff;
 }
 .team .social li a i {
@@ -596,7 +596,7 @@ TEAM
 
 /*********
 
-SERVICES SECTION 
+SERVICES SECTION
 
 ********/
 .services-box {
@@ -628,12 +628,12 @@ SERVICES SECTION
   text-align: center;
   margin: 20px auto;
   font-size: 60px;
-  color: #cab630;
+  color: #F06918;
   background-color: transparent;
-  -webkit-box-shadow: 0px 0px 0px 3px #cab630;
-  -moz-box-shadow: 0px 0px 0px 3px #cab630;
-  -ms-box-shadow: 0px 0px 0px 3px #cab630;
-  box-shadow: 0px 0px 0px 3px #cab630;
+  -webkit-box-shadow: 0px 0px 0px 3px #F06918;
+  -moz-box-shadow: 0px 0px 0px 3px #F06918;
+  -ms-box-shadow: 0px 0px 0px 3px #F06918;
+  box-shadow: 0px 0px 0px 3px #F06918;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -658,7 +658,7 @@ SERVICES SECTION
 
 /**************
 
-TESTIMONIALS 
+TESTIMONIALS
 
 *****************/
 .testimonials {
@@ -755,13 +755,13 @@ TESTIMONIALS
 .testimonials .flex-control-paging li a:hover {
   background: none;
   background: none;
-  border-color: #cab630;
+  border-color: #F06918;
 }
 .testimonials .flex-control-paging li a.flex-active {
   background: none;
   background: none;
   cursor: default;
-  border-color: #cab630;
+  border-color: #F06918;
 }
 
 /*********************
@@ -818,12 +818,12 @@ PRICING TABLES
 
 /*****portfolio section*****/
 .container .cbp-l-filters-dropdownWrap {
-  background-color: #cab630;
+  background-color: #F06918;
 }
 
 .container .cbp-l-filters-dropdownList .cbp-filter-item:hover {
   color: #fff;
-  background-color: #cab630;
+  background-color: #F06918;
 }
 
 .container .cbp-l-filters-dropdownList .cbp-filter-item {
@@ -913,8 +913,8 @@ ul.filter a {
   text-decoration: none;
 }
 ul.filter a:hover, ul.filter a.active, ul.filter a:focus {
-  color: #cab630;
-  border-color: #cab630;
+  color: #F06918;
+  border-color: #F06918;
 }
 
 .project-info ul {
@@ -925,7 +925,7 @@ ul.filter a:hover, ul.filter a.active, ul.filter a:focus {
   font-size: 22px;
 }
 .project-info ul li a:hover {
-  color: #cab630;
+  color: #F06918;
 }
 .project-info p strong {
   color: #000;
@@ -952,8 +952,8 @@ ul.filter a:hover, ul.filter a.active, ul.filter a:focus {
   border-radius: 50%;
   line-height: 60px;
   text-align: center;
-  border: 1px solid #cab630;
-  color: #cab630;
+  border: 1px solid #F06918;
+  color: #F06918;
   font-size: 30px;
 }
 .twitter-feed .tweet ul {
@@ -971,7 +971,7 @@ ul.filter a:hover, ul.filter a.active, ul.filter a:focus {
   color: #fff;
 }
 .twitter-feed .tweet ul li a {
-  color: #cab630;
+  color: #F06918;
 }
 
 /**************cta*************/
@@ -1122,20 +1122,20 @@ body.gray-bg {
 .blog-content .flex-control-paging li a:hover {
   background: none;
   background: none;
-  border-color: #cab630;
+  border-color: #F06918;
 }
 .blog-content .flex-control-paging li a.flex-active {
   background: none;
   background: none;
   cursor: default;
-  border-color: #cab630;
+  border-color: #F06918;
 }
 .blog-content .entry-title a {
   color: #000;
   margin-bottom: 10px;
 }
 .blog-content .entry-title a:hover {
-  color: #cab630;
+  color: #F06918;
 }
 .blog-content .entry-author {
   font-family: "Roboto Condensed", sans-serif;
@@ -1212,7 +1212,7 @@ body.gray-bg {
 }
 .sidebar-widget form .search-icon:hover, .sidebar-widget form .search-icon:focus {
   outline: 0;
-  color: #cab630;
+  color: #F06918;
 }
 .sidebar-widget form .form-control {
   -webkit-box-shadow: none;
@@ -1222,7 +1222,7 @@ body.gray-bg {
   font-size: 12px;
 }
 .sidebar-widget form .form-control:hover, .sidebar-widget form .form-control:focus {
-  border-color: #cab630;
+  border-color: #F06918;
 }
 .sidebar-widget .latest-post li {
   margin-bottom: 20px;
@@ -1244,7 +1244,7 @@ body.gray-bg {
   font-size: 15px;
 }
 .sidebar-widget .latest-post .recent-post-content a:hover {
-  color: #cab630;
+  color: #F06918;
 }
 .sidebar-widget .latest-post .recent-post-content span {
   display: block;
@@ -1266,17 +1266,17 @@ body.gray-bg {
   color: #000;
 }
 .sidebar-widget .tweet ul li a {
-  color: #cab630;
+  color: #F06918;
 }
 .sidebar-widget .tweet ul li a:hover {
-  color: #cab630;
+  color: #F06918;
 }
 .sidebar-widget .tag-list a {
   display: inline-block;
   color: #000;
 }
 .sidebar-widget .tag-list a:hover, .sidebar-widget .tag-list a:focus {
-  color: #cab630;
+  color: #F06918;
 }
 
 /*************contact*****************/
@@ -1307,7 +1307,7 @@ body.gray-bg {
   top: -1px;
   width: 75px;
   height: 1px;
-  background: #cab630;
+  background: #F06918;
   display: block;
 }
 
@@ -1366,11 +1366,11 @@ body.gray-bg {
   border-radius: 50%;
   color: #fff;
   font-size: 30px;
-  background-color: #cab630;
+  background-color: #F06918;
 }
 .numbers-cta h3 {
   font-size: 15px;
-  color: #cab630;
+  color: #F06918;
   margin-top: 30px;
 }
 
@@ -1523,8 +1523,8 @@ HOME V2 - PARALLAX BACKGROUND WITH FLEX TEXT SLIDER
   border: 2px solid #fff;
 }
 .home-text-wrapper h2 a:hover {
-  color: #cab630;
-  border-color: #cab630;
+  color: #F06918;
+  border-color: #F06918;
 }
 
 #home-slider.flexslider {
@@ -1660,7 +1660,7 @@ elements
 
 /****tabs****/
 .nav-tabs {
-  border-bottom: 1px solid #cab630;
+  border-bottom: 1px solid #F06918;
 }
 .nav-tabs > li {
   float: left;
@@ -1674,11 +1674,11 @@ elements
 .nav-tabs > li > a:hover {
   border: 0px;
   color: #fff;
-  background-color: #cab630;
+  background-color: #F06918;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: #fff;
-  background-color: #cab630;
+  background-color: #F06918;
   border: 0px;
   border-bottom-color: transparent;
   cursor: default;
@@ -1711,7 +1711,7 @@ elements
   box-shadow: none;
 }
 .progress .progress-bar {
-  background-color: #cab630;
+  background-color: #F06918;
   text-align: left;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -1830,31 +1830,31 @@ LANDING PAGE index.html
 
 /***cube portfolio***/
 .cube-masonry .cbp-l-filters-buttonCenter .cbp-filter-item.cbp-filter-item-active {
-  color: #cab630;
-  border-color: #cab630;
+  color: #F06918;
+  border-color: #F06918;
   cursor: default;
 }
 
 .cube-masonry .cbp-l-filters-buttonCenter .cbp-filter-counter {
-  background-color: #cab630;
+  background-color: #F06918;
 }
 
 .cube-masonry .cbp-l-filters-buttonCenter .cbp-filter-counter:before {
-  border-top-color: #cab630;
+  border-top-color: #F06918;
 }
 
 .cube-masonry .cbp-l-grid-masonry-projects-title {
-  color: #cab630;
+  color: #F06918;
 }
 
 .container .cbp-l-loadMore-button .cbp-l-loadMore-link, .container .cbp-l-loadMore-button .cbp-l-loadMore-button-link {
-  border: 2px solid #cab630;
+  border: 2px solid #F06918;
   color: #fff;
-  background-color: #cab630;
+  background-color: #F06918;
 }
 .container .cbp-l-loadMore-button .cbp-l-loadMore-link:hover, .container .cbp-l-loadMore-button .cbp-l-loadMore-link:focus, .container .cbp-l-loadMore-button .cbp-l-loadMore-button-link:hover, .container .cbp-l-loadMore-button .cbp-l-loadMore-button-link:focus {
-  border-color: #cab630;
-  background-color: #cab630;
+  border-color: #F06918;
+  background-color: #F06918;
   color: #fff;
 }
 
@@ -1876,7 +1876,7 @@ By ADAMSCHWARTZ
 }
 
 .pace .pace-progress {
-  background: #cab630;
+  background: #F06918;
   position: fixed;
   z-index: 99999;
   top: 0;

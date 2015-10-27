@@ -42,10 +42,11 @@
 <div class="fullwidthbanner" id="home">
   <div class="tp-banner">
     <ul>
+      <% _.each(records.slide.values, function(value)  { %>
       <!-- SLIDE  -->
-      <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="/skins/bavely/images/bg-1.jpg" data-delay="10000"  data-saveperformance="off" data-title="slider 1">
+      <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="<%=value.medias[0].url %>" data-delay="10000"  data-saveperformance="off" data-title="next">
         <!-- MAIN IMAGE -->
-        <img src="/skins/bavely/images/bg-1.jpg"  alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+        <img src="<%=value.medias[0].url %>"  alt="<%=value.medias[0].title %>"  data-bgposition="left center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
         <!-- LAYERS -->
 
         <!-- LAYER NR. 1 -->
@@ -57,7 +58,8 @@
              data-easing="easeInOutQuad"
              data-endspeed="1000"
              data-endeasing="easeInOutQuad"
-             style="z-index: 2">sean <strong>douglas</strong>
+             style="z-index: 2">
+            <%-value.primary %>
         </div>
 
         <!-- LAYER NR. 2 -->
@@ -69,7 +71,8 @@
              data-easing="easeInOutQuad"
              data-endspeed="1000"
              data-endeasing="easeInOutQuad"
-             style="z-index: 3">Actor. Motion Capture Artist. Leader.
+             style="z-index: 3">
+            <%-value.secondary %>
         </div>
 
         <!-- LAYER NR. 3 -->
@@ -81,96 +84,15 @@
              data-easing="easeInOutQuad"
              data-endspeed="1000"
              data-endeasing="easeInOutQuad"
-             style="z-index: 3"><a href="#about" class="sr-button sr-buttonicon small-iconbutton scroll-to"><i class="ion-ios-arrow-down"></i></a>
+             style="z-index: 3">
+              <a href="<%=value.link%>" class="sr-button sr-buttonicon small-iconbutton scroll-to">
+                <i class="ion-ios-arrow-down"></i>
+              </a>
         </div>
 
       </li>
-      <!-- SLIDE  -->
-      <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="/skins/bavely/images/bg-2.jpg" data-delay="10000"  data-saveperformance="off" data-title="slider 1">
-        <!-- MAIN IMAGE -->
-        <img src="/skins/bavely/images/bg-2.jpg"  alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
-        <!-- LAYERS -->
 
-        <!-- LAYER NR. 1 -->
-        <div class="tp-caption srcaption-bigwhite lfl ltr slider-title"
-             data-x="center" data-hoffset="0"
-             data-y="center" data-voffset="0"
-             data-speed="1000"
-             data-start="100"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 2">Call of Duty: <strong>Black Ops III</strong>
-        </div>
-
-        <!-- LAYER NR. 2 -->
-        <div class="tp-caption srcaption-miniwhite sfb slider-caption"
-             data-x="center" data-hoffset="0"
-             data-y="bottom" data-voffset="-140"
-             data-speed="500"
-             data-start="1200"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 3">Lead Actor
-        </div>
-
-        <!-- LAYER NR. 3 -->
-        <div class="tp-caption srcaption-miniwhite sfb text-light scroll-to slider-arrow-down"
-             data-x="center" data-hoffset="0"
-             data-y="bottom" data-voffset="-40"
-             data-speed="500"
-             data-start="1300"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 3"><a href="#work" class="sr-button sr-buttonicon small-iconbutton scroll-to"><i class="ion-ios-arrow-down"></i></a>
-        </div>
-
-      </li>
-      <!-- SLIDE  -->
-      <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="/skins/bavely/images/bg-3.jpg" data-delay="10000"  data-saveperformance="off" data-title="slider 1">
-        <!-- MAIN IMAGE -->
-        <img src="/skins/bavely/images/bg-3.jpg"  alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
-        <!-- LAYERS -->
-
-        <!-- LAYER NR. 1 -->
-        <div class="tp-caption srcaption-bigwhite lfl ltr slider-title"
-             data-x="center" data-hoffset="0"
-             data-y="center" data-voffset="0"
-             data-speed="1000"
-             data-start="100"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 2">dedicated <strong>support</strong>
-        </div>
-
-        <!-- LAYER NR. 2 -->
-        <div class="tp-caption srcaption-miniwhite sfb slider-caption"
-             data-x="center" data-hoffset="0"
-             data-y="bottom" data-voffset="-140"
-             data-speed="500"
-             data-start="1200"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 3">Get in touch with us
-        </div>
-
-        <!-- LAYER NR. 3 -->
-        <div class="tp-caption srcaption-miniwhite sfb text-light scroll-to slider-arrow-down"
-             data-x="center" data-hoffset="0"
-             data-y="bottom" data-voffset="-40"
-             data-speed="500"
-             data-start="1300"
-             data-easing="easeInOutQuad"
-             data-endspeed="1000"
-             data-endeasing="easeInOutQuad"
-             style="z-index: 3"><a href="#contact" class="sr-button sr-buttonicon small-iconbutton scroll-to"><i class="ion-ios-arrow-down"></i></a>
-        </div>
-
-      </li>
+      <% }); %>
     </ul>
   </div>
 </div><!--full width banner-->
@@ -189,25 +111,17 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right scroll-to">
-        <li class="active"><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true">Pages <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="blog-single.html">Blog Single</a></li>
-            <li><a href="elements.html">Elements</a></li>
-          </ul>
-        </li>
+        <%
+          var x = 0;
+        _.each(records.navigation.values, function(value)  { %>
+
+        <li><a href="<%=value.link %>"><%=value.title %></a></li>
+
+        <% x++; }) %>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </nav>
-
-
 
 <section id="about" class="section-padding">
   <div class="container">
@@ -258,6 +172,8 @@
     </div><!--row-->
   </div><!--container-->
 </section><!--about section end-->
+
+<% /*
 <div class=" fun-facts">
   <div class="container">
     <div class="row">
@@ -297,7 +213,6 @@
     </div>
   </div>
 </div><!--fun facts end -->
-
 <div class="quote parallax-1">
   <div class="container text-center">
     <div class="col-sm-8 col-sm-offset-2 wow animated fadeIn" data-wow-delay=".2s">
@@ -769,18 +684,22 @@
     </div>
   </div>
 </div><!--price section end here-->
+
+*/ %>
+
 <div class="gray-cta">
   <div class="container text-center scroll-to">
     <h2>Awesome one page parallax</h2>
     <a href="#contact" class="btn btn-lg btn-dark-bg">Get it now</a>
   </div>
 </div><!--gray cta-->
-<section id="work" class="section-padding wow animated fadeIn" data-wow-delay=".1s">
+
+<section id="projects" class="section-padding wow animated fadeIn" data-wow-delay=".1s">
   <div class="container">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="text-center">
-          <h2 class="center-title">Portfolio</h2>
+          <h2 class="center-title">Projects</h2>
           <span class="center-border-line"></span>
           <p class="sub-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in piece of classical Latin literature from 45 BC, it a old.</p>
         </div>
