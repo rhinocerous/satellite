@@ -10,10 +10,11 @@
     svc.$http = $http;
     svc.$q = $q;
 
-    svc._executeUpsert = __executeUpsert;
     svc._executeCreate = __executeCreate;
-    svc._executeUpdate = __executeUpdate;
     svc._executeRetrieve = __executeRetrieve;
+    svc._executeUpdate = __executeUpdate;
+    svc._executeDelete = __executeDelete;
+    svc._executeUpsert = __executeUpsert;
     svc._handleError = __handleError;
 
     function __executeUpsert(name, data, success, error) {
@@ -45,6 +46,17 @@
 
       var request = svc.$http({
         method: "put",
+        url: url,
+        data: data
+      });
+
+      return ( request.then(success, error) );
+    }
+
+    function __executeDelete(url, data, success, error) {
+
+      var request = svc.$http({
+        method: "delete",
         url: url,
         data: data
       });

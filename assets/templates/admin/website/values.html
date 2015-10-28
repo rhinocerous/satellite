@@ -41,7 +41,7 @@
                     </label>
                   </div>
                 </td>
-                <td ng-if="values.records.headers[key]" ng-repeat="(key, prop) in value">{{prop}}</td>
+                <td ng-if="values.records.headers[key]" ng-repeat="(key, prop) in value">{{prop | limitTo:20}}</td>
               </tr>
               </tbody>
             </table>

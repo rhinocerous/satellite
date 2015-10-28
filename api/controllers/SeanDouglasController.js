@@ -26,7 +26,7 @@ module.exports =
 
         var record = records.project;
 
-      console.log("record\n%s", JSON.stringify(records, null, " "));
+      //console.log("record\n%s", JSON.stringify(records, null, " "));
 
         var view = "projectPhoto";
 
