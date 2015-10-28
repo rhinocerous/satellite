@@ -56,6 +56,14 @@ module.exports.connections = {
     database: 'istunt28_01',
     port:3307
   },
+  prodMysql: {
+    adapter: 'sails-mysql',
+    host: 'zzzzz',
+    user: 'zzzzz',
+    password: 'zzzzzz',
+    database: 'satellite',
+    port:3306
+  },
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
