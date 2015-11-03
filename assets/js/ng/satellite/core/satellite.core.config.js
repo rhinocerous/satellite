@@ -28,9 +28,9 @@
     }];
 
     $routeProvider.when('/', {
-      templateUrl: '/templates/admin/settings.html',
-      controller: 'settingsController',
-      controllerAs: 'settings',
+      templateUrl: '/templates/admin/dashboard.html',
+      controller: 'dashboardController',
+      controllerAs: 'dash',
       resolve: {
         auth: authAction
       }
