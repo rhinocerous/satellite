@@ -38,6 +38,11 @@ module.exports.routes = {
     action: 'index',
     skipAssets: true
   },
+  'get /autodealio': {
+    controller: 'AutodealioController',
+    action: 'index',
+    skipAssets: true
+  },
   'get /sean-douglas': {
     controller: 'SeanDouglasController',
     action: 'index',

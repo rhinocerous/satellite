@@ -25,10 +25,13 @@ module.exports = function (req, res, next) {
   passport.initialize()(req, res, function () {
     passport.session()(req, res, function () {
       res.locals.user = req.user;
+
+      //  TODO: wtf is this shit
       if(req.options.controller.indexOf('auth')>-1
         ||req.options.controller.indexOf('index')>-1
         ||req.options.controller.indexOf('install')>-1
         ||req.options.controller.indexOf('sean')>-1
+        ||req.options.controller.indexOf('autodealio')>-1
         ||req.user){
 
         if(req.user)
