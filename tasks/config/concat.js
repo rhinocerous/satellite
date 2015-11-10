@@ -27,6 +27,25 @@ module.exports = function(grunt) {
       dest: '.tmp/public/concat/core.js'
     },
 
+
+    cssBavely: {
+      src: require('../pipeline').cssBavely,
+      dest: '.tmp/public/min/bavely.css'
+    },
+    jsBavely: {
+      src: require('../pipeline').jsBavely,
+      dest: '.tmp/public/concat/bavely.js'
+    },
+
+    cssBootlistings: {
+      src: require('../pipeline').cssBootlistings,
+      dest: '.tmp/public/min/bootlistings.css'
+    },
+    jsBootlistings: {
+      src: require('../pipeline').jsBootlistings,
+      dest: '.tmp/public/concat/bootlistings.js'
+    },
+
 		css: {
 			src: require('../pipeline').cssFilesToInject,
 			dest: '.tmp/public/concat/production.css'

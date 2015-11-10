@@ -74,7 +74,7 @@ module.exports = {
         .populate("records")
         .exec(function(err, found){
 
-          if(found.records && found.records.length)
+          if(found && found.records && found.records.length)
           {
             var recordIds = [];
 

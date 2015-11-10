@@ -10,5 +10,10 @@ module.exports = function (grunt) {
     , 'sails-linker:devSatelliteDependency'
     , 'sails-linker:devSatelliteCore'
 
+    , 'sails-linker:devBavelyStyles'
+    , 'sails-linker:devBavelyJs'
+    , 'sails-linker:devBootlistingsStyles'
+    , 'sails-linker:devBootlistingsJs'
+
   ]);
 };

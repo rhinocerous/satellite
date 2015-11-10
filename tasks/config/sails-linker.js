@@ -14,6 +14,116 @@
 module.exports = function(grunt) {
 
 	grunt.config.set('sails-linker', {
+
+    devBootlistingsStyles: {
+      options: {
+        startTag: '<!--BOOTLISTING STYLES-->',
+        endTag: '<!--BOOTLISTING STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
+
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').cssBootlistings,
+        'views/**/*.html': require('../pipeline').cssBootlistings,
+        'views/**/*.ejs': require('../pipeline').cssBootlistings
+      }
+    },
+    prodBootlistingsStyles: {
+      options: {
+        startTag: '<!--BOOTLISTING STYLES-->',
+        endTag: '<!--BOOTLISTING STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/index.html': ['.tmp/public/min/bootlistings.css'],
+        'views/**/*.html': ['.tmp/public/min/bootlistings.css'],
+        'views/**/*.ejs': ['.tmp/public/min/bootlistings.css']
+      }
+    },
+    devBootlistingsJs: {
+      options: {
+        startTag: '<!--BOOTLISTING SCRIPTS-->',
+        endTag: '<!--BOOTLISTING SCRIPTS END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsBootlistings,
+        'views/**/*.html': require('../pipeline').jsBootlistings,
+        'views/**/*.ejs': require('../pipeline').jsBootlistings
+      }
+    },
+    prodBootlistingsJs: {
+      options: {
+        startTag: '<!--BOOTLISTING SCRIPTS-->',
+        endTag: '<!--BOOTLISTING SCRIPTS END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': ['.tmp/public/min/bootlistings.min.js'],
+        'views/**/*.html': ['.tmp/public/min/bootlistings.min.js'],
+        'views/**/*.ejs': ['.tmp/public/min/bootlistings.min.js']
+      }
+    },
+
+    devBavelyStyles: {
+      options: {
+        startTag: '<!--BAVELY STYLES-->',
+        endTag: '<!--BAVELY STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
+
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').cssBavely,
+        'views/**/*.html': require('../pipeline').cssBavely,
+        'views/**/*.ejs': require('../pipeline').cssBavely
+      }
+    },
+    prodBavelyStyles: {
+      options: {
+        startTag: '<!--BAVELY STYLES-->',
+        endTag: '<!--BAVELY STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/index.html': ['.tmp/public/min/bavely.css'],
+        'views/**/*.html': ['.tmp/public/min/bavely.css'],
+        'views/**/*.ejs': ['.tmp/public/min/bavely.css']
+      }
+    },
+    devBavelyJs: {
+      options: {
+        startTag: '<!--BAVELY SCRIPTS-->',
+        endTag: '<!--BAVELY SCRIPTS END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsBavely,
+        'views/**/*.html': require('../pipeline').jsBavely,
+        'views/**/*.ejs': require('../pipeline').jsBavely
+      }
+    },
+    prodBavelyJs: {
+      options: {
+        startTag: '<!--BAVELY SCRIPTS-->',
+        endTag: '<!--BAVELY SCRIPTS END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': ['.tmp/public/min/bavely.min.js'],
+        'views/**/*.html': ['.tmp/public/min/bavely.min.js'],
+        'views/**/*.ejs': ['.tmp/public/min/bavely.min.js']
+      }
+    },
+
+
     /*  SATELLITE */
 
     devSatelliteCore: {

@@ -13,5 +13,10 @@ module.exports = function (grunt) {
 /*  SATELLITE */
     , 'sails-linker:prodSatelliteDependency'
     , 'sails-linker:prodSatelliteCore'
+
+    , 'sails-linker:prodBootlistingsStyles'
+    , 'sails-linker:prodBootlistingsJs'
+    , 'sails-linker:prodBavelyStyles'
+    , 'sails-linker:prodBavelyJs'
 	]);
 };

@@ -106,6 +106,70 @@ var jsSatelliteCore= [
 ];
 
 
+var cssBavely = [
+  '/skins/bavely/bootstrap/css/bootstrap.min.css',
+  '/skins/bavely/css/style.css',
+  '/skins/bavely/icons/css/ionicons.min.css',
+  '/skins/bavely/css/flexslider.css',
+  '/skins/bavely/css/magnific-popup.css',
+  '/skins/bavely/css/animate.css',
+  '/skins/bavely/cubeportfolio/css/cubeportfolio.min.css',
+  '/skins/bavely/css/pricing.css',
+  '/skins/bavely/rs-plugin/css/settings.css',
+  '/skins/bavely/html5shiv.min.js',
+  '/skins/bavely/respond.min.js',
+  '/skins/bavely/master-slider/style/masterslider.css',
+  '/skins/bavely/master-slider/skins/default/style.css',
+  '/skins/bavely/css/master-slider-custom.css',
+];
+
+var jsBavely = [
+  '/skins/bavely/js/jquery.min.js',
+  '/skins/bavely/js/jquery-migrate.min.js',
+  '/skins/bavely/js/moderniz.min.js',
+  '/skins/bavely/js/jquery.easing.1.3.js',
+  '/skins/bavely/bootstrap/js/bootstrap.min.js',
+  '/skins/bavely/js/bootstrap-hover-dropdown.min.js',
+  '/skins/bavely/js/jquery.flexslider-min.js',
+  '/skins/bavely/js/parallax.min.js',
+  '/skins/bavely/js/tweetie.min.js',
+  '/skins/bavely/js/waypoints.min.js',
+  '/skins/bavely/js/jquery.sticky.js',
+  '/skins/bavely/js/bootstrap-hover-dropdown.min.js',
+  '/skins/bavely/js/wow.min.js',
+  '/skins/bavely/js/template.js',
+  '/skins/bavely/js/contact-form.js',
+  '/skins/bavely/rs-plugin/js/jquery.themepunch.tools.min.js',
+  '/skins/bavely/rs-plugin/js/jquery.themepunch.revolution.min.js',
+  '/skins/bavely/js/revolution-custom.js',
+  '/skins/bavely/cubeportfolio/js/jquery.cubeportfolio.min.js',
+  '/skins/bavely/js/cube-portfolio.js',
+  '/skins/bavely/js/pricing.js',
+  '/skins/bavely/master-slider/js/masterslider.min.js',
+  '/skins/bavely/js/masterslider-custom.js',
+  '/skins/bavely/js/pace.min.js'
+];
+
+var cssBootlistings = [
+  '/skins/bootlistings/css/bootstrap.css',
+  '/skins/bootlistings/css/theme.css',
+  '/skins/bootlistings/css/dropzone.css',
+  '/skins/bootlistings/css/font-awesome.css',
+  '/skins/bootlistings/js/fancybox/jquery.fancybox.css?v=2.1.5',
+  '/skins/bootlistings/js/fancybox/helpers/jquery.fancybox-buttons.css?v=2.1.5'
+];
+
+var jsBootlistings = [
+  '/skins/bootlistings/js/jquery-1.10.2.min.js',
+  '/skins/bootlistings/bootstrap/js/bootstrap.js',
+  '/skins/bootlistings/js/jquery.flot.js',
+  '/skins/bootlistings/js/dropzone.js',
+  '/skins/bootlistings/js/fancybox/jquery.fancybox.js?v=2.1.5',
+  '/skins/bootlistings/js/fancybox/helpers/jquery.fancybox-buttons.js?v=2.1.5',
+  '/skins/bootlistings/js/fancybox/helpers/jquery.fancybox-media.js?v=2.1.5',
+  '/skins/bootlistings/js/global.js'
+];
+
 // Client-side HTML templates are injected using the sources below
 // The ordering of these templates shouldn't matter.
 // (uses Grunt-style wildcard/glob/splat expressions)
@@ -124,6 +188,24 @@ var templateFilesToInject = [
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
 // they reside in the first place)
+
+
+//  SKINS
+module.exports.cssBavely = cssBavely.map(function(path) {
+  return '.tmp/public/' + path;
+});
+
+module.exports.jsBavely = jsBavely.map(function(path) {
+  return '.tmp/public/' + path;
+});
+
+module.exports.cssBootlistings = cssBootlistings.map(function(path) {
+  return '.tmp/public/' + path;
+});
+
+module.exports.jsBootlistings = jsBootlistings.map(function(path) {
+  return '.tmp/public/' + path;
+});
 
 
 /*  SATELLITE */
