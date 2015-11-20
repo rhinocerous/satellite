@@ -17,6 +17,15 @@ module.exports = {
 
       return res.json(entity)
     });
+  },
+  getAll: function (req, res) {
+
+    Attribute.getAllSorted(function (err, attrs) {
+      if (err)
+        return res.json(500, err);
+
+      return res.json(attrs)
+    });
   }
 };
 

@@ -12,6 +12,7 @@
     svc.get = _get;
     svc.getBySlug = _getBySlug;
     svc.saveAll = _saveAll;
+    svc.getAll = _getAll;
 
     function _saveAll(attrs, cb)
     {
@@ -39,6 +40,13 @@
             }
           })
       });
+    }
+
+    function _getAll(onSuccess, onError)
+    {
+      var url = "/" + svc.name + "/all";
+
+      svc._executeRetrieve(url, onSuccess, onError)
     }
 
     function _getBySlug(name, onSuccess, onError)

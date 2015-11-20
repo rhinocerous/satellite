@@ -1,0 +1,10 @@
+<h4>Editing {{schema.currentEntityData.name}} Attributes</h4>
+<!--<pre>-->
+  <!--{{schema.currentEntityData.attributes | json}}-->
+<!--</pre>-->
+
+<select chosen multiple
+        options="schema.allAttributes "
+        ng-model="schema.currentEntityData.attributes"
+        ng-options="attr as attr.name for attr in schema.allAttributes track by attr.id">
+</select>

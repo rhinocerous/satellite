@@ -24,6 +24,7 @@
     svc.getBySlug = _getBySlug;
     svc.getByGroup = _getByGroup;
     svc.getByWebsite = _getByWebsite;
+    svc.entityAttribute = _entityAttribute;
 
     svc.websiteId = null;
 
@@ -134,6 +135,15 @@
       });
     }
 
+    function _entityAttribute(entityId, attrId, op, onSuccess, onError)
+    {
+      op = ('remove' == op) ? op : 'add';
+
+      var url = "/" + svc.name + "/" + entityId + "/attributes/" + op + "?id=" + attrId;
+
+      svc._executeRetrieve(url, onSuccess, onError);
+    }
+
     function _getByGroup(name, onSuccess, onError)
     {
       var url = "/" + svc.name + "/group/" + name;
@@ -160,11 +170,6 @@
       var url = "/" + svc.name;
 
       svc._executeRetrieve(url, onSuccess, onError)
-    }
-
-    function _onAssociateSuccess(response)
-    {
-      //console.log("association created", response);
     }
 
     return svc;

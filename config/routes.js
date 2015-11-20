@@ -103,6 +103,11 @@ module.exports.routes = {
     action: 'findBySlug',
     skipAssets: true
   },
+  'get /attribute/all': {
+    controller: 'AttributeController',
+    action: 'getAll',
+    skipAssets: true
+  },
   'get /export': {
     controller: 'IstuntRelationController',
     action: 'export',

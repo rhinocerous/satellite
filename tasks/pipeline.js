@@ -75,6 +75,7 @@ var jsFilesToInject = [
 var jsSatelliteDependencies = [
   '/js/ng/satellite/dependencies/jquery-2.1.3.js',
   '/js/ng/satellite/dependencies/dropzone.js',
+  '/js/ng/satellite/dependencies/chosen.jquery.js',
   '/js/ng/satellite/dependencies/angular-1.4.1.js',
   '/js/ng/satellite/dependencies/angular-1.4.1.route.js',
   '/js/ng/satellite/dependencies/angular-1.4.1.animate.js',
@@ -92,7 +93,9 @@ var jsSatelliteDependencies = [
   //'/js/ng/satellite/dependencies/ng-file-upload-all.js',
   //'/js/ng/satellite/dependencies/schema-form-file.js',
   '/js/ng/satellite/dependencies/angular-toastr.tpls.js',
-  '/js/ng/satellite/dependencies/select.js'
+  '/js/ng/satellite/dependencies/select.js',
+  '/js/ng/satellite/dependencies/angular-chosen.js'
+  ,
 ];
 
 var jsSatelliteCore= [

@@ -16,9 +16,19 @@
 
           <accordion-heading>
             <span data-ng-click="schema.loadTab(entity);">{{entity.name}}</span>
+
           </accordion-heading>
-          <p><strong>Fields</strong></p>
-          <div class="col-lg-4 col-sm-4 col-xs-6" data-ng-repeat="attr in schema.currentEntityData.attributes track by attr.id">
+          <p>
+            <div class="btn-switch mb mr btn-switch-info">
+              <input type="checkbox" id="checkbox-{{enitiy.id}}" ng-checked="schema.editMode">
+              <label class="btn btn-info" for="checkbox-{{enitiy.id}}" ng-click="schema.toggleEditMode()">
+                <em class="fa fa-check"></em>Edit Attributes</label>
+            </div>
+          </p>
+
+          <div ng-if="schema.editMode" ng-include="'/templates/admin/website/schema.attributes.html'"></div>
+
+          <div class="col-lg-4 col-sm-4 col-xs-6" ng-if="!schema.editMode" data-ng-repeat="attr in schema.currentEntityData.attributes track by attr.id">
             <div class="panel panel-default" data-ripple="">
               <div class="panel-body">
                 <h4 class="text-thin mt">{{attr.name}}</h4>

@@ -6,8 +6,10 @@
     , $baseController
     , $istuntService
     , $entityService
+    , $websitesService
     , $modal
     , $routeParams
+    , $attributeService
   ) {
 
     var vm = this;
@@ -17,6 +19,8 @@
     vm.$scope = $scope;
     vm.$istuntService = $istuntService;
     vm.$entityService = $entityService;
+    vm.$websitesService = $websitesService;
+    vm.$attributeService = $attributeService;
     vm.$modal = $modal;
     vm.$routeParams = $routeParams;
 
@@ -27,18 +31,92 @@
     vm.schemaEntities = null;
     vm.currentEntity = null;
     vm.currentEntityData = null;
+    vm.editMode = false;
+    vm.allAttributes = null;
+    vm.selectedAttributes = null;
 
     vm.import = _import;
     vm.loadTab = _loadTab;
     vm.addEntity = _addEntity;
+    vm.setEditMode = _setEditMode;
+    vm.toggleEditMode = _toggleEditMode;
+    vm.loadAllAttributes = _loadAllAttributes;
+    vm.changeAttributes = _changeAttributes;
 
     _init();
 
     function _init()
     {
-      //vm.$entityService.getByGroup("resume", _onGetEntitiesSuccess, _onError);
+      vm.$websitesService.getBySlug(vm.$routeParams.websiteSlug)
+        .then(_onGetEntitiesSuccess, vm._handleError);
 
-      vm.$entityService.getByWebsite(vm.$routeParams.websiteSlug, _onGetEntitiesSuccess, vm._handleError);
+      _loadAllAttributes();
+
+      vm.$scope.$watch(
+        "schema.currentEntityData.attributes",
+        _changeAttributes
+      );
+    }
+
+    function _changeAttributes(newValue, oldValue)
+    {
+      if(newValue && oldValue)
+      {
+        var diff = [];
+
+        if(newValue.length > oldValue.length)
+        {
+          diff = vm._diffArrays(newValue, oldValue);
+
+          console.log("ADD attr", diff[0].name);
+
+          vm.$entityService.entityAttribute(vm.currentEntity.id, diff[0].id, 'add', _onAddAttrSuccess, vm._handleError);
+        }
+        else if(newValue.length < oldValue.length)
+        {
+          diff = vm._diffArrays(oldValue, newValue);
+
+          console.log("REMOVE attr", diff[0].name);
+
+          vm.$entityService.entityAttribute(vm.currentEntity.id, diff[0].id, 'remove', _onRemoveAttrSuccess, vm._handleError);
+        }
+      }
+    }
+
+    function _onAddAttrSuccess()
+    {
+      vm.$alertService.success("Attribute added to " + vm.currentEntity.name);
+    }
+
+    function _onRemoveAttrSuccess()
+    {
+      vm.$alertService.warning("Attribute removed from " + vm.currentEntity.name);
+    }
+
+    function _loadAllAttributes()
+    {
+      vm.$attributeService.getAll(_onGetAllAttributes, vm._handleError);
+    }
+
+    function _onGetAllAttributes(response)
+    {
+      vm.allAttributes = [];
+      var items = response.data;
+
+      angular.forEach(items, function(val, key){
+        vm.allAttributes.push(val);
+      });
+    }
+
+    function _toggleEditMode()
+    {
+      console.log("toggle edit mode");
+      vm.editMode = !vm.editMode;
+    }
+
+    function _setEditMode(mode)
+    {
+      vm.editMode = mode;
     }
 
     function _import()
@@ -71,6 +149,9 @@
     {
       vm.currentEntity = entity;
 
+      vm.editMode = false;
+      vm.currentEntityData = null;
+
       vm.$entityService.get(vm.currentEntity.id, _onGetCurrentEntitySuccess, _onError);
     }
 
@@ -86,7 +167,7 @@
 
     function _onGetEntitiesSuccess(response)
     {
-      vm.schema = response.data;
+      vm.schema = response.data[0].entities;
 
       vm.$alertService.success("Schema loaded");
     }
@@ -124,6 +205,6 @@
 
   angular.module(SATELLITE)
     .controller('websiteSchemaController'
-    ,  ['$scope', '$baseController', '$istuntService','$entityService', '$modal', '$routeParams', vmObject]);
+    ,  ['$scope', '$baseController', '$istuntService','$entityService', '$websitesService', '$modal', '$routeParams', '$attributeService', vmObject]);
 
 })();

@@ -58,7 +58,17 @@
       }
     };
 
+    baseController._diffArrays = function(array1, array2)
+    {
+      var diff =  array1.filter(function(item1) {
+        for (var i in array2) {
+          if (item1.id === array2[i].id) { return false; }
+        };
+        return true;
+      });
 
+      return diff;
+    };
 
     return baseController;
   };
