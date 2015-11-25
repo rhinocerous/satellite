@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var svcObject = function ($document, $log, $location, $alertService) {
+  var svcObject = function ($document, $log, $location, $alertService, $systemEventService, EVENT_TYPES) {
 
     var raw = $("#satellite").html();
     var config = null;
@@ -28,6 +28,8 @@
     };
 
     baseController.$alertService = $alertService;
+    baseController.$systemEventService = $systemEventService;
+    baseController.EVENT_TYPES = EVENT_TYPES;
 
     baseController._handleError = function(err, msg)
     {
@@ -75,7 +77,7 @@
 
   angular.module(SATELLITE)
     .service('$baseController'
-    , ['$document', '$log','$location', '$alertService', svcObject]
+    , ['$document', '$log','$location', '$alertService', '$systemEventService', 'EVENT_TYPES', svcObject]
   );
 
 })();

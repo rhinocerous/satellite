@@ -31,7 +31,11 @@
     }
 
     function _getSuccess(response) {
-      vm.site = response.data;
+      vm.site = response.data[0];
+
+      vm.$systemEventService.broadcast(vm.EVENT_TYPES.WEBSITE_LOADED, vm.site);
+
+
     }
   };
 

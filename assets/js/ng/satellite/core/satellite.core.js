@@ -68,7 +68,14 @@ Array.prototype.unique = function () {
       'desktop': 992,
       'tablet': 768,
       'mobile': 480
-    });
+    })
+    .constant('EVENT_TYPES',
+    {
+      OPEN_NAV:"openNav",
+      CLOSE_NAV: "closeNav",
+      WEBSITE_LOADED:"websiteLoaded"
+    }
+  );
     //.directive('dropzone', function () {
     //  return function (scope, element, attrs) {
     //    var config, dropzone;

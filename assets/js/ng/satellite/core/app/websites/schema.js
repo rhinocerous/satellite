@@ -170,6 +170,8 @@
       vm.schema = response.data[0].entities;
 
       vm.$alertService.success("Schema loaded");
+
+      vm.$systemEventService.broadcast(vm.EVENT_TYPES.WEBSITE_LOADED, response.data[0]);
     }
 
     function _onImportSuccess(response)

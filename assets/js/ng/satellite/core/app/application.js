@@ -25,16 +25,14 @@
 
     vm.currentRequestLabel = "Current Request:";
     vm.sidebarActive = false;
+    vm.website = null;
 
-    vm.tabs = [
-      //{ link: '#/', label: 'Settings', icon: 'fa-cogs' },
-      //{ link: '#/about', label: 'Biography', icon: 'fa-edit' },
-      //{ link: '#/reel', label: 'Reel', icon: 'fa-film' },
-      //{ link: '#/resume', label: 'Resume', icon: 'fa-book' },
-      //{ link: '#/awards', label: 'Awards', icon: 'fa-fire' },
-      //{ link: '#/actors', label: 'Actors', icon: 'fa-bullseye' },
-      //{ link: '#/schema', label: 'Schema', icon: 'fa-wrench' }
+    vm.tabs = [];
 
+    vm.tabsWebsite = [
+      { segment: '', label: 'Dashboard', icon: 'fa-bar-chart' },
+      { segment: 'values', label: 'Values', icon: 'fa-book' },
+      { segment: 'schema', label: 'Schema', icon: 'fa-wrench' }
     ];
 
     vm.selectedTab = vm.tabs[0];
@@ -74,6 +72,27 @@
           });
         }
       });
+
+      vm.$systemEventService.listen(vm.EVENT_TYPES.WEBSITE_LOADED, _onWebsiteLoaded);
+    }
+
+    function _onWebsiteLoaded(event, data)
+    {
+      console.log("website loaded", data[1]);
+
+      vm.website = data[1];
+
+      vm.tabs = [];
+
+      angular.forEach(vm.tabsWebsite, function(val, key){
+
+        val.link = "#/websites/" + vm.website.slug + "/" + val.segment;
+
+        vm.tabs.push(val);
+
+      });
+
+      _showSidebar();
     }
 
     function _toggleSidebar()

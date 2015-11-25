@@ -87,6 +87,8 @@
         vm.website = response.data[0];
 
         vm.$alertService.success(vm.website.name + " schema loaded");
+
+        vm.$systemEventService.broadcast(vm.EVENT_TYPES.WEBSITE_LOADED, vm.website);
       }
       else
       {
