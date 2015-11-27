@@ -180,7 +180,32 @@ module.exports.satellite = {
       ,values:{}
     }
     , istuntSingle:{
-      schema:{}
+      schema:{
+        project:[
+          'group',
+          'title',
+          'intro',
+          'body',
+          'url',
+          'videoUrl',
+          'videoSource'
+        ],
+        about:[
+          'title',
+          'intro',
+          'body'
+        ],
+        slide:[
+          'primary',
+          'secondary',
+          'link',
+          'background'
+        ],
+        navigation:[
+          'title',
+          'link'
+        ]
+      }
       ,values:{}
     }
   }

@@ -12,6 +12,16 @@
     svc.create = _create;
     svc.get = _get;
     svc.getBySlug = _getBySlug;
+    svc.websiteEntity = _websiteEntity;
+
+    function _websiteEntity(websiteId, entityId, op, onSuccess, onError)
+    {
+      op = ('remove' == op) ? op : 'add';
+
+      var url = "/" + svc.name + "/" + websiteId + "/entities/" + op + "?id=" + entityId;
+
+      svc._executeRetrieve(url, onSuccess, onError);
+    }
 
     function _create(req, onSuccess, onError)
     {

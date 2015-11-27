@@ -34,6 +34,7 @@
     vm.editMode = false;
     vm.allAttributes = null;
     vm.selectedAttributes = null;
+    vm.website = null;
 
     vm.import = _import;
     vm.loadTab = _loadTab;
@@ -47,8 +48,7 @@
 
     function _init()
     {
-      vm.$websitesService.getBySlug(vm.$routeParams.websiteSlug)
-        .then(_onGetEntitiesSuccess, vm._handleError);
+      _loadSchema();
 
       _loadAllAttributes();
 
@@ -91,6 +91,12 @@
     function _onRemoveAttrSuccess()
     {
       vm.$alertService.warning("Attribute removed from " + vm.currentEntity.name);
+    }
+
+    function _loadSchema()
+    {
+      vm.$websitesService.getBySlug(vm.$routeParams.websiteSlug)
+        .then(_onGetEntitiesSuccess, vm._handleError);
     }
 
     function _loadAllAttributes()
@@ -139,10 +145,37 @@
 
         console.log("form data", form);
 
-        vm.$entityService.create(form, _onCreateEntitySuccess, _onError)
+        vm.currentEntity = form;
+
+        vm.$entityService.getBySlug(form.slug, _onGetEntityForCreate, _onGetEntityForCreateError);
+
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
+    }
+
+    function _onGetEntityForCreate(response)
+    {
+      vm.$websitesService.websiteEntity(vm.website.id, response.data.id, 'add', _onCreateEntitySuccess, _onCreateEntityError)
+    }
+
+    function _onGetEntityForCreateError(response)
+    {
+      if(404 == response.status)
+        vm.$entityService.create(vm.currentEntity, _onGetEntityForCreate, _onCreateEntityError)
+    }
+
+    function _onCreateEntityError(response)
+    {
+      console.error("create entity error", response);
+      vm.$alertService.error("Unable to add the entity.");
+    }
+
+    function _onCreateEntitySuccess(response)
+    {
+      vm.$alertService.success("Entity added to " + vm.website.name);
+
+      _loadSchema();
     }
 
     function _loadTab(entity)
@@ -155,11 +188,6 @@
       vm.$entityService.get(vm.currentEntity.id, _onGetCurrentEntitySuccess, _onError);
     }
 
-    function _onCreateEntitySuccess(response)
-    {
-
-    }
-
     function _onGetCurrentEntitySuccess(response)
     {
       vm.currentEntityData = response.data;
@@ -167,11 +195,10 @@
 
     function _onGetEntitiesSuccess(response)
     {
-      vm.schema = response.data[0].entities;
+      vm.website = response.data[0];
+      vm.schema = vm.website.entities;
 
-      vm.$alertService.success("Schema loaded");
-
-      vm.$systemEventService.broadcast(vm.EVENT_TYPES.WEBSITE_LOADED, response.data[0]);
+      vm.$systemEventService.broadcast(vm.EVENT_TYPES.WEBSITE_LOADED, vm.website);
     }
 
     function _onImportSuccess(response)

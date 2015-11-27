@@ -135,6 +135,11 @@
       });
     }
 
+    function _onAssociateSuccess(response)
+    {
+      console.log("associate success", response);
+    }
+
     function _entityAttribute(entityId, attrId, op, onSuccess, onError)
     {
       op = ('remove' == op) ? op : 'add';
