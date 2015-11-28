@@ -120,7 +120,12 @@ module.exports = {
     {
       /*
        * TODO: this is going to be a major bottleneck when lots of records get in the db
-       * find a better way to load records for db
+       * find a better way to load records for db. currently I am getting the ids of ALL the records
+       * in the db for this website then using those in the IN clause for the actual records with associated
+       * values. this probably won't work when we get 90k records in there though.
+       *
+       * later on I should pass in entityId and paging params to getWebsiteRecordIds()
+       * so that we can just grab subsets of ids and records instead of everything.
        * */
 
       RecordService.getWebsiteRecordIds(websiteId, {}, function(err, recordIds){

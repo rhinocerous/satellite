@@ -1,6 +1,7 @@
 module.exports = {
 
 //  TODO: find a better way to do this that is not tied to SQL and supports pagination for large sets
+//  TODO: pass in entityId and pagination params - get max 100 ids or so in case of large sets
   getWebsiteRecordIds:function(websiteId, params, cb)
   {
     if(!params)

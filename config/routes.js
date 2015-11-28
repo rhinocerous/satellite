@@ -53,6 +53,11 @@ module.exports.routes = {
     action: 'project',
     skipAssets: true
   },
+  'get /stuntfights': {
+    controller: 'StuntfightsController',
+    action: 'index',
+    skipAssets: true
+  },
   'get /admin': {
     controller: 'IndexController',
     action: 'admin',

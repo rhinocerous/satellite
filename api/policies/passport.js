@@ -32,6 +32,7 @@ module.exports = function (req, res, next) {
         ||req.options.controller.indexOf('install')>-1
         ||req.options.controller.indexOf('sean')>-1
         ||req.options.controller.indexOf('autodealio')>-1
+        ||req.options.controller.indexOf('stuntfights')>-1
         ||req.user){
 
         if(req.user)

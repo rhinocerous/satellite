@@ -173,6 +173,7 @@
         vm.$recordService.updateValues(data.record, _onUpdateRecordsSuccess, _onImportError);
 
         vm.selectedMedias = data.medias;
+        vm.selectedRecord = null;
 
       }, function () {
         vm.selectedRecord = null;

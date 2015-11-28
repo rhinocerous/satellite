@@ -134,78 +134,68 @@
   <!-- Indicators -->
 
   <ol class="carousel-indicators">
-    <li data-target="#home" data-slide-to="0" class="active"></li>
-    <li data-target="#home" data-slide-to="1"></li>
-    <li data-target="#home" data-slide-to="2"></li>
+    <%
+    if(records && records.slide){
+      var x = 0;
+      _.each(records.slide.values, function(value)  { %>
+
+    <li data-target="#home" data-slide-to="<%=x %>" <% if(x == 0){ %> class="active"<%}%> ></li>
+
+    <% x++; }); } %>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="container">
     <div class="carousel-inner">
 
-      <div class="item active">
-        <div class="row">
 
+      <%
+      if(records && records.slide){
+        var x = 0;
+        _.each(records.slide.values, function(value)  { %>
+
+      <div class="item<% if(x == 0){ %> active<%}%>">
+        <div class="row">
           <div class="col-sm-6 ">
-            <div class="flex-video widescreen video-container" data-sr="wait 2s, roll 15deg">
-              <iframe allowfullscreen="" src="http://www.youtube.com/embed/vU6tV-wnK0M?feature=player_detailpage" frameborder="0"></iframe>
-            </div>
-          </div>
-          <div class="col-sm-6" data-sr="wait 2s, enter right, hustle 20px">
-            <div class="horizontal-align">
-              <h2>Fight Coordinator</h2>
 
-              <p>Thomas' passion for his craft fuels his enthusiasm for training, research, experimentation and
-                artistry. Armed with a solid work ethic and fierce determination,
-                this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the
-                industry's fight coordinating standards.</p>
-            </div>
-            </br>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="row">
+            <%
+            if(value.videoSource && value.videoUrl){
 
-          <div class="col-sm-6">
-            <div class="flex-video vimeo video-container">
-              <iframe allowfullscreen="" src="http://player.vimeo.com/video/53068895" frameborder="0"></iframe>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="horizontal-align">
-              <h2>Fight Choreographer</h2>
+              switch (value.videoSource){
 
-              <p>Thomas passion for his craft fuels his enthusiasm for training, research, experimentation and
-                artistry. Armed with a solid work ethic and fierce determination,
-                this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the
-                industry's fight coordinating standards.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="row">
+              case 'youtube':
+              %>
+                <div class="flex-video widescreen video-container">
+                  <iframe allowfullscreen="" src="<%=value.videoUrl%>" frameborder="0"></iframe>
+                </div>
+              <%
+              break;
 
-          <div class="col-sm-6">
+              case 'vimeo':
+            %>
 
-            <div class="flex-video widescreen video-container">
-              <iframe allowfullscreen="" src="http://www.youtube.com/embed/vU6tV-wnK0M?feature=player_detailpage" frameborder="0"></iframe>
-            </div>
+              <div class="flex-video vimeo video-container">
+                <iframe allowfullscreen="" src="<%=value.videoUrl%>" frameborder="0"></iframe>
+              </div>
+
+            <%
+              break; %>
+
+            <%}} %>
+
           </div>
           <div class="col-sm-6">
             <div class="horizontal-align">
-              <h2>3rd Slide</h2>
+              <h2><%=value.primary %></h2>
 
-              <p>Thomas' passion for his craft fuels his enthusiasm for training, research, experimentation and
-                artistry. Armed with a solid work ethic and fierce determination,
-                this dynamic industry inspires Thomas to continually enhance his style to not only meet but exceed the
-                industry's fight coordinating standards.</p>
+              <p><%=value.secondary %></p>
             </div>
+            <br/>
           </div>
         </div>
       </div>
 
+      <% x++; }); } %>
 
     </div>
   </div>
@@ -239,19 +229,7 @@
 
           <div class="col-xs-6">
               <h2>Thomas Dupont</h2>
-              <p>For more than two decades, Thomas has been successfully choreographing, training and performing fights for commercials, film and television. By using an arsenal of blades and weapons -true or improvised, tapping into
-                martial arts training, and being inspired by "the art of human movement", Thomas creates a variety of fight designs
-                for the camera that are exciting, safe, and surprisingly easy to learn. Thomas' style is frequently highlighted, and had
-                been described as "a combination of focus and precision, power and grace".</p>
-              <p>Thomas' fight scene preparation encompasses instruction from the director, abilities of the performer, and integrity of
-                each character all while staying true to the script. With this foundation in mind, Thomas builds a scene with creativity,
-                diversity, responsibility and originality -ultimately creating a scene with realistic, interesting movements and a distinct
-                personality- often discovering and incorporating elements that have never before been seen on film.</p>
-              <p>
-                By working with stunt performers, as well as training many actors, Thomas developed a level of experience, patience
-                and adaptability needed to train performers of all skill levels. Thomas' ability to quickly assess natural strengths and teach in accordance with each individuals learning process
-                ultimately speeds up the rehearsal process and allows performers maximum potential to be achieved.
-              </p>
+              
             </div>
 
       </div>
