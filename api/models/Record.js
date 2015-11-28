@@ -70,6 +70,11 @@ module.exports = {
 
     Attribute.getAllSorted(function(errAttr, attrs)
     {
+
+    /*
+    * TODO: this is going to be a major bottleneck when lots of records get in the db
+    * find a better way to load records for db
+    * */
       Website.findOne(websiteId)
         .populate("records")
         .exec(function(err, found){
@@ -109,28 +114,43 @@ module.exports = {
   getByWebsiteEntity:function(websiteId, entityId, cb) {
 
     var entityIds = [entityId];
+    var siteIds = [websiteId];
 
     Attribute.getAllSorted(function(errAttr, attrs)
     {
-      Record.find({
-        entity: entityIds
-        //active:true
-      })
-        .sort('id DESC')
-        .populate('values')
-        .populate('entity')
-        .populate('medias')
-        .exec(function (errRec, records) {
+      /*
+       * TODO: this is going to be a major bottleneck when lots of records get in the db
+       * find a better way to load records for db
+       * */
 
-          records.forEach(function(record){
-            record.values.forEach(function(value){
-              value.attribute = attrs[value.attribute];
-            });
+      RecordService.getWebsiteRecordIds(websiteId, {}, function(err, recordIds){
+
+        Record.find()
+          .where({
+            id: recordIds
+            ,entity: entityIds
+          })
+          .sort('id DESC')
+          .populate('values')
+          .populate('entity')
+          .populate('medias')
+          .exec(function (errRec, records) {
+
+            if(records) {
+              records.forEach(function (record) {
+                record.values.forEach(function (value) {
+                  value.attribute = attrs[value.attribute];
+                });
+              });
+
+              RecordService.organize(records, cb);
+
+            } else{
+              cb(null, {});
+            }
+
           });
-
-          RecordService.organize(records, cb);
-        });
-
+      });
     });
   },
   getByEntityGroup:function(group, cb) {

@@ -1,5 +1,30 @@
 module.exports = {
 
+//  TODO: find a better way to do this that is not tied to SQL and supports pagination for large sets
+  getWebsiteRecordIds:function(websiteId, params, cb)
+  {
+    if(!params)
+      params = {};  //  TODO: pagination params here
+
+    Record.query(
+      "SELECT r.id FROM record r " +
+      "join record_website__website_records rw on r.id = rw.record_website " +
+      "where rw.website_records = " + websiteId,
+
+      function(err, websiteIds) {
+
+      if (err)
+        return cb(err);
+
+      websiteIds = _.map(websiteIds, function(websiteId) {
+        return websiteId.id
+      });
+
+      cb(null, websiteIds);
+    });
+
+
+  },
   updateValues:function(record, cb)
   {
 
