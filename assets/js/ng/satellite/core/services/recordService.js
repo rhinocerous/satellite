@@ -34,8 +34,19 @@
     svc.addMedia = _addMedia;
     svc.addWebsite = _addWebsite;
     svc.addUser = _addUser;
+    svc.recordMedia = _recordMedia;
 
   //----------- functions ------------
+
+    function _recordMedia(recordId, mediaId, op, onSuccess, onError)
+    {
+      op = ('remove' == op) ? op : 'add';
+
+      var url = "/" + svc.name + "/" + recordId + "/medias/" + op + "?id=" + mediaId;
+
+      svc._executeRetrieve(url, onSuccess, onError);
+    }
+
     function _updateValues(record, onSuccess, onError)
     {
       console.log("trying to update values", record);

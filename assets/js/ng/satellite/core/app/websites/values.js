@@ -172,12 +172,12 @@
 
         vm.$recordService.updateValues(data.record, _onUpdateRecordsSuccess, _onImportError);
 
-        vm.selectedMedias = data.medias;
+        //vm.selectedMedias = data.medias;
 
       }, function () {
-        vm.selectedRecord = null;
-      });
 
+      });
+      vm.selectedRecord = null;
     }
 
     function _selectRecord(record) {
@@ -214,28 +214,31 @@
     {
       vm.$alertService.success("User #" + vm.user.id +" -> Record #" + vm.selectedRecord.id);
 
-      _linkImages();
-    }
-
-    function _linkImages()
-    {
-      console.log("link selected medias", vm.selectedMedias);
-
-      while(vm.selectedMedias && vm.selectedMedias.length > 0)
-      {
-        var media = vm.selectedMedias.pop();
-
-        vm.$recordService.addMedia(vm.selectedRecord.id, media.id, _onAddMediaSuccess, vm._handleError);
-      }
-
       _loadRecords();
+
+      //_linkImages();
     }
+
+    //function _linkImages()
+    //{
+    //  console.log("link selected medias", vm.selectedMedias);
+    //
+    //  while(vm.selectedMedias && vm.selectedMedias.length > 0)
+    //  {
+    //    var media = vm.selectedMedias.pop();
+    //
+    //    vm.$recordService.addMedia(vm.selectedRecord.id, media.id, _onAddMediaSuccess, vm._handleError);
+    //  }
+    //
+    //  _loadRecords();
+    //}
 
     function _onUpdateRecordsSuccess(response)
     {
       vm.$alertService.success("The record was updated");
 
-      _linkImages();
+      _loadRecords();
+      //_linkImages();
     }
 
     function _onGetEntitiesSuccess(response)

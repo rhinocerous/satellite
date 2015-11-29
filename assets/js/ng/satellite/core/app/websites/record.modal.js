@@ -7,6 +7,7 @@
     , $modalInstance
     , $formService
     , $mediaService
+    , $recordService
     , record
     , entity
     , website) {
@@ -19,6 +20,7 @@
     vm.$modalInstance = $modalInstance;
     vm.$formService = $formService;
     vm.$mediaService = $mediaService;
+    vm.$recordService = $recordService;
 
     vm.record = record;
     vm.entity = entity;
@@ -35,7 +37,8 @@
       url:"/website/" + vm.website.id +"/media/upload",
       addRemoveLinks: true,
       removedfile: _onRemovedFile,
-      init: _dropzoneInit
+      init: _dropzoneInit,
+      success:_onUploadSuccess
     };
 
     vm.submit = _submit;
@@ -54,6 +57,22 @@
       }
     }
 
+    function _onAddMediaSuccess(response)
+    {
+      console.log("media added success", response);
+      vm.$alertService.success("media added to record #" + vm.record.id);
+
+      vm.medias = response.data.medias;
+    }
+
+    function _onRemoveMediaSuccess(response) {
+      console.log("media remove success", response);
+      vm.$alertService.success("media removed from record #" + vm.record.id);
+
+      vm.medias = response.data.medias;
+    }
+
+
     function _onUploadSuccess()
     {
       var response = arguments[1];
@@ -61,15 +80,17 @@
       vm.medias.push(response);
 
       vm.$alertService.success(response.title + " has been saved");
+
+      vm.$recordService.recordMedia(vm.record.id, response.id, 'add', _onAddMediaSuccess, vm._handleError);
     }
 
     function _dropzoneInit()
     {
       //this.on("addedfile", _onAddedFile);
-      this.on("success", _onUploadSuccess);
 
       //  based on http://stackoverflow.com/a/25179408
       if (vm.medias.length > 0) {
+
         for (var i = 0; i < vm.medias.length; i++) {
           var media = vm.medias[i];
 
@@ -79,7 +100,8 @@
             type: media.mime,
             status: Dropzone.ADDED,
             url: vm.$config.config.assets.baseUrl + media.url,
-            id:media.id
+            id:media.id,
+            accepted: true
           };
 
           // Call the default addedfile event handler
@@ -88,37 +110,32 @@
           // And optionally show the thumbnail of the file:
           this.emit("thumbnail", row, row.url);
 
+        //  CORS issue is blocking this for now
+          //this.createThumbnailFromUrl(row, row.url);
+
+          this.emit("complete", row);
+
           this.files.push(row);
         }
       }
-
-      this.on("removedfile", function (file) {
-        // Only files that have been programmatically added should
-        // have a url property.
-        if (file.url && file.url.trim().length > 0) {
-          $("<input type='hidden'>").attr({
-            id: 'DeletedImageUrls',
-            name: 'DeletedImageUrls'
-          }).val(file.url).appendTo('#image-form');
-        }
-      });
-
     }
 
     function _onRemovedFile(file)
     {
       if(file.id)
       {
-        vm.$mediaService.delete(file.id, _onDeleteFileSucces, vm._handleError);
+          vm.$recordService.recordMedia(vm.record.id, file.id, 'remove', _onRemoveMediaSuccess, vm._handleError);
+
+          //vm.$mediaService.delete(file.id, _onDeleteFileSuccess, vm._handleError);
       }
 
       var _ref;
       return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
     }
 
-    function _onDeleteFileSucces(response)
+    function _onDeleteFileSuccess(response)
     {
-      vm.$alertService.success("Media deleted");
+      //vm.$alertService.success("Media deleted");
     }
 
     //  activate this if we only want one media per record, this will enforce in UI
@@ -137,5 +154,5 @@
 
   angular.module(SATELLITE)
     .controller('recordModalController'
-    , ['$scope', '$baseController', '$modalInstance', '$formService', '$mediaService', 'record', 'entity', 'website', vmObject]);
+    , ['$scope', '$baseController', '$modalInstance', '$formService', '$mediaService', '$recordService', 'record', 'entity', 'website', vmObject]);
 })();

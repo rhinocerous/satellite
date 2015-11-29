@@ -25,22 +25,14 @@ module.exports = {
           return res.negotiate(err);
         }
 
-      console.log("files uploaded to S3\n%s", JSON.stringify(files, null, " "));
-
   //  look up website
       Website.findOne(req.params.websiteId).exec(function(err2, site){
 
         if (err2)
           return res.negotiate(err2);
 
-        console.log("website loaded\n%s", JSON.stringify(site, null, " "));
-
     //  group files by site in the bucket
         var newKey = sails.config.amazon.prefix + "/" + site.slug + "/" + files[0].extra.Key;
-
-        console.log("new key: " + newKey);
-        console.log("old key: " + files[0].extra.Key);
-
 
         var s3 = new AWS.S3();
 
@@ -50,13 +42,8 @@ module.exports = {
           Key: newKey
         };
 
-        console.log("copy params\n%s", JSON.stringify(params, null, " "));
-
     //  copy to new path
         s3.copyObject(params, function(copyErr, copyData) {
-
-          console.log("copy file \n%s", JSON.stringify(copyData, null, " "));
-          console.log("copy file ERROR \n%s", JSON.stringify(copyErr, null, " "));
 
           if (copyErr)
             return res.negotiate(copyErr);
