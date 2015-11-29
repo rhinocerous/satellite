@@ -78,7 +78,7 @@
             size: media.size,
             type: media.mime,
             status: Dropzone.ADDED,
-            url: media.url,
+            url: vm.$config.config.assets.baseUrl + media.url,
             id:media.id
           };
 

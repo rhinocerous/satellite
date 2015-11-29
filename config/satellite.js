@@ -1,4 +1,7 @@
 module.exports.satellite = {
+  assets:{
+    baseUrl:'//rhinocerous.s3.amazonaws.com'
+  },
   defaults:{
     scopes: [
       {

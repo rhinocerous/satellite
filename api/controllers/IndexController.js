@@ -8,7 +8,7 @@ module.exports =
 
       res.view("homepage", {
         records: records,
-        layout: 'layouts/layout_stuntfights'
+        layout: 'layouts/stuntfights'
       });
     });
   },

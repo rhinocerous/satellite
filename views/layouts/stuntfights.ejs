@@ -213,6 +213,10 @@
 
 
 
+<%
+  if(records && records.about){
+    var about = records.about.values[0];
+%>
 <!--
     ==================================================
                           ABOUT
@@ -224,21 +228,22 @@
       <div class="col-md-12">
 
           <div class="col-xs-6 text-center">
-            <img class="img-responsive main-headshot" src="images/tdupont2.jpg" alt="Thomas DuPont: Fight Choreographer and Stunt Coordinator" data-sr="enter left, hustle 20px">
+            <% if(about.medias && about.medias.length){%>
+              <img class="img-responsive main-headshot" src="<%=about.medias[0].url %>" alt="<%=about.title %>" data-sr="enter left, hustle 20px">
+            <%}%>
           </div>
 
           <div class="col-xs-6">
-              <h2>Thomas Dupont</h2>
-              
+              <h2><%=about.title %></h2>
+              <%-about.body %>
             </div>
 
       </div>
       </div>
     </div>
-
-
 </section>
 
+<%}%>
 
 
 <!--
