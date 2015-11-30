@@ -146,7 +146,7 @@
 
   <!-- Wrapper for slides -->
   <div class="container">
-    <div class="carousel-inner">
+    <div class="carousel-inner"> 
 
 
       <%
@@ -229,7 +229,7 @@
 
           <div class="col-xs-6 text-center">
             <% if(about.medias && about.medias.length){%>
-              <img class="img-responsive main-headshot" src="<%=about.medias[0].url %>" alt="<%=about.title %>" data-sr="enter left, hustle 20px">
+              <img class="img-responsive main-headshot" src="<%=sails.config.satellite.assets.baseUrl + about.medias[0].url %>" alt="<%=about.title %>" data-sr="enter left, hustle 20px">
             <%}%>
           </div>
 
