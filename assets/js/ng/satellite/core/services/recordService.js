@@ -23,6 +23,7 @@
     svc.entities = {};
     svc.attributes = {};
     svc.cb = null;
+    svc.websiteId = null;
 
   //----------- public API ------------
     svc.get = _get;
@@ -56,10 +57,11 @@
       svc._executeUpdate(url, record, onSuccess, onError)
     }
 
-    function _ingest(userId, data, cb)
+    function _ingest(websiteId, data, cb)
     {
       svc.map = data;
       svc.cb = cb;
+      svc.websiteId = websiteId;
 
       angular.forEach(svc.map, function(records, slug) {
 
@@ -116,6 +118,7 @@
           userId:svc.userId,
           order: record.order || 1000,
           entity:entity.id,
+          website:[svc.websiteId],
           values:[]
         };
 

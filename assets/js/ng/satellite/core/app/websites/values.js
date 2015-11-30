@@ -172,8 +172,6 @@
 
         vm.$recordService.updateValues(data.record, _onUpdateRecordsSuccess, _onImportError);
 
-        //vm.selectedMedias = data.medias;
-
       }, function () {
 
       });
@@ -215,30 +213,13 @@
       vm.$alertService.success("User #" + vm.user.id +" -> Record #" + vm.selectedRecord.id);
 
       _loadRecords();
-
-      //_linkImages();
     }
-
-    //function _linkImages()
-    //{
-    //  console.log("link selected medias", vm.selectedMedias);
-    //
-    //  while(vm.selectedMedias && vm.selectedMedias.length > 0)
-    //  {
-    //    var media = vm.selectedMedias.pop();
-    //
-    //    vm.$recordService.addMedia(vm.selectedRecord.id, media.id, _onAddMediaSuccess, vm._handleError);
-    //  }
-    //
-    //  _loadRecords();
-    //}
 
     function _onUpdateRecordsSuccess(response)
     {
       vm.$alertService.success("The record was updated");
 
       _loadRecords();
-      //_linkImages();
     }
 
     function _onGetEntitiesSuccess(response)
@@ -260,7 +241,7 @@
 
       console.log("parsed records", vm.schemaRecords);
 
-      vm.$recordService.ingest(vm.userId, vm.schemaRecords, _onIngestSuccess,_onImportError);
+      vm.$recordService.ingest(vm.website.id, vm.schemaRecords, _onIngestSuccess,_onImportError);
     }
 
     function _onIngestSuccess()

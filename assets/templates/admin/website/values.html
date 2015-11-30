@@ -9,6 +9,10 @@
 
     <div class="panel-body">
 
+      <p ng-if="values.website && values.website.skeleton == 'istuntSingle'">
+        <a class="btn btn-default btn-sm" data-ng-click="values.import()">Import iStunt Resume</a>
+      </p>
+
       <accordion close-others="true">
         <accordion-group class="panel panel-default bg-light" data-ng-repeat="entity in values.website.entities track by entity.id">
 
@@ -49,8 +53,6 @@
           <!-- END table-responsive-->
         </accordion-group>
       </accordion>
-
-      <!--<a class="btn btn-amber" data-ng-click="values.import()">Import iStunt Resume</a>-->
     </div>
   </div>
 </div>

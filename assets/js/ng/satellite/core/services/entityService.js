@@ -44,6 +44,9 @@
         });
       });
 
+      if(svc.outAttr.indexOf('order') < 0)
+        svc.outAttr.push('order');
+
       svc.outAttr = svc.outAttr.unique();
       svc.outEntity = svc.outEntity.unique();
 
@@ -62,6 +65,8 @@
 
         _getBySlug(entity, function(response){
             svc.entities[response.data.slug] = response.data;
+
+            _checkProgress();
         },
         function(error){
 

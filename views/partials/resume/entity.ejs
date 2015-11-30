@@ -1,30 +1,51 @@
-<section class="section-content <%if(entity.slug == 'television'){%>dark<%}%>" id="<%=entity.slug %>">
+<section class="section-content section-isotope separator <%if(entity.slug == 'television'){%>dark<%}%>" id="<%=entity.slug %>">
 <div class="page-header text-center" >
   <h2><%=entity.name %></h2>
 </div>
 <div class="container">
   <div class="row">
+
+    <div class="col-lg-12">
+
+    <div class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": "200", "itemSelector": ".portfolio-item", "layoutMode: "masonry" }'>
     <% _.each(entity.values, function(value)  { %>
+      <div class="col-sm-6 col-md-4 portfolio-item <%=entity.slug %>">
+        <figure>
+          <!-- Thumb Info -->
+          <div class="info">
+            <h3><%=value.project_title%></h3>
+            <span><%=value.role_position %></span>
+          </div>
 
-    <div class="col-md-12">
+          <%if(value.medias && value.medias.length)
+          {
+            var media = value.medias[0];
+          %>
+            <!-- Thumbnail -->
+            <img src="<%=sails.config.satellite.assets.baseUrl + media.url %>" alt="<%=entity.name %>">
 
-      <div class="left col-md-4 col-xs-6">
-        <p><%=value.project_title%></p>
+          <%} else { %>
+
+            <img src="/images/default_image.jpg" alt="<%=entity.name %>">
+          <%}  %>
+          <!-- Thumb links -->
+          <figcaption>
+
+            <!--<p><%=value.company_director %></p>-->
+            <!--<a href="images/thumbs/7son.jpg" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="left" title="Preview">-->
+              <!--<i class="fa fa-plus"></i>-->
+            <!--</a>-->
+            <!--<a href="#" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website">-->
+              <!--<i class="fa fa-external-link"></i>-->
+            <!--</a>-->
+          </figcaption>
+        </figure>
       </div>
 
-      <div class="left col-md-4 col-xs-6">
-        <p><%=value.role_position %></p>
-      </div>
-
-      <div class="left col-md-4 visible-md-block visible-lg-block">
-        <p><%=value.company_director %></p>
-      </div>
-
-    </div>
 
     <% }); %>
-
-
+    </div>
+    </div>
   </div>
 </div>
 </section>
