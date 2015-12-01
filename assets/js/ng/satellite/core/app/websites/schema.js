@@ -207,7 +207,7 @@
       vm.schemaString =  JSON.stringify(raw, null,"    ");
       vm.schemaEntities = vm.$istuntService.parseResumeEntities(raw);
 
-      vm.$entityService.ingest(vm.userId, vm.schemaEntities, _onIngestSuccess);
+      vm.$entityService.ingest(vm.website.id, vm.schemaEntities, _onIngestSuccess);
     }
 
     function _onIngestSuccess()

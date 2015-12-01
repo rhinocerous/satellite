@@ -34,7 +34,7 @@
     vm.dropzoneConfig = {
       uploadMultiple: false,
       maxFileSize: 10,
-      url:"/website/" + vm.website.id +"/media/upload",
+      url:"/website/" + vm.website.id + "/record/" + vm.record.id + "/media/upload",
       addRemoveLinks: true,
       removedfile: _onRemovedFile,
       init: _dropzoneInit,
@@ -81,7 +81,7 @@
 
       vm.$alertService.success(response.title + " has been saved");
 
-      vm.$recordService.recordMedia(vm.record.id, response.id, 'add', _onAddMediaSuccess, vm._handleError);
+      //vm.$recordService.recordMedia(vm.record.id, response.id, 'add', _onAddMediaSuccess, vm._handleError);
     }
 
     function _dropzoneInit()

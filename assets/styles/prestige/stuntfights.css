@@ -113,10 +113,10 @@ section.dark.with-bg2 {
   margin: 0 auto;
   text-align: center;
 }
-.grid .resume-item {
+.grid .portfolio-item {
   display: inline-block;
   margin: 0;
-  padding: 20px;
+  /*padding: 20px;*/
   position: relative;
   text-align: left;
 }

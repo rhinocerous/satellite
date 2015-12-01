@@ -88,6 +88,11 @@ module.exports.routes = {
     action: 'upload',
     skipAssets: true
   },
+  'post /website/:websiteId/record/:recordId/media/upload': {
+    controller: 'MediaController',
+    action: 'upload',
+    skipAssets: true
+  },
   'get /website/:websiteId/entity/:entityId/records': {
     controller: 'RecordController',
     action: 'findByWebsiteEntity',
